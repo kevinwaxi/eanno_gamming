@@ -25,7 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('profile_picture')->nullable();
             $table->string('initial_pic')->nullable();
             $table->tinyInteger('is_active')->default(1);
-            $table->timestamp('banned_until');
+            $table->timestamp('banned_until')->nullable();
             $table->timestamps();
         });
     }

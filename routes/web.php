@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InvitationController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +20,14 @@ use App\Http\Controllers\HomeController;
 Route::get('/', function () {
     return view('welcome');
 });
-
 Auth::routes();
+
+Route::post('invitations', [InvitationController::class, 'store'])->middleware('guest')->name('storeInvitation');
+Route::get('register/request', [RegisterController::class, 'requestInvitation'])->name('requestInvitation');
+
+Route::get('register', [RegisterController::class, 'showRegistrationForm'])
+    ->name('register')
+    ->middleware('hasInvitation');
+
 
 Route::get('{any}', [HomeController::class, 'index'])->where('any', '[\/\w\.-]*');

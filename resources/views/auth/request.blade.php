@@ -9,7 +9,7 @@
                 <div class="col-lg-5 text-center mx-auto">
                     <h1 class="text-white mb-2 mt-5">Welcome!</h1>
                     <p class="text-lead text-white">
-                        Smart Workers is a limited community. You need to make a request and check your inbox for invite
+                        Eanno Gamming is a limited community. You need to make a request and check your inbox for invite
                         link
                     </p>
                 </div>
