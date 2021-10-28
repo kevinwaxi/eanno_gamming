@@ -6,6 +6,7 @@ import "view-design/dist/styles/iview.css";
 
 import ViewUI from "view-design";
 import VueFormulate from "@braid/vue-formulate";
+import VueRouter from "vue-router";
 import auth from "./modules/auth";
 import common from "./modules/common";
 import locale from "view-design/dist/locale/en-US";
@@ -24,8 +25,9 @@ Vue.use(VueFormulate, {
 });
 
 Vue.mixin(common);
+Vue.use(VueRouter);
 
-Vue.component('pagination', require('laravel-vue-pagination'));
+Vue.component("pagination", require("laravel-vue-pagination"));
 
 router.beforeEach((to, from, next) => {
     (window.document.title =

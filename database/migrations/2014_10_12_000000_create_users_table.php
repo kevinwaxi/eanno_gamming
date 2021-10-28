@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->string('profile_picture')->nullable();
             $table->string('initial_pic')->nullable();
-            $table->tinyInteger('is_active')->default(1);
+            $table->boolean('is_active')->default(false);
             $table->timestamp('banned_until')->nullable();
             $table->timestamps();
         });

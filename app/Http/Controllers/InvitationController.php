@@ -7,10 +7,10 @@ use App\Models\Invitation;
 
 class InvitationController extends Controller
 {
-    //
+
     public function store(StoreInvitationRequest $request)
     {
-        $invitation = new Invitation($request->all());
+        $invitation = new Invitation($request->validated());
         $invitation->generateInvitationToken();
         $invitation->save();
 
@@ -18,4 +18,5 @@ class InvitationController extends Controller
             ->route('requestInvitation')
             ->with('success', 'Invitation to register successfully requested. Please wait for registration link.');
     }
+
 }

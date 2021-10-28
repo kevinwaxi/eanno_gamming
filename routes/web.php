@@ -29,5 +29,4 @@ Route::get('register', [RegisterController::class, 'showRegistrationForm'])
     ->name('register')
     ->middleware('hasInvitation');
 
-
-Route::get('{any}', [HomeController::class, 'index'])->where('any', '[\/\w\.-]*');
+Route::get('/{any?}', [HomeController::class, 'index'])->where('any', '[\/\w\.-]*');
