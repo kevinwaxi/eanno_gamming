@@ -348,6 +348,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -406,7 +407,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   methods: {
     closeModal: function closeModal() {
       $('#modal-default').modal('hide');
-      this.form.name = ''; //   this.form.clear();
+      this.restForm();
+    },
+    restForm: function restForm() {
+      this.form.name = '';
     },
     createModal: function createModal() {
       $('#modal-default').modal('show');
@@ -553,7 +557,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 if (res.status === 201) {
                   _this5.s('Permission created successfully');
 
-                  $('#modal-default').modal('hide');
+                  _this5.closeModal();
 
                   _this5.getPermissions();
 
@@ -597,7 +601,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 res = _context5.sent;
 
                 if (res.status == 200) {
-                  $('#modal-default').modal('hide');
+                  _this6.closeModal();
 
                   _this6.getPermissions();
 
@@ -1413,6 +1417,7 @@ var render = function () {
                     {
                       staticClass: "btn bg-gradient-secondary",
                       attrs: { type: "button", "data-bs-dismiss": "modal" },
+                      on: { click: _vm.closeModal },
                     },
                     [_vm._v("\n            Close\n          ")]
                   ),

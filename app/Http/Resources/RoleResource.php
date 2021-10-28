@@ -17,8 +17,8 @@ class RoleResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            'created_at' => $this->created_at->toFormattedDateString(),
+            'updated_at' => $this->updated_at->toFormattedDateString(),
             'permissions' => $this->permissions,
         ];
     }

@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\API\V1;
 
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Store\StoreRoleRequest;
+use App\Http\Requests\Update\UpdateRoleRequest;
+use App\Http\Resources\RoleResource;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
-use App\Http\Controllers\Controller;
-use App\Http\Resources\RoleResource;
 
 class RolesController extends Controller
 {
@@ -32,7 +34,7 @@ class RolesController extends Controller
             }
 
             $role = Role::when($selected, function ($query) use ($selected) {
-                $query->WhereHas('roles', function ($query) use ($selected) {
+                $query->WhereHas('permissions', function ($query) use ($selected) {
                     $query->where('id', $selected);
                 });
             })
@@ -54,9 +56,15 @@ class RolesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRoleRequest $request)
     {
         //
+
+        $roles = new Role($request->all());
+        $roles->givePermissionTo($request->input('permissions'));
+        $roles->save();
+
+        return $roles;
     }
 
     /**
@@ -68,6 +76,7 @@ class RolesController extends Controller
     public function show($id)
     {
         //
+        return Role::pluck('id');
     }
 
     /**
@@ -77,9 +86,16 @@ class RolesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateRoleRequest $request, $id)
     {
         //
+        $role = Role::findOrFail($id);
+
+        $role->update($request->validated());
+
+        $role->syncPermissions($request->input('permissions'));
+
+        return $role;
     }
 
     /**
@@ -88,8 +104,10 @@ class RolesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Role $role)
     {
         //
+        $role->delete();
+        return response()->noContent();
     }
 }

@@ -276,6 +276,7 @@
               type="button"
               class="btn bg-gradient-secondary"
               data-bs-dismiss="modal"
+              @click="closeModal"
             >
               Close
             </button>
@@ -383,8 +384,10 @@ export default {
   methods: {
     closeModal() {
       $('#modal-default').modal('hide')
+      this.restForm()
+    },
+    restForm() {
       this.form.name = ''
-      //   this.form.clear();
     },
     createModal() {
       $('#modal-default').modal('show')
@@ -459,7 +462,7 @@ export default {
       const res = await this.callApi('post', '/api/v1/permissions', this.form)
       if (res.status === 201) {
         this.s('Permission created successfully')
-        $('#modal-default').modal('hide')
+        this.closeModal()
         this.getPermissions()
         this.processing = false
       } else {
@@ -482,7 +485,7 @@ export default {
         this.form
       )
       if (res.status == 200) {
-        $('#modal-default').modal('hide')
+        this.closeModal()
         this.getPermissions()
         this.s('Successfully updated permission')
         this.processing = false
