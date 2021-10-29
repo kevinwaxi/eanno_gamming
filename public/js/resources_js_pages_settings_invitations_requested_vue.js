@@ -237,6 +237,36 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -343,15 +373,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                _context2.next = 2;
+                _this3.isProcessing = true;
+                _context2.next = 3;
                 return _this3.callApi('get', "/api/v1/invitations/approve/".concat(invitation_id));
 
-              case 2:
+              case 3:
                 res = _context2.sent;
 
                 if (res.status === 200) {
                   _this3.approveModal = false;
                   _this3.isProcessing = false;
+
+                  _this3.s('Sent invitation link');
 
                   _this3.getInvitations();
                 } else {
@@ -364,7 +397,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   }
                 }
 
-              case 4:
+              case 5:
               case "end":
                 return _context2.stop();
             }
@@ -510,6 +543,73 @@ var render = function () {
                         },
                       }),
                     ]),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-3" }, [
+                    _c("label", { attrs: { for: "select" } }, [
+                      _vm._v("Select by:"),
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.selected,
+                            expression: "selected",
+                          },
+                        ],
+                        staticClass: "form-select fmxw-200 d-none d-md-inline",
+                        attrs: { "aria-label": "Fillter by role" },
+                        on: {
+                          change: function ($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function (o) {
+                                return o.selected
+                              })
+                              .map(function (o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.selected = $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          },
+                        },
+                      },
+                      [
+                        _c(
+                          "option",
+                          { attrs: { selected: "selected", value: "" } },
+                          [_vm._v("Show All")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          {
+                            attrs: {
+                              selected: "selected",
+                              value: "Registered",
+                            },
+                          },
+                          [_vm._v("Registered")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          { attrs: { selected: "selected", value: "Pening" } },
+                          [_vm._v("Pending")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          { attrs: { selected: "selected", value: "Sent" } },
+                          [_vm._v("Sent")]
+                        ),
+                      ]
+                    ),
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "col-2" }, [
@@ -795,7 +895,10 @@ var render = function () {
                               _vm._v(" "),
                               _vm._m(2, true),
                             ])
-                          : _c("div", { staticClass: "ms-auto text-end" }, [
+                          : _vm._e(),
+                        _vm._v(" "),
+                        invitation.status == "Sent"
+                          ? _c("div", { staticClass: "ms-auto text-end" }, [
                               _c(
                                 "a",
                                 {
@@ -810,15 +913,43 @@ var render = function () {
                                 },
                                 [
                                   _c("i", {
-                                    staticClass: "far fa-trash-alt me-2",
+                                    staticClass: "fa fa-plane me-2",
                                     attrs: { "aria-hidden": "true" },
                                   }),
                                   _vm._v(
-                                    "\n                   Sent\n                  "
+                                    "\n                    Sent\n                  "
                                   ),
                                 ]
                               ),
-                            ]),
+                            ])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        invitation.status == "Registered"
+                          ? _c("div", { staticClass: "ms-auto text-end" }, [
+                              _c(
+                                "a",
+                                {
+                                  staticClass:
+                                    "btn btn-link text-info text-gradient px-3 mb-0",
+                                  attrs: { href: "javascript:;" },
+                                  on: {
+                                    click: function ($event) {
+                                      return _vm.showApproveModal(invitation)
+                                    },
+                                  },
+                                },
+                                [
+                                  _c("i", {
+                                    staticClass: "fa fa-check me-2",
+                                    attrs: { "aria-hidden": "true" },
+                                  }),
+                                  _vm._v(
+                                    "\n                    Registered\n                  "
+                                  ),
+                                ]
+                              ),
+                            ])
+                          : _vm._e(),
                       ]
                     )
                   }),

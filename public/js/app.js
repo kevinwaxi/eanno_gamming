@@ -2497,22 +2497,10 @@ var routes = [{
       return __webpack_require__.e(/*! import() */ "resources_js_pages_settings_invitations_index_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/settings/invitations/index.vue */ "./resources/js/pages/settings/invitations/index.vue"));
     },
     children: [{
-      path: "requested",
-      name: "requested",
+      path: "all",
+      name: "all_requests",
       component: function component() {
         return __webpack_require__.e(/*! import() */ "resources_js_pages_settings_invitations_requested_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/settings/invitations/requested.vue */ "./resources/js/pages/settings/invitations/requested.vue"));
-      }
-    }, {
-      path: "approved",
-      name: "approved",
-      component: function component() {
-        return __webpack_require__.e(/*! import() */ "resources_js_pages_settings_invitations_approved_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/settings/invitations/approved.vue */ "./resources/js/pages/settings/invitations/approved.vue"));
-      }
-    }, {
-      path: "registered",
-      name: "registered",
-      component: function component() {
-        return __webpack_require__.e(/*! import() */ "resources_js_pages_settings_invitations_registered_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/settings/invitations/registered.vue */ "./resources/js/pages/settings/invitations/registered.vue"));
       }
     }]
   }, {
@@ -101330,7 +101318,7 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_pages_dashboards_index_vue":1,"resources_js_pages_dashboards_admin_index_vue":1,"resources_js_pages_dashboards_admin_statistics_vue":1,"resources_js_pages_settings_index_vue":1,"resources_js_pages_settings_invitations_index_vue":1,"resources_js_pages_settings_invitations_requested_vue":1,"resources_js_pages_settings_invitations_approved_vue":1,"resources_js_pages_settings_invitations_registered_vue":1,"resources_js_pages_settings_security_index_vue":1,"resources_js_pages_settings_security_permissions_permissions_vue":1,"resources_js_pages_settings_security_roles_roles_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_pages_dashboards_index_vue":1,"resources_js_pages_dashboards_admin_index_vue":1,"resources_js_pages_dashboards_admin_statistics_vue":1,"resources_js_pages_settings_index_vue":1,"resources_js_pages_settings_invitations_index_vue":1,"resources_js_pages_settings_invitations_requested_vue":1,"resources_js_pages_settings_security_index_vue":1,"resources_js_pages_settings_security_permissions_permissions_vue":1,"resources_js_pages_settings_security_roles_roles_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

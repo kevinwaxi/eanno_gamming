@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Models\Invitation;
 use App\Models\User;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Models\Invitation;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Notifications\WelcomeUserNotification;
 use Illuminate\Support\Facades\Hash;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Notification;
+use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
@@ -31,7 +33,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -66,11 +68,26 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+
+        // invitations check
+        $invitation = Invitation::where('email', $data['email'])
+            ->where('phone', $data['phone'])
+            ->firstOrFail();
+
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'username' => $data['username'],
+            'phone' => $data['phone'],
             'password' => Hash::make($data['password']),
         ]);
+
+        $invitation->registered_at = $user->created_at;
+        $invitation->status = ('Registered');
+        $invitation->save();
+
+        Notification::send($user, new WelcomeUserNotification($user));
+
     }
 
     public function requestInvitation()

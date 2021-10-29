@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use App\Models\Invitation;
-use Illuminate\Support\Str;
-use Illuminate\Http\Request;
+use App\Http\Requests\Store\StoreInvitationRequest;
 use App\Http\Resources\InvitationResource;
-use Illuminate\Support\Facades\Notification;
+use App\Models\Invitation;
+use App\Models\User;
 use App\Notifications\InvitationNotification;
 use App\Notifications\UserRequestNotification;
-use App\Http\Requests\Store\StoreInvitationRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
 
 class InvitationController extends Controller
 {
@@ -36,9 +35,7 @@ class InvitationController extends Controller
             }
 
             $invitation = Invitation::when($selected, function ($query) use ($selected) {
-                $query->WhereHas('roles', function ($query) use ($selected) {
-                    $query->where('id', $selected);
-                });
+                $query->where('status', $selected);
             })
                 ->search(trim($search_term))
                 ->orderBy($sort_field, $sort_direction)
@@ -82,8 +79,8 @@ class InvitationController extends Controller
 
         Notification::send($data, new InvitationNotification($invitationData));
 
-        $invitation = Invitation::where('id',$id)->update([
-            'status' => 'Sent'
+        $invitation = Invitation::where('id', $id)->update([
+            'status' => 'Sent',
         ]);
 
         return $invitation;

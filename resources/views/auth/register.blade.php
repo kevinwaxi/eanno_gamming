@@ -8,7 +8,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-5 text-center mx-auto">
                     <h1 class="text-white mb-2 mt-5">Welcome!</h1>
-                    <p class="text-lead text-white">This is Smart workers dashboard area.</p>
+                    <p class="text-lead text-white">This is Eanno Gaming dashboard area.</p>
                 </div>
             </div>
         </div>
@@ -52,40 +52,31 @@
 
                             </div>
                             <div class="mb-3 row">
-                                <div class="col-4">
-                                    <input id="first_name" type="name" placeholder="First Name"
-                                        class="form-control @error('first_name') is-invalid @enderror" name="first_name"
-                                        value="{{ old('first_name') }}" required autocomplete="email" autofocus>
+                                <div class="col-12">
+                                    <input id="name" type="name" placeholder="Full Name"
+                                        class="form-control @error('name') is-invalid @enderror" name="name"
+                                        value="{{ old('name') }}" required autofocus>
 
-                                    @error('first_name')
+                                    @error('name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
                                 </div>
-                                <div class="col-4">
-                                    <input id="last_name" type="name" placeholder="Last Name"
-                                        class="form-control @error('last_name') is-invalid @enderror" name="last_name"
-                                        value="{{ old('last_name') }}" required autocomplete="email" autofocus>
+                            </div>
 
-                                    @error('first_name')
+                            <div class="mb-3 row">
+                                <div class="col-8">
+                                    <input id="username" type="name" placeholder="username"
+                                        class="form-control @error('username') is-invalid @enderror" name="username"
+                                        value="{{ old('username') }}" required autofocus>
+
+                                    @error('username')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
                                 </div>
-                                <div class="col-4">
-                                    <input id="second_name" type="name" placeholder="Second Name"
-                                        class="form-control @error('second_name') is-invalid @enderror" name="second_name"
-                                        value="{{ old('second_name') }}" autocomplete="second_name" autofocus>
-
-                                    @error('second_name')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-
                             </div>
 
                             <div class="row mb-3">
@@ -106,8 +97,7 @@
                                         name="password_confirmation" required>
 
                                     @error('password-confirm')
-                                        <span class="
-                                                                    invalid-feedback" role="alert">
+                                        <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
@@ -124,7 +114,7 @@
                                 <button type="submit"
                                     class="btn bg-gradient-info w-100 my-4 mb-2">{{ __('Register') }}</button>
                             </div>
-                            <div class="mb-2 position-relative text-center">
+                            {{-- <div class="mb-2 position-relative text-center">
                                 <p
                                     class="text-sm font-weight-bold mb-2 text-secondary text-border d-inline z-index-2 bg-white px-3">
                                     or
@@ -133,7 +123,7 @@
                             <div class="text-center">
                                 <button type="button"
                                     class="btn bg-gradient-dark w-100 mt-2 mb-4">{{ __('Login') }}</button>
-                            </div>
+                            </div> --}}
                         </form>
                     </div>
                 </div>

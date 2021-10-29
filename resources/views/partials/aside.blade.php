@@ -168,21 +168,9 @@
                 <div class="collapse " id="applicationsExamples">
                     <ul class="nav ms-4 ps-3">
                         <li class="nav-item ">
-                            <router-link :to="{name:'requested'}" class="nav-link">
+                            <router-link :to="{name:'all_requests'}" class="nav-link">
                                 <span class="sidenav-mini-icon"> R </span>
-                                <span class="sidenav-normal"> Requested </span>
-                            </router-link>
-                        </li>
-                        <li class="nav-item ">
-                            <router-link :to="{name:'approved'}" class="nav-link">
-                                <span class="sidenav-mini-icon"> A </span>
-                                <span class="sidenav-normal"> Approved </span>
-                            </router-link>
-                        </li>
-                        <li class="nav-item ">
-                            <router-link :to="{name:'registered'}" class="nav-link ">
-                                <span class="sidenav-mini-icon"> R </span>
-                                <span class="sidenav-normal"> Registered </span>
+                                <span class="sidenav-normal"> All Requests </span>
                             </router-link>
                         </li>
                     </ul>

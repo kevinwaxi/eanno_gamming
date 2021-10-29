@@ -29,6 +29,20 @@
                     />
                   </div>
                 </div>
+                <div class="col-3">
+                  <label for="select">Select by:</label>
+                  <select
+                    v-model="selected"
+                    class="form-select fmxw-200 d-none d-md-inline"
+                    aria-label="Fillter by role"
+                  >
+                    <option selected="selected" value="">Show All</option>
+                    <option selected="selected" value="Registered">Registered</option>
+                    <option selected="selected" value="Pening">Pending</option>
+                    <option selected="selected" value="Sent">Sent</option>
+
+                  </select>
+                </div>
                 <div class="col-2">
                   <label for="select">Show:</label>
                   <select
@@ -170,14 +184,30 @@
                       Deny
                     </a>
                   </div>
-                  <div class="ms-auto text-end" v-else>
+                  <div
+                    class="ms-auto text-end"
+                    v-if="invitation.status == 'Sent'"
+                  >
                     <a
                       class="btn btn-link text-success text-gradient px-3 mb-0"
                       href="javascript:;"
                       @click="showApproveModal(invitation)"
                     >
-                      <i class="far fa-trash-alt me-2" aria-hidden="true"></i>
-                     Sent
+                      <i class="fa fa-plane me-2" aria-hidden="true"></i>
+                      Sent
+                    </a>
+                  </div>
+                  <div
+                    class="ms-auto text-end"
+                    v-if="invitation.status == 'Registered'"
+                  >
+                    <a
+                      class="btn btn-link text-info text-gradient px-3 mb-0"
+                      href="javascript:;"
+                      @click="showApproveModal(invitation)"
+                    >
+                      <i class="fa fa-check me-2" aria-hidden="true"></i>
+                      Registered
                     </a>
                   </div>
                 </li>
@@ -297,6 +327,7 @@ export default {
       }
     },
     async approveRequest(invitation_id) {
+      this.isProcessing = true
       const res = await this.callApi(
         'get',
         `/api/v1/invitations/approve/${invitation_id}`
@@ -304,6 +335,7 @@ export default {
       if (res.status === 200) {
         this.approveModal = false
         this.isProcessing = false
+        this.s('Sent invitation link')
         this.getInvitations()
       } else {
         if (res.status !== 422) {

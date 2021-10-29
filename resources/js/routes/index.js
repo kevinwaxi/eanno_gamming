@@ -31,22 +31,10 @@ const routes = [
                     import("@pages/settings/invitations/index.vue"),
                 children: [
                     {
-                        path: "requested",
-                        name: "requested",
+                        path: "all",
+                        name: "all_requests",
                         component: () =>
                             import("@pages/settings/invitations/requested.vue"),
-                    },
-                    {
-                        path: "approved",
-                        name: "approved",
-                        component: () =>
-                            import("@pages/settings/invitations/approved.vue"),
-                    },
-                    {
-                        path: "registered",
-                        name: "registered",
-                        component: () =>
-                            import("@pages/settings/invitations/registered.vue"),
                     },
                 ],
             },

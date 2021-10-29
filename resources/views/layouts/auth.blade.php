@@ -9,7 +9,7 @@
             csrfToken: '{{ csrf_token() }}'
         }
     </script>
-    <link rel="icon" type="image/png" href="{{ asset('/assets/img/favicon.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('assets/img/favicon.png') }}">
     <title>
         Eano Gamming
     </title>
@@ -58,6 +58,7 @@
 
     <!-- Load FilePond library -->
     <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+
     <script>
         const inputElement = document.querySelector('input[id="avatar"]');
         const pond = FilePond.create(inputElement);
@@ -70,6 +71,7 @@
             }
         })
     </script>
+
 </body>
 
 </html>
