@@ -19,6 +19,7 @@ class CreateInvitationsTable extends Migration
             $table->string('phone')->unique();
             $table->string('invitation_token', 32)->unique()->nullable();
             $table->timestamp('registered_at')->nullable();
+            $table->enum('status',['Pending','Sent','Registered'])->default('Pending');
             $table->timestamps();
         });
     }

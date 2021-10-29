@@ -20,7 +20,7 @@
                 <li class="nav-item d-flex align-items-center">
                     <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
                         <i class="fa fa-user me-sm-1"></i>
-                        <span class="d-sm-inline d-none">Sign In</span>
+                        Hello <span class="text-dark"> {{ Auth::user()->username }}</span>
                     </a>
                 </li>
                 <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
@@ -32,12 +32,7 @@
                         </div>
                     </a>
                 </li>
-                <li class="nav-item px-3 d-flex align-items-center">
-                    <a href="javascript:;" class="nav-link text-body p-0">
-                        <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
-                    </a>
-                </li>
-                <li class="nav-item dropdown pe-2 d-flex align-items-center">
+                <li class="nav-item dropdown px-3 pe-2 d-flex align-items-center">
                     <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fa fa-bell cursor-pointer"></i>
@@ -48,7 +43,8 @@
                             <a class="dropdown-item border-radius-md" href="javascript:;">
                                 <div class="d-flex py-1">
                                     <div class="my-auto">
-                                        <img src="../assets/img/team-2.jpg" class="avatar avatar-sm  me-3 ">
+                                        <img src="{{ asset('assets/img/team-2.jpg') }}"
+                                            class="avatar avatar-sm  me-3 ">
                                     </div>
                                     <div class="d-flex flex-column justify-content-center">
                                         <h6 class="text-sm font-weight-normal mb-1">
@@ -66,7 +62,7 @@
                             <a class="dropdown-item border-radius-md" href="javascript:;">
                                 <div class="d-flex py-1">
                                     <div class="my-auto">
-                                        <img src="../assets/img/small-logos/logo-spotify.svg"
+                                        <img src="{{ asset('assets/img/small-logos/logo-spotify.svg') }}"
                                             class="avatar avatar-sm bg-gradient-dark  me-3 ">
                                     </div>
                                     <div class="d-flex flex-column justify-content-center">

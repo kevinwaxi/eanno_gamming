@@ -22,9 +22,34 @@ const routes = [
         ],
     },
     {
-        path:'/settings',
-        component: () => import('@pages/settings/index.vue'),
+        path: "/settings",
+        component: () => import("@pages/settings/index.vue"),
         children: [
+            {
+                path: "invitations",
+                component: () =>
+                    import("@pages/settings/invitations/index.vue"),
+                children: [
+                    {
+                        path: "requested",
+                        name: "requested",
+                        component: () =>
+                            import("@pages/settings/invitations/requested.vue"),
+                    },
+                    {
+                        path: "approved",
+                        name: "approved",
+                        component: () =>
+                            import("@pages/settings/invitations/approved.vue"),
+                    },
+                    {
+                        path: "registered",
+                        name: "registered",
+                        component: () =>
+                            import("@pages/settings/invitations/registered.vue"),
+                    },
+                ],
+            },
             {
                 path: "security",
                 component: () => import("@pages/settings/security/index.vue"),
@@ -33,18 +58,20 @@ const routes = [
                         path: "permissions",
                         name: "permissions",
                         component: () =>
-                            import("@pages/settings/security/permissions/permissions.vue"),
+                            import(
+                                "@pages/settings/security/permissions/permissions.vue"
+                            ),
                     },
                     {
                         path: "roles",
                         name: "roles",
-                        component: () => import("@pages/settings/security/roles/roles.vue"),
+                        component: () =>
+                            import("@pages/settings/security/roles/roles.vue"),
                     },
                 ],
             },
-        ]
+        ],
     },
-
 ];
 
 export default new Router({

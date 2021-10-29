@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\InvitationController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\InvitationController;
+use App\Http\Controllers\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,5 +29,5 @@ Route::get('register/request', [RegisterController::class, 'requestInvitation'])
 Route::get('register', [RegisterController::class, 'showRegistrationForm'])
     ->name('register')
     ->middleware('hasInvitation');
-
+Route::get('logout', [LogoutController::class, 'perform'])->name('logout.perform');
 Route::get('/{any?}', [HomeController::class, 'index'])->where('any', '[\/\w\.-]*');
