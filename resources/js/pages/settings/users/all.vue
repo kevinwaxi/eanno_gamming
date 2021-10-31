@@ -808,9 +808,7 @@ export default {
       editMode: false,
       processing: false,
       deletingItem: null,
-      form: {
-        banned_until: '',
-      },
+      form: {},
       users: {},
       roles: {},
       total: 20,
