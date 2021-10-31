@@ -2,15 +2,17 @@
 
 namespace App\Models;
 
+use Spatie\MediaLibrary\HasMedia;
+use Laravel\Passport\HasApiTokens;
+use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Notifications\Notifiable;
+use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
-use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable
+class User extends Authenticatable implements HasMedia
 {
-    use HasApiTokens, HasFactory, Notifiable, HasRoles;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles, InteractsWithMedia;
 
     /**
      * The attributes that are mass assignable.
@@ -49,4 +51,20 @@ class User extends Authenticatable
         'banned_until' => 'datetime',
         'is_active' => 'boolean',
     ];
+
+    public function scopeSearch($query, $term)
+    {
+        # code...
+        $term = "%$term%";
+
+        $query->where(function ($query) use ($term) {
+            $query->where('name', 'like', $term)
+                ->orWhere('username', 'like', $term)
+                ->orWhere('email', 'like', $term)
+                ->orWhere('phone', 'like', $term)
+                ->orWhereHas('roles', function ($query) use ($term) {
+                    $query->where('name', 'like', $term);
+                });
+        });
+    }
 }

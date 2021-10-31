@@ -38,7 +38,7 @@
                   >
                     <option selected="selected" value="">Show All</option>
                     <option selected="selected" value="Registered">Registered</option>
-                    <option selected="selected" value="Pening">Pending</option>
+                    <option selected="selected" value="Pending">Pending</option>
                     <option selected="selected" value="Sent">Sent</option>
 
                   </select>

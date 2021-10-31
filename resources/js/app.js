@@ -3,9 +3,11 @@ require("./bootstrap");
 window.Vue = require("vue").default;
 
 import "view-design/dist/styles/iview.css";
+import "vue-form-wizard/dist/vue-form-wizard.min.css";
 
 import ViewUI from "view-design";
-import VueClipboard from 'vue-clipboard2'
+import VueClipboard from "vue-clipboard2";
+import VueFormWizard from "vue-form-wizard";
 import VueFormulate from "@braid/vue-formulate";
 import VueRouter from "vue-router";
 import auth from "./modules/auth";
@@ -14,7 +16,8 @@ import locale from "view-design/dist/locale/en-US";
 import router from "./routes/index";
 import store from "./store/index";
 
-Vue.use(VueClipboard)
+Vue.use(VueFormWizard);
+Vue.use(VueClipboard);
 Vue.use(ViewUI, { locale });
 Vue.use(VueFormulate, {
     classes: {

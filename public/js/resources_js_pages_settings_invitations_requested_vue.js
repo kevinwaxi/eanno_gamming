@@ -599,7 +599,7 @@ var render = function () {
                         _vm._v(" "),
                         _c(
                           "option",
-                          { attrs: { selected: "selected", value: "Pening" } },
+                          { attrs: { selected: "selected", value: "Pending" } },
                           [_vm._v("Pending")]
                         ),
                         _vm._v(" "),

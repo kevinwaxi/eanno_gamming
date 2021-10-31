@@ -349,6 +349,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -526,7 +527,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 2:
                 res = _context3.sent;
 
-                if (res.status == 200) {
+                if (res.status === 200) {
                   _this4.roles = res.data;
                 }
 
@@ -563,7 +564,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                   _this5.processing = false;
                 } else {
-                  if (res.status == 422) {
+                  if (res.status === 422) {
                     for (i in res.data.errors) {
                       _this5.e(res.data.errors[i][0]);
                     }
@@ -1448,7 +1449,7 @@ var render = function () {
                         "button",
                         {
                           staticClass: "btn bg-gradient-primary",
-                          attrs: { type: "button" },
+                          attrs: { type: "button", disabled: _vm.proccessing },
                           on: {
                             click: function ($event) {
                               return _vm.createPermission()

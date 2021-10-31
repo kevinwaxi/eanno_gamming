@@ -58,6 +58,34 @@ const routes = [
                     },
                 ],
             },
+            {
+                path: "profile",
+                component: () => import("@pages/settings/profile/index.vue"),
+                children: [
+                    {
+                        path: "account",
+                        name: "my_account",
+                        component: () =>
+                            import("@pages/settings/profile/account.vue"),
+                    },
+                    {
+                        path:"edit",
+                        name:'edit_my_account',
+                        component: () => import('@pages/settings/profile/edit.vue')
+                    }
+                ],
+            },
+            {
+                path: "users",
+                component:()=>import('@pages/settings/users/index.vue'),
+                children:[
+                    {
+                        path:"all",
+                        name:"all_users",
+                        component: () => import('@pages/settings/users/all.vue'),
+                    }
+                ]
+            }
         ],
     },
 ];

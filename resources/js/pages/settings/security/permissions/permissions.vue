@@ -294,6 +294,7 @@
               type="button"
               class="btn bg-gradient-primary"
               @click="createPermission()"
+              :disabled="proccessing"
             >
               {{ processing ? 'Creating ...' : 'Create' }}
             </button>
@@ -453,7 +454,7 @@ export default {
     },
     async getRoles() {
       const res = await this.callApi('get', '/api/v1/roles')
-      if (res.status == 200) {
+      if (res.status === 200) {
         this.roles = res.data
       }
     },
@@ -466,7 +467,7 @@ export default {
         this.getPermissions()
         this.processing = false
       } else {
-        if (res.status == 422) {
+        if (res.status === 422) {
           for (let i in res.data.errors) {
             this.e(res.data.errors[i][0])
           }

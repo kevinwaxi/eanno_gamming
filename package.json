@@ -26,9 +26,18 @@
     },
     "dependencies": {
         "@braid/vue-formulate": "^2.5.2",
+        "filepond-plugin-file-validate-type": "^1.2.6",
+        "filepond-plugin-image-crop": "^2.0.6",
+        "filepond-plugin-image-edit": "^1.6.3",
+        "filepond-plugin-image-exif-orientation": "^1.0.11",
+        "filepond-plugin-image-preview": "^4.6.10",
+        "filepond-plugin-image-resize": "^2.0.10",
+        "filepond-plugin-image-transform": "^3.8.7",
         "laravel-vue-pagination": "^2.3.1",
         "view-design": "^4.7.0-beta.11",
         "vue-clipboard2": "^0.3.3",
+        "vue-filepond": "^6.0.3",
+        "vue-form-wizard": "^0.8.4",
         "vue-router": "^3.5.3",
         "vuex": "^3.6.2"
     }
