@@ -166,18 +166,6 @@ class UserController extends Controller
         $id = auth('api')->user()->id;
         $user = User::where('id', $id)->update($request->validated());
 
-        // if ($request->hasFile('avatar') && $request->file('avatar')->isValid()) {
-        //     $user->addMediaFromRequest('avatar')->toMediaCollection('avatar');
-        // }
-        // $temp = TemporaryFiles::where('folder', $request->avatar)->first();
-        // if ($temp) {
-        //     $user->addMedia(storage_path('app/public/avatars/tmp' . $request->avatar . '/' . $temp->filename))
-        //         ->toMediaCollection('avatars');
-
-        //     rmdir(storage_path('app/public/avatars/tmp' . $request->avatar));
-        //     $temp->delete();
-        // }
-
         return $user;
     }
 }

@@ -95,15 +95,6 @@ class RegisterController extends Controller
         ]);
         $user->assignRole('Gamer');
 
-
-        $temp = TemporaryFiles::where('folder', $data['avatar'])->first();
-        if ($temp) {
-            $user->addMedia(storage_path('app/public/avatars/tmp' . $data['avatar'] . '/' . $temp->filename))
-                ->toMediaCollection('avatars');
-
-            rmdir(storage_path('app/public/avatars/tmp' . $data['avatar']));
-            $temp->delete();
-        }
         $invitation->registered_at = $user->created_at;
         $invitation->status = ('Registered');
         $invitation->save();
