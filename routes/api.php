@@ -26,6 +26,7 @@ Route::prefix('v1')->middleware(['auth:api'])->group(function () {
     Route::get('users/profile', [UserController::class, 'profile']);
     Route::put('users/profile/update', [UserController::class, 'updateProfile']);
     Route::put('users/ban/{id}', [UserController::class, 'ban']);
+    Route::put('users/assignRole/{id}', [UserController::class, 'assign']);
     Route::put('users/restore/{id}', [UserController::class, 'restore']);
     Route::apiResource('users', UserController::class);
     // api/v1/permissions/

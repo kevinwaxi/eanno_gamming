@@ -19,6 +19,35 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -822,6 +851,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   data: function data() {
     return {
       banModal: false,
+      banMode: false,
       banConfirmationModal: false,
       massDeleteModal: false,
       isProcessing: false,
@@ -829,7 +859,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       processing: false,
       deletingItem: null,
       form: {
-        banned_until: ''
+        roles: []
       },
       users: {},
       roles: {},
@@ -912,9 +942,37 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       };
       $('#modal-default').modal('show');
       this.form = obj;
+      this.banMode = true;
+    },
+    showAssignRoleModal: function showAssignRoleModal(user) {
+      var _iterator = _createForOfIteratorHelper(user.roles),
+          _step;
+
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var r = _step.value;
+          this.form.roles.push(r.id);
+        }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
+
+      var obj = {
+        id: user.id,
+        username: user.username,
+        name: user.name,
+        email: user.email,
+        banned_until: user.banned_until,
+        roles: this.form.roles
+      };
+      $('#modal-default').modal('show');
+      this.form = obj;
+      this.banMode = false;
     },
     showMassDeleteModal: function showMassDeleteModal(checked) {
-      this.checked = checkedbanPermission;
+      this.checked = checked;
       this.massDeleteModal = true;
     },
     change_sort: function change_sort(field) {
@@ -1131,6 +1189,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 res = _context6.sent;
 
                 if (res.status === 200) {
+                  _this7.banMode = false;
+
                   _this7.closeModal();
 
                   _this7.getUsers();
@@ -1160,28 +1220,47 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee6);
       }))();
     },
-    restoreUser: function restoreUser(user_id) {
+    assignRole: function assignRole(user) {
       var _this8 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee7() {
-        var res;
+        var res, i;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee7$(_context7) {
           while (1) {
             switch (_context7.prev = _context7.next) {
               case 0:
-                _context7.next = 2;
-                return _this8.callApi('put', "/api/v1/users/restore/".concat(user_id), _this8.form);
+                _this8.processing = true;
+                _context7.next = 3;
+                return _this8.callApi('put', "/api/v1/users/assignRole/".concat(user.id), _this8.form);
 
-              case 2:
+              case 3:
                 res = _context7.sent;
 
                 if (res.status === 200) {
+                  _this8.banMode = false;
+
+                  _this8.closeModal();
+
                   _this8.getUsers();
 
-                  _this8.s('Successfully restored user');
+                  _this8.s('Assigned role to: ' + user.username);
+
+                  _this8.processing = false;
+                } else {
+                  if (res.status == 422) {
+                    for (i in res.data.errors) {
+                      _this8.e(res.data.errors[i][0]);
+                    }
+
+                    _this8.processing = false;
+                  } else {
+                    _this8.swr();
+
+                    _this8.processing = false;
+                  }
                 }
 
-              case 4:
+              case 5:
               case "end":
                 return _context7.stop();
             }
@@ -1189,43 +1268,28 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee7);
       }))();
     },
-    deleteUser: function deleteUser(user_id) {
+    restoreUser: function restoreUser(user_id) {
       var _this9 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee8() {
-        var res, i;
+        var res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee8$(_context8) {
           while (1) {
             switch (_context8.prev = _context8.next) {
               case 0:
-                _this9.isDeleting = true;
-                _context8.next = 3;
-                return _this9.callApi('delete', "/api/v1/users/".concat(user_id));
+                _context8.next = 2;
+                return _this9.callApi('put', "/api/v1/users/restore/".concat(user_id), _this9.form);
 
-              case 3:
+              case 2:
                 res = _context8.sent;
 
-                if (res.status == 204) {
-                  _this9.w('User deleted');
-
-                  _this9.checked = _this9.checked.filter(function (id) {
-                    return id != user_id;
-                  });
-                  _this9.isDeleting = false;
-                  _this9.deleteModal = false;
-
+                if (res.status === 200) {
                   _this9.getUsers();
-                } else {
-                  if (res.status !== 422) {
-                    for (i in res.data.errors) {
-                      _this9.e(res.data.errors[i][0]);
-                    }
-                  } else {
-                    _this9.swr();
-                  }
+
+                  _this9.s('Successfully restored user');
                 }
 
-              case 5:
+              case 4:
               case "end":
                 return _context8.stop();
             }
@@ -1233,7 +1297,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee8);
       }))();
     },
-    deleteRecords: function deleteRecords(checked) {
+    deleteUser: function deleteUser(user_id) {
       var _this10 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee9() {
@@ -1242,16 +1306,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context9.prev = _context9.next) {
               case 0:
-                _context9.next = 2;
-                return _this10.callApi('delete', "/api/v1/users/massDestroy/".concat(checked));
+                _this10.isDeleting = true;
+                _context9.next = 3;
+                return _this10.callApi('delete', "/api/v1/users/".concat(user_id));
 
-              case 2:
+              case 3:
                 res = _context9.sent;
 
                 if (res.status == 204) {
-                  _this10.s('User deleted successfully');
+                  _this10.w('User deleted');
 
-                  _this10.massDeleteModal = false;
+                  _this10.checked = _this10.checked.filter(function (id) {
+                    return id != user_id;
+                  });
+                  _this10.isDeleting = false;
+                  _this10.deleteModal = false;
 
                   _this10.getUsers();
                 } else {
@@ -1264,12 +1333,51 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   }
                 }
 
-              case 4:
+              case 5:
               case "end":
                 return _context9.stop();
             }
           }
         }, _callee9);
+      }))();
+    },
+    deleteRecords: function deleteRecords(checked) {
+      var _this11 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee10() {
+        var res, i;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee10$(_context10) {
+          while (1) {
+            switch (_context10.prev = _context10.next) {
+              case 0:
+                _context10.next = 2;
+                return _this11.callApi('delete', "/api/v1/users/massDestroy/".concat(checked));
+
+              case 2:
+                res = _context10.sent;
+
+                if (res.status == 204) {
+                  _this11.s('User deleted successfully');
+
+                  _this11.massDeleteModal = false;
+
+                  _this11.getUsers();
+                } else {
+                  if (res.status !== 422) {
+                    for (i in res.data.errors) {
+                      _this11.e(res.data.errors[i][0]);
+                    }
+                  } else {
+                    _this11.swr();
+                  }
+                }
+
+              case 4:
+              case "end":
+                return _context10.stop();
+            }
+          }
+        }, _callee10);
       }))();
     }
   }
@@ -1450,20 +1558,22 @@ var render = function () {
                         _c("div", { staticClass: "col-8 text-start" }, [
                           _vm._m(3),
                           _vm._v(" "),
-                          _c(
-                            "h5",
-                            {
-                              staticClass:
-                                "text-white font-weight-bolder mb-0 mt-3",
-                            },
-                            [
-                              _vm._v(
-                                "\n                    " +
-                                  _vm._s(_vm.users.data.length) +
-                                  "\n                  "
-                              ),
-                            ]
-                          ),
+                          _vm.users.data
+                            ? _c(
+                                "h5",
+                                {
+                                  staticClass:
+                                    "text-white font-weight-bolder mb-0 mt-3",
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                    " +
+                                      _vm._s(_vm.users.data.length) +
+                                      "\n                  "
+                                  ),
+                                ]
+                              )
+                            : _vm._e(),
                           _vm._v(" "),
                           _c("span", { staticClass: "text-white text-sm" }, [
                             _vm._v("Banned Users"),
@@ -1903,23 +2013,23 @@ var render = function () {
                             _c(
                               "a",
                               {
-                                staticClass: "btn btn-link text-dark px-3 mb-0",
+                                staticClass:
+                                  "btn btn-link text-info text-gradient px-3 mb-0",
                                 attrs: { href: "javascript:;" },
                                 on: {
                                   click: function ($event) {
                                     $event.preventDefault()
-                                    return _vm.editUser(user)
+                                    return _vm.showAssignRoleModal(user)
                                   },
                                 },
                               },
                               [
                                 _c("i", {
-                                  staticClass:
-                                    "fas fa-pencil-alt text-dark me-2",
+                                  staticClass: "fa fa-user-shield me-2",
                                   attrs: { "aria-hidden": "true" },
                                 }),
                                 _vm._v(
-                                  "\n                      Edit\n                    "
+                                  "\n                      Assign Role\n                    "
                                 ),
                               ]
                             ),
@@ -1958,41 +2068,91 @@ var render = function () {
             [
               _c("div", { staticClass: "modal-content" }, [
                 _c("div", { staticClass: "modal-header" }, [
-                  _c("h5", { staticClass: "modal-title" }, [
-                    _vm._v("Ban " + _vm._s(_vm.form.name)),
-                  ]),
+                  _vm.banMode
+                    ? _c("h5", { staticClass: "modal-title" }, [
+                        _vm._v("Ban " + _vm._s(_vm.form.name)),
+                      ])
+                    : _c("h5", { staticClass: "modal-title" }, [
+                        _vm._v("Assign role to " + _vm._s(_vm.form.name)),
+                      ]),
                   _vm._v(" "),
                   _vm._m(8),
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "modal-body" }, [
                   _c("div", [
-                    _c("h4", { staticClass: "h2 text-black-50" }, [
-                      _vm._v("Banning " + _vm._s(_vm.form.name)),
-                    ]),
+                    _vm.banMode
+                      ? _c("h4", { staticClass: "h5 text-black-50" }, [
+                          _vm._v(
+                            "\n              Banning " +
+                              _vm._s(_vm.form.name) +
+                              "\n            "
+                          ),
+                        ])
+                      : _c("h4", { staticClass: "h5 text-black-50" }, [
+                          _vm._v(
+                            "\n              Assigning role to " +
+                              _vm._s(_vm.form.name) +
+                              "\n            "
+                          ),
+                        ]),
                   ]),
                   _vm._v(" "),
-                  _c(
-                    "div",
-                    [
-                      _c("DatePicker", {
-                        staticStyle: { width: "200px" },
-                        attrs: {
-                          type: "date",
-                          options: _vm.option1,
-                          placeholder: "Select date",
-                        },
-                        model: {
-                          value: _vm.form.banned_until,
-                          callback: function ($$v) {
-                            _vm.$set(_vm.form, "banned_until", $$v)
-                          },
-                          expression: "form.banned_until",
-                        },
-                      }),
-                    ],
-                    1
-                  ),
+                  _vm.banMode
+                    ? _c(
+                        "div",
+                        [
+                          _c("DatePicker", {
+                            staticStyle: { width: "200px" },
+                            attrs: {
+                              type: "date",
+                              options: _vm.option1,
+                              placeholder: "Select date",
+                            },
+                            model: {
+                              value: _vm.form.banned_until,
+                              callback: function ($$v) {
+                                _vm.$set(_vm.form, "banned_until", $$v)
+                              },
+                              expression: "form.banned_until",
+                            },
+                          }),
+                        ],
+                        1
+                      )
+                    : _c(
+                        "div",
+                        [
+                          _c(
+                            "Select",
+                            {
+                              attrs: { multiple: "", "max-tag-count": 5 },
+                              model: {
+                                value: _vm.form.roles,
+                                callback: function ($$v) {
+                                  _vm.$set(_vm.form, "roles", $$v)
+                                },
+                                expression: "form.roles",
+                              },
+                            },
+                            _vm._l(_vm.roles.data, function (r) {
+                              return _c(
+                                "Option",
+                                { key: r.id, attrs: { value: r.name } },
+                                [
+                                  _vm._v(
+                                    "\n                " +
+                                      _vm._s(r.name) +
+                                      "\n              "
+                                  ),
+                                ]
+                              )
+                            }),
+                            1
+                          ),
+                        ],
+                        1
+                      ),
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "modal-footer" }, [
@@ -2006,25 +2166,49 @@ var render = function () {
                     [_vm._v("\n            Close\n          ")]
                   ),
                   _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn bg-gradient-primary",
-                      attrs: { type: "button", disabled: _vm.processing },
-                      on: {
-                        click: function ($event) {
-                          return _vm.banUser(_vm.form)
+                  _vm.banMode
+                    ? _c(
+                        "button",
+                        {
+                          staticClass: "btn bg-gradient-primary",
+                          attrs: { type: "button", disabled: _vm.processing },
+                          on: {
+                            click: function ($event) {
+                              return _vm.banUser(_vm.form)
+                            },
+                          },
                         },
-                      },
-                    },
-                    [
-                      _vm._v(
-                        "\n            " +
-                          _vm._s(_vm.processing ? "Banning ..." : "Ban User") +
-                          "\n          "
+                        [
+                          _vm._v(
+                            "\n            " +
+                              _vm._s(
+                                _vm.processing ? "Banning ..." : "Ban User"
+                              ) +
+                              "\n          "
+                          ),
+                        ]
+                      )
+                    : _c(
+                        "button",
+                        {
+                          staticClass: "btn bg-gradient-primary",
+                          attrs: { type: "button", disabled: _vm.processing },
+                          on: {
+                            click: function ($event) {
+                              return _vm.assignRole(_vm.form)
+                            },
+                          },
+                        },
+                        [
+                          _vm._v(
+                            "\n            " +
+                              _vm._s(
+                                _vm.processing ? "Assigning ..." : "Assign Role"
+                              ) +
+                              "\n          "
+                          ),
+                        ]
                       ),
-                    ]
-                  ),
                 ]),
               ]),
             ]

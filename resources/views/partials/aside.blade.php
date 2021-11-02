@@ -123,26 +123,26 @@
                     <ul class="nav ms-4 ps-3">
                         <li class="nav-item ">
                             <router-link :to="{name:'all_users'}" class="nav-link">
+                                <span class="sidenav-mini-icon"> U </span>
+                                <span class="sidenav-normal"> All Users</span>
+                            </router-link>
+                        </li>
+                        <li class="nav-item ">
+                            <router-link :to="{name:'all_admins'}" class="nav-link">
                                 <span class="sidenav-mini-icon"> A </span>
-                                <span class="sidenav-normal"> All </span>
+                                <span class="sidenav-normal"> Admins </span>
                             </router-link>
                         </li>
                         <li class="nav-item ">
-                            <router-link :to="{name:'edit_my_account'}" class="nav-link">
+                            <router-link :to="{name:'all_gamers'}" class="nav-link">
                                 <span class="sidenav-mini-icon"> G </span>
                                 <span class="sidenav-normal"> Gamers </span>
                             </router-link>
                         </li>
                         <li class="nav-item ">
-                            <router-link :to="{name:'edit_my_account'}" class="nav-link">
-                                <span class="sidenav-mini-icon"> G </span>
-                                <span class="sidenav-normal"> Gamers </span>
-                            </router-link>
-                        </li>
-                        <li class="nav-item ">
-                            <router-link :to="{name:'edit_my_account'}" class="nav-link">
-                                <span class="sidenav-mini-icon"> G </span>
-                                <span class="sidenav-normal"> Gamers </span>
+                            <router-link :to="{name:'all_cashiers'}" class="nav-link">
+                                <span class="sidenav-mini-icon"> C </span>
+                                <span class="sidenav-normal"> Cashiers </span>
                             </router-link>
                         </li>
                     </ul>

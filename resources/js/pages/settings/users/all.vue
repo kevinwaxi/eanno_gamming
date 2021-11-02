@@ -222,7 +222,10 @@
                         aria-hidden="true"
                       ></i>
                     </div>
-                    <h5 class="text-white font-weight-bolder mb-0 mt-3">
+                    <h5
+                      class="text-white font-weight-bolder mb-0 mt-3"
+                      v-if="users.data"
+                    >
                       {{ users.data.length }}
                     </h5>
                     <span class="text-white text-sm">Banned Users</span>
@@ -695,16 +698,13 @@
                         Restore
                       </a>
                       <a
-                        class="btn btn-link text-dark px-3 mb-0"
+                        class="btn btn-link text-info text-gradient px-3 mb-0"
                         href="javascript:;"
-                        @click.prevent="editUser(user)"
+                        @click.prevent="showAssignRoleModal(user)"
                       >
-                        <i
-                          class="fas fa-pencil-alt text-dark me-2"
-                          aria-hidden="true"
-                        >
+                        <i class="fa fa-user-shield me-2" aria-hidden="true">
                         </i>
-                        Edit
+                        Assign Role
                       </a>
                     </div>
                   </td>
@@ -728,7 +728,8 @@
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Ban {{ form.name }}</h5>
+            <h5 v-if="banMode" class="modal-title">Ban {{ form.name }}</h5>
+            <h5 v-else class="modal-title">Assign role to {{ form.name }}</h5>
             <button
               type="button"
               class="btn-close"
@@ -740,9 +741,14 @@
           </div>
           <div class="modal-body">
             <div>
-              <h4 class="h2 text-black-50">Banning {{ form.name }}</h4>
+              <h4 v-if="banMode" class="h5 text-black-50">
+                Banning {{ form.name }}
+              </h4>
+              <h4 v-else class="h5 text-black-50">
+                Assigning role to {{ form.name }}
+              </h4>
             </div>
-            <div>
+            <div v-if="banMode">
               <DatePicker
                 type="date"
                 :options="option1"
@@ -750,6 +756,13 @@
                 style="width: 200px"
                 v-model="form.banned_until"
               ></DatePicker>
+            </div>
+            <div v-else>
+              <Select v-model="form.roles" multiple :max-tag-count="5">
+                <Option v-for="r in roles.data" :value="r.name" :key="r.id">
+                  {{ r.name }}
+                </Option>
+              </Select>
             </div>
           </div>
           <div class="modal-footer">
@@ -762,12 +775,22 @@
               Close
             </button>
             <button
+              v-if="banMode"
               type="button"
               class="btn bg-gradient-primary"
               @click="banUser(form)"
               :disabled="processing"
             >
               {{ processing ? 'Banning ...' : 'Ban User' }}
+            </button>
+            <button
+              v-else
+              type="button"
+              class="btn bg-gradient-primary"
+              @click="assignRole(form)"
+              :disabled="processing"
+            >
+              {{ processing ? 'Assigning ...' : 'Assign Role' }}
             </button>
           </div>
         </div>
@@ -802,13 +825,16 @@ export default {
   data() {
     return {
       banModal: false,
+      banMode: false,
       banConfirmationModal: false,
       massDeleteModal: false,
       isProcessing: false,
       editMode: false,
       processing: false,
       deletingItem: null,
-      form: {},
+      form: {
+        roles: [],
+      },
       users: {},
       roles: {},
       total: 20,
@@ -887,9 +913,27 @@ export default {
       }
       $('#modal-default').modal('show')
       this.form = obj
+      this.banMode = true
     },
+    showAssignRoleModal(user) {
+      for (let r of user.roles) {
+        this.form.roles.push(r.id)
+      }
+      let obj = {
+        id: user.id,
+        username: user.username,
+        name: user.name,
+        email: user.email,
+        banned_until: user.banned_until,
+        roles: this.form.roles,
+      }
+      $('#modal-default').modal('show')
+      this.form = obj
+      this.banMode = false
+    },
+
     showMassDeleteModal(checked) {
-      this.checked = checkedbanPermission
+      this.checked = checked
       this.massDeleteModal = true
     },
     change_sort(field) {
@@ -991,9 +1035,36 @@ export default {
         this.form
       )
       if (res.status === 200) {
+        this.banMode = false
         this.closeModal()
         this.getUsers()
         this.w('Banned user: ' + user.username)
+        this.processing = false
+      } else {
+        if (res.status == 422) {
+          for (let i in res.data.errors) {
+            this.e(res.data.errors[i][0])
+          }
+          this.processing = false
+        } else {
+          this.swr()
+          this.processing = false
+        }
+      }
+    },
+
+    async assignRole(user) {
+      this.processing = true
+      const res = await this.callApi(
+        'put',
+        `/api/v1/users/assignRole/${user.id}`,
+        this.form
+      )
+      if (res.status === 200) {
+        this.banMode = false
+        this.closeModal()
+        this.getUsers()
+        this.s('Assigned role to: ' + user.username)
         this.processing = false
       } else {
         if (res.status == 422) {

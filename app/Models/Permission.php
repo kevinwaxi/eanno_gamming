@@ -2,12 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Spatie\Permission\Models\Permission as ModelsPermission;
 
-class Permission extends \Spatie\Permission\Models\Permission
+class Permission extends ModelsPermission
+
 {
-    use HasFactory;#
-
     public function scopeSearch($query, $term)
     {
         # code...
@@ -18,7 +17,7 @@ class Permission extends \Spatie\Permission\Models\Permission
                 ->orWhere('guard_name', 'like', $term)
                 ->orWhereHas('roles', function ($query) use ($term) {
                     $query->where('name', 'like', $term)
-                    ->orWhere('guard_name', 'like', $term);
+                        ->orWhere('guard_name', 'like', $term);
                 });
         });
     }

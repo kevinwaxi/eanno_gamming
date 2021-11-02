@@ -112,6 +112,17 @@ class UserController extends Controller
         ]);
     }
 
+    public function assign(Request $request, $id)
+    {
+        # code...
+        $this->validate($request, [
+            'roles' => 'required',
+        ]);
+        $user = User::where('id', $id)->first();
+
+        $user->assignRole($request->roles);
+    }
+
     /**
      * Remove the specified resource from storage.
      *

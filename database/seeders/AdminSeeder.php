@@ -2,9 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
-use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class AdminSeeder extends Seeder
 {
@@ -15,7 +16,6 @@ class AdminSeeder extends Seeder
      */
     public function run()
     {
-        // Reset cached roles and permissions
         app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
 
         // create permissions
@@ -25,12 +25,18 @@ class AdminSeeder extends Seeder
         Permission::create(['name' => 'Delete Permissions']);
 
         // create roles and assign created permissions
-
-        // or may be done by chaining
-        $role = Role::create(['name' => 'User'])
-            ->givePermissionTo(['Read Permissions', 'Create Permissions', 'Update Permissions']);
-
-        $role = Role::create(['name' => 'Admin']);
+        $role = Role::create(['name' => 'admin']);
         $role->givePermissionTo(Permission::all());
+
+        $user = User::create([
+            'is_active' => true,
+            'name' => 'John Doe Mwogli',
+            'phone' => '555-555-5555',
+            'email' => 'admin@admin.com',
+            'password' => bcrypt('password'),
+            'username' => 'admin2001',
+        ]);
+
+        $user->assignRole([$role->name]);
     }
 }

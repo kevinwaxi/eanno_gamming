@@ -69,23 +69,43 @@ const routes = [
                             import("@pages/settings/profile/account.vue"),
                     },
                     {
-                        path:"edit",
-                        name:'edit_my_account',
-                        component: () => import('@pages/settings/profile/edit.vue')
-                    }
+                        path: "edit",
+                        name: "edit_my_account",
+                        component: () =>
+                            import("@pages/settings/profile/edit.vue"),
+                    },
                 ],
             },
             {
                 path: "users",
-                component:()=>import('@pages/settings/users/index.vue'),
-                children:[
+                component: () => import("@pages/settings/users/index.vue"),
+                children: [
                     {
-                        path:"all",
-                        name:"all_users",
-                        component: () => import('@pages/settings/users/all.vue'),
-                    }
-                ]
-            }
+                        path: "all",
+                        name: "all_users",
+                        component: () =>
+                            import("@pages/settings/users/all.vue"),
+                    },
+                    {
+                        path: "admins",
+                        name: "all_admins",
+                        component: () =>
+                            import("@pages/settings/users/admin.vue"),
+                    },
+                    {
+                        path: "gamers",
+                        name: "all_gamers",
+                        component: () =>
+                            import("@pages/settings/users/gamers.vue"),
+                    },
+                    {
+                        path: "cashiers",
+                        name: "all_cashiers",
+                        component: () =>
+                            import("@pages/settings/users/cashiers.vue"),
+                    },
+                ],
+            },
         ],
     },
 ];
