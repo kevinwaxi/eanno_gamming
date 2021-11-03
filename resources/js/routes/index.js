@@ -19,6 +19,20 @@ const routes = [
                 component: () =>
                     import("@pages/dashboards/admin/statistics.vue"),
             },
+            {
+                path: "gaming",
+                component: () => import("@pages/dashboards/gamers/index.vue"),
+                children: [
+                    {
+                        name: "my_bookings",
+                        path: "bookings",
+                        component: () =>
+                            import(
+                                "@pages/dashboards/gamers/bookings/mybookings.vue"
+                            ),
+                    },
+                ],
+            },
         ],
     },
     {

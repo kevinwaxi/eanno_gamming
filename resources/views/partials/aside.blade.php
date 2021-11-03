@@ -47,10 +47,10 @@
                             </a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link " href="../../pages/dashboards/automotive.html">
-                                <span class="sidenav-mini-icon"> A </span>
-                                <span class="sidenav-normal"> Automotive </span>
-                            </a>
+                            <router-link :to="{name:'my_bookings'}" class="nav-link " href="#">
+                                <span class="sidenav-mini-icon"> B </span>
+                                <span class="sidenav-normal"> Bookings </span>
+                            </router-link>
                         </li>
                         <li class="nav-item ">
                             <a class="nav-link " href="../../pages/dashboards/smart-home.html">
