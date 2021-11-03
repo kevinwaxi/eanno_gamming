@@ -1,11 +1,12 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\InvitationController;
+use App\Http\Controllers\API\V1\UserController;
+use App\Http\Controllers\API\V1\PriceController;
+use App\Http\Controllers\API\V1\RolesController;
 use App\Http\Controllers\API\V1\ConsoleController;
 use App\Http\Controllers\API\V1\PermissionsController;
-use App\Http\Controllers\API\V1\RolesController;
-use App\Http\Controllers\API\V1\UserController;
-use App\Http\Controllers\InvitationController;
-use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,7 +37,8 @@ Route::prefix('v1')->middleware(['auth:api'])->group(function () {
     // api/v1/invitations
     Route::apiResource('invitations', InvitationController::class);
     Route::get('invitations/approve/{id}', [InvitationController::class, 'approve']);
-
+    //api/v1/pricing
+    Route::apiResource('prices', PriceController::class);
     // api/v1/consoles
     Route::apiResource('consoles', ConsoleController::class);
 });

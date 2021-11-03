@@ -303,10 +303,10 @@
                 <div class="collapse " id="stationPages">
                     <ul class="nav ms-4 ps-3">
                         <li class="nav-item ">
-                            <a class="nav-link " href="../../pages/ecommerce/overview.html">
+                            <router-link :to="{name:'settings_pricing'}" class="nav-link ">
                                 <span class="sidenav-mini-icon"> P </span>
                                 <span class="sidenav-normal"> Pricing </span>
-                            </a>
+                            </router-link>
                         </li>
                         <li class="nav-item ">
                             <a class="nav-link " data-bs-toggle="collapse" aria-expanded="false"

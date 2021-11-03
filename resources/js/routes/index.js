@@ -106,6 +106,18 @@ const routes = [
                     },
                 ],
             },
+            {
+                path: "station",
+                component: () => import("@pages/settings/stations/index.vue"),
+                children: [
+                    {
+                        path: "pricing",
+                        name: "settings_pricing",
+                        component: () =>
+                            import("@pages/settings/stations/pricing.vue"),
+                    },
+                ],
+            },
         ],
     },
 ];

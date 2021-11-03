@@ -15,10 +15,13 @@ class CreatePricesTable extends Migration
     {
         Schema::create('prices', function (Blueprint $table) {
             $table->id();
-            $table->string('package_name');
+            $table->string('package_name')->unique();
             $table->decimal('price', 8, 2);
             $table->string('details');
+            $table->string('number_of_players');
+            $table->boolean('is_available')->default(false);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -16,10 +16,9 @@ class CreateStationsTable extends Migration
         Schema::create('stations', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            $table->foreignId('condition_id')->constrained()->onDelete('cascade');
-            $table->foreignId('screen_id')->constrained()->onDelete('cascade');
+            // $table->foreignId('status')->constrained()->onDelete('cascade');
             $table->foreignId('console_id')->constrained()->onDelete('cascade');
-            $table->foreignId('price_id')->constrained()->onDelete('cascade');
+            $table->foreignId('screen_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
