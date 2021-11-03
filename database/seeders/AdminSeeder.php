@@ -19,13 +19,13 @@ class AdminSeeder extends Seeder
         app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
 
         // create permissions
-        Permission::create(['name' => 'Create Permissions']);
-        Permission::create(['name' => 'Read Permissions']);
-        Permission::create(['name' => 'Update Permissions']);
-        Permission::create(['name' => 'Delete Permissions']);
+        Permission::create(['name' => 'Create Permissions','guard_name'=>'api']);
+        Permission::create(['name' => 'Read Permissions','guard_name'=>'api']);
+        Permission::create(['name' => 'Update Permissions','guard_name'=>'api']);
+        Permission::create(['name' => 'Delete Permissions','guard_name'=>'api']);
 
         // create roles and assign created permissions
-        $role = Role::create(['name' => 'admin']);
+        $role = Role::create(['name' => 'admin','guard_name'=>'api']);
         $role->givePermissionTo(Permission::all());
 
         $user = User::create([
@@ -39,4 +39,5 @@ class AdminSeeder extends Seeder
 
         $user->assignRole([$role->name]);
     }
+
 }

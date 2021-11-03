@@ -652,7 +652,13 @@
                     </div>
                   </td>
                   <td>
-                    <p class="text-sm text-secondary mb-0">{{ user.role }}</p>
+                    <p
+                      v-for="(r, i) in user.roles"
+                      :key="i"
+                      class="text-sm text-secondary mb-0"
+                    >
+                      <Tag color="geekblue">{{ r.name }}</Tag>
+                    </p>
                   </td>
                   <td>
                     <span class="badge badge-dot me-4">
@@ -698,6 +704,7 @@
                         Restore
                       </a>
                       <a
+                        v-if="user.banned_until === null"
                         class="btn btn-link text-info text-gradient px-3 mb-0"
                         href="javascript:;"
                         @click.prevent="showAssignRoleModal(user)"

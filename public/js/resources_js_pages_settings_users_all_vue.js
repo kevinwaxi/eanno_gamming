@@ -847,6 +847,13 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -1910,13 +1917,25 @@ var render = function () {
                           ]),
                         ]),
                         _vm._v(" "),
-                        _c("td", [
-                          _c(
-                            "p",
-                            { staticClass: "text-sm text-secondary mb-0" },
-                            [_vm._v(_vm._s(user.role))]
-                          ),
-                        ]),
+                        _c(
+                          "td",
+                          _vm._l(user.roles, function (r, i) {
+                            return _c(
+                              "p",
+                              {
+                                key: i,
+                                staticClass: "text-sm text-secondary mb-0",
+                              },
+                              [
+                                _c("Tag", { attrs: { color: "geekblue" } }, [
+                                  _vm._v(_vm._s(r.name)),
+                                ]),
+                              ],
+                              1
+                            )
+                          }),
+                          0
+                        ),
                         _vm._v(" "),
                         _c("td", [
                           _c("span", { staticClass: "badge badge-dot me-4" }, [
@@ -2010,29 +2029,31 @@ var render = function () {
                                   ]
                                 ),
                             _vm._v(" "),
-                            _c(
-                              "a",
-                              {
-                                staticClass:
-                                  "btn btn-link text-info text-gradient px-3 mb-0",
-                                attrs: { href: "javascript:;" },
-                                on: {
-                                  click: function ($event) {
-                                    $event.preventDefault()
-                                    return _vm.showAssignRoleModal(user)
+                            user.banned_until === null
+                              ? _c(
+                                  "a",
+                                  {
+                                    staticClass:
+                                      "btn btn-link text-info text-gradient px-3 mb-0",
+                                    attrs: { href: "javascript:;" },
+                                    on: {
+                                      click: function ($event) {
+                                        $event.preventDefault()
+                                        return _vm.showAssignRoleModal(user)
+                                      },
+                                    },
                                   },
-                                },
-                              },
-                              [
-                                _c("i", {
-                                  staticClass: "fa fa-user-shield me-2",
-                                  attrs: { "aria-hidden": "true" },
-                                }),
-                                _vm._v(
-                                  "\n                      Assign Role\n                    "
-                                ),
-                              ]
-                            ),
+                                  [
+                                    _c("i", {
+                                      staticClass: "fa fa-user-shield me-2",
+                                      attrs: { "aria-hidden": "true" },
+                                    }),
+                                    _vm._v(
+                                      "\n                      Assign Role\n                    "
+                                    ),
+                                  ]
+                                )
+                              : _vm._e(),
                           ]),
                         ]),
                       ]
