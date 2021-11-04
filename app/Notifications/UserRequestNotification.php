@@ -44,11 +44,11 @@ class UserRequestNotification extends Notification
     {
         return (new MailMessage)
             ->subject('New User Request')
-            ->line('Hey, Theres a new user request')
-            ->line('User email address:' . $this->invitation->email)
-            ->line('User phone number:' . $this->invitation->phone)
+            ->line('Hey there admin, Theres a new user request')
+            ->line('User email address: '. $this->invitation->email)
+            ->line('User phone number: ' . $this->invitation->phone)
             ->line('Head on to dashboard settings to check approve or ignore this')
-            ->action('Click here', url('/settings/invitations/requested'));
+            ->action('Click here', url('/settings/invitations/all'));
     }
 
     /**
