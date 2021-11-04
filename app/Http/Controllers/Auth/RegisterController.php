@@ -2,17 +2,15 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Models\User;
-use App\Models\Invitation;
-use Illuminate\Http\Request;
-use App\Models\TemporaryFiles;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Hash;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Notification;
+use App\Models\Invitation;
+use App\Models\User;
 use App\Notifications\WelcomeUserNotification;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
@@ -56,7 +54,7 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users' ,'exists:invitations,email'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users', 'exists:invitations,email'],
             'phone' => ['required', 'regex:/^([0-9\s\-\+\(\)]*)$/', 'min:10', 'unique:users', 'exists:invitations,phone'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -70,15 +68,6 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        // generate initials
-        $path = 'uploads/users/avatar/initials/';
-        $fontPath = public_path('fonts/cream.ttf');
-        $char = strtoupper($data['name'][0]);
-        $newAvatarName = rand(12, 34353) . time() . '_avatar.png';
-        $dest = $path . $newAvatarName;
-
-        $createAvatar = makeAvatar($fontPath, $dest, $char);
-        $picture = $createAvatar == true ? $newAvatarName : '';
 
         // invitations check
         $invitation = Invitation::where('email', $data['email'])
@@ -91,18 +80,12 @@ class RegisterController extends Controller
             'username' => $data['username'],
             'phone' => $data['phone'],
             'password' => Hash::make($data['password']),
-            'initials' =>  $path . $picture
         ]);
-        $user->assignRole('Gamer');
-
         $invitation->registered_at = $user->created_at;
         $invitation->status = ('Registered');
         $invitation->save();
 
-
-
         Notification::send($user, new WelcomeUserNotification($user));
-
     }
 
     public function requestInvitation()

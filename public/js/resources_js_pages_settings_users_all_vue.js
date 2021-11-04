@@ -854,6 +854,60 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -1605,6 +1659,157 @@ var render = function () {
       _c("div", { staticClass: "row my-4" }, [
         _c("div", { staticClass: "col-12" }, [
           _c("div", { staticClass: "card" }, [
+            _c("div", { staticClass: "card-header" }, [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-3 flex" }, [
+                  _c("label", { attrs: { for: "search" } }, [
+                    _vm._v(" Search "),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model.lazy",
+                          value: _vm.search,
+                          expression: "search",
+                          modifiers: { lazy: true },
+                        },
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        name: "search",
+                        type: "text",
+                        placeholder: "permission name",
+                      },
+                      domProps: { value: _vm.search },
+                      on: {
+                        change: function ($event) {
+                          _vm.search = $event.target.value
+                        },
+                      },
+                    }),
+                  ]),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-3" }, [
+                  _c("label", { attrs: { for: "select" } }, [
+                    _vm._v("Select by:"),
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.selected,
+                          expression: "selected",
+                        },
+                      ],
+                      staticClass: "form-select fmxw-200 d-none d-md-inline",
+                      attrs: { "aria-label": "Fillter by role" },
+                      on: {
+                        change: function ($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function (o) {
+                              return o.selected
+                            })
+                            .map(function (o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.selected = $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        },
+                      },
+                    },
+                    [
+                      _c(
+                        "option",
+                        { attrs: { selected: "selected", value: "" } },
+                        [_vm._v("Show All")]
+                      ),
+                      _vm._v(" "),
+                      _vm._l(_vm.roles.data, function (role, i) {
+                        return _c(
+                          "option",
+                          { key: i, domProps: { value: role.id } },
+                          [
+                            _vm._v(
+                              "\n                  " +
+                                _vm._s(role.name) +
+                                "\n                "
+                            ),
+                          ]
+                        )
+                      }),
+                    ],
+                    2
+                  ),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-2" }, [
+                  _c("label", { attrs: { for: "select" } }, [_vm._v("Show:")]),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.total,
+                          expression: "total",
+                        },
+                      ],
+                      staticClass: "form-select fmxw-200 d-none d-md-inline",
+                      attrs: { "aria-label": "show" },
+                      on: {
+                        change: function ($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function (o) {
+                              return o.selected
+                            })
+                            .map(function (o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.total = $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        },
+                      },
+                    },
+                    [
+                      _c("option", { attrs: { value: "10" } }, [_vm._v("10")]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "20" } }, [_vm._v("20")]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "30" } }, [_vm._v("30")]),
+                      _vm._v(" "),
+                      _vm.users.data
+                        ? _c(
+                            "option",
+                            { domProps: { value: _vm.users.meta.total } },
+                            [
+                              _vm._v(
+                                "\n                  All " +
+                                  _vm._s(_vm.users.meta.total) +
+                                  "\n                "
+                              ),
+                            ]
+                          )
+                        : _vm._e(),
+                    ]
+                  ),
+                ]),
+              ]),
+            ]),
+            _vm._v(" "),
             _c("div", { staticClass: "table-responsive" }, [
               _c("table", { staticClass: "table align-items-center mb-0" }, [
                 _c("thead", [
@@ -1885,7 +2090,12 @@ var render = function () {
                         _vm._v(" "),
                         _c("td", [
                           _c("div", { staticClass: "d-flex px-3 py-1" }, [
-                            _vm._m(7, true),
+                            _c("div", [
+                              _c("img", {
+                                staticClass: "avatar me-3",
+                                attrs: { src: user.avatar, alt: user.username },
+                              }),
+                            ]),
                             _vm._v(" "),
                             _c(
                               "div",
@@ -1981,7 +2191,8 @@ var render = function () {
                         _vm._v(" "),
                         _c("td", [
                           _c("div", { staticClass: "ms-auto text-end" }, [
-                            user.banned_until === null
+                            user.banned_until === null &&
+                            user.roles.name !== "admin"
                               ? _c(
                                   "a",
                                   {
@@ -2097,7 +2308,7 @@ var render = function () {
                         _vm._v("Assign role to " + _vm._s(_vm.form.name)),
                       ]),
                   _vm._v(" "),
-                  _vm._m(8),
+                  _vm._m(7),
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "modal-body" }, [
@@ -2924,17 +3135,6 @@ var staticRenderFns = [
           ]
         ),
       ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("img", {
-        staticClass: "avatar me-3",
-        attrs: { src: "/assets/img/team-4.jpg", alt: "image" },
-      }),
     ])
   },
   function () {

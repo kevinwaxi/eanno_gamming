@@ -496,6 +496,57 @@
     <div class="row my-4">
       <div class="col-12">
         <div class="card">
+          <div class="card-header">
+              <div class="row">
+              <div class="col-3 flex">
+                <label for="search"> Search </label>
+                <div class="input-group">
+                  <input
+                    name="search"
+                    class="form-control"
+                    type="text"
+                    v-model.lazy="search"
+                    placeholder="permission name"
+                  />
+                </div>
+              </div>
+              <div class="col-3">
+                <label for="select">Select by:</label>
+                <select
+                  v-model="selected"
+                  class="form-select fmxw-200 d-none d-md-inline"
+                  aria-label="Fillter by role"
+                >
+                  <option selected="selected" value="">Show All</option>
+                  <option
+                    v-for="(role, i) in roles.data"
+                    :key="i"
+                    :value="role.id"
+                  >
+                    {{ role.name }}
+                  </option>
+                </select>
+              </div>
+              <div class="col-2">
+                <label for="select">Show:</label>
+                <select
+                  v-model="total"
+                  class="form-select fmxw-200 d-none d-md-inline"
+                  aria-label="show"
+                >
+                  <option value="10">10</option>
+                  <option value="20">20</option>
+                  <option value="30">30</option>
+                  <option
+                    v-if="users.data"
+                    :value="users.meta.total"
+                  >
+                    All {{ users.meta.total }}
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
           <div class="table-responsive">
             <table class="table align-items-center mb-0">
               <thead>
@@ -638,9 +689,9 @@
                     <div class="d-flex px-3 py-1">
                       <div>
                         <img
-                          src="/assets/img/team-4.jpg"
+                          :src="user.avatar"
                           class="avatar me-3"
-                          alt="image"
+                          :alt="user.username"
                         />
                       </div>
                       <div class="d-flex flex-column justify-content-center">
@@ -679,7 +730,10 @@
                   <td>
                     <div class="ms-auto text-end">
                       <a
-                        v-if="user.banned_until === null"
+                        v-if="
+                          user.banned_until === null &&
+                          user.roles.name !== 'admin'
+                        "
                         class="btn btn-link text-danger text-gradient px-3 mb-0"
                         href="javascript:;"
                         @click.prevent="showBanModal(user)"

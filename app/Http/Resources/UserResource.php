@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use Creativeorange\Gravatar\Facades\Gravatar;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class UserResource extends JsonResource
@@ -21,7 +22,7 @@ class UserResource extends JsonResource
             'roles' => $this->roles,
             'email' => $this->email,
             'phone' => $this->phone,
-            'avatar' => $this->profile_picture,
+            'avatar' => Gravatar::get('kevinwakhisi70@gmail.com'),
             'initials' => $this->initial_pic,
             'active' => $this->is_active,
             'banned_until' => $this->banned_until,
