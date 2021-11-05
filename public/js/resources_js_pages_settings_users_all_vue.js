@@ -1681,7 +1681,7 @@ var render = function () {
                       attrs: {
                         name: "search",
                         type: "text",
-                        placeholder: "permission name",
+                        placeholder: "User details",
                       },
                       domProps: { value: _vm.search },
                       on: {

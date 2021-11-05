@@ -125,6 +125,22 @@ const routes = [
                 component: () => import("@pages/settings/stations/index.vue"),
                 children: [
                     {
+                        path:"games",
+                        component: () => import('@pages/settings/stations/games/index.vue'),
+                        children:[
+                            {
+                                name:'all_games',
+                                path:'/',
+                                component: () => import('@pages/settings/stations/games/all.vue')
+                            },
+                            {
+                                name:'game_categories',
+                                path:'all',
+                                component: () => import("@pages/settings/stations/games/categories.vue")
+                            }
+                        ]
+                    },
+                    {
                         path: "pricing",
                         name: "settings_pricing",
                         component: () =>

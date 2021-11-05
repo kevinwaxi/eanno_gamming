@@ -22,7 +22,7 @@ class UserResource extends JsonResource
             'roles' => $this->roles,
             'email' => $this->email,
             'phone' => $this->phone,
-            'avatar' => Gravatar::get('kevinwakhisi70@gmail.com'),
+            'avatar' => Gravatar::get($this->email),
             'initials' => $this->initial_pic,
             'active' => $this->is_active,
             'banned_until' => $this->banned_until,

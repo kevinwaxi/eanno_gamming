@@ -2587,6 +2587,24 @@ var routes = [{
       return __webpack_require__.e(/*! import() */ "resources_js_pages_settings_stations_index_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/settings/stations/index.vue */ "./resources/js/pages/settings/stations/index.vue"));
     },
     children: [{
+      path: "games",
+      component: function component() {
+        return __webpack_require__.e(/*! import() */ "resources_js_pages_settings_stations_games_index_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/settings/stations/games/index.vue */ "./resources/js/pages/settings/stations/games/index.vue"));
+      },
+      children: [{
+        name: 'all_games',
+        path: '/',
+        component: function component() {
+          return __webpack_require__.e(/*! import() */ "resources_js_pages_settings_stations_games_all_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/settings/stations/games/all.vue */ "./resources/js/pages/settings/stations/games/all.vue"));
+        }
+      }, {
+        name: 'game_categories',
+        path: 'all',
+        component: function component() {
+          return __webpack_require__.e(/*! import() */ "resources_js_pages_settings_stations_games_categories_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/settings/stations/games/categories.vue */ "./resources/js/pages/settings/stations/games/categories.vue"));
+        }
+      }]
+    }, {
       path: "pricing",
       name: "settings_pricing",
       component: function component() {
@@ -101454,7 +101472,7 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_pages_dashboards_index_vue":1,"resources_js_pages_dashboards_admin_index_vue":1,"resources_js_pages_dashboards_admin_statistics_vue":1,"resources_js_pages_dashboards_gamers_index_vue":1,"resources_js_pages_dashboards_gamers_bookings_mybookings_vue":1,"resources_js_pages_settings_index_vue":1,"resources_js_pages_settings_invitations_index_vue":1,"resources_js_pages_settings_invitations_requested_vue":1,"resources_js_pages_settings_security_index_vue":1,"resources_js_pages_settings_security_permissions_permissions_vue":1,"resources_js_pages_settings_security_roles_roles_vue":1,"resources_js_pages_settings_profile_index_vue":1,"resources_js_pages_settings_profile_account_vue":1,"resources_js_pages_settings_profile_edit_vue":1,"resources_js_pages_settings_users_index_vue":1,"resources_js_pages_settings_users_all_vue":1,"resources_js_pages_settings_users_admin_vue":1,"resources_js_pages_settings_users_gamers_vue":1,"resources_js_pages_settings_users_cashiers_vue":1,"resources_js_pages_settings_stations_index_vue":1,"resources_js_pages_settings_stations_pricing_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_pages_dashboards_index_vue":1,"resources_js_pages_dashboards_admin_index_vue":1,"resources_js_pages_dashboards_admin_statistics_vue":1,"resources_js_pages_dashboards_gamers_index_vue":1,"resources_js_pages_dashboards_gamers_bookings_mybookings_vue":1,"resources_js_pages_settings_index_vue":1,"resources_js_pages_settings_invitations_index_vue":1,"resources_js_pages_settings_invitations_requested_vue":1,"resources_js_pages_settings_security_index_vue":1,"resources_js_pages_settings_security_permissions_permissions_vue":1,"resources_js_pages_settings_security_roles_roles_vue":1,"resources_js_pages_settings_profile_index_vue":1,"resources_js_pages_settings_profile_account_vue":1,"resources_js_pages_settings_profile_edit_vue":1,"resources_js_pages_settings_users_index_vue":1,"resources_js_pages_settings_users_all_vue":1,"resources_js_pages_settings_users_admin_vue":1,"resources_js_pages_settings_users_gamers_vue":1,"resources_js_pages_settings_users_cashiers_vue":1,"resources_js_pages_settings_stations_index_vue":1,"resources_js_pages_settings_stations_games_index_vue":1,"resources_js_pages_settings_stations_games_all_vue":1,"resources_js_pages_settings_stations_games_categories_vue":1,"resources_js_pages_settings_stations_pricing_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

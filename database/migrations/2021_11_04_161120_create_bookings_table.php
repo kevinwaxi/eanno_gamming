@@ -18,6 +18,7 @@ class CreateBookingsTable extends Migration
             $table->date('booking_date');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('station_id')->constrained()->onDelete('cascade');
+            $table->foreignId('game_id')->constrained()->onDelete('cascade');
             $table->datetime('check_in');
             $table->datetime('check_out');
             $table->timestamps();

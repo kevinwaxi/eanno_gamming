@@ -506,7 +506,7 @@
                     class="form-control"
                     type="text"
                     v-model.lazy="search"
-                    placeholder="permission name"
+                    placeholder="User details"
                   />
                 </div>
               </div>

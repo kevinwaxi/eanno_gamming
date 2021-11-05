@@ -6,6 +6,7 @@ use App\Http\Controllers\API\V1\UserController;
 use App\Http\Controllers\API\V1\PriceController;
 use App\Http\Controllers\API\V1\RolesController;
 use App\Http\Controllers\API\V1\ConsoleController;
+use App\Http\Controllers\API\V1\CategoryController;
 use App\Http\Controllers\API\V1\PermissionsController;
 
 /*
@@ -41,4 +42,8 @@ Route::prefix('v1')->middleware(['auth:api'])->group(function () {
     Route::apiResource('prices', PriceController::class);
     // api/v1/consoles
     Route::apiResource('consoles', ConsoleController::class);
+    // api/v1/categories
+    Route::post('categories/upload/', [CategoryController::class, 'upload']);
+    Route::post('categories/deleteCover',[CategoryController::class,'deleteImage']);
+    Route::apiResource('categories', CategoryController::class);
 });

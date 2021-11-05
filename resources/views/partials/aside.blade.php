@@ -298,7 +298,7 @@
                             </g>
                         </svg>
                     </div>
-                    <span class="nav-link-text ms-1">Stations</span>
+                    <span class="nav-link-text ms-1">Gaming Arena</span>
                 </a>
                 <div class="collapse " id="stationPages">
                     <ul class="nav ms-4 ps-3">
@@ -312,7 +312,7 @@
                             <a class="nav-link " data-bs-toggle="collapse" aria-expanded="false"
                                 href="#productsExample">
                                 <span class="sidenav-mini-icon"> S </span>
-                                <span class="sidenav-normal"> Stations <b class="caret"></b></span>
+                                <span class="sidenav-normal"> Games <b class="caret"></b></span>
                             </a>
                             <div class="collapse " id="productsExample">
                                 <ul class="nav nav-sm flex-column">
@@ -320,29 +320,15 @@
                                         <a class="nav-link "
                                             href="../../pages/ecommerce/products/new-product.html">
                                             <span class="sidenav-mini-icon text-xs"> I </span>
-                                            <span class="sidenav-normal"> New Product </span>
+                                            <span class="sidenav-normal"> Games </span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link "
+                                        <router-link :to="{name:'game_categories'}" class="nav-link "
                                             href="../../pages/ecommerce/products/edit-product.html">
                                             <span class="sidenav-mini-icon text-xs"> E </span>
-                                            <span class="sidenav-normal"> Edit Product </span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link "
-                                            href="../../pages/ecommerce/products/product-page.html">
-                                            <span class="sidenav-mini-icon text-xs"> P </span>
-                                            <span class="sidenav-normal"> Product Page </span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link "
-                                            href="../../pages/ecommerce/products/products-list.html">
-                                            <span class="sidenav-mini-icon text-xs"> P </span>
-                                            <span class="sidenav-normal"> Products List </span>
-                                        </a>
+                                            <span class="sidenav-normal"> Game Categories </span>
+                                        </router-link>
                                     </li>
                                 </ul>
                             </div>
