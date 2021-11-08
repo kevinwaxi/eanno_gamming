@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers\API\V1;
 
-use App\Http\Actions\Store\StoreGameAction;
-use App\Http\Actions\Update\UpdateGameAction;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Store\StoreGameRequest;
-use App\Http\Requests\Update\UpdateGameRequest;
 use App\Models\Game;
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
+use App\Http\Controllers\Controller;
 use Spatie\QueryBuilder\QueryBuilder;
+use App\Http\Actions\Store\StoreGameAction;
+use App\Http\Actions\Update\UpdateGameAction;
+use App\Http\Requests\Store\StoreGameRequest;
+use App\Http\Requests\Update\UpdateGameRequest;
 
 class GameController extends Controller
 {
@@ -25,6 +26,8 @@ class GameController extends Controller
                 ->with(['categories'])
                 ->paginate($request->total)
                 ->appends($request->query());
+
+
         return $games;
 
     }
@@ -38,6 +41,10 @@ class GameController extends Controller
     public function store(StoreGameRequest $request, StoreGameAction $storeGameAction)
     {
         $storeGameAction->execute($request);
+        return response()->json([
+            'msg' => 'Success',
+            'status' => JsonResponse::HTTP_CREATED
+        ]);
     }
 
     /**

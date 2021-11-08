@@ -177,7 +177,7 @@
               >
                 <a href="javascript:;" class="d-block">
                   <img
-                    :src="form.cover_image"
+                    :src="data.cover_image"
                     class="img-fluid border-radius-lg"
                   />
                 </a>
@@ -187,17 +187,17 @@
                   href="javascript:;"
                   class="card-title h5 d-block text-darker"
                 >
-                  {{ form.name }}
+                  {{ data.name }}
                 </a>
                 <span
-                  v-for="(c, i) in form.categories"
+                  v-for="(c, i) in data.categories"
                   :key="i"
                   class="fw-normal text-gray"
                 >
                   <Tag :color="c.color">{{ c.name }}</Tag>
                 </span>
                 <p class="card-description mb-4">
-                  {{ form.about }}
+                  {{ data.about }}
                 </p>
                 <div class="author align-items-center">
                   <img
@@ -208,7 +208,7 @@
                   <div class="name ps-3">
                     <span>Mathew Glock</span>
                     <div class="stats">
-                      <small>{{ form.created_at }}</small>
+                      <small>{{ data.created_at }}</small>
                     </div>
                   </div>
                 </div>
@@ -255,7 +255,7 @@
             <button
               type="button"
               class="btn bg-gradient-primary"
-              @click="showEditModal(form)"
+              @click="showEditModal(data)"
             >
               {{ processing ? 'Saving ...' : 'Edit Game' }}
             </button>
@@ -282,7 +282,11 @@ export default {
         category_id: [],
         category: [],
       },
-      data: {},
+      data: {
+        cover_image: '',
+        category_id: [],
+        category: [],
+      },
       games: {},
       categories: {},
       category: [],
@@ -331,6 +335,7 @@ export default {
   methods: {
     closeModals() {
       $('#modal-default').modal('hide')
+      this.resetForm()
     },
     closeModal() {
       $('#modal-default').modal('hide')
@@ -345,7 +350,6 @@ export default {
       this.form.category_id = []
     },
     createModal() {
-      this.resetForm()
       $('#modal-default').modal('show')
       this.editMode = false
       this.detailMode = false
@@ -372,7 +376,7 @@ export default {
       this.deleteModal = true
     },
     showGameModal(game) {
-      this.form = game
+      this.data = game
       $('#modal-default').modal('show')
       this.detailMode = true
       this.editMode = false

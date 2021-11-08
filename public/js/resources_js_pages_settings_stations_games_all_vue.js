@@ -308,7 +308,11 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         category_id: [],
         category: []
       },
-      data: {},
+      data: {
+        cover_image: '',
+        category_id: [],
+        category: []
+      },
       games: {},
       categories: {},
       category: [],
@@ -360,6 +364,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   methods: {
     closeModals: function closeModals() {
       $('#modal-default').modal('hide');
+      this.resetForm();
     },
     closeModal: function closeModal() {
       $('#modal-default').modal('hide');
@@ -374,7 +379,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       this.form.category_id = [];
     },
     createModal: function createModal() {
-      this.resetForm();
       $('#modal-default').modal('show');
       this.editMode = false;
       this.detailMode = false;
@@ -413,7 +417,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       this.deleteModal = true;
     },
     showGameModal: function showGameModal(game) {
-      this.form = game;
+      this.data = game;
       $('#modal-default').modal('show');
       this.detailMode = true;
       this.editMode = false;
@@ -1282,7 +1286,7 @@ var render = function () {
                           [
                             _c("img", {
                               staticClass: "img-fluid border-radius-lg",
-                              attrs: { src: _vm.form.cover_image },
+                              attrs: { src: _vm.data.cover_image },
                             }),
                           ]
                         ),
@@ -1302,13 +1306,13 @@ var render = function () {
                           [
                             _vm._v(
                               "\n                " +
-                                _vm._s(_vm.form.name) +
+                                _vm._s(_vm.data.name) +
                                 "\n              "
                             ),
                           ]
                         ),
                         _vm._v(" "),
-                        _vm._l(_vm.form.categories, function (c, i) {
+                        _vm._l(_vm.data.categories, function (c, i) {
                           return _c(
                             "span",
                             { key: i, staticClass: "fw-normal text-gray" },
@@ -1324,7 +1328,7 @@ var render = function () {
                         _c("p", { staticClass: "card-description mb-4" }, [
                           _vm._v(
                             "\n                " +
-                              _vm._s(_vm.form.about) +
+                              _vm._s(_vm.data.about) +
                               "\n              "
                           ),
                         ]),
@@ -1346,7 +1350,7 @@ var render = function () {
                               _vm._v(" "),
                               _c("div", { staticClass: "stats" }, [
                                 _c("small", [
-                                  _vm._v(_vm._s(_vm.form.created_at)),
+                                  _vm._v(_vm._s(_vm.data.created_at)),
                                 ]),
                               ]),
                             ]),
@@ -1460,7 +1464,7 @@ var render = function () {
                       attrs: { type: "button" },
                       on: {
                         click: function ($event) {
-                          return _vm.showEditModal(_vm.form)
+                          return _vm.showEditModal(_vm.data)
                         },
                       },
                     },

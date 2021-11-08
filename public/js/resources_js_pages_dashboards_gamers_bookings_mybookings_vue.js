@@ -75,361 +75,509 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-lg-8" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-xl-6 mb-xl-0 mb-4" }, [
-            _c("div", { staticClass: "card bg-transparent shadow-xl" }, [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "overflow-hidden position-relative border-radius-xl",
-                  staticStyle: {
-                    "background-image":
-                      "url('/assets/img/curved-images/curved14.jpg')",
-                  },
-                },
-                [
-                  _c("span", { staticClass: "mask bg-gradient-dark" }),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass: "card-body position-relative z-index-1 p-3",
+    return _c("div", [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-lg-8" }, [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-xl-6 mb-xl-0 mb-4" }, [
+              _c("div", { staticClass: "card bg-transparent shadow-xl" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "overflow-hidden position-relative border-radius-xl",
+                    staticStyle: {
+                      "background-image":
+                        "url('/assets/img/curved-images/curved14.jpg')",
                     },
-                    [
-                      _c("i", {
-                        staticClass: "fas fa-wifi text-white p-2",
-                        attrs: { "aria-hidden": "true" },
-                      }),
-                      _vm._v(" "),
-                      _c("h5", { staticClass: "text-white mt-4 mb-5 pb-2" }, [
-                        _vm._v("0705   007723"),
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "d-flex" }, [
+                  },
+                  [
+                    _c("span", { staticClass: "mask bg-gradient-dark" }),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "card-body position-relative z-index-1 p-3",
+                      },
+                      [
+                        _c("i", {
+                          staticClass: "fas fa-wifi text-white p-2",
+                          attrs: { "aria-hidden": "true" },
+                        }),
+                        _vm._v(" "),
+                        _c("h5", { staticClass: "text-white mt-4 mb-5 pb-2" }, [
+                          _vm._v(
+                            "\n                  0705   007723\n                "
+                          ),
+                        ]),
+                        _vm._v(" "),
                         _c("div", { staticClass: "d-flex" }, [
-                          _c("div", { staticClass: "me-4" }, [
-                            _c(
-                              "p",
-                              {
-                                staticClass:
-                                  "text-white text-sm opacity-8 mb-0",
-                              },
-                              [_vm._v("Card Holder")]
-                            ),
+                          _c("div", { staticClass: "d-flex" }, [
+                            _c("div", { staticClass: "me-4" }, [
+                              _c(
+                                "p",
+                                {
+                                  staticClass:
+                                    "text-white text-sm opacity-8 mb-0",
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                        Card Holder\n                      "
+                                  ),
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c("h6", { staticClass: "text-white mb-0" }, [
+                                _vm._v("Jack Peterson"),
+                              ]),
+                            ]),
                             _vm._v(" "),
-                            _c("h6", { staticClass: "text-white mb-0" }, [
-                              _vm._v("Jack Peterson"),
+                            _c("div", [
+                              _c(
+                                "p",
+                                {
+                                  staticClass:
+                                    "text-white text-sm opacity-8 mb-0",
+                                },
+                                [_vm._v("Expires")]
+                              ),
+                              _vm._v(" "),
+                              _c("h6", { staticClass: "text-white mb-0" }, [
+                                _vm._v("11/22"),
+                              ]),
                             ]),
                           ]),
                           _vm._v(" "),
-                          _c("div", [
-                            _c(
-                              "p",
-                              {
-                                staticClass:
-                                  "text-white text-sm opacity-8 mb-0",
-                              },
-                              [_vm._v("Expires")]
-                            ),
-                            _vm._v(" "),
-                            _c("h6", { staticClass: "text-white mb-0" }, [
-                              _vm._v("11/22"),
-                            ]),
-                          ]),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "\n                      ms-auto\n                      w-20\n                      d-flex\n                      align-items-end\n                      justify-content-end\n                    ",
+                            },
+                            [
+                              _c("img", {
+                                staticClass: "w-60 mt-2",
+                                attrs: {
+                                  src: "/assets/img/logos/mastercard.png",
+                                  alt: "logo",
+                                },
+                              }),
+                            ]
+                          ),
                         ]),
-                        _vm._v(" "),
+                      ]
+                    ),
+                  ]
+                ),
+              ]),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-xl-6" }, [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-md-6" }, [
+                  _c("div", { staticClass: "card" }, [
+                    _c(
+                      "div",
+                      { staticClass: "card-header mx-4 p-3 text-center" },
+                      [
                         _c(
                           "div",
                           {
                             staticClass:
-                              "ms-auto w-20 d-flex align-items-end justify-content-end",
+                              "\n                      icon icon-shape icon-lg\n                      bg-gradient-primary\n                      shadow\n                      text-center\n                      border-radius-lg\n                    ",
                           },
                           [
-                            _c("img", {
-                              staticClass: "w-60 mt-2",
-                              attrs: {
-                                src: "/assets/img/logos/mastercard.png",
-                                alt: "logo",
-                              },
+                            _c("i", {
+                              staticClass: "fas fa-landmark opacity-10",
+                              attrs: { "aria-hidden": "true" },
                             }),
                           ]
                         ),
-                      ]),
-                    ]
-                  ),
-                ]
-              ),
-            ]),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-xl-6" }, [
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-md-6" }, [
-                _c("div", { staticClass: "card" }, [
-                  _c(
-                    "div",
-                    { staticClass: "card-header mx-4 p-3 text-center" },
-                    [
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            "icon icon-shape icon-lg bg-gradient-primary shadow text-center border-radius-lg",
-                        },
-                        [
-                          _c("i", {
-                            staticClass: "fas fa-landmark opacity-10",
-                            attrs: { "aria-hidden": "true" },
-                          }),
-                        ]
-                      ),
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "card-body pt-0 p-3 text-center" }, [
-                    _c("h6", { staticClass: "text-center mb-0" }, [
-                      _vm._v("Salary"),
-                    ]),
+                      ]
+                    ),
                     _vm._v(" "),
-                    _c("span", { staticClass: "text-xs" }, [
-                      _vm._v("Belong Interactive"),
-                    ]),
-                    _vm._v(" "),
-                    _c("hr", { staticClass: "horizontal dark my-3" }),
-                    _vm._v(" "),
-                    _c("h5", { staticClass: "mb-0" }, [_vm._v("+$2000")]),
+                    _c(
+                      "div",
+                      { staticClass: "card-body pt-0 p-3 text-center" },
+                      [
+                        _c("h6", { staticClass: "text-center mb-0" }, [
+                          _vm._v("Salary"),
+                        ]),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "text-xs" }, [
+                          _vm._v("Belong Interactive"),
+                        ]),
+                        _vm._v(" "),
+                        _c("hr", { staticClass: "horizontal dark my-3" }),
+                        _vm._v(" "),
+                        _c("h5", { staticClass: "mb-0" }, [_vm._v("+$2000")]),
+                      ]
+                    ),
                   ]),
                 ]),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-md-6 mt-md-0 mt-4" }, [
-                _c("div", { staticClass: "card" }, [
-                  _c(
-                    "div",
-                    { staticClass: "card-header mx-4 p-3 text-center" },
-                    [
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            "icon icon-shape icon-lg bg-gradient-primary shadow text-center border-radius-lg",
-                        },
-                        [
-                          _c("i", {
-                            staticClass: "fab fa-paypal opacity-10",
-                            attrs: { "aria-hidden": "true" },
-                          }),
-                        ]
-                      ),
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "card-body pt-0 p-3 text-center" }, [
-                    _c("h6", { staticClass: "text-center mb-0" }, [
-                      _vm._v("Paypal"),
-                    ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-6 mt-md-0 mt-4" }, [
+                  _c("div", { staticClass: "card" }, [
+                    _c(
+                      "div",
+                      { staticClass: "card-header mx-4 p-3 text-center" },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "\n                      icon icon-shape icon-lg\n                      bg-gradient-primary\n                      shadow\n                      text-center\n                      border-radius-lg\n                    ",
+                          },
+                          [
+                            _c("i", {
+                              staticClass: "fab fa-paypal opacity-10",
+                              attrs: { "aria-hidden": "true" },
+                            }),
+                          ]
+                        ),
+                      ]
+                    ),
                     _vm._v(" "),
-                    _c("span", { staticClass: "text-xs" }, [
-                      _vm._v("Freelance Payment"),
-                    ]),
-                    _vm._v(" "),
-                    _c("hr", { staticClass: "horizontal dark my-3" }),
-                    _vm._v(" "),
-                    _c("h5", { staticClass: "mb-0" }, [_vm._v("$455.00")]),
+                    _c(
+                      "div",
+                      { staticClass: "card-body pt-0 p-3 text-center" },
+                      [
+                        _c("h6", { staticClass: "text-center mb-0" }, [
+                          _vm._v("Paypal"),
+                        ]),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "text-xs" }, [
+                          _vm._v("Freelance Payment"),
+                        ]),
+                        _vm._v(" "),
+                        _c("hr", { staticClass: "horizontal dark my-3" }),
+                        _vm._v(" "),
+                        _c("h5", { staticClass: "mb-0" }, [_vm._v("$455.00")]),
+                      ]
+                    ),
                   ]),
                 ]),
               ]),
             ]),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-md-12 mb-lg-0 mb-4" }, [
-            _c("div", { staticClass: "card mt-4" }, [
-              _c("div", { staticClass: "card-header pb-0 p-3" }, [
-                _c("div", { staticClass: "row" }, [
-                  _c(
-                    "div",
-                    { staticClass: "col-6 d-flex align-items-center" },
-                    [
-                      _c("h6", { staticClass: "mb-0" }, [
-                        _vm._v("Payment Method"),
-                      ]),
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-6 text-end" }, [
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-12 mb-lg-0 mb-4" }, [
+              _c("div", { staticClass: "card mt-4" }, [
+                _c("div", { staticClass: "card-header pb-0 p-3" }, [
+                  _c("div", { staticClass: "row" }, [
                     _c(
-                      "a",
-                      {
-                        staticClass: "btn bg-gradient-dark mb-0",
-                        attrs: { href: "javascript:;" },
-                      },
+                      "div",
+                      { staticClass: "col-6 d-flex align-items-center" },
                       [
-                        _c("i", {
-                          staticClass: "fas fa-plus",
-                          attrs: { "aria-hidden": "true" },
-                        }),
-                        _vm._v("  Add New Card"),
+                        _c("h6", { staticClass: "mb-0" }, [
+                          _vm._v("Payment Method"),
+                        ]),
                       ]
                     ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-6 text-end" }, [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "btn bg-gradient-dark mb-0",
+                          attrs: { href: "javascript:;" },
+                        },
+                        [
+                          _c("i", {
+                            staticClass: "fas fa-plus",
+                            attrs: { "aria-hidden": "true" },
+                          }),
+                          _vm._v("  Add New Card"),
+                        ]
+                      ),
+                    ]),
                   ]),
                 ]),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "card-body p-3" }, [
-                _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "col-md-6 mb-md-0 mb-4" }, [
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "card card-body border card-plain border-radius-lg d-flex align-items-center flex-row",
-                      },
-                      [
-                        _c("img", {
-                          staticClass: "w-10 me-3 mb-0",
-                          attrs: {
-                            src: "/assets/img/logos/mastercard.png",
-                            alt: "logo",
-                          },
-                        }),
-                        _vm._v(" "),
-                        _c("h6", { staticClass: "mb-0" }, [
-                          _vm._v("****   ****   ****   7852"),
-                        ]),
-                        _vm._v(" "),
-                        _c("i", {
+                _vm._v(" "),
+                _c("div", { staticClass: "card-body p-3" }, [
+                  _c("div", { staticClass: "row" }, [
+                    _c("div", { staticClass: "col-md-6 mb-md-0 mb-4" }, [
+                      _c(
+                        "div",
+                        {
                           staticClass:
-                            "fas fa-pencil-alt ms-auto text-dark cursor-pointer",
-                          attrs: {
-                            "data-bs-toggle": "tooltip",
-                            "data-bs-placement": "top",
-                            title: "",
-                            "aria-hidden": "true",
-                            "data-bs-original-title": "Edit Card",
-                            "aria-label": "Edit Card",
-                          },
-                        }),
-                        _c("span", { staticClass: "sr-only" }, [
-                          _vm._v("Edit Card"),
-                        ]),
-                      ]
-                    ),
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-6" }, [
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "card card-body border card-plain border-radius-lg d-flex align-items-center flex-row",
-                      },
-                      [
-                        _c("img", {
-                          staticClass: "w-10 me-3 mb-0",
-                          attrs: {
-                            src: "/assets/img/logos/visa.png",
-                            alt: "logo",
-                          },
-                        }),
-                        _vm._v(" "),
-                        _c("h6", { staticClass: "mb-0" }, [
-                          _vm._v("****   ****   ****   5248"),
-                        ]),
-                        _vm._v(" "),
-                        _c("i", {
+                            "\n                      card card-body\n                      border\n                      card-plain\n                      border-radius-lg\n                      d-flex\n                      align-items-center\n                      flex-row\n                    ",
+                        },
+                        [
+                          _c("img", {
+                            staticClass: "w-10 me-3 mb-0",
+                            attrs: {
+                              src: "/assets/img/logos/mastercard.png",
+                              alt: "logo",
+                            },
+                          }),
+                          _vm._v(" "),
+                          _c("h6", { staticClass: "mb-0" }, [
+                            _vm._v(
+                              "\n                      ****   ****   ****   7852\n                    "
+                            ),
+                          ]),
+                          _vm._v(" "),
+                          _c("i", {
+                            staticClass:
+                              "\n                        fas\n                        fa-pencil-alt\n                        ms-auto\n                        text-dark\n                        cursor-pointer\n                      ",
+                            attrs: {
+                              "data-bs-toggle": "tooltip",
+                              "data-bs-placement": "top",
+                              title: "",
+                              "aria-hidden": "true",
+                              "data-bs-original-title": "Edit Card",
+                              "aria-label": "Edit Card",
+                            },
+                          }),
+                          _c("span", { staticClass: "sr-only" }, [
+                            _vm._v("Edit Card"),
+                          ]),
+                        ]
+                      ),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-6" }, [
+                      _c(
+                        "div",
+                        {
                           staticClass:
-                            "fas fa-pencil-alt ms-auto text-dark cursor-pointer",
-                          attrs: {
-                            "data-bs-toggle": "tooltip",
-                            "data-bs-placement": "top",
-                            title: "",
-                            "aria-hidden": "true",
-                            "data-bs-original-title": "Edit Card",
-                            "aria-label": "Edit Card",
-                          },
-                        }),
-                        _c("span", { staticClass: "sr-only" }, [
-                          _vm._v("Edit Card"),
-                        ]),
-                      ]
-                    ),
+                            "\n                      card card-body\n                      border\n                      card-plain\n                      border-radius-lg\n                      d-flex\n                      align-items-center\n                      flex-row\n                    ",
+                        },
+                        [
+                          _c("img", {
+                            staticClass: "w-10 me-3 mb-0",
+                            attrs: {
+                              src: "/assets/img/logos/visa.png",
+                              alt: "logo",
+                            },
+                          }),
+                          _vm._v(" "),
+                          _c("h6", { staticClass: "mb-0" }, [
+                            _vm._v(
+                              "\n                      ****   ****   ****   5248\n                    "
+                            ),
+                          ]),
+                          _vm._v(" "),
+                          _c("i", {
+                            staticClass:
+                              "\n                        fas\n                        fa-pencil-alt\n                        ms-auto\n                        text-dark\n                        cursor-pointer\n                      ",
+                            attrs: {
+                              "data-bs-toggle": "tooltip",
+                              "data-bs-placement": "top",
+                              title: "",
+                              "aria-hidden": "true",
+                              "data-bs-original-title": "Edit Card",
+                              "aria-label": "Edit Card",
+                            },
+                          }),
+                          _c("span", { staticClass: "sr-only" }, [
+                            _vm._v("Edit Card"),
+                          ]),
+                        ]
+                      ),
+                    ]),
                   ]),
                 ]),
               ]),
             ]),
           ]),
         ]),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-lg-4" }, [
-        _c("div", { staticClass: "card h-100" }, [
-          _c("div", { staticClass: "card-header pb-0 p-3" }, [
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-6 d-flex align-items-center" }, [
-                _c("h6", { staticClass: "mb-0" }, [
-                  _vm._v("Your Pending Bookings"),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-lg-4" }, [
+          _c("div", { staticClass: "card h-100" }, [
+            _c("div", { staticClass: "card-header pb-0 p-3" }, [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-6 d-flex align-items-center" }, [
+                  _c("h6", { staticClass: "mb-0" }, [
+                    _vm._v("Your Pending Bookings"),
+                  ]),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-6 text-end" }, [
+                  _c(
+                    "button",
+                    { staticClass: "btn btn-outline-primary btn-sm mb-0" },
+                    [_vm._v("\n                View All\n              ")]
+                  ),
                 ]),
               ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-6 text-end" }, [
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-body p-3 pb-0" }, [
+              _c("ul", { staticClass: "list-group" }, [
                 _c(
-                  "button",
-                  { staticClass: "btn btn-outline-primary btn-sm mb-0" },
-                  [_vm._v("View All")]
+                  "li",
+                  {
+                    staticClass:
+                      "\n                list-group-item\n                border-0\n                d-flex\n                justify-content-between\n                ps-0\n                mb-2\n                border-radius-lg\n              ",
+                  },
+                  [
+                    _c("div", { staticClass: "d-flex flex-column" }, [
+                      _c(
+                        "h6",
+                        {
+                          staticClass:
+                            "mb-1 text-dark font-weight-bold text-sm",
+                        },
+                        [
+                          _vm._v(
+                            "\n                  March, 01, 2020\n                "
+                          ),
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "text-xs" }, [
+                        _vm._v("#MS-415646"),
+                      ]),
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "d-flex align-items-center text-sm" },
+                      [
+                        _vm._v("\n                $180\n                "),
+                        _c(
+                          "button",
+                          {
+                            staticClass:
+                              "btn btn-link text-dark text-sm mb-0 px-0 ms-4",
+                          },
+                          [
+                            _c("i", {
+                              staticClass: "fas fa-file-pdf text-lg me-1",
+                              attrs: { "aria-hidden": "true" },
+                            }),
+                            _vm._v("\n                  PDF\n                "),
+                          ]
+                        ),
+                      ]
+                    ),
+                  ]
                 ),
               ]),
             ]),
           ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-body p-3 pb-0" }, [
-            _c("ul", { staticClass: "list-group" }, [
-              _c(
-                "li",
-                {
-                  staticClass:
-                    "list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg",
-                },
-                [
-                  _c("div", { staticClass: "d-flex flex-column" }, [
-                    _c(
-                      "h6",
-                      {
-                        staticClass: "mb-1 text-dark font-weight-bold text-sm",
-                      },
-                      [_vm._v("March, 01, 2020")]
-                    ),
-                    _vm._v(" "),
-                    _c("span", { staticClass: "text-xs" }, [
-                      _vm._v("#MS-415646"),
+        ]),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-lg-8" }, [
+        _c("div", { staticClass: "row mt-4" }, [
+          _c("div", { staticClass: "col-12 col-md-10" }, [
+            _c("div", { staticClass: "card" }, [
+              _c("div", { staticClass: "card-header pb-0 p-3" }, [
+                _c("div", { staticClass: "d-flex justify-content-between" }, [
+                  _c("h6", { staticClass: "mb-2" }, [
+                    _vm._v("Previous Bookings"),
+                  ]),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "table-responsive" }, [
+                _c("table", { staticClass: "table align-items-center" }, [
+                  _c("tbody", [
+                    _c("tr", [
+                      _c("td", [
+                        _c("div", { staticClass: "text-center" }, [
+                          _c(
+                            "p",
+                            { staticClass: "text-xs font-weight-bold mb-0" },
+                            [_vm._v("Date:")]
+                          ),
+                          _vm._v(" "),
+                          _c("h6", { staticClass: "text-sm mb-0" }, [
+                            _vm._v("Nov 31"),
+                          ]),
+                        ]),
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c("div", { staticClass: "text-center" }, [
+                          _c(
+                            "p",
+                            { staticClass: "text-xs font-weight-bold mb-0" },
+                            [_vm._v("Station:")]
+                          ),
+                          _vm._v(" "),
+                          _c("h6", { staticClass: "text-sm mb-0" }, [
+                            _vm._v("Station Number"),
+                          ]),
+                        ]),
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c("div", { staticClass: "text-center" }, [
+                          _c(
+                            "p",
+                            { staticClass: "text-xs font-weight-bold mb-0" },
+                            [_vm._v("Time:")]
+                          ),
+                          _vm._v(" "),
+                          _c("h6", { staticClass: "text-sm mb-0" }, [
+                            _vm._v("3Hrs"),
+                          ]),
+                        ]),
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c("div", { staticClass: "text-center" }, [
+                          _c(
+                            "p",
+                            { staticClass: "text-xs font-weight-bold mb-0" },
+                            [_vm._v("Value:")]
+                          ),
+                          _vm._v(" "),
+                          _c("h6", { staticClass: "text-sm mb-0" }, [
+                            _vm._v("Kes.600"),
+                          ]),
+                        ]),
+                      ]),
+                      _vm._v(" "),
+                      _c("td", { staticClass: "align-middle text-sm" }, [
+                        _c("div", { staticClass: "col text-center" }, [
+                          _c(
+                            "p",
+                            { staticClass: "text-xs font-weight-bold mb-0" },
+                            [_vm._v("Discount:")]
+                          ),
+                          _vm._v(" "),
+                          _c("h6", { staticClass: "text-sm mb-0" }, [
+                            _vm._v("29.9%"),
+                          ]),
+                        ]),
+                      ]),
+                      _vm._v(" "),
+                      _c("td", { staticClass: "align-middle text-sm" }, [
+                        _c("div", { staticClass: "col text-center" }, [
+                          _c(
+                            "p",
+                            { staticClass: "text-xs font-weight-bold mb-0" },
+                            [_vm._v("Status:")]
+                          ),
+                          _vm._v(" "),
+                          _c("h6", { staticClass: "text-sm mb-0" }, [
+                            _vm._v("Paid/Canceled"),
+                          ]),
+                        ]),
+                      ]),
+                      _vm._v(" "),
+                      _c("td", { staticClass: "align-middle text-sm" }, [
+                        _c("div", { staticClass: "col text-center" }, [
+                          _c(
+                            "p",
+                            { staticClass: "text-xs font-weight-bold mb-0" },
+                            [_vm._v("Actions:")]
+                          ),
+                          _vm._v(" "),
+                          _c("h6", { staticClass: "text-sm mb-0" }, [
+                            _vm._v("29.9%"),
+                          ]),
+                        ]),
+                      ]),
                     ]),
                   ]),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "d-flex align-items-center text-sm" },
-                    [
-                      _vm._v("\n                $180\n                "),
-                      _c(
-                        "button",
-                        {
-                          staticClass:
-                            "btn btn-link text-dark text-sm mb-0 px-0 ms-4",
-                        },
-                        [
-                          _c("i", {
-                            staticClass: "fas fa-file-pdf text-lg me-1",
-                            attrs: { "aria-hidden": "true" },
-                          }),
-                          _vm._v(" PDF"),
-                        ]
-                      ),
-                    ]
-                  ),
-                ]
-              ),
+                ]),
+              ]),
             ]),
           ]),
         ]),
