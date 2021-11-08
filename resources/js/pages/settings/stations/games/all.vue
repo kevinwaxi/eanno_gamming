@@ -6,9 +6,7 @@
           <div class="row">
             <div class="col-8">
               <h5 class="mb-2 col-8">All Games</h5>
-              <p class="mb-0">
-               List of all games
-              </p>
+              <p class="mb-0">List of all games</p>
             </div>
             <div class="col-4">
               <a href="javascript:;" @click.prevent="createModal()">
@@ -22,60 +20,37 @@
         <div class="card-body p-4">
           <div class="row">
             <div
-              class="col-lg-4 col-md-6 col-12 mt-3"
-              v-for="(category, i) in categories.data"
+              class="col-md-4 mt-3 h-25"
+              v-for="(game, i) in games.data"
               :key="i"
             >
-              <div class="card text-center">
-                <div
-                  class="
-                    overflow-hidden
-                    position-relative
-                    border-radius-lg
-                    bg-cover
-                    p-3
-                  "
-                  :style="{ backgroundImage: `url(${category.cover})` }"
-                >
-                  <span class="mask bg-gradient-dark opacity-6"></span>
+              <a href="javascript:;" @click.prevent="showGameModal(game)">
+                <div class="card card-background move-on-hover">
                   <div
-                    class="
-                      card-body
-                      position-relative
-                      z-index-1
-                      d-flex
-                      flex-column
-                      mt-5
-                    "
-                  >
-                    <p class="text-white font-weight-bolder">
-                      {{ category.description }}
-                    </p>
-                    <a
-                      class="
-                        text-white text-sm
-                        font-weight-bold
-                        mb-0
-                        icon-move-right
-                        mt-4
-                      "
-                      href="javascript:;"
-                      @click.prevent="editModal(category)"
-                    >
-                      Edit
-                      <i class="fas fa-pen text-sm ms-1" aria-hidden="true"></i>
-                    </a>
+                    class="full-background"
+                    :style="{ backgroundImage: `url(${game.cover_image})` }"
+                  ></div>
+                  <div class="card-body pt-12">
+                    <h4 class="text-white">{{ game.name }}</h4>
+                    <p>{{ game.about_game }}</p>
+                    <div class="mt-3">
+                      <span
+                        v-for="(c, i) in game.categories"
+                        :key="i"
+                        class="fw-normal text-gray"
+                      >
+                        <Tag :color="c.color">{{ c.name }}</Tag>
+                      </span>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </a>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- Modal Create or edit -->
-    <!-- create and edit modal -->
-
+    <!-- Modal Create , Edit or show details -->
     <!-- Modal -->
     <div
       class="modal fade"
@@ -88,8 +63,8 @@
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 v-if="!editMode" class="modal-title">Create category</h5>
-            <h5 v-else class="modal-title">Edit category</h5>
+            <h5 v-if="!editMode" class="modal-title">Create game</h5>
+            <h5 v-else class="modal-title">Edit game</h5>
             <button
               type="button"
               class="btn-close"
@@ -99,26 +74,37 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body">
+          <div class="modal-body" v-show="!detailMode">
             <div class="row">
               <FormulateInput
                 type="text"
                 required
-                label="Category Name"
+                label="Game Name"
                 validation="required"
                 v-model="form.name"
               />
+            </div>
+            <div class="row mt-3">
+              <div class="col-8">
+                <Label>Choose Categories</Label>
+                <Select v-model="form.category_id" multiple :max-tag-count="2">
+                  <Option
+                    v-for="(category, i) in categories.data"
+                    :value="category.id"
+                    :key="i"
+                  >
+                    {{ category.name }}
+                  </Option>
+                </Select>
+              </div>
             </div>
             <div class="row mt-3">
               <FormulateInput
                 type="textarea"
                 required
                 validation="required|max:100,length"
-                label="Category Details"
-                v-model="form.description"
-                :help="`Keep it under 50 characters. ${
-                  50 - value.length
-                } left.`"
+                label="Game Details"
+                v-model="form.about_game"
               />
             </div>
             <div class="row mt-3">
@@ -127,7 +113,7 @@
                 v-show="!editMode || newCover"
                 ref="uploads"
                 type="drag"
-                action="/api/v1/categories/upload"
+                action="/api/v1/games/upload"
                 :headers="{
                   'x-csrf-token': token,
                   'X-Requested-With': 'XMLHttpRequest',
@@ -148,8 +134,8 @@
                   <p>Click or drag files here to upload</p>
                 </div>
               </Upload>
-              <div class="demo-upload-list" v-if="form.cover_photo">
-                <img :src="`${form.cover_photo}`" alt="" />
+              <div class="demo-upload-list" v-if="form.cover_image">
+                <img :src="`${form.cover_image}`" alt="" />
                 <div class="demo-upload-list-cover">
                   <Icon
                     v-if="editMode"
@@ -164,8 +150,72 @@
                 </div>
               </div>
             </div>
+            <div class="row mt-3">
+              <div class="col-6">
+                <Label>Release Date</Label>
+                <DatePicker
+                  type="date"
+                  placeholder="Select date"
+                  v-model="form.release_date"
+                ></DatePicker>
+              </div>
+              <div class="col-6">
+                <FormulateInput
+                  type="number"
+                  required
+                  validation="required"
+                  label="Game Number Of players"
+                  v-model="form.players"
+                />
+              </div>
+            </div>
           </div>
-          <div class="modal-footer">
+          <div class="modal-body" v-show="detailMode">
+            <div class="card">
+              <div
+                class="card-header p-0 mx-3 mt-3 position-relative z-index-1"
+              >
+                <a href="javascript:;" class="d-block">
+                  <img
+                    :src="form.cover_image"
+                    class="img-fluid border-radius-lg"
+                  />
+                </a>
+              </div>
+              <div class="card-body pt-2">
+                <a
+                  href="javascript:;"
+                  class="card-title h5 d-block text-darker"
+                >
+                  {{ form.name }}
+                </a>
+                <span
+                  v-for="(c, i) in form.categories"
+                  :key="i"
+                  class="fw-normal text-gray"
+                >
+                  <Tag :color="c.color">{{ c.name }}</Tag>
+                </span>
+                <p class="card-description mb-4">
+                  {{ form.about }}
+                </p>
+                <div class="author align-items-center">
+                  <img
+                    src="https://demos.creative-tim.com/soft-ui-design-system-pro/assets/img/team-2.jpg"
+                    alt="..."
+                    class="avatar shadow"
+                  />
+                  <div class="name ps-3">
+                    <span>Mathew Glock</span>
+                    <div class="stats">
+                      <small>{{ form.created_at }}</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer" v-show="!detailMode">
             <button
               type="button"
               class="btn bg-gradient-secondary"
@@ -178,7 +228,7 @@
               v-if="editMode"
               type="button"
               class="btn bg-gradient-primary"
-              @click="updateCategory(form.id)"
+              @click="updateGame(form.id)"
               :disabled="processing"
             >
               {{ processing ? 'Saving ...' : 'Save Changes' }}
@@ -187,10 +237,27 @@
               v-else
               type="button"
               class="btn bg-gradient-primary"
-              @click="createCategory()"
+              @click="createGame()"
               :disabled="processing"
             >
               {{ processing ? 'Creating ...' : 'Create' }}
+            </button>
+          </div>
+          <div class="modal-footer" v-show="detailMode">
+            <button
+              type="button"
+              class="btn bg-gradient-secondary"
+              data-bs-dismiss="modal"
+              @click="closeModals"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              class="btn bg-gradient-primary"
+              @click="showEditModal(form)"
+            >
+              {{ processing ? 'Saving ...' : 'Edit Game' }}
             </button>
           </div>
         </div>
@@ -206,16 +273,21 @@ export default {
       isDeleting: false,
       isCreating: false,
       editMode: false,
+      detailMode: false,
       newCover: false,
       processing: false,
       deletingItem: null,
       form: {
-        cover_photo: '',
+        cover_image: '',
+        category_id: [],
+        category: [],
       },
+      data: {},
+      games: {},
       categories: {},
+      category: [],
       token: '',
-      roles: {},
-      total: 20,
+      total: 10,
       search: '',
       selected: '',
       checked: [],
@@ -224,26 +296,23 @@ export default {
       sort_direction: 'desc',
       sort_field: 'created_at',
       url: '',
-      value: {
-        length: 0,
-      },
     }
   },
   watch: {
     total: function (value) {
-      this.getCategories()
+      this.getGames()
     },
     search: function (value) {
-      this.getCategories()
+      this.getGames()
     },
     selected: function (value) {
-      this.getCategories()
+      this.getGames()
     },
     selectPage: function (value) {
       this.checked = []
       if (value) {
-        this.categories.data.forEach((category) => {
-          this.checked.push(category.id)
+        this.games.data.forEach((game) => {
+          this.checked.push(game.id)
         })
       } else {
         this.checked = []
@@ -251,41 +320,62 @@ export default {
       }
     },
     checked: function (value) {
-      this.url = '/api/v1/categories/export/' + this.checked
+      this.url = '/api/v1/games/export/' + this.checked
     },
   },
   mounted() {
     this.token = window.Laravel.csrfToken
+    this.getGames()
     this.getCategories()
   },
   methods: {
+    closeModals() {
+      $('#modal-default').modal('hide')
+    },
     closeModal() {
       $('#modal-default').modal('hide')
-      this.restForm()
+      this.resetForm()
     },
-    restForm() {
+    resetForm() {
       this.form.name = ''
-      this.form.description = ''
-      this.form.cover_photo = ''
+      this.form.about_game = ''
+      this.form.cover_image = ''
+      this.form.release_date = ''
+      this.form.players = ''
+      this.form.category_id = []
     },
     createModal() {
+      this.resetForm()
       $('#modal-default').modal('show')
       this.editMode = false
+      this.detailMode = false
     },
-    editModal(category) {
-      let obj = {
-        id: category.id,
-        name: category.name,
-        description: category.description,
-        cover_photo: category.cover,
-      }
-      $('#modal-default').modal('show')
+    showEditModal(form) {
       this.editMode = true
+      this.detailMode = false
+      for (let c of form.categories) {
+        this.category.push(c.id)
+      }
+      let obj = {
+        id: form.id,
+        name: form.name,
+        about_game: form.about_game,
+        cover_image: form.cover_image,
+        release_date: form.release_date,
+        players: form.players,
+        category_id: this.category,
+      }
       this.form = obj
     },
-    showDeleteModal(category) {
-      this.form = category
+    showDeleteModal(game) {
+      this.form = game
       this.deleteModal = true
+    },
+    showGameModal(game) {
+      this.form = game
+      $('#modal-default').modal('show')
+      this.detailMode = true
+      this.editMode = false
     },
     change_sort(field) {
       if (this.sort_field == field) {
@@ -293,23 +383,23 @@ export default {
       } else {
         this.sort_field = field
       }
-      this.getCategories()
+      this.getGames()
     },
-    isChecked(category_id) {
-      return this.checked.includes(category_id)
+    isChecked(game_id) {
+      return this.checked.includes(game_id)
     },
     async selectAllRecords() {
-      const res = await this.callApi('get', '/api/v1/categories/all/')
+      const res = await this.callApi('get', '/api/v1/games/all/')
       if (res.status === 200) {
         this.checked = res.data
         this.selectAll = true
         console.log(this.selectAll)
       }
     },
-    async getCategories(page = 1) {
+    async getGames(page = 1) {
       const res = await this.callApi(
         'get',
-        `/api/v1/categories?page=${page}
+        `/api/v1/games?page=${page}
         &total=${this.total}
         &q=${this.search}
         &select=${this.selected}
@@ -317,7 +407,7 @@ export default {
         &sort_field=${this.sort_field}`
       )
       if (res.status === 200) {
-        this.categories = res.data
+        this.games = res.data
       } else {
         if (res.status === 401 || res.status === 422) {
           for (let i in res.data.errors) {
@@ -328,19 +418,19 @@ export default {
         }
       }
     },
-    async getRoles() {
-      const res = await this.callApi('get', '/api/v1/roles')
+    async getCategories() {
+      const res = await this.callApi('get', '/api/v1/categories')
       if (res.status === 200) {
-        this.roles = res.data
+        this.categories = res.data
       }
     },
-    async createCategory() {
+    async createGame() {
       this.processing = true
-      const res = await this.callApi('post', '/api/v1/categories', this.form)
+      const res = await this.callApi('post', '/api/v1/games', this.form)
       if (res.status === 200) {
-        this.s('Category created successfully')
+        this.s('Game created successfully')
         this.closeModal()
-        this.getCategories()
+        this.getGames()
         this.processing = false
       } else {
         if (res.status === 422) {
@@ -354,17 +444,17 @@ export default {
         }
       }
     },
-    async updateCategory(category_id) {
+    async updateGame(game_id) {
       this.processing = true
       const res = await this.callApi(
         'put',
-        `/api/v1/categories/${category_id}`,
+        `/api/v1/games/${game_id}`,
         this.form
       )
       if (res.status == 200) {
         this.closeModal()
-        this.getCategories()
-        this.s('Successfully updated category')
+        this.getGames()
+        this.s('Successfully updated game')
         this.processing = false
       } else {
         if (res.status == 422) {
@@ -378,18 +468,15 @@ export default {
         }
       }
     },
-    async deleteCategory(category_id) {
+    async deleteGame(game_id) {
       this.isDeleting = true
-      const res = await this.callApi(
-        'delete',
-        `/api/v1/categories/${category_id}`
-      )
+      const res = await this.callApi('delete', `/api/v1/games/${game_id}`)
       if (res.status == 204) {
-        this.w('Category deleted')
-        this.checked = this.checked.filter((id) => id != category_id)
+        this.w('Game deleted')
+        this.checked = this.checked.filter((id) => id != game_id)
         this.isDeleting = false
         this.deleteModal = false
-        this.getCategories()
+        this.getGames()
       } else {
         if (res.status !== 422) {
           for (let i in res.data.errors) {
@@ -405,28 +492,28 @@ export default {
       if (editMode) {
         // for editing
         this.newCover = true
-        image = this.form.cover_photo
-        this.form.cover_photo = ''
+        image = this.form.cover_image
+        this.form.cover_image = ''
         this.$refs.uploads.clearFiles()
       } else {
-        image = this.form.cover_photo
-        this.form.cover_photo = ''
+        image = this.form.cover_image
+        this.form.cover_image = ''
         this.$refs.uploads.clearFiles()
       }
-      const res = await this.callApi('post', '/api/v1/categories/deleteCover', {
+      const res = await this.callApi('post', '/api/v1/games/deleteCover', {
         image_name: image,
       })
       if (res.status !== 200) {
-        this.form.cover_photo = image
+        this.form.cover_image = image
         this.swr()
       }
     },
     handleSuccess(res, file) {
       if (this.isEditingItem) {
-        return (this.form.cover_photo = `/uploads/games/category/${res}`)
+        return (this.form.cover_image = `/uploads/games/all_games/${res}`)
       }
-      res = `/uploads/games/category/${res}`
-      this.form.cover_photo = res
+      res = `/uploads/games/all_games/${res}`
+      this.form.cover_image = res
     },
     handleError(res) {
       this.$Notice.warning({

@@ -1,13 +1,14 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\InvitationController;
-use App\Http\Controllers\API\V1\UserController;
+use App\Http\Controllers\API\V1\CategoryController;
+use App\Http\Controllers\API\V1\ConsoleController;
+use App\Http\Controllers\API\V1\GameController;
+use App\Http\Controllers\API\V1\PermissionsController;
 use App\Http\Controllers\API\V1\PriceController;
 use App\Http\Controllers\API\V1\RolesController;
-use App\Http\Controllers\API\V1\ConsoleController;
-use App\Http\Controllers\API\V1\CategoryController;
-use App\Http\Controllers\API\V1\PermissionsController;
+use App\Http\Controllers\API\V1\UserController;
+use App\Http\Controllers\InvitationController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +45,11 @@ Route::prefix('v1')->middleware(['auth:api'])->group(function () {
     Route::apiResource('consoles', ConsoleController::class);
     // api/v1/categories
     Route::post('categories/upload/', [CategoryController::class, 'upload']);
-    Route::post('categories/deleteCover',[CategoryController::class,'deleteImage']);
+    Route::post('categories/deleteCover', [CategoryController::class, 'deleteImage']);
     Route::apiResource('categories', CategoryController::class);
+    //api/v1/games
+    Route::post('games/upload/', [GameController::class, 'upload']);
+    Route::post('games/deleteCover', [GameController::class, 'deleteImage']);
+    Route::apiResource('games', GameController::class);
+
 });

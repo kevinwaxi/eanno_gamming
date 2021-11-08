@@ -14,6 +14,7 @@ class StoreCategoriesAction
             'description' => $request->description,
             'slug' => Str::slug($request->name),
             'cover_photo' => $request->cover_photo,
+            'color' => $request->color
         ]);
     }
 }

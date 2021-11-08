@@ -317,15 +317,13 @@
                             <div class="collapse " id="productsExample">
                                 <ul class="nav nav-sm flex-column">
                                     <li class="nav-item">
-                                        <a class="nav-link "
-                                            href="../../pages/ecommerce/products/new-product.html">
+                                        <router-link :to="{name:'all_games'}" class="nav-link ">
                                             <span class="sidenav-mini-icon text-xs"> I </span>
                                             <span class="sidenav-normal"> Games </span>
-                                        </a>
+                                        </router-link>
                                     </li>
                                     <li class="nav-item">
-                                        <router-link :to="{name:'game_categories'}" class="nav-link "
-                                            href="../../pages/ecommerce/products/edit-product.html">
+                                        <router-link :to="{name:'game_categories'}" class="nav-link">
                                             <span class="sidenav-mini-icon text-xs"> E </span>
                                             <span class="sidenav-normal"> Game Categories </span>
                                         </router-link>

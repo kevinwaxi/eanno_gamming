@@ -2,10 +2,10 @@
 
 namespace App\Http\Requests\Store;
 
-use Illuminate\Support\Str;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Str;
 
-class StoreGameCategoryRequest extends FormRequest
+class StoreGameRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,10 +25,12 @@ class StoreGameCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'unique:categories'],
-            'description' => ['required', 'max:100', 'min:50'],
-            'cover_photo' => ['required'],
-            'color' => ['required'],
+            'name' => ['required'],
+            'release_date' => ['required', 'date'],
+            'cover_image' => ['required'],
+            'about_game' => ['required', 'min:50'],
+            'players' => ['required', 'numeric', 'digits_between:1,6'],
+            'category_id' => ['required'],
         ];
     }
 
@@ -36,7 +38,7 @@ class StoreGameCategoryRequest extends FormRequest
     {
         # code...
         $this->merge([
-            'color' => Str::of($this->color)->lower()->__toString()
+            'name' => Str::of($this->name)->title()->__toString(),
         ]);
     }
 }

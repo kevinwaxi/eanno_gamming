@@ -10,12 +10,13 @@ class Game extends Model
 {
     use HasFactory;
 
-    protected $guarded = [
-        'name',
+    protected $fillable = [
         'slug',
         'cover_image',
+        'about_game',
         'players',
         'release_date',
+        'name'
     ];
 
     protected $casts = [
@@ -29,6 +30,6 @@ class Game extends Model
      */
     public function categories(): BelongsToMany
     {
-        return $this->belongsToMany(Category::class, 'category_game');
+        return $this->belongsToMany(Category::class, 'category_games');
     }
 }

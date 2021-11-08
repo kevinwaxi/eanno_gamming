@@ -19,6 +19,79 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -226,16 +299,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       isDeleting: false,
       isCreating: false,
       editMode: false,
+      detailMode: false,
       newCover: false,
       processing: false,
       deletingItem: null,
       form: {
-        cover_photo: ''
+        cover_image: '',
+        category_id: [],
+        category: []
       },
+      data: {},
+      games: {},
       categories: {},
+      category: [],
       token: '',
-      roles: {},
-      total: 20,
+      total: 10,
       search: '',
       selected: '',
       checked: [],
@@ -243,21 +321,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       selectAll: false,
       sort_direction: 'desc',
       sort_field: 'created_at',
-      url: '',
-      value: {
-        length: 0
-      }
+      url: ''
     };
   },
   watch: {
     total: function total(value) {
-      this.getCategories();
+      this.getGames();
     },
     search: function search(value) {
-      this.getCategories();
+      this.getGames();
     },
     selected: function selected(value) {
-      this.getCategories();
+      this.getGames();
     },
     selectPage: function selectPage(value) {
       var _this = this;
@@ -265,8 +340,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.checked = [];
 
       if (value) {
-        this.categories.data.forEach(function (category) {
-          _this.checked.push(category.id);
+        this.games.data.forEach(function (game) {
+          _this.checked.push(game.id);
         });
       } else {
         this.checked = [];
@@ -274,41 +349,74 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
     },
     checked: function checked(value) {
-      this.url = '/api/v1/categories/export/' + this.checked;
+      this.url = '/api/v1/games/export/' + this.checked;
     }
   },
   mounted: function mounted() {
     this.token = window.Laravel.csrfToken;
+    this.getGames();
     this.getCategories();
   },
   methods: {
+    closeModals: function closeModals() {
+      $('#modal-default').modal('hide');
+    },
     closeModal: function closeModal() {
       $('#modal-default').modal('hide');
-      this.restForm();
+      this.resetForm();
     },
-    restForm: function restForm() {
+    resetForm: function resetForm() {
       this.form.name = '';
-      this.form.description = '';
-      this.form.cover_photo = '';
+      this.form.about_game = '';
+      this.form.cover_image = '';
+      this.form.release_date = '';
+      this.form.players = '';
+      this.form.category_id = [];
     },
     createModal: function createModal() {
+      this.resetForm();
       $('#modal-default').modal('show');
       this.editMode = false;
+      this.detailMode = false;
     },
-    editModal: function editModal(category) {
-      var obj = {
-        id: category.id,
-        name: category.name,
-        description: category.description,
-        cover_photo: category.cover
-      };
-      $('#modal-default').modal('show');
+    showEditModal: function showEditModal(form) {
       this.editMode = true;
+      this.detailMode = false;
+
+      var _iterator = _createForOfIteratorHelper(form.categories),
+          _step;
+
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var c = _step.value;
+          this.category.push(c.id);
+        }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
+
+      var obj = {
+        id: form.id,
+        name: form.name,
+        about_game: form.about_game,
+        cover_image: form.cover_image,
+        release_date: form.release_date,
+        players: form.players,
+        category_id: this.category
+      };
       this.form = obj;
     },
-    showDeleteModal: function showDeleteModal(category) {
-      this.form = category;
+    showDeleteModal: function showDeleteModal(game) {
+      this.form = game;
       this.deleteModal = true;
+    },
+    showGameModal: function showGameModal(game) {
+      this.form = game;
+      $('#modal-default').modal('show');
+      this.detailMode = true;
+      this.editMode = false;
     },
     change_sort: function change_sort(field) {
       if (this.sort_field == field) {
@@ -317,10 +425,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         this.sort_field = field;
       }
 
-      this.getCategories();
+      this.getGames();
     },
-    isChecked: function isChecked(category_id) {
-      return this.checked.includes(category_id);
+    isChecked: function isChecked(game_id) {
+      return this.checked.includes(game_id);
     },
     selectAllRecords: function selectAllRecords() {
       var _this2 = this;
@@ -332,7 +440,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return _this2.callApi('get', '/api/v1/categories/all/');
+                return _this2.callApi('get', '/api/v1/games/all/');
 
               case 2:
                 res = _context.sent;
@@ -351,7 +459,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee);
       }))();
     },
-    getCategories: function getCategories() {
+    getGames: function getGames() {
       var _arguments = arguments,
           _this3 = this;
 
@@ -363,13 +471,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 page = _arguments.length > 0 && _arguments[0] !== undefined ? _arguments[0] : 1;
                 _context2.next = 3;
-                return _this3.callApi('get', "/api/v1/categories?page=".concat(page, "\n        &total=").concat(_this3.total, "\n        &q=").concat(_this3.search, "\n        &select=").concat(_this3.selected, "\n        &sort_direction=").concat(_this3.sort_direction, "\n        &sort_field=").concat(_this3.sort_field));
+                return _this3.callApi('get', "/api/v1/games?page=".concat(page, "\n        &total=").concat(_this3.total, "\n        &q=").concat(_this3.search, "\n        &select=").concat(_this3.selected, "\n        &sort_direction=").concat(_this3.sort_direction, "\n        &sort_field=").concat(_this3.sort_field));
 
               case 3:
                 res = _context2.sent;
 
                 if (res.status === 200) {
-                  _this3.categories = res.data;
+                  _this3.games = res.data;
                 } else {
                   if (res.status === 401 || res.status === 422) {
                     for (i in res.data.errors) {
@@ -388,7 +496,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee2);
       }))();
     },
-    getRoles: function getRoles() {
+    getCategories: function getCategories() {
       var _this4 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
@@ -398,13 +506,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context3.prev = _context3.next) {
               case 0:
                 _context3.next = 2;
-                return _this4.callApi('get', '/api/v1/roles');
+                return _this4.callApi('get', '/api/v1/categories');
 
               case 2:
                 res = _context3.sent;
 
                 if (res.status === 200) {
-                  _this4.roles = res.data;
+                  _this4.categories = res.data;
                 }
 
               case 4:
@@ -415,7 +523,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee3);
       }))();
     },
-    createCategory: function createCategory() {
+    createGame: function createGame() {
       var _this5 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
@@ -426,17 +534,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _this5.processing = true;
                 _context4.next = 3;
-                return _this5.callApi('post', '/api/v1/categories', _this5.form);
+                return _this5.callApi('post', '/api/v1/games', _this5.form);
 
               case 3:
                 res = _context4.sent;
 
                 if (res.status === 200) {
-                  _this5.s('Category created successfully');
+                  _this5.s('Game created successfully');
 
                   _this5.closeModal();
 
-                  _this5.getCategories();
+                  _this5.getGames();
 
                   _this5.processing = false;
                 } else {
@@ -461,7 +569,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee4);
       }))();
     },
-    updateCategory: function updateCategory(category_id) {
+    updateGame: function updateGame(game_id) {
       var _this6 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5() {
@@ -472,7 +580,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _this6.processing = true;
                 _context5.next = 3;
-                return _this6.callApi('put', "/api/v1/categories/".concat(category_id), _this6.form);
+                return _this6.callApi('put', "/api/v1/games/".concat(game_id), _this6.form);
 
               case 3:
                 res = _context5.sent;
@@ -480,9 +588,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 if (res.status == 200) {
                   _this6.closeModal();
 
-                  _this6.getCategories();
+                  _this6.getGames();
 
-                  _this6.s('Successfully updated category');
+                  _this6.s('Successfully updated game');
 
                   _this6.processing = false;
                 } else {
@@ -507,7 +615,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee5);
       }))();
     },
-    deleteCategory: function deleteCategory(category_id) {
+    deleteGame: function deleteGame(game_id) {
       var _this7 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee6() {
@@ -518,21 +626,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _this7.isDeleting = true;
                 _context6.next = 3;
-                return _this7.callApi('delete', "/api/v1/categories/".concat(category_id));
+                return _this7.callApi('delete', "/api/v1/games/".concat(game_id));
 
               case 3:
                 res = _context6.sent;
 
                 if (res.status == 204) {
-                  _this7.w('Category deleted');
+                  _this7.w('Game deleted');
 
                   _this7.checked = _this7.checked.filter(function (id) {
-                    return id != category_id;
+                    return id != game_id;
                   });
                   _this7.isDeleting = false;
                   _this7.deleteModal = false;
 
-                  _this7.getCategories();
+                  _this7.getGames();
                 } else {
                   if (res.status !== 422) {
                     for (i in res.data.errors) {
@@ -566,19 +674,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 if (editMode) {
                   // for editing
                   _this8.newCover = true;
-                  image = _this8.form.cover_photo;
-                  _this8.form.cover_photo = '';
+                  image = _this8.form.cover_image;
+                  _this8.form.cover_image = '';
 
                   _this8.$refs.uploads.clearFiles();
                 } else {
-                  image = _this8.form.cover_photo;
-                  _this8.form.cover_photo = '';
+                  image = _this8.form.cover_image;
+                  _this8.form.cover_image = '';
 
                   _this8.$refs.uploads.clearFiles();
                 }
 
                 _context7.next = 4;
-                return _this8.callApi('post', '/api/v1/categories/deleteCover', {
+                return _this8.callApi('post', '/api/v1/games/deleteCover', {
                   image_name: image
                 });
 
@@ -586,7 +694,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 res = _context7.sent;
 
                 if (res.status !== 200) {
-                  _this8.form.cover_photo = image;
+                  _this8.form.cover_image = image;
 
                   _this8.swr();
                 }
@@ -601,11 +709,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     handleSuccess: function handleSuccess(res, file) {
       if (this.isEditingItem) {
-        return this.form.cover_photo = "/uploads/games/category/".concat(res);
+        return this.form.cover_image = "/uploads/games/all_games/".concat(res);
       }
 
-      res = "/uploads/games/category/".concat(res);
-      this.form.cover_photo = res;
+      res = "/uploads/games/all_games/".concat(res);
+      this.form.cover_image = res;
     },
     handleError: function handleError(res) {
       this.$Notice.warning({
@@ -815,75 +923,61 @@ var render = function () {
           _c(
             "div",
             { staticClass: "row" },
-            _vm._l(_vm.categories.data, function (category, i) {
-              return _c(
-                "div",
-                { key: i, staticClass: "col-lg-4 col-md-6 col-12 mt-3" },
-                [
-                  _c("div", { staticClass: "card text-center" }, [
+            _vm._l(_vm.games.data, function (game, i) {
+              return _c("div", { key: i, staticClass: "col-md-4 mt-3 h-25" }, [
+                _c(
+                  "a",
+                  {
+                    attrs: { href: "javascript:;" },
+                    on: {
+                      click: function ($event) {
+                        $event.preventDefault()
+                        return _vm.showGameModal(game)
+                      },
+                    },
+                  },
+                  [
                     _c(
                       "div",
-                      {
-                        staticClass:
-                          "\n                  overflow-hidden\n                  position-relative\n                  border-radius-lg\n                  bg-cover\n                  p-3\n                ",
-                        style: {
-                          backgroundImage: "url(" + category.cover + ")",
-                        },
-                      },
+                      { staticClass: "card card-background move-on-hover" },
                       [
-                        _c("span", {
-                          staticClass: "mask bg-gradient-dark opacity-6",
+                        _c("div", {
+                          staticClass: "full-background",
+                          style: {
+                            backgroundImage: "url(" + game.cover_image + ")",
+                          },
                         }),
                         _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass:
-                              "\n                    card-body\n                    position-relative\n                    z-index-1\n                    d-flex\n                    flex-column\n                    mt-5\n                  ",
-                          },
-                          [
-                            _c(
-                              "p",
-                              { staticClass: "text-white font-weight-bolder" },
-                              [
-                                _vm._v(
-                                  "\n                    " +
-                                    _vm._s(category.description) +
-                                    "\n                  "
-                                ),
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "a",
-                              {
-                                staticClass:
-                                  "\n                      text-white text-sm\n                      font-weight-bold\n                      mb-0\n                      icon-move-right\n                      mt-4\n                    ",
-                                attrs: { href: "javascript:;" },
-                                on: {
-                                  click: function ($event) {
-                                    $event.preventDefault()
-                                    return _vm.editModal(category)
-                                  },
-                                },
-                              },
-                              [
-                                _vm._v(
-                                  "\n                    Edit\n                    "
-                                ),
-                                _c("i", {
-                                  staticClass: "fas fa-pen text-sm ms-1",
-                                  attrs: { "aria-hidden": "true" },
-                                }),
-                              ]
-                            ),
-                          ]
-                        ),
+                        _c("div", { staticClass: "card-body pt-12" }, [
+                          _c("h4", { staticClass: "text-white" }, [
+                            _vm._v(_vm._s(game.name)),
+                          ]),
+                          _vm._v(" "),
+                          _c("p", [_vm._v(_vm._s(game.about_game))]),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "mt-3" },
+                            _vm._l(game.categories, function (c, i) {
+                              return _c(
+                                "span",
+                                { key: i, staticClass: "fw-normal text-gray" },
+                                [
+                                  _c("Tag", { attrs: { color: c.color } }, [
+                                    _vm._v(_vm._s(c.name)),
+                                  ]),
+                                ],
+                                1
+                              )
+                            }),
+                            0
+                          ),
+                        ]),
                       ]
                     ),
-                  ]),
-                ]
-              )
+                  ]
+                ),
+              ])
             }),
             0
           ),
@@ -915,204 +1009,471 @@ var render = function () {
               _c("div", { staticClass: "modal-header" }, [
                 !_vm.editMode
                   ? _c("h5", { staticClass: "modal-title" }, [
-                      _vm._v("Create category"),
+                      _vm._v("Create game"),
                     ])
                   : _c("h5", { staticClass: "modal-title" }, [
-                      _vm._v("Edit category"),
+                      _vm._v("Edit game"),
                     ]),
                 _vm._v(" "),
                 _vm._m(1),
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "modal-body" }, [
-                _c(
-                  "div",
-                  { staticClass: "row" },
-                  [
-                    _c("FormulateInput", {
-                      attrs: {
-                        type: "text",
-                        required: "",
-                        label: "Category Name",
-                        validation: "required",
-                      },
-                      model: {
-                        value: _vm.form.name,
-                        callback: function ($$v) {
-                          _vm.$set(_vm.form, "name", $$v)
-                        },
-                        expression: "form.name",
-                      },
-                    }),
+              _c(
+                "div",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: !_vm.detailMode,
+                      expression: "!detailMode",
+                    },
                   ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "row mt-3" },
-                  [
-                    _c("FormulateInput", {
-                      attrs: {
-                        type: "textarea",
-                        required: "",
-                        validation: "required|max:100,length",
-                        label: "Category Details",
-                        help:
-                          "Keep it under 50 characters. " +
-                          (50 - _vm.value.length) +
-                          " left.",
-                      },
-                      model: {
-                        value: _vm.form.description,
-                        callback: function ($$v) {
-                          _vm.$set(_vm.form, "description", $$v)
-                        },
-                        expression: "form.description",
-                      },
-                    }),
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "row mt-3" },
-                  [
-                    _c("Label", [_vm._v("Upload Cover Image")]),
-                    _vm._v(" "),
-                    _c(
-                      "Upload",
-                      {
-                        directives: [
-                          {
-                            name: "show",
-                            rawName: "v-show",
-                            value: !_vm.editMode || _vm.newCover,
-                            expression: "!editMode || newCover",
-                          },
-                        ],
-                        ref: "uploads",
+                  staticClass: "modal-body",
+                },
+                [
+                  _c(
+                    "div",
+                    { staticClass: "row" },
+                    [
+                      _c("FormulateInput", {
                         attrs: {
-                          type: "drag",
-                          action: "/api/v1/categories/upload",
-                          headers: {
-                            "x-csrf-token": _vm.token,
-                            "X-Requested-With": "XMLHttpRequest",
-                          },
-                          "on-success": _vm.handleSuccess,
-                          "on-error": _vm.handleError,
-                          format: ["jpg", "jpeg", "png"],
-                          "max-size": 2048,
-                          "on-format-error": _vm.handleFormatError,
-                          "on-exceeded-size": _vm.handleMaxSize,
+                          type: "text",
+                          required: "",
+                          label: "Game Name",
+                          validation: "required",
                         },
-                      },
+                        model: {
+                          value: _vm.form.name,
+                          callback: function ($$v) {
+                            _vm.$set(_vm.form, "name", $$v)
+                          },
+                          expression: "form.name",
+                        },
+                      }),
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row mt-3" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-8" },
                       [
+                        _c("Label", [_vm._v("Choose Categories")]),
+                        _vm._v(" "),
                         _c(
-                          "div",
-                          { staticStyle: { padding: "20px 0" } },
-                          [
-                            _c("Icon", {
-                              staticStyle: { color: "#3399ff" },
-                              attrs: { type: "ios-cloud-upload", size: "52" },
-                            }),
-                            _vm._v(" "),
-                            _c("p", [
-                              _vm._v("Click or drag files here to upload"),
-                            ]),
-                          ],
+                          "Select",
+                          {
+                            attrs: { multiple: "", "max-tag-count": 2 },
+                            model: {
+                              value: _vm.form.category_id,
+                              callback: function ($$v) {
+                                _vm.$set(_vm.form, "category_id", $$v)
+                              },
+                              expression: "form.category_id",
+                            },
+                          },
+                          _vm._l(_vm.categories.data, function (category, i) {
+                            return _c(
+                              "Option",
+                              { key: i, attrs: { value: category.id } },
+                              [
+                                _vm._v(
+                                  "\n                  " +
+                                    _vm._s(category.name) +
+                                    "\n                "
+                                ),
+                              ]
+                            )
+                          }),
                           1
                         ),
-                      ]
+                      ],
+                      1
                     ),
-                    _vm._v(" "),
-                    _vm.form.cover_photo
-                      ? _c("div", { staticClass: "demo-upload-list" }, [
-                          _c("img", {
-                            attrs: { src: "" + _vm.form.cover_photo, alt: "" },
-                          }),
-                          _vm._v(" "),
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "row mt-3" },
+                    [
+                      _c("FormulateInput", {
+                        attrs: {
+                          type: "textarea",
+                          required: "",
+                          validation: "required|max:100,length",
+                          label: "Game Details",
+                        },
+                        model: {
+                          value: _vm.form.about_game,
+                          callback: function ($$v) {
+                            _vm.$set(_vm.form, "about_game", $$v)
+                          },
+                          expression: "form.about_game",
+                        },
+                      }),
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "row mt-3" },
+                    [
+                      _c("Label", [_vm._v("Upload Cover Image")]),
+                      _vm._v(" "),
+                      _c(
+                        "Upload",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: !_vm.editMode || _vm.newCover,
+                              expression: "!editMode || newCover",
+                            },
+                          ],
+                          ref: "uploads",
+                          attrs: {
+                            type: "drag",
+                            action: "/api/v1/games/upload",
+                            headers: {
+                              "x-csrf-token": _vm.token,
+                              "X-Requested-With": "XMLHttpRequest",
+                            },
+                            "on-success": _vm.handleSuccess,
+                            "on-error": _vm.handleError,
+                            format: ["jpg", "jpeg", "png"],
+                            "max-size": 2048,
+                            "on-format-error": _vm.handleFormatError,
+                            "on-exceeded-size": _vm.handleMaxSize,
+                          },
+                        },
+                        [
                           _c(
                             "div",
-                            { staticClass: "demo-upload-list-cover" },
+                            { staticStyle: { padding: "20px 0" } },
                             [
-                              _vm.editMode
-                                ? _c("Icon", {
-                                    attrs: { type: "ios-trash-outline" },
-                                    on: {
-                                      click: function ($event) {
-                                        return _vm.deleteImage(true)
-                                      },
-                                    },
-                                  })
-                                : _c("Icon", {
-                                    attrs: { type: "ios-trash-outline" },
-                                    on: { click: _vm.deleteImage },
-                                  }),
+                              _c("Icon", {
+                                staticStyle: { color: "#3399ff" },
+                                attrs: { type: "ios-cloud-upload", size: "52" },
+                              }),
+                              _vm._v(" "),
+                              _c("p", [
+                                _vm._v("Click or drag files here to upload"),
+                              ]),
                             ],
                             1
                           ),
-                        ])
-                      : _vm._e(),
-                  ],
-                  1
-                ),
-              ]),
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _vm.form.cover_image
+                        ? _c("div", { staticClass: "demo-upload-list" }, [
+                            _c("img", {
+                              attrs: {
+                                src: "" + _vm.form.cover_image,
+                                alt: "",
+                              },
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "demo-upload-list-cover" },
+                              [
+                                _vm.editMode
+                                  ? _c("Icon", {
+                                      attrs: { type: "ios-trash-outline" },
+                                      on: {
+                                        click: function ($event) {
+                                          return _vm.deleteImage(true)
+                                        },
+                                      },
+                                    })
+                                  : _c("Icon", {
+                                      attrs: { type: "ios-trash-outline" },
+                                      on: { click: _vm.deleteImage },
+                                    }),
+                              ],
+                              1
+                            ),
+                          ])
+                        : _vm._e(),
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row mt-3" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-6" },
+                      [
+                        _c("Label", [_vm._v("Release Date")]),
+                        _vm._v(" "),
+                        _c("DatePicker", {
+                          attrs: { type: "date", placeholder: "Select date" },
+                          model: {
+                            value: _vm.form.release_date,
+                            callback: function ($$v) {
+                              _vm.$set(_vm.form, "release_date", $$v)
+                            },
+                            expression: "form.release_date",
+                          },
+                        }),
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-6" },
+                      [
+                        _c("FormulateInput", {
+                          attrs: {
+                            type: "number",
+                            required: "",
+                            validation: "required",
+                            label: "Game Number Of players",
+                          },
+                          model: {
+                            value: _vm.form.players,
+                            callback: function ($$v) {
+                              _vm.$set(_vm.form, "players", $$v)
+                            },
+                            expression: "form.players",
+                          },
+                        }),
+                      ],
+                      1
+                    ),
+                  ]),
+                ]
+              ),
               _vm._v(" "),
-              _c("div", { staticClass: "modal-footer" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn bg-gradient-secondary",
-                    attrs: { type: "button", "data-bs-dismiss": "modal" },
-                    on: { click: _vm.closeModal },
-                  },
-                  [_vm._v("\n            Close\n          ")]
-                ),
-                _vm._v(" "),
-                _vm.editMode
-                  ? _c(
-                      "button",
+              _c(
+                "div",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.detailMode,
+                      expression: "detailMode",
+                    },
+                  ],
+                  staticClass: "modal-body",
+                },
+                [
+                  _c("div", { staticClass: "card" }, [
+                    _c(
+                      "div",
                       {
-                        staticClass: "btn bg-gradient-primary",
-                        attrs: { type: "button", disabled: _vm.processing },
-                        on: {
-                          click: function ($event) {
-                            return _vm.updateCategory(_vm.form.id)
-                          },
-                        },
+                        staticClass:
+                          "card-header p-0 mx-3 mt-3 position-relative z-index-1",
                       },
                       [
-                        _vm._v(
-                          "\n            " +
-                            _vm._s(
-                              _vm.processing ? "Saving ..." : "Save Changes"
-                            ) +
-                            "\n          "
-                        ),
-                      ]
-                    )
-                  : _c(
-                      "button",
-                      {
-                        staticClass: "btn bg-gradient-primary",
-                        attrs: { type: "button", disabled: _vm.processing },
-                        on: {
-                          click: function ($event) {
-                            return _vm.createCategory()
+                        _c(
+                          "a",
+                          {
+                            staticClass: "d-block",
+                            attrs: { href: "javascript:;" },
                           },
-                        },
-                      },
-                      [
-                        _vm._v(
-                          "\n            " +
-                            _vm._s(_vm.processing ? "Creating ..." : "Create") +
-                            "\n          "
+                          [
+                            _c("img", {
+                              staticClass: "img-fluid border-radius-lg",
+                              attrs: { src: _vm.form.cover_image },
+                            }),
+                          ]
                         ),
                       ]
                     ),
-              ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "card-body pt-2" },
+                      [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "card-title h5 d-block text-darker",
+                            attrs: { href: "javascript:;" },
+                          },
+                          [
+                            _vm._v(
+                              "\n                " +
+                                _vm._s(_vm.form.name) +
+                                "\n              "
+                            ),
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _vm._l(_vm.form.categories, function (c, i) {
+                          return _c(
+                            "span",
+                            { key: i, staticClass: "fw-normal text-gray" },
+                            [
+                              _c("Tag", { attrs: { color: c.color } }, [
+                                _vm._v(_vm._s(c.name)),
+                              ]),
+                            ],
+                            1
+                          )
+                        }),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "card-description mb-4" }, [
+                          _vm._v(
+                            "\n                " +
+                              _vm._s(_vm.form.about) +
+                              "\n              "
+                          ),
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "author align-items-center" },
+                          [
+                            _c("img", {
+                              staticClass: "avatar shadow",
+                              attrs: {
+                                src: "https://demos.creative-tim.com/soft-ui-design-system-pro/assets/img/team-2.jpg",
+                                alt: "...",
+                              },
+                            }),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "name ps-3" }, [
+                              _c("span", [_vm._v("Mathew Glock")]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "stats" }, [
+                                _c("small", [
+                                  _vm._v(_vm._s(_vm.form.created_at)),
+                                ]),
+                              ]),
+                            ]),
+                          ]
+                        ),
+                      ],
+                      2
+                    ),
+                  ]),
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: !_vm.detailMode,
+                      expression: "!detailMode",
+                    },
+                  ],
+                  staticClass: "modal-footer",
+                },
+                [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn bg-gradient-secondary",
+                      attrs: { type: "button", "data-bs-dismiss": "modal" },
+                      on: { click: _vm.closeModal },
+                    },
+                    [_vm._v("\n            Close\n          ")]
+                  ),
+                  _vm._v(" "),
+                  _vm.editMode
+                    ? _c(
+                        "button",
+                        {
+                          staticClass: "btn bg-gradient-primary",
+                          attrs: { type: "button", disabled: _vm.processing },
+                          on: {
+                            click: function ($event) {
+                              return _vm.updateGame(_vm.form.id)
+                            },
+                          },
+                        },
+                        [
+                          _vm._v(
+                            "\n            " +
+                              _vm._s(
+                                _vm.processing ? "Saving ..." : "Save Changes"
+                              ) +
+                              "\n          "
+                          ),
+                        ]
+                      )
+                    : _c(
+                        "button",
+                        {
+                          staticClass: "btn bg-gradient-primary",
+                          attrs: { type: "button", disabled: _vm.processing },
+                          on: {
+                            click: function ($event) {
+                              return _vm.createGame()
+                            },
+                          },
+                        },
+                        [
+                          _vm._v(
+                            "\n            " +
+                              _vm._s(
+                                _vm.processing ? "Creating ..." : "Create"
+                              ) +
+                              "\n          "
+                          ),
+                        ]
+                      ),
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.detailMode,
+                      expression: "detailMode",
+                    },
+                  ],
+                  staticClass: "modal-footer",
+                },
+                [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn bg-gradient-secondary",
+                      attrs: { type: "button", "data-bs-dismiss": "modal" },
+                      on: { click: _vm.closeModals },
+                    },
+                    [_vm._v("\n            Close\n          ")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn bg-gradient-primary",
+                      attrs: { type: "button" },
+                      on: {
+                        click: function ($event) {
+                          return _vm.showEditModal(_vm.form)
+                        },
+                      },
+                    },
+                    [
+                      _vm._v(
+                        "\n            " +
+                          _vm._s(_vm.processing ? "Saving ..." : "Edit Game") +
+                          "\n          "
+                      ),
+                    ]
+                  ),
+                ]
+              ),
             ]),
           ]
         ),
@@ -1128,9 +1489,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "col-8" }, [
       _c("h5", { staticClass: "mb-2 col-8" }, [_vm._v("All Games")]),
       _vm._v(" "),
-      _c("p", { staticClass: "mb-0" }, [
-        _vm._v("\n             List of all games\n            "),
-      ]),
+      _c("p", { staticClass: "mb-0" }, [_vm._v("List of all games")]),
     ])
   },
   function () {

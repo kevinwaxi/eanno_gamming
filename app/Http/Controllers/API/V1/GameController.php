@@ -2,8 +2,14 @@
 
 namespace App\Http\Controllers\API\V1;
 
+use App\Http\Actions\Store\StoreGameAction;
+use App\Http\Actions\Update\UpdateGameAction;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Store\StoreGameRequest;
+use App\Http\Requests\Update\UpdateGameRequest;
+use App\Models\Game;
 use Illuminate\Http\Request;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class GameController extends Controller
 {
@@ -15,6 +21,12 @@ class GameController extends Controller
     public function index(Request $request)
     {
         //
+        $games = QueryBuilder::for(Game::class)
+                ->with(['categories'])
+                ->paginate($request->total)
+                ->appends($request->query());
+        return $games;
+
     }
 
     /**
@@ -23,9 +35,9 @@ class GameController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreGameRequest $request, StoreGameAction $storeGameAction)
     {
-        //
+        $storeGameAction->execute($request);
     }
 
     /**
@@ -46,9 +58,40 @@ class GameController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateGameRequest $request, $id, UpdateGameAction $updateGameAction)
     {
         //
+        $updateGameAction->execute($request);
+
+    }
+
+    // upload Cover image first
+    public function upload(Request $request)
+    {
+        #file validate
+        $this->validate($request, [
+            'file' => 'required|image',
+        ]);
+        $image_name = time() . '.' . $request->file->extension();
+        $request->file->move(public_path('uploads/games/all_games'), $image_name);
+        return $image_name;
+    }
+
+    public function deleteImage(Request $request)
+    {
+        $image_name = $request->image_name;
+        $this->deleteFromFolder($image_name);
+        return ('deleted');
+    }
+
+    public function deleteFromFolder($image_name)
+    {
+        $image_path = public_path() . $image_name;
+        if (file_exists($image_path)) {
+            # code...
+            @unlink($image_path);
+        }
+        return;
     }
 
     /**

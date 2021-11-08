@@ -130,12 +130,12 @@ const routes = [
                         children:[
                             {
                                 name:'all_games',
-                                path:'/',
+                                path:'all',
                                 component: () => import('@pages/settings/stations/games/all.vue')
                             },
                             {
                                 name:'game_categories',
-                                path:'all',
+                                path:'categories',
                                 component: () => import("@pages/settings/stations/games/categories.vue")
                             }
                         ]

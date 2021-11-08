@@ -109,16 +109,27 @@
                 v-model="form.name"
               />
             </div>
+            <div class="row">
+              <Label>Color</Label>
+              <Select v-model="form.color">
+                <Option
+                  v-for="item in color"
+                  :value="item.value"
+                  :key="item.value"
+                  clearable
+                  filterable
+                >
+                  {{ item.name }}</Option
+                >
+              </Select>
+            </div>
             <div class="row mt-3">
               <FormulateInput
                 type="textarea"
                 required
-                validation="required|max:100,length"
+                validation="required|max:100"
                 label="Category Details"
                 v-model="form.description"
-                :help="`Keep it under 50 characters. ${
-                  50 - value.length
-                } left.`"
               />
             </div>
             <div class="row mt-3">
@@ -224,9 +235,52 @@ export default {
       sort_direction: 'desc',
       sort_field: 'created_at',
       url: '',
-      value: {
-        length: 0,
-      },
+      color: [
+        {
+          value: 'red',
+          name: 'Red',
+        },
+        {
+          value: 'error',
+          name: 'Error',
+        },
+        {
+          value: 'volcano',
+          name: 'Red Volcano',
+        },
+        {
+          value: 'default',
+          name: 'Default Blue',
+        },
+        {
+          value: 'geekblue',
+          name: 'Geek Blue',
+        },
+        {
+          value: 'cyan',
+          name: 'Cyan',
+        },
+        {
+          value: 'blue',
+          name: 'Blue',
+        },
+        {
+          value: 'yellow',
+          name: 'Mustered',
+        },
+        {
+          value: 'lime',
+          name: 'Lime Green',
+        },
+        {
+          value: 'purple',
+          name: 'Purple',
+        },
+        {
+          value: 'magneta',
+          name: 'Magneta',
+        },
+      ],
     }
   },
   watch: {

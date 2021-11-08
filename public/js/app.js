@@ -2593,13 +2593,13 @@ var routes = [{
       },
       children: [{
         name: 'all_games',
-        path: '/',
+        path: 'all',
         component: function component() {
           return __webpack_require__.e(/*! import() */ "resources_js_pages_settings_stations_games_all_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/settings/stations/games/all.vue */ "./resources/js/pages/settings/stations/games/all.vue"));
         }
       }, {
         name: 'game_categories',
-        path: 'all',
+        path: 'categories',
         component: function component() {
           return __webpack_require__.e(/*! import() */ "resources_js_pages_settings_stations_games_categories_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/settings/stations/games/categories.vue */ "./resources/js/pages/settings/stations/games/categories.vue"));
         }

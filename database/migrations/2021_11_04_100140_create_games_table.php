@@ -18,6 +18,7 @@ class CreateGamesTable extends Migration
             $table->string('name');
             $table->string('slug');
             $table->string('cover_image')->nullable();
+            $table->string('about_game');
             $table->string('players');
             $table->datetime('release_date');
             $table->softDeletes();

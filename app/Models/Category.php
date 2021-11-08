@@ -14,6 +14,7 @@ class Category extends Model
         'description',
         'slug',
         'cover_photo',
+        'color',
     ];
 
     public function scopeSearch($query, $term)

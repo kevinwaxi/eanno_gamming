@@ -219,6 +219,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -244,9 +255,40 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       sort_direction: 'desc',
       sort_field: 'created_at',
       url: '',
-      value: {
-        length: 0
-      }
+      color: [{
+        value: 'red',
+        name: 'Red'
+      }, {
+        value: 'error',
+        name: 'Error'
+      }, {
+        value: 'volcano',
+        name: 'Red Volcano'
+      }, {
+        value: 'default',
+        name: 'Default Blue'
+      }, {
+        value: 'geekblue',
+        name: 'Geek Blue'
+      }, {
+        value: 'cyan',
+        name: 'Cyan'
+      }, {
+        value: 'blue',
+        name: 'Blue'
+      }, {
+        value: 'yellow',
+        name: 'Mustered'
+      }, {
+        value: 'lime',
+        name: 'Lime Green'
+      }, {
+        value: 'purple',
+        name: 'Purple'
+      }, {
+        value: 'magneta',
+        name: 'Magneta'
+      }]
     };
   },
   watch: {
@@ -954,18 +996,51 @@ var render = function () {
                 _vm._v(" "),
                 _c(
                   "div",
+                  { staticClass: "row" },
+                  [
+                    _c("Label", [_vm._v("Color")]),
+                    _vm._v(" "),
+                    _c(
+                      "Select",
+                      {
+                        model: {
+                          value: _vm.form.color,
+                          callback: function ($$v) {
+                            _vm.$set(_vm.form, "color", $$v)
+                          },
+                          expression: "form.color",
+                        },
+                      },
+                      _vm._l(_vm.color, function (item) {
+                        return _c(
+                          "Option",
+                          {
+                            key: item.value,
+                            attrs: {
+                              value: item.value,
+                              clearable: "",
+                              filterable: "",
+                            },
+                          },
+                          [_vm._v("\n                " + _vm._s(item.name))]
+                        )
+                      }),
+                      1
+                    ),
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
                   { staticClass: "row mt-3" },
                   [
                     _c("FormulateInput", {
                       attrs: {
                         type: "textarea",
                         required: "",
-                        validation: "required|max:100,length",
+                        validation: "required|max:100",
                         label: "Category Details",
-                        help:
-                          "Keep it under 50 characters. " +
-                          (50 - _vm.value.length) +
-                          " left.",
                       },
                       model: {
                         value: _vm.form.description,
