@@ -27,7 +27,6 @@ class UserResource extends JsonResource
             'active' => $this->is_active,
             'banned_until' => $this->banned_until,
             'created_at' => $this->created_at,
-            'days' => date_diff(now(), $this->updated_at),
         ];
     }
 }

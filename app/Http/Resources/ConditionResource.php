@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ConsoleResource extends JsonResource
+class ConditionResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,12 +16,9 @@ class ConsoleResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'serial_number' => $this->serial_number,
-            'type' => $this->type,
-            'generation' => $this->gen,
-            'storage' => $this->storage,
-            'storage_size' => $this->storage_size,
-            'condition' => $this->condition
+            'name' => $this->name,
+            'slug' => $this->slug,
+            'console' => $this->console,
         ];
     }
 }

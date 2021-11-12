@@ -15,7 +15,8 @@ class CreateConditionsTable extends Migration
     {
         Schema::create('conditions', function (Blueprint $table) {
             $table->id();
-            $table->string('condition');
+            $table->string('name');
+            $table->string('color');
             $table->string('slug');
             $table->timestamps();
         });

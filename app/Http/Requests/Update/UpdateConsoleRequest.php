@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Store;
+namespace App\Http\Requests\Update;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
-class StoreConsoleRequest extends FormRequest
+class UpdateConsoleRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +25,7 @@ class StoreConsoleRequest extends FormRequest
     public function rules()
     {
         return [
-            //
-            'serial_number' => ['required', 'unique:consoles,serial_number'],
+            'serial_number' => ['required', Rule::unique('consoles')->ignore($this->id)],
             'type' => ['required'],
             'gen' => ['required'],
             'storage' => ['required'],

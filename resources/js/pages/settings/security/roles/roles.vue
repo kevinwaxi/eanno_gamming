@@ -155,7 +155,7 @@
                     </span>
                   </span>
                 </div>
-                <div class="ms-auto text-end">
+                <div class="ms-auto text-end col-2">
                   <a
                     class="btn btn-link text-danger text-gradient px-3 mb-0"
                     href="javascript:;"

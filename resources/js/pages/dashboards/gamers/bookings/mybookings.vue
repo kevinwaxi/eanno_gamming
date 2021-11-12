@@ -213,8 +213,11 @@
                 <h6 class="mb-0">Your Pending Bookings</h6>
               </div>
               <div class="col-6 text-end">
-                <button class="btn btn-outline-primary btn-sm mb-0">
-                  View All
+                <button
+                  class="btn btn-outline-primary btn-sm mb-0"
+                  @click="createModal"
+                >
+                  Book Now
                 </button>
               </div>
             </div>
@@ -293,12 +296,6 @@
                     </td>
                     <td class="align-middle text-sm">
                       <div class="col text-center">
-                        <p class="text-xs font-weight-bold mb-0">Discount:</p>
-                        <h6 class="text-sm mb-0">29.9%</h6>
-                      </div>
-                    </td>
-                    <td class="align-middle text-sm">
-                      <div class="col text-center">
                         <p class="text-xs font-weight-bold mb-0">Status:</p>
                         <h6 class="text-sm mb-0">Paid/Canceled</h6>
                       </div>
@@ -306,7 +303,7 @@
                     <td class="align-middle text-sm">
                       <div class="col text-center">
                         <p class="text-xs font-weight-bold mb-0">Actions:</p>
-                        <h6 class="text-sm mb-0">29.9%</h6>
+                        <h6 class="text-sm mb-0">Export</h6>
                       </div>
                     </td>
                   </tr>
@@ -317,5 +314,143 @@
         </div>
       </div>
     </div>
+    <!-- Booking Modal -->
+    <!-- Create booking -->
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="modal-default"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="modal-default"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 v-if="!editMode" class="modal-title">Booking</h5>
+            <h5 v-else class="modal-title">Edit Booking</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <FormulateInput
+                type="text"
+                required
+                label="Category Name"
+                validation="required"
+                v-model="form.name"
+              />
+            </div>
+            <div class="row">
+              <Label>Time</Label>
+              <div class="row">
+                <div class="col-6">
+                  <Label>Start Time</Label>
+                  <TimePicker
+                    :disabled-hours="disabledHours"
+                    :steps="[1, 30]"
+                    confirm
+                    format="HH:mm"
+                    v-model="form.start_time"
+                    placeholder="Select start time"
+                    style="width: 168px"
+                  ></TimePicker>
+                </div>
+                <div class="col-6">
+                  <Label>End Time</Label>
+                  <TimePicker
+                    :disabled-hours="disabledHours"
+                    :steps="[1, 30]"
+                    confirm
+                    v-model="form.end_time"
+                    format="HH:mm"
+                    placeholder="Select end time"
+                    style="width: 168px"
+                  ></TimePicker>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn bg-gradient-secondary"
+              data-bs-dismiss="modal"
+              @click="closeModal"
+            >
+              Close
+            </button>
+            <button
+              v-if="editMode"
+              type="button"
+              class="btn bg-gradient-primary"
+              @click="updateCategory(form.id)"
+              :disabled="processing"
+            >
+              {{ processing ? 'Saving ...' : 'Save Changes' }}
+            </button>
+            <button
+              v-else
+              type="button"
+              class="btn bg-gradient-primary"
+              @click="createCategory()"
+              :disabled="processing"
+            >
+              {{ processing ? 'Creating ...' : 'Create' }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
+<script>
+export default {
+  data() {
+    return {
+      disabledHours: [22, 23, 0, 1, 2, 3, 4, 5, 6, 7, 8],
+      deleteModal: false,
+      massDeleteModal: false,
+      isDeleting: false,
+      editMode: false,
+      processing: false,
+      deletingItem: null,
+      form: {},
+      bookings: {},
+      total: 7,
+      search: '',
+      selected: '',
+      checked: [],
+      selectPage: false,
+      selectAll: false,
+      sort_direction: 'desc',
+      sort_field: 'created_at',
+      url: '',
+    }
+  },
+  methods: {
+    createModal() {
+      $('#modal-default').modal('show')
+      this.editMode = false
+    },
+    closeModal() {
+      $('#modal-default').modal('hide')
+      this.restForm()
+    },
+    restForm() {
+      this.form.station_id = ''
+      this.form.game_id = ''
+      this.start_time = ''
+      this.end_time = ''
+    },
+  },
+}
+</script>

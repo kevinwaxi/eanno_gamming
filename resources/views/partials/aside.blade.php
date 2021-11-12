@@ -333,23 +333,29 @@
                         </li>
                         <li class="nav-item ">
                             <a class="nav-link " data-bs-toggle="collapse" aria-expanded="false"
-                                href="#ordersExample">
+                                href="#stationsPage">
                                 <span class="sidenav-mini-icon"> O </span>
-                                <span class="sidenav-normal"> Orders <b class="caret"></b></span>
+                                <span class="sidenav-normal"> Station <b class="caret"></b></span>
                             </a>
-                            <div class="collapse " id="ordersExample">
+                            <div class="collapse " id="stationsPage">
                                 <ul class="nav nav-sm flex-column">
                                     <li class="nav-item">
-                                        <a class="nav-link " href="../../pages/ecommerce/orders/list.html">
+                                        <router-link :to="{name:'all_stations'}" class="nav-link ">
                                             <span class="sidenav-mini-icon text-xs"> O </span>
-                                            <span class="sidenav-normal"> Order List </span>
-                                        </a>
+                                            <span class="sidenav-normal"> All Stations </span>
+                                        </router-link>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link " href="../../pages/ecommerce/orders/details.html">
+                                        <router-link :to="{name:'all_screens'}" class="nav-link ">
                                             <span class="sidenav-mini-icon text-xs"> O </span>
-                                            <span class="sidenav-normal"> Order Details </span>
-                                        </a>
+                                            <span class="sidenav-normal"> All Screens </span>
+                                        </router-link>
+                                    </li>
+                                    <li class="nav-item">
+                                        <router-link :to="{name:'all_consoles'}" class="nav-link ">
+                                            <span class="sidenav-mini-icon text-xs"> O </span>
+                                            <span class="sidenav-normal"> All Consoles </span>
+                                        </router-link>
                                     </li>
                                 </ul>
                             </div>

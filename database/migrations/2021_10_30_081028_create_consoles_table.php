@@ -15,12 +15,12 @@ class CreateConsolesTable extends Migration
     {
         Schema::create('consoles', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('condition_id')->constrained()->onDelete('cascade');
             $table->string('serial_number')->unique();
             $table->enum('type', ['ps5', 'ps4', 'ps3', 'ps2', 'xbox360']);
             $table->enum('gen', ['First', 'Second', 'Third']);
             $table->enum('storage', ['SSD', 'HDD']);
             $table->string('storage_size');
-            $table->foreignId('condition_id')->constrained();
             $table->timestamps();
         });
     }

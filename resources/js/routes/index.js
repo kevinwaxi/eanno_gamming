@@ -125,20 +125,60 @@ const routes = [
                 component: () => import("@pages/settings/stations/index.vue"),
                 children: [
                     {
-                        path:"games",
-                        component: () => import('@pages/settings/stations/games/index.vue'),
-                        children:[
+                        path: "games",
+                        component: () =>
+                            import("@pages/settings/stations/games/index.vue"),
+                        children: [
                             {
-                                name:'all_games',
-                                path:'all',
-                                component: () => import('@pages/settings/stations/games/all.vue')
+                                name: "all_games",
+                                path: "all",
+                                component: () =>
+                                    import(
+                                        "@pages/settings/stations/games/all.vue"
+                                    ),
                             },
                             {
-                                name:'game_categories',
-                                path:'categories',
-                                component: () => import("@pages/settings/stations/games/categories.vue")
-                            }
-                        ]
+                                name: "game_categories",
+                                path: "categories",
+                                component: () =>
+                                    import(
+                                        "@pages/settings/stations/games/categories.vue"
+                                    ),
+                            },
+                        ],
+                    },
+                    {
+                        path: "stations",
+                        component: () =>
+                            import(
+                                "@pages/settings/stations/stations/index.vue"
+                            ),
+                        children: [
+                            {
+                                name: "all_stations",
+                                path: "all",
+                                component: () =>
+                                    import(
+                                        "@pages/settings/stations/stations/all.vue"
+                                    ),
+                            },
+                            {
+                                name: "all_screens",
+                                path: "screens",
+                                component: () =>
+                                    import(
+                                        "@pages/settings/stations/stations/screen.vue"
+                                    ),
+                            },
+                            {
+                                name: "all_consoles",
+                                path: "consoles",
+                                component: () =>
+                                    import(
+                                        "@pages/settings/stations/stations/console.vue"
+                                    ),
+                            },
+                        ],
                     },
                     {
                         path: "pricing",

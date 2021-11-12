@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\API\V1;
 
+use App\Http\Actions\Store\StoreConsoleAction;
+use App\Http\Actions\Update\UpdateConsoleAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Store\StoreConsoleRequest;
+use App\Http\Requests\Update\UpdateConsoleRequest;
 use App\Http\Resources\ConsoleResource;
 use App\Models\Console;
 use Illuminate\Http\Request;
@@ -54,11 +57,9 @@ class ConsoleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreConsoleRequest $request)
+    public function store(StoreConsoleRequest $request, StoreConsoleAction $storeConsoleAction)
     {
-        $console = Console::create($request->validated());
-
-        return $console;
+        $storeConsoleAction->execute($request);
     }
 
     /**
@@ -79,9 +80,9 @@ class ConsoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateConsoleRequest $request, UpdateConsoleAction $updateConsoleAction, $id)
     {
-        //
+        $updateConsoleAction->execute($request);
     }
 
     /**

@@ -1,14 +1,16 @@
 <?php
 
-use App\Http\Controllers\API\V1\CategoryController;
-use App\Http\Controllers\API\V1\ConsoleController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\InvitationController;
 use App\Http\Controllers\API\V1\GameController;
-use App\Http\Controllers\API\V1\PermissionsController;
+use App\Http\Controllers\API\V1\UserController;
 use App\Http\Controllers\API\V1\PriceController;
 use App\Http\Controllers\API\V1\RolesController;
-use App\Http\Controllers\API\V1\UserController;
-use App\Http\Controllers\InvitationController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\V1\BookingController;
+use App\Http\Controllers\API\V1\ConsoleController;
+use App\Http\Controllers\API\V1\CategoryController;
+use App\Http\Controllers\API\V1\ConditionController;
+use App\Http\Controllers\API\V1\PermissionsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,8 +43,6 @@ Route::prefix('v1')->middleware(['auth:api'])->group(function () {
     Route::get('invitations/approve/{id}', [InvitationController::class, 'approve']);
     //api/v1/pricing
     Route::apiResource('prices', PriceController::class);
-    // api/v1/consoles
-    Route::apiResource('consoles', ConsoleController::class);
     // api/v1/categories
     Route::post('categories/upload/', [CategoryController::class, 'upload']);
     Route::post('categories/deleteCover', [CategoryController::class, 'deleteImage']);
@@ -51,5 +51,11 @@ Route::prefix('v1')->middleware(['auth:api'])->group(function () {
     Route::post('games/upload/', [GameController::class, 'upload']);
     Route::post('games/deleteCover', [GameController::class, 'deleteImage']);
     Route::apiResource('games', GameController::class);
+    // api/v1/bookings
+    Route::apiResource('bookings', BookingController::class);
+    // api/v1/condition
+    Route::apiResource('conditions',ConditionController::class);
+    // api/v1/consoles
+    Route::apiResource('consoles',ConsoleController::class);
 
 });

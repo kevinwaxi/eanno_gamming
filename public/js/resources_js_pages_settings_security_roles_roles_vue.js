@@ -1071,7 +1071,7 @@ var render = function () {
                         ]),
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "ms-auto text-end" }, [
+                      _c("div", { staticClass: "ms-auto text-end col-2" }, [
                         _c(
                           "a",
                           {

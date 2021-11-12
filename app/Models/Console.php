@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Console extends Model
 {
@@ -25,9 +24,9 @@ class Console extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function condition(): HasOne
+    public function condition(): BelongsTo
     {
-        return $this->hasOne(Condition::class);
+        return $this->belongsTo(Condition::class, 'condition_id', );
     }
 
     /**
@@ -49,15 +48,8 @@ class Console extends Model
             $query->where('serial_number', 'like', $term)
                 ->orWhere('type', 'like', $term)
                 ->orWhere('gen', 'like', $term)
-                ->orWhere('storage_type', 'like', $term)
-                ->orWhere('storage_size', 'like', $term)
-                ->orWhereHas('station', function ($query) use ($term) {
-                    $query->where('name', 'like', $term);
-                })
-                ->orWhereHas('condition', function ($query) use ($term) {
-                    $query->where('condition', 'like', $term)
-                        ->orWhere('slug', 'like', $term);
-                });
+                ->orWhere('storage', 'like', $term)
+                ->orWhere('storage_size', 'like', $term);
         });
     }
 }
