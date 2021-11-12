@@ -148,14 +148,17 @@
                           <p
                             class="text-sm font-weight-bold text-secondary mb-0"
                           >
-                            <span class="text-success">8.232</span> orders
+                            <span class="text-success">
+                              {{ screen.make.name }}
+                            </span>
+                            model
                           </p>
                         </div>
                       </div>
                     </td>
                     <td>
                       <p class="text-sm font-weight-bold mb-0">
-                        {{ screen.storage_size }}
+                        {{ screen.size }} inch
                       </p>
                     </td>
                     <td class="align-middle text-center text-sm">
@@ -274,60 +277,55 @@
                 v-model="form.serial_number"
               />
             </div>
-            <div class="row">
-              <div class="col-6">
-                <Label>Screen Type</Label>
-                <Select v-model="form.type">
+            <div class="row mt-3">
+              <div class="col-8">
+                <Label>Make / Brand</Label>
+                <Select v-model="form.make_id">
                   <Option
-                    v-for="item in type"
-                    :value="item.value"
-                    :key="item.value"
+                    v-for="(make, i) in makes"
+                    :value="make.id"
+                    :key="i"
                     clearable
                     filterable
                   >
-                    {{ item.name }}</Option
-                  >
+                    {{ make.name }}
+                  </Option>
                 </Select>
               </div>
-              <div class="col-6">
-                <Label>Screen Generation</Label>
-                <Select v-model="form.gen">
-                  <Option
-                    v-for="item in gen"
-                    :value="item.value"
-                    :key="item.value"
-                    clearable
-                    filterable
-                  >
-                    {{ item.name }}</Option
-                  >
-                </Select>
+              <div class="col-4">
+                <FormulateInput
+                  type="text"
+                  required
+                  label="Model Number"
+                  validation="required"
+                  v-model="form.model_number"
+                />
               </div>
             </div>
             <div class="row mt-3">
-              <div class="col-12">
-                <Label>Storage Type</Label>
-                <Select v-model="form.storage">
+              <div class="col-6">
+                <Label>Screen Feature</Label>
+                <Select v-model="form.feature">
                   <Option
-                    v-for="item in storage"
+                    v-for="item in feature"
                     :value="item.value"
                     :key="item.value"
                     clearable
                     filterable
                   >
-                    {{ item.name }}</Option
-                  >
+                    {{ item.name }}
+                  </Option>
                 </Select>
               </div>
-            </div>
-            <div class="row mt-3">
-              <FormulateInput
-                type="number"
-                required
-                validation="required"
-                label="Storage Size in GB"
-                v-model="form.storage_size"
-              />
+              <div class="col-6">
+                <FormulateInput
+                  type="number"
+                  required
+                  label="Size (In '' inches)"
+                  validation="required"
+                  v-model="form.size"
+                />
+              </div>
             </div>
             <div class="row mt-3">
               <Label>Status / Condition</Label>
@@ -426,6 +424,7 @@ export default {
       form: {},
       screens: {},
       conditions: [],
+      makes: [],
       token: '',
       total: 20,
       search: '',
@@ -436,50 +435,18 @@ export default {
       sort_direction: 'desc',
       sort_field: 'created_at',
       url: '',
-      type: [
+      feature: [
         {
-          name: 'Play Station 5',
-          value: 'ps5',
+          name: 'Smart TV',
+          value: 'Smart',
         },
         {
-          name: 'Play Station 4',
-          value: 'ps4',
+          name: 'Android TV',
+          value: 'Android',
         },
         {
-          name: 'Play Station 3',
-          value: 'ps3',
-        },
-        {
-          name: 'Play Station 2',
-          value: 'ps2',
-        },
-        {
-          name: 'X-Box 360',
-          value: 'xbox360',
-        },
-      ],
-      gen: [
-        {
-          name: 'First Generation',
-          value: 'First',
-        },
-        {
-          name: 'Second Generation',
-          value: 'Second',
-        },
-        {
-          name: 'Third Generation',
-          value: 'Third',
-        },
-      ],
-      storage: [
-        {
-          name: 'Solid State Disk',
-          value: 'SSD',
-        },
-        {
-          name: 'Hard Disk',
-          value: 'HDD',
+          name: 'Digital TV',
+          value: 'Digital',
         },
       ],
     }
@@ -511,7 +478,8 @@ export default {
   },
   mounted() {
     this.getScreens()
-    this.getCondition()
+    this.getMakes()
+    this.getConditions()
   },
   methods: {
     closeModal() {
@@ -520,10 +488,6 @@ export default {
     },
     restForm() {
       this.form.serial_number = ''
-      this.form.type = ''
-      this.form.gen = ''
-      this.form.storage = ''
-      this.form.storage_size = ''
       this.form.condition_id = ''
     },
     createModal() {
@@ -534,10 +498,12 @@ export default {
       let obj = {
         id: screen.id,
         serial_number: screen.serial_number,
+        model_number: screen.model,
+        make_id: screen.make.id,
         type: screen.type,
-        gen: screen.generation,
+        feature: screen.feature,
         storage: screen.storage,
-        storage_size: screen.storage_size,
+        size: screen.size,
         condition_id: screen.condition.id,
       }
       $('#modal-default').modal('show')
@@ -549,10 +515,12 @@ export default {
       let obj = {
         id: screen.id,
         serial_number: screen.serial_number,
+        model_number: screen.model,
+        make_id: screen.make.id,
         type: screen.type,
-        gen: screen.generation,
+        feature: screen.feature,
         storage: screen.storage,
-        storage_size: screen.storage_size,
+        size: screen.size,
         condition_id: screen.condition.id,
       }
       $('#modal-default').modal('show')
@@ -581,10 +549,16 @@ export default {
         screen.log(this.selectAll)
       }
     },
-    async getCondition() {
+    async getConditions() {
       const res = await this.callApi('get', '/api/v1/conditions')
       if (res.status === 200) {
         this.conditions = res.data
+      }
+    },
+    async getMakes() {
+      const res = await this.callApi('get', '/api/v1/makes')
+      if (res.status === 200) {
+        this.makes = res.data
       }
     },
     async getScreens(page = 1) {

@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ConditionResource extends JsonResource
+class MakeResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -19,7 +19,6 @@ class ConditionResource extends JsonResource
             'name' => $this->name,
             'color' => $this->color,
             'slug' => $this->slug,
-            'console' => $this->console,
         ];
     }
 }

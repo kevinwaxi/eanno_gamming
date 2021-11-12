@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ConditionResource extends JsonResource
+class ScreenResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,10 +16,12 @@ class ConditionResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name' => $this->name,
-            'color' => $this->color,
-            'slug' => $this->slug,
-            'console' => $this->console,
+            'make' => $this->make,
+            'condition' => $this->condition,
+            'serial_number' => $this->serial_number,
+            'model' => $this->model_number,
+            'size' => $this->size,
+            'feature' => $this->feature,
         ];
     }
 }

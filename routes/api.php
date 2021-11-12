@@ -3,11 +3,14 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InvitationController;
 use App\Http\Controllers\API\V1\GameController;
+use App\Http\Controllers\API\V1\MakeController;
 use App\Http\Controllers\API\V1\UserController;
 use App\Http\Controllers\API\V1\PriceController;
 use App\Http\Controllers\API\V1\RolesController;
+use App\Http\Controllers\API\V1\ScreenController;
 use App\Http\Controllers\API\V1\BookingController;
 use App\Http\Controllers\API\V1\ConsoleController;
+use App\Http\Controllers\API\V1\StationController;
 use App\Http\Controllers\API\V1\CategoryController;
 use App\Http\Controllers\API\V1\ConditionController;
 use App\Http\Controllers\API\V1\PermissionsController;
@@ -54,8 +57,13 @@ Route::prefix('v1')->middleware(['auth:api'])->group(function () {
     // api/v1/bookings
     Route::apiResource('bookings', BookingController::class);
     // api/v1/condition
-    Route::apiResource('conditions',ConditionController::class);
+    Route::apiResource('conditions', ConditionController::class);
+    // api/v1/makes
+    Route::apiResource('makes', MakeController::class);
     // api/v1/consoles
-    Route::apiResource('consoles',ConsoleController::class);
-
+    Route::apiResource('consoles', ConsoleController::class);
+    // api/v1/screens
+    Route::apiResource('screens', ScreenController::class);
+    // api/v1/stations
+    Route::apiResource('stations',StationController::class);
 });

@@ -16,10 +16,11 @@ class CreateScreensTable extends Migration
         Schema::create('screens', function (Blueprint $table) {
             $table->id();
             $table->string('serial_number')->unique();
-            $table->string('make');
+            $table->foreignId('condition_id')->constrained()->onDelete('cascade');
+            $table->foreignId('make_id')->constrained()->onDelete('cascade');
+            $table->string('model_number');
             $table->string('size');
             $table->enum('feature', ['Smart', 'Android', 'Digital']);
-            $table->foreignId('condition_id')->constrained();
             $table->timestamps();
         });
     }
