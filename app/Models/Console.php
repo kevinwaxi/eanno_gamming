@@ -52,4 +52,10 @@ class Console extends Model
                 ->orWhere('storage_size', 'like', $term);
         });
     }
+
+    public function getNewConsoleAttribute()
+    {
+        # code...
+        return $this->condition->where('slug', 'new')->count();
+    }
 }
