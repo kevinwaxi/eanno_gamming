@@ -14,6 +14,7 @@ use App\Http\Controllers\API\V1\StationController;
 use App\Http\Controllers\API\V1\CategoryController;
 use App\Http\Controllers\API\V1\ConditionController;
 use App\Http\Controllers\API\V1\PermissionsController;
+use App\Http\Controllers\API\V1\AvailabilityController;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,5 +66,7 @@ Route::prefix('v1')->middleware(['auth:api'])->group(function () {
     // api/v1/screens
     Route::apiResource('screens', ScreenController::class);
     // api/v1/stations
-    Route::apiResource('stations',StationController::class);
+    Route::apiResource('stations', StationController::class);
+    // api/v1/availability
+    Route::apiResource('availability', AvailabilityController::class);
 });

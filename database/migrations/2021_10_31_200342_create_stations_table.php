@@ -19,6 +19,7 @@ class CreateStationsTable extends Migration
             // $table->foreignId('status')->constrained()->onDelete('cascade');
             $table->foreignId('console_id')->constrained()->onDelete('cascade');
             $table->foreignId('screen_id')->constrained()->onDelete('cascade');
+            $table->foreignId('available_id')->nullable()->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

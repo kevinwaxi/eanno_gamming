@@ -32,6 +32,16 @@ class Screen extends Model
         return $this->belongsTo(Make::class, 'make_id');
     }
 
+    /**
+     * Get the station that owns the Screen
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function station(): BelongsTo
+    {
+        return $this->belongsTo(Station::class);
+    }
+
     public function scopeSearch($query, $term)
     {
         # code...

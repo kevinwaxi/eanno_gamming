@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ConsoleResource extends JsonResource
+class StationResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,12 +16,13 @@ class ConsoleResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'serial_number' => $this->serial_number,
-            'type' => $this->type,
-            'generation' => $this->gen,
-            'storage' => $this->storage,
-            'storage_size' => $this->storage_size,
-            'condition' => $this->condition,
+            'name' => $this->name,
+            'screen' => $this->screen,
+            'console' => $this->console,
+            'screen_condition' => $this->screen->condition,
+            'screen_make' => $this->screen->make,
+            'console_condition' => $this->console->condition,
+            'available' => $this->available,
         ];
     }
 }
