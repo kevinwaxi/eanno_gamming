@@ -11,6 +11,52 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+var _methods;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -428,7 +474,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      disabledHours: [22, 23, 0, 1, 2, 3, 4, 5, 6, 7, 8],
+      disabledHours: [22, 23, 0, 1, 2, 3, 4, 5, 6, 7],
       deleteModal: false,
       massDeleteModal: false,
       isDeleting: false,
@@ -437,6 +483,8 @@ __webpack_require__.r(__webpack_exports__);
       deletingItem: null,
       form: {},
       bookings: {},
+      stations: [],
+      games: [],
       total: 7,
       search: '',
       selected: '',
@@ -448,7 +496,40 @@ __webpack_require__.r(__webpack_exports__);
       url: ''
     };
   },
-  methods: {
+  watch: {
+    total: function total(value) {
+      this.getBookings();
+    },
+    search: function search(value) {
+      this.getBookings();
+    },
+    selected: function selected(value) {
+      this.getBookings();
+    },
+    selectPage: function selectPage(value) {
+      var _this = this;
+
+      this.checked = [];
+
+      if (value) {
+        this.stations.data.forEach(function (station) {
+          _this.checked.push(station.id);
+        });
+      } else {
+        this.checked = [];
+        this.selectAll = false;
+      }
+    },
+    checked: function checked(value) {
+      this.url = '/api/v1/screens/export/' + this.checked;
+    }
+  },
+  mounted: function mounted() {
+    this.getBookings();
+    this.getGames();
+    this.getStations();
+  },
+  methods: (_methods = {
     createModal: function createModal() {
       $('#modal-default').modal('show');
       this.editMode = false;
@@ -462,8 +543,162 @@ __webpack_require__.r(__webpack_exports__);
       this.form.game_id = '';
       this.start_time = '';
       this.end_time = '';
+    },
+    getBookings: function getBookings() {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        var res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return _this2.callApi('get', '/api/v1/bookings');
+
+              case 2:
+                res = _context.sent;
+
+                if (res.status === 200) {
+                  _this2.bookings = res.data.data;
+                }
+
+              case 4:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
+    },
+    getStations: function getStations() {
+      var _this3 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+        var res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return _this3.callApi('get', '/api/v1/stations');
+
+              case 2:
+                res = _context2.sent;
+
+                if (res.status === 200) {
+                  _this3.stations = res.data.data;
+                }
+
+              case 4:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }))();
+    },
+    getGames: function getGames() {
+      var _this4 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+        var res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.next = 2;
+                return _this4.callApi('get', '/api/v1/games');
+
+              case 2:
+                res = _context3.sent;
+
+                if (res.status === 200) {
+                  _this4.games = res.data.data;
+                }
+
+              case 4:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
+      }))();
     }
-  }
+  }, _defineProperty(_methods, "getBookings", function getBookings() {
+    var _arguments = arguments,
+        _this5 = this;
+
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
+      var page, res;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
+        while (1) {
+          switch (_context4.prev = _context4.next) {
+            case 0:
+              page = _arguments.length > 0 && _arguments[0] !== undefined ? _arguments[0] : 1;
+              _context4.next = 3;
+              return _this5.callApi('get', "/api/v1/stations?page=".concat(page, "\n        &total=").concat(_this5.total, "\n        &q=").concat(_this5.search, "\n        &select=").concat(_this5.selected, "\n        &sort_direction=").concat(_this5.sort_direction, "\n        &sort_field=").concat(_this5.sort_field));
+
+            case 3:
+              res = _context4.sent;
+
+              if (res.status === 200) {
+                _this5.bookings = res.data.data;
+              }
+
+            case 5:
+            case "end":
+              return _context4.stop();
+          }
+        }
+      }, _callee4);
+    }))();
+  }), _defineProperty(_methods, "createBooking", function createBooking() {
+    var _this6 = this;
+
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5() {
+      var res, i;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
+        while (1) {
+          switch (_context5.prev = _context5.next) {
+            case 0:
+              _this6.processing = true;
+              _context5.next = 3;
+              return _this6.callApi('post', '/api/v1/bookings', _this6.form);
+
+            case 3:
+              res = _context5.sent;
+
+              if (res.status === 200) {
+                _this6.processing = false;
+
+                _this6.closeModal();
+
+                _this6.s('You have successfully made a resevation');
+
+                _this6.getBookings();
+              } else {
+                if (res.status === 401 || res.status === 422) {
+                  _this6.processing = false;
+
+                  for (i in res.data.errors) {
+                    _this6.e(res.data.errors[i][0]);
+                  }
+                } else {
+                  _this6.processing = false;
+
+                  _this6.swr();
+                }
+              }
+
+            case 5:
+            case "end":
+              return _context5.stop();
+          }
+        }
+      }, _callee5);
+    }))();
+  }), _methods)
 });
 
 /***/ }),
@@ -575,7 +810,47 @@ var render = function () {
             ]),
           ]),
           _vm._v(" "),
-          _vm._m(2),
+          _c("div", { staticClass: "card-body p-3 pb-0" }, [
+            _c(
+              "ul",
+              { staticClass: "list-group" },
+              _vm._l(_vm.bookings.data, function (booking, i) {
+                return _c(
+                  "li",
+                  {
+                    key: i,
+                    staticClass:
+                      "\n                list-group-item\n                border-0\n                d-flex\n                justify-content-between\n                ps-0\n                mb-2\n                border-radius-lg\n              ",
+                  },
+                  [
+                    _c("div", { staticClass: "d-flex flex-column" }, [
+                      _c(
+                        "h6",
+                        {
+                          staticClass:
+                            "mb-1 text-dark font-weight-bold text-sm",
+                        },
+                        [
+                          _vm._v(
+                            "\n                 " +
+                              _vm._s(booking.id) +
+                              "\n                "
+                          ),
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "text-xs" }, [
+                        _vm._v("#MS-415646"),
+                      ]),
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(2, true),
+                  ]
+                )
+              }),
+              0
+            ),
+          ]),
         ]),
       ]),
     ]),
@@ -622,22 +897,112 @@ var render = function () {
                   [
                     _c("FormulateInput", {
                       attrs: {
-                        type: "text",
+                        type: "date",
                         required: "",
-                        label: "Category Name",
+                        label: "Booking Date",
                         validation: "required",
                       },
                       model: {
-                        value: _vm.form.name,
+                        value: _vm.form.booking_date,
                         callback: function ($$v) {
-                          _vm.$set(_vm.form, "name", $$v)
+                          _vm.$set(_vm.form, "booking_date", $$v)
                         },
-                        expression: "form.name",
+                        expression: "form.booking_date",
                       },
                     }),
                   ],
                   1
                 ),
+                _vm._v(" "),
+                _c("div", { staticClass: "row mt-4" }, [
+                  _c(
+                    "div",
+                    { staticClass: "col-12" },
+                    [
+                      _c("Label", [_vm._v("Game")]),
+                      _vm._v(" "),
+                      _c(
+                        "Select",
+                        {
+                          model: {
+                            value: _vm.form.game_id,
+                            callback: function ($$v) {
+                              _vm.$set(_vm.form, "game_id", $$v)
+                            },
+                            expression: "form.game_id",
+                          },
+                        },
+                        _vm._l(_vm.games, function (game, i) {
+                          return _c(
+                            "Option",
+                            {
+                              key: i,
+                              attrs: {
+                                value: game.id,
+                                clearable: "",
+                                filterable: "",
+                              },
+                            },
+                            [
+                              _vm._v(
+                                "\n                  " +
+                                  _vm._s(game.name) +
+                                  "\n                "
+                              ),
+                            ]
+                          )
+                        }),
+                        1
+                      ),
+                    ],
+                    1
+                  ),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "row mt-4" }, [
+                  _c(
+                    "div",
+                    { staticClass: "col-12" },
+                    [
+                      _c("Label", [_vm._v("Station")]),
+                      _vm._v(" "),
+                      _c(
+                        "Select",
+                        {
+                          model: {
+                            value: _vm.form.station_id,
+                            callback: function ($$v) {
+                              _vm.$set(_vm.form, "station_id", $$v)
+                            },
+                            expression: "form.station_id",
+                          },
+                        },
+                        _vm._l(_vm.stations, function (station, i) {
+                          return _c(
+                            "Option",
+                            {
+                              key: i,
+                              attrs: {
+                                value: station.id,
+                                clearable: "",
+                                filterable: "",
+                              },
+                            },
+                            [
+                              _vm._v(
+                                "\n                  " +
+                                  _vm._s(station.name) +
+                                  "\n                "
+                              ),
+                            ]
+                          )
+                        }),
+                        1
+                      ),
+                    ],
+                    1
+                  ),
+                ]),
                 _vm._v(" "),
                 _c(
                   "div",
@@ -745,7 +1110,7 @@ var render = function () {
                         attrs: { type: "button", disabled: _vm.processing },
                         on: {
                           click: function ($event) {
-                            return _vm.createCategory()
+                            return _vm.createBooking()
                           },
                         },
                       },
@@ -1062,48 +1427,19 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-body p-3 pb-0" }, [
-      _c("ul", { staticClass: "list-group" }, [
-        _c(
-          "li",
-          {
-            staticClass:
-              "\n                list-group-item\n                border-0\n                d-flex\n                justify-content-between\n                ps-0\n                mb-2\n                border-radius-lg\n              ",
-          },
-          [
-            _c("div", { staticClass: "d-flex flex-column" }, [
-              _c(
-                "h6",
-                { staticClass: "mb-1 text-dark font-weight-bold text-sm" },
-                [
-                  _vm._v(
-                    "\n                  March, 01, 2020\n                "
-                  ),
-                ]
-              ),
-              _vm._v(" "),
-              _c("span", { staticClass: "text-xs" }, [_vm._v("#MS-415646")]),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "d-flex align-items-center text-sm" }, [
-              _vm._v("\n                $180\n                "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-link text-dark text-sm mb-0 px-0 ms-4",
-                },
-                [
-                  _c("i", {
-                    staticClass: "fas fa-file-pdf text-lg me-1",
-                    attrs: { "aria-hidden": "true" },
-                  }),
-                  _vm._v("\n                  PDF\n                "),
-                ]
-              ),
-            ]),
-          ]
-        ),
-      ]),
+    return _c("div", { staticClass: "d-flex align-items-center text-sm" }, [
+      _vm._v("\n                $180\n                "),
+      _c(
+        "button",
+        { staticClass: "btn btn-link text-dark text-sm mb-0 px-0 ms-4" },
+        [
+          _c("i", {
+            staticClass: "fas fa-file-pdf text-lg me-1",
+            attrs: { "aria-hidden": "true" },
+          }),
+          _vm._v("\n                  PDF\n                "),
+        ]
+      ),
     ])
   },
   function () {

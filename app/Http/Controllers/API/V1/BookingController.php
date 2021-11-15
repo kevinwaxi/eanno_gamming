@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\API\V1;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Store\StoreBookingRequest;
+use App\Models\Booking;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Resources\BookingResource;
+use App\Http\Actions\Store\StoreBookingAction;
+use App\Http\Requests\Store\StoreBookingRequest;
 
 class BookingController extends Controller
 {
@@ -13,9 +16,33 @@ class BookingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
+        if ($request->total) {
+            $paginate = $request->total;
+            $search_term = request('q', '');
+            $selected = request('select');
+            $sort_direction = request('sort_direction', 'desc');
+            $sort_field = request('sort_field', 'created_at');
+
+            if (!in_array($sort_direction, ['asc', 'desc'])) {
+                $sort_direction = 'desc';
+            }
+            if (!in_array($sort_field, ['name', 'created_at'])) {
+                $sort_field = 'created_at';
+            }
+
+            $bookings = Booking::search(trim($search_term))
+                ->orderBy($sort_field, $sort_direction)
+                ->paginate($paginate);
+
+            return BookingResource::collection($bookings);
+        } else {
+            $bookings = Booking::all();
+            # code...
+            return BookingResource::collection($bookings);
+        }
     }
 
     /**
@@ -24,9 +51,10 @@ class BookingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreBookingRequest $request)
+    public function store(StoreBookingRequest $request,StoreBookingAction $storeBookingAction)
     {
         //
+        $storeBookingAction->execute($request);
     }
 
     /**

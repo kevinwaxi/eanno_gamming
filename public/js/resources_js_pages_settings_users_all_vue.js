@@ -908,6 +908,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -922,6 +923,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       form: {
         roles: []
       },
+      role: [],
       users: {},
       roles: {},
       total: 20,
@@ -975,10 +977,12 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   methods: {
     closeModal: function closeModal() {
       $('#modal-default').modal('hide');
-      this.restForm();
+      this.resetForm();
     },
-    restForm: function restForm() {
+    resetForm: function resetForm() {
       this.form.name = '';
+      this.role = [];
+      this.form.roles = [];
     },
     createModal: function createModal() {
       $('#modal-default').modal('show');
@@ -1006,13 +1010,15 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       this.banMode = true;
     },
     showAssignRoleModal: function showAssignRoleModal(user) {
+      this.resetForm();
+
       var _iterator = _createForOfIteratorHelper(user.roles),
           _step;
 
       try {
         for (_iterator.s(); !(_step = _iterator.n()).done;) {
           var r = _step.value;
-          this.form.roles.push(r.id);
+          this.role.push(r.id);
         }
       } catch (err) {
         _iterator.e(err);
@@ -1026,7 +1032,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         name: user.name,
         email: user.email,
         banned_until: user.banned_until,
-        roles: this.form.roles
+        roles: this.role
       };
       $('#modal-default').modal('show');
       this.form = obj;
@@ -2367,14 +2373,14 @@ var render = function () {
                                 expression: "form.roles",
                               },
                             },
-                            _vm._l(_vm.roles.data, function (r) {
+                            _vm._l(_vm.roles.data, function (role, i) {
                               return _c(
                                 "Option",
-                                { key: r.id, attrs: { value: r.name } },
+                                { key: i, attrs: { value: role.id } },
                                 [
                                   _vm._v(
                                     "\n                " +
-                                      _vm._s(r.name) +
+                                      _vm._s(role.name) +
                                       "\n              "
                                   ),
                                 ]

@@ -25,8 +25,8 @@ class StoreBookingRequest extends FormRequest
     {
         return [
             'booking_date' => ['required', 'date'],
-            'start_time' => ['required', 'date', 'date_format:H:i'],
-            'end_time' => ['required', 'date', 'date_format:H:i', 'after:start_time'],
+            'start_time' => ['required', 'date_format:H:i'],
+            'end_time' => ['required', 'date_format:H:i', 'after:start_time'],
             'station_id' => ['required'],
             'game_id' => ['required'],
         ];

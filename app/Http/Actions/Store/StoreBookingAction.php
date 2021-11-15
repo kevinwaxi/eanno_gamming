@@ -10,7 +10,7 @@ class StoreBookingAction
     public function execute(Request $request)
     {
         # code...
-        $booking = Booking::create([
+        Booking::create([
             'booking_date' => $request->booking_date,
             'user_id' => auth()->id(),
             'station_id' => $request->station_id,

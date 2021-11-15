@@ -743,57 +743,6 @@ export default {
         }
       }
     },
-    async deleteImage(editMode = false) {
-      let image
-      if (editMode) {
-        // for editing
-        this.newCover = true
-        image = this.form.cover_photo
-        this.form.cover_photo = ''
-        this.$refs.uploads.clearFiles()
-      } else {
-        image = this.form.cover_photo
-        this.form.cover_photo = ''
-        this.$refs.uploads.clearFiles()
-      }
-      const res = await this.callApi('post', '/api/v1/screens/deleteCover', {
-        image_name: image,
-      })
-      if (res.status !== 200) {
-        this.form.cover_photo = image
-        this.swr()
-      }
-    },
-    handleSuccess(res, file) {
-      if (this.isEditingItem) {
-        return (this.form.cover_photo = `/uploads/games/screen/${res}`)
-      }
-      res = `/uploads/games/screen/${res}`
-      this.form.cover_photo = res
-    },
-    handleError(res) {
-      this.$Notice.warning({
-        title: 'The file format is incorrect',
-        desc: `${
-          file.errors.file.length ? file.errors.file[0] : 'Something went wrong'
-        }`,
-      })
-    },
-    handleFormatError(file) {
-      this.$Notice.warning({
-        title: 'The file format is incorrect',
-        desc:
-          'File format of ' +
-          file.name +
-          ' is incorrect, please select jpg or png.',
-      })
-    },
-    handleMaxSize(file) {
-      this.$Notice.warning({
-        title: 'Exceeding file size limit',
-        desc: 'File  ' + file.name + ' is too large, no more than 2M.',
-      })
-    },
   },
 }
 </script>

@@ -225,6 +225,8 @@
           <div class="card-body p-3 pb-0">
             <ul class="list-group">
               <li
+                v-for="(booking,i) in bookings.data"
+                :key="i"
                 class="
                   list-group-item
                   border-0
@@ -237,7 +239,7 @@
               >
                 <div class="d-flex flex-column">
                   <h6 class="mb-1 text-dark font-weight-bold text-sm">
-                    March, 01, 2020
+                   {{booking.id}}
                   </h6>
                   <span class="text-xs">#MS-415646</span>
                 </div>
@@ -342,12 +344,44 @@
           <div class="modal-body">
             <div class="row">
               <FormulateInput
-                type="text"
+                type="date"
                 required
-                label="Category Name"
+                label="Booking Date"
                 validation="required"
-                v-model="form.name"
+                v-model="form.booking_date"
               />
+            </div>
+            <div class="row mt-4">
+              <div class="col-12">
+                <Label>Game</Label>
+                <Select v-model="form.game_id">
+                  <Option
+                    v-for="(game, i) in games"
+                    :value="game.id"
+                    :key="i"
+                    clearable
+                    filterable
+                  >
+                    {{ game.name }}
+                  </Option>
+                </Select>
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col-12">
+                <Label>Station</Label>
+                <Select v-model="form.station_id">
+                  <Option
+                    v-for="(station, i) in stations"
+                    :value="station.id"
+                    :key="i"
+                    clearable
+                    filterable
+                  >
+                    {{ station.name }}
+                  </Option>
+                </Select>
+              </div>
             </div>
             <div class="row">
               <Label>Time</Label>
@@ -401,7 +435,7 @@
               v-else
               type="button"
               class="btn bg-gradient-primary"
-              @click="createCategory()"
+              @click="createBooking()"
               :disabled="processing"
             >
               {{ processing ? 'Creating ...' : 'Create' }}
@@ -416,7 +450,7 @@
 export default {
   data() {
     return {
-      disabledHours: [22, 23, 0, 1, 2, 3, 4, 5, 6, 7, 8],
+      disabledHours: [22, 23, 0, 1, 2, 3, 4, 5, 6, 7],
       deleteModal: false,
       massDeleteModal: false,
       isDeleting: false,
@@ -425,6 +459,8 @@ export default {
       deletingItem: null,
       form: {},
       bookings: {},
+      stations: [],
+      games: [],
       total: 7,
       search: '',
       selected: '',
@@ -435,6 +471,36 @@ export default {
       sort_field: 'created_at',
       url: '',
     }
+  },
+  watch: {
+    total: function (value) {
+      this.getBookings()
+    },
+    search: function (value) {
+      this.getBookings()
+    },
+    selected: function (value) {
+      this.getBookings()
+    },
+    selectPage: function (value) {
+      this.checked = []
+      if (value) {
+        this.stations.data.forEach((station) => {
+          this.checked.push(station.id)
+        })
+      } else {
+        this.checked = []
+        this.selectAll = false
+      }
+    },
+    checked: function (value) {
+      this.url = '/api/v1/screens/export/' + this.checked
+    },
+  },
+  mounted() {
+    this.getBookings()
+    this.getGames()
+    this.getStations()
   },
   methods: {
     createModal() {
@@ -450,6 +516,58 @@ export default {
       this.form.game_id = ''
       this.start_time = ''
       this.end_time = ''
+    },
+    async getBookings() {
+      const res = await this.callApi('get', '/api/v1/bookings')
+      if (res.status === 200) {
+        this.bookings = res.data.data
+      }
+    },
+    async getStations() {
+      const res = await this.callApi('get', '/api/v1/stations')
+      if (res.status === 200) {
+        this.stations = res.data.data
+      }
+    },
+    async getGames() {
+      const res = await this.callApi('get', '/api/v1/games')
+      if (res.status === 200) {
+        this.games = res.data.data
+      }
+    },
+    async getBookings(page = 1) {
+      const res = await this.callApi(
+        'get',
+        `/api/v1/stations?page=${page}
+        &total=${this.total}
+        &q=${this.search}
+        &select=${this.selected}
+        &sort_direction=${this.sort_direction}
+        &sort_field=${this.sort_field}`
+      )
+      if (res.status === 200) {
+        this.bookings = res.data.data
+      }
+    },
+    async createBooking() {
+      this.processing = true
+      const res = await this.callApi('post', '/api/v1/bookings', this.form)
+      if (res.status === 200) {
+        this.processing = false
+        this.closeModal()
+        this.s('You have successfully made a resevation')
+        this.getBookings()
+      } else {
+        if (res.status === 401 || res.status === 422) {
+          this.processing = false
+          for (let i in res.data.errors) {
+            this.e(res.data.errors[i][0])
+          }
+        } else {
+          this.processing = false
+          this.swr()
+        }
+      }
     },
   },
 }

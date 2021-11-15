@@ -377,6 +377,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       this.form.release_date = '';
       this.form.players = '';
       this.form.category_id = [];
+      this.category = [];
     },
     createModal: function createModal() {
       $('#modal-default').modal('show');
@@ -452,7 +453,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
                 if (res.status === 200) {
                   _this2.checked = res.data;
                   _this2.selectAll = true;
-                  console.log(_this2.selectAll);
                 }
 
               case 4:

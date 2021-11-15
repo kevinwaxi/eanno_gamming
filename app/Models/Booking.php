@@ -24,8 +24,6 @@ class Booking extends Model
 
     protected $casts = [
         'booking_date' => 'datetime',
-        'start_time' => 'time',
-        'end_time' => 'time',
         'check_in' => 'datetime',
         'check_out' => 'datetime',
     ];
@@ -37,7 +35,7 @@ class Booking extends Model
      */
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'user_id');
     }
 
     /**
@@ -47,7 +45,7 @@ class Booking extends Model
      */
     public function station(): BelongsTo
     {
-        return $this->belongsTo(Station::class);
+        return $this->belongsTo(Station::class,'station_id');
     }
 
     /**

@@ -348,6 +348,7 @@ export default {
       this.form.release_date = ''
       this.form.players = ''
       this.form.category_id = []
+      this.category = []
     },
     createModal() {
       $('#modal-default').modal('show')
@@ -397,7 +398,6 @@ export default {
       if (res.status === 200) {
         this.checked = res.data
         this.selectAll = true
-        console.log(this.selectAll)
       }
     },
     async getGames(page = 1) {

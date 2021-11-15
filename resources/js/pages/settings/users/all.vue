@@ -497,7 +497,7 @@
       <div class="col-12">
         <div class="card">
           <div class="card-header">
-              <div class="row">
+            <div class="row">
               <div class="col-3 flex">
                 <label for="search"> Search </label>
                 <div class="input-group">
@@ -537,10 +537,7 @@
                   <option value="10">10</option>
                   <option value="20">20</option>
                   <option value="30">30</option>
-                  <option
-                    v-if="users.data"
-                    :value="users.meta.total"
-                  >
+                  <option v-if="users.data" :value="users.meta.total">
                     All {{ users.meta.total }}
                   </option>
                 </select>
@@ -820,8 +817,12 @@
             </div>
             <div v-else>
               <Select v-model="form.roles" multiple :max-tag-count="5">
-                <Option v-for="r in roles.data" :value="r.name" :key="r.id">
-                  {{ r.name }}
+                <Option
+                  v-for="(role, i) in roles.data"
+                  :value="role.id"
+                  :key="i"
+                >
+                  {{ role.name }}
                 </Option>
               </Select>
             </div>
@@ -896,6 +897,7 @@ export default {
       form: {
         roles: [],
       },
+      role: [],
       users: {},
       roles: {},
       total: 20,
@@ -946,10 +948,12 @@ export default {
   methods: {
     closeModal() {
       $('#modal-default').modal('hide')
-      this.restForm()
+      this.resetForm()
     },
-    restForm() {
+    resetForm() {
       this.form.name = ''
+      this.role = []
+      this.form.roles = []
     },
     createModal() {
       $('#modal-default').modal('show')
@@ -977,8 +981,9 @@ export default {
       this.banMode = true
     },
     showAssignRoleModal(user) {
+      this.resetForm()
       for (let r of user.roles) {
-        this.form.roles.push(r.id)
+        this.role.push(r.id)
       }
       let obj = {
         id: user.id,
@@ -986,7 +991,7 @@ export default {
         name: user.name,
         email: user.email,
         banned_until: user.banned_until,
-        roles: this.form.roles,
+        roles: this.role,
       }
       $('#modal-default').modal('show')
       this.form = obj
