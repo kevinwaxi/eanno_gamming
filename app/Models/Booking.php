@@ -35,7 +35,7 @@ class Booking extends Model
      */
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class,'user_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     /**
@@ -45,7 +45,7 @@ class Booking extends Model
      */
     public function station(): BelongsTo
     {
-        return $this->belongsTo(Station::class,'station_id');
+        return $this->belongsTo(Station::class, 'station_id');
     }
 
     /**
@@ -58,4 +58,19 @@ class Booking extends Model
         return $this->belongsTo(Game::class);
     }
 
+    public function scopeSearch($query, $term)
+    {
+        # code...
+        $term = "%$term%";
+
+        $query->where(function ($query) use ($term) {
+            $query->where('booking_date', 'like', $term)
+                ->orWhere('start_time', 'like', $term)
+                ->orWhere('end_time', 'like', $term)
+                ->orWhereHas('station', function ($query) use ($term) {
+                    $query->where('name', 'like', $term);
+                });
+
+        });
+    }
 }

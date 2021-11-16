@@ -225,7 +225,7 @@
           <div class="card-body p-3 pb-0">
             <ul class="list-group">
               <li
-                v-for="(booking,i) in bookings.data"
+                v-for="(booking, i) in bookings.data"
                 :key="i"
                 class="
                   list-group-item
@@ -239,17 +239,15 @@
               >
                 <div class="d-flex flex-column">
                   <h6 class="mb-1 text-dark font-weight-bold text-sm">
-                   {{booking.id}}
+                    {{ booking.id }}
                   </h6>
-                  <span class="text-xs">#MS-415646</span>
+                  <span class="text-xs">{{ booking.date }}</span>
                 </div>
                 <div class="d-flex align-items-center text-sm">
-                  $180
+                  {{ booking.start }} - {{ booking.end }}
                   <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4">
-                    <i
-                      class="fas fa-file-pdf text-lg me-1"
-                      aria-hidden="true"
-                    ></i>
+                    <i class="fas fa-file-pdf text-lg me-1" aria-hidden="true">
+                    </i>
                     PDF
                   </button>
                 </div>
@@ -271,23 +269,23 @@
             <div class="table-responsive">
               <table class="table align-items-center">
                 <tbody>
-                  <tr>
+                  <tr v-for="(booking, i) in bookings.data" :key="i">
                     <td>
                       <div class="text-center">
                         <p class="text-xs font-weight-bold mb-0">Date:</p>
-                        <h6 class="text-sm mb-0">Nov 31</h6>
+                        <h6 class="text-sm mb-0">{{booking.date}}</h6>
                       </div>
                     </td>
                     <td>
                       <div class="text-center">
                         <p class="text-xs font-weight-bold mb-0">Station:</p>
-                        <h6 class="text-sm mb-0">Station Number</h6>
+                        <h6 class="text-sm mb-0">{{booking.station.name}}</h6>
                       </div>
                     </td>
                     <td>
                       <div class="text-center">
                         <p class="text-xs font-weight-bold mb-0">Time:</p>
-                        <h6 class="text-sm mb-0">3Hrs</h6>
+                        <h6 class="text-sm mb-0">{{booking.time}}</h6>
                       </div>
                     </td>
                     <td>
@@ -494,7 +492,7 @@ export default {
       }
     },
     checked: function (value) {
-      this.url = '/api/v1/screens/export/' + this.checked
+      this.url = '/api/v1/bookings/export/' + this.checked
     },
   },
   mounted() {
@@ -517,12 +515,7 @@ export default {
       this.start_time = ''
       this.end_time = ''
     },
-    async getBookings() {
-      const res = await this.callApi('get', '/api/v1/bookings')
-      if (res.status === 200) {
-        this.bookings = res.data.data
-      }
-    },
+
     async getStations() {
       const res = await this.callApi('get', '/api/v1/stations')
       if (res.status === 200) {
@@ -538,7 +531,7 @@ export default {
     async getBookings(page = 1) {
       const res = await this.callApi(
         'get',
-        `/api/v1/stations?page=${page}
+        `/api/v1/bookings?page=${page}
         &total=${this.total}
         &q=${this.search}
         &select=${this.selected}
@@ -546,7 +539,7 @@ export default {
         &sort_field=${this.sort_field}`
       )
       if (res.status === 200) {
-        this.bookings = res.data.data
+        this.bookings = res.data
       }
     },
     async createBooking() {

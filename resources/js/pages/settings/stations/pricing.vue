@@ -219,7 +219,7 @@
     </div>
     <div class="row mt-lg-4 mt-2">
       <div
-        class="col-lg-4 col-md-6 mb-4"
+        class="col-6 mb-4"
         v-for="(price, i) in prices.data"
         :key="i"
       >
@@ -235,7 +235,7 @@
                 />
               </div>
               <div class="ms-3 my-auto">
-                <h6>{{ price.package }}</h6>
+                <h6>{{ price.price }} per Hour</h6>
               </div>
               <div class="ms-auto">
                 <div class="dropdown">
@@ -281,31 +281,9 @@
                 </p>
               </div>
               <div class="col-6 text-end">
-                <h6 class="text-sm mb-0">
-                  <span v-if="price.days.i < 2 && price.days.d < 1">
-                    a few seconds
-                  </span>
-                  <span
-                    v-if="
-                      price.days.i > 1 && price.days.h < 1 && price.days.d < 1
-                    "
-                  >
-                    {{ price.days.i }} minutes
-                  </span>
-                  <span
-                    v-if="
-                      price.days.i > 1 && price.days.h >= 1 && price.days.d < 1
-                    "
-                  >
-                    {{ price.days.h }} hour
-                  </span>
-                  <span v-if="price.days.d >= 1"> {{ price.days.d }} day </span>
-                  <span v-if="price.days.d > 1"> {{ price.days.d }} days </span>
-                  ago
-                </h6>
-                <p class="text-secondary text-sm font-weight-bold mb-0">
-                  last updated
-                </p>
+                <span v-for="(p, i) in price.station" :key="i">
+                  <Tag color="geekblue">{{ p.name }}</Tag>
+                </span>
               </div>
             </div>
           </div>
@@ -340,13 +318,18 @@
           <div class="modal-body">
             <div class="row">
               <div class="col-12">
-                <FormulateInput
-                  type="text"
-                  required
-                  label="Package Name"
-                  validation="required"
-                  v-model="form.package_name"
-                />
+                <Select v-model="form.station_id" multiple :max-tag-count="5">
+                  <Option
+                    v-for="(station, i) in stations.data"
+                    :value="station.id"
+                    :key="i"
+                  >
+                    {{ station.name }}
+                    <span style="float: right; color: rgb(228, 196, 196)">
+                      {{ station.console.type }}
+                    </span>
+                  </Option>
+                </Select>
               </div>
             </div>
             <div class="row">
@@ -354,7 +337,7 @@
                 <FormulateInput
                   type="number"
                   required
-                  label="Price"
+                  label="Price per Hour"
                   v-model="form.price"
                   validation="required|number|between:50,500"
                   min="50"
@@ -443,9 +426,12 @@ export default {
       editMode: false,
       processing: false,
       deletingItem: null,
-      form: {},
+      form: {
+        station_id: [],
+      },
       prices: {},
-      roles: {},
+      stations: {},
+      station: [],
       total: 20,
       search: '',
       selected: '',
@@ -484,6 +470,7 @@ export default {
   },
   mounted() {
     this.getPriceList()
+    this.getStations()
   },
   methods: {
     closeModal() {
@@ -537,6 +524,12 @@ export default {
         console.log(this.selectAll)
       }
     },
+    async getStations() {
+      const res = await this.callApi('get', '/api/v1/stations')
+      if (res.status === 200) {
+        this.stations = res.data
+      }
+    },
     async getPriceList(page = 1) {
       const res = await this.callApi(
         'get',
@@ -562,7 +555,7 @@ export default {
     async createPrice() {
       this.processing = true
       const res = await this.callApi('post', '/api/v1/prices', this.form)
-      if (res.status === 201) {
+      if (res.status === 200) {
         this.s('Price created successfully')
         this.closeModal()
         this.getPriceList()

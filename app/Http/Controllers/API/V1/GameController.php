@@ -26,8 +26,6 @@ class GameController extends Controller
                 ->with(['categories'])
                 ->paginate($request->total)
                 ->appends($request->query());
-
-
         return $games;
 
     }

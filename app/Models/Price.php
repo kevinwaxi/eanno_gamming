@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Price extends Model
 {
@@ -15,7 +17,7 @@ class Price extends Model
         'details',
         'number_of_players',
         'is_available',
-        'deleted_at'
+        'deleted_at',
     ];
 
     protected $casts = [
@@ -28,9 +30,19 @@ class Price extends Model
         $term = "%$term%";
 
         $query->where(function ($query) use ($term) {
-            $query->where('package_name', 'like', $term)
+            $query->where('number_of_players', 'like', $term)
                 ->orWhere('details', 'like', $term)
                 ->orWhere('price', 'like', $term);
         });
+    }
+
+    /**
+     * The station that belong to the Price
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function station(): BelongsToMany
+    {
+        return $this->belongsToMany(Station::class,'price_stations');
     }
 }

@@ -24,6 +24,7 @@ class PriceResource extends JsonResource
             'created' => $this->created_at,
             'updated' => $this->updated_at->toFormattedDateSTring(),
             'days' => date_diff(now(), $this->updated_at),
+            'station' => $this->station
         ];
     }
 }

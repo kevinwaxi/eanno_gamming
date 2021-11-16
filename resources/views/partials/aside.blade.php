@@ -42,8 +42,8 @@
                     <ul class="nav ms-4 ps-3">
                         <li class="nav-item">
                             <a class="nav-link" href="../../pages/dashboards/default.html">
-                                <span class="sidenav-mini-icon"> D </span>
-                                <span class="sidenav-normal"> Default </span>
+                                <span class="sidenav-mini-icon"> H </span>
+                                <span class="sidenav-normal"> Home </span>
                             </a>
                         </li>
                         <li class="nav-item ">
@@ -55,36 +55,7 @@
                         <li class="nav-item ">
                             <a class="nav-link " href="../../pages/dashboards/smart-home.html">
                                 <span class="sidenav-mini-icon"> S </span>
-                                <span class="sidenav-normal"> Smart Home </span>
-                            </a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link " data-bs-toggle="collapse" aria-expanded="false"
-                                href="#vrExamples">
-                                <span class="sidenav-mini-icon"> V </span>
-                                <span class="sidenav-normal"> Virtual Reality <b class="caret"></b></span>
-                            </a>
-                            <div class="collapse " id="vrExamples">
-                                <ul class="nav nav-sm flex-column">
-                                    <li class="nav-item">
-                                        <a class="nav-link " href="../../pages/dashboards/vr/vr-default.html">
-                                            <span class="sidenav-mini-icon text-xs"> V </span>
-                                            <span class="sidenav-normal"> VR Default </span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link " href="../../pages/dashboards/vr/vr-info.html">
-                                            <span class="sidenav-mini-icon text-xs"> V </span>
-                                            <span class="sidenav-normal"> VR Info </span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link " href="../../pages/dashboards/crm.html">
-                                <span class="sidenav-mini-icon"> C </span>
-                                <span class="sidenav-normal"> CRM </span>
+                                <span class="sidenav-normal"> System </span>
                             </a>
                         </li>
                     </ul>
@@ -359,12 +330,6 @@
                                     </li>
                                 </ul>
                             </div>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link " href="../../pages/ecommerce/referral.html">
-                                <span class="sidenav-mini-icon"> R </span>
-                                <span class="sidenav-normal"> Referral </span>
-                            </a>
                         </li>
                     </ul>
                 </div>

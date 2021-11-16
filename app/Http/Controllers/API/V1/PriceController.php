@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API\V1;
 
+use App\Http\Actions\Store\StorePriceAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Store\StorePriceRequest;
 use App\Http\Requests\Update\UpdatePriceRequest;
@@ -57,13 +58,10 @@ class PriceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorePriceRequest $request)
+    public function store(StorePriceRequest $request, StorePriceAction $storePriceAction)
     {
         //
-        $price = new Price($request->all());
-        $price->save();
-
-        return $price;
+        $storePriceAction->execute($request);
     }
 
     /**

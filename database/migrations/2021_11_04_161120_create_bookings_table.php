@@ -23,7 +23,8 @@ class CreateBookingsTable extends Migration
             $table->time('end_time');
             $table->datetime('check_in')->nullable();
             $table->datetime('check_out')->nullable();
-            $table->string('token')->nullable();
+            $table->timestamp('verified_at')->nullable();
+            $table->timestamp('rejected_at')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

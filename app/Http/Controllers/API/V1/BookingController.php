@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\API\V1;
 
+use App\Http\Actions\Store\StoreBookingAction;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Store\StoreBookingRequest;
+use App\Http\Resources\BookingResource;
 use App\Models\Booking;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Http\Resources\BookingResource;
-use App\Http\Actions\Store\StoreBookingAction;
-use App\Http\Requests\Store\StoreBookingRequest;
 
 class BookingController extends Controller
 {
@@ -20,6 +20,7 @@ class BookingController extends Controller
     {
         //
         if ($request->total) {
+            $user_id = auth()->user()->id;
             $paginate = $request->total;
             $search_term = request('q', '');
             $selected = request('select');
@@ -33,7 +34,8 @@ class BookingController extends Controller
                 $sort_field = 'created_at';
             }
 
-            $bookings = Booking::search(trim($search_term))
+            $bookings = Booking::where('user_id', $user_id)
+                ->search(trim($search_term))
                 ->orderBy($sort_field, $sort_direction)
                 ->paginate($paginate);
 
@@ -51,7 +53,7 @@ class BookingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreBookingRequest $request,StoreBookingAction $storeBookingAction)
+    public function store(StoreBookingRequest $request, StoreBookingAction $storeBookingAction)
     {
         //
         $storeBookingAction->execute($request);
