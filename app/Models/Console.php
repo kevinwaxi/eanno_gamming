@@ -12,12 +12,21 @@ class Console extends Model
 
     protected $fillable = [
         'serial_number',
-        'type',
-        'gen',
+        'type_id',
         'storage',
         'storage_size',
         'condition_id',
     ];
+
+    /**
+     * Get the type that owns the Console
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function type(): BelongsTo
+    {
+        return $this->belongsTo(Type::class, 'type_id');
+    }
 
     /**
      * Get the condition associated with the Console
@@ -46,10 +55,12 @@ class Console extends Model
 
         $query->where(function ($query) use ($term) {
             $query->where('serial_number', 'like', $term)
-                ->orWhere('type', 'like', $term)
-                ->orWhere('gen', 'like', $term)
                 ->orWhere('storage', 'like', $term)
-                ->orWhere('storage_size', 'like', $term);
+                ->orWhere('storage_size', 'like', $term)
+                ->orWhereHas('type', function ($query) use ($term) {
+                    $query->where('name', 'like', $term)
+                        ->orWhere('slug', 'like', $term);
+                });
         });
     }
 

@@ -8,6 +8,7 @@ use App\Http\Requests\Store\StoreBookingRequest;
 use App\Http\Resources\BookingResource;
 use App\Models\Booking;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpKernel\Event\ResponseEvent;
 
 class BookingController extends Controller
 {
@@ -45,6 +46,17 @@ class BookingController extends Controller
             # code...
             return BookingResource::collection($bookings);
         }
+    }
+
+    public function getDates(Request $request)
+    {
+        # code...
+        $date = date($request->booking_date);
+
+       $booking = Booking::where('booking_date', $date)->get();
+
+       return response()->json($booking);
+
     }
 
     /**

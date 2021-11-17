@@ -148,7 +148,7 @@
                           <p
                             class="text-sm font-weight-bold text-secondary mb-0"
                           >
-                            <span class="text-success">8.232</span> orders
+                            <span>{{ console.type.name }}</span>
                           </p>
                         </div>
                       </div>
@@ -277,29 +277,15 @@
             <div class="row">
               <div class="col-6">
                 <Label>Console Type</Label>
-                <Select v-model="form.type">
+                <Select v-model="form.type_id">
                   <Option
-                    v-for="item in type"
-                    :value="item.value"
-                    :key="item.value"
+                    v-for="(type, i) in types"
+                    :value="type.id"
+                    :key="i"
                     clearable
                     filterable
                   >
-                    {{ item.name }}</Option
-                  >
-                </Select>
-              </div>
-              <div class="col-6">
-                <Label>Console Generation</Label>
-                <Select v-model="form.gen">
-                  <Option
-                    v-for="item in gen"
-                    :value="item.value"
-                    :key="item.value"
-                    clearable
-                    filterable
-                  >
-                    {{ item.name }}</Option
+                    {{ type.name }}</Option
                   >
                 </Select>
               </div>
@@ -426,6 +412,7 @@ export default {
       form: {},
       consoles: {},
       conditions: [],
+      types: [],
       token: '',
       total: 20,
       search: '',
@@ -436,42 +423,6 @@ export default {
       sort_direction: 'desc',
       sort_field: 'created_at',
       url: '',
-      type: [
-        {
-          name: 'Play Station 5',
-          value: 'ps5',
-        },
-        {
-          name: 'Play Station 4',
-          value: 'ps4',
-        },
-        {
-          name: 'Play Station 3',
-          value: 'ps3',
-        },
-        {
-          name: 'Play Station 2',
-          value: 'ps2',
-        },
-        {
-          name: 'X-Box 360',
-          value: 'xbox360',
-        },
-      ],
-      gen: [
-        {
-          name: 'First Generation',
-          value: 'First',
-        },
-        {
-          name: 'Second Generation',
-          value: 'Second',
-        },
-        {
-          name: 'Third Generation',
-          value: 'Third',
-        },
-      ],
       storage: [
         {
           name: 'Solid State Disk',
@@ -510,6 +461,7 @@ export default {
     },
   },
   mounted() {
+    this.getType()
     this.getConsoles()
     this.getCondition()
   },
@@ -520,8 +472,6 @@ export default {
     },
     restForm() {
       this.form.serial_number = ''
-      this.form.type = ''
-      this.form.gen = ''
       this.form.storage = ''
       this.form.storage_size = ''
       this.form.condition_id = ''
@@ -534,8 +484,6 @@ export default {
       let obj = {
         id: console.id,
         serial_number: console.serial_number,
-        type: console.type,
-        gen: console.generation,
         storage: console.storage,
         storage_size: console.storage_size,
         condition_id: console.condition.id,
@@ -549,8 +497,6 @@ export default {
       let obj = {
         id: console.id,
         serial_number: console.serial_number,
-        type: console.type,
-        gen: console.generation,
         storage: console.storage,
         storage_size: console.storage_size,
         condition_id: console.condition.id,
@@ -585,6 +531,12 @@ export default {
       const res = await this.callApi('get', '/api/v1/conditions')
       if (res.status === 200) {
         this.conditions = res.data
+      }
+    },
+    async getType() {
+      const res = await this.callApi('get', '/api/v1/types')
+      if (res.status === 200) {
+        this.types = res.data
       }
     },
     async getConsoles(page = 1) {

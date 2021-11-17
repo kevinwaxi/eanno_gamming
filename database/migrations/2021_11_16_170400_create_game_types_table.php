@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateConsolesTable extends Migration
+class CreateGameTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,9 @@ class CreateConsolesTable extends Migration
      */
     public function up()
     {
-        Schema::create('consoles', function (Blueprint $table) {
-            $table->id();
+        Schema::create('game_types', function (Blueprint $table) {
+            $table->foreignId('game_id')->constrained()->onDelete('cascade');
             $table->foreignId('type_id')->constrained()->onDelete('cascade');
-            $table->foreignId('condition_id')->constrained()->onDelete('cascade');
-            $table->string('serial_number')->unique();
-            $table->enum('storage', ['SSD', 'HDD']);
-            $table->string('storage_size');
             $table->timestamps();
         });
     }
@@ -31,6 +27,6 @@ class CreateConsolesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('consoles');
+        Schema::dropIfExists('game_types');
     }
 }

@@ -316,7 +316,6 @@
                           <p
                             class="text-sm font-weight-bold text-secondary mb-0"
                           >
-                            <span class="text-success">8.232</span> orders
                           </p>
                         </div>
                       </div>
@@ -329,9 +328,8 @@
                       </p>
                       <p class="text-sm font-weight-bold text-secondary mb-0">
                         <span class="text-dark">
-                          {{ station.console.type }}
+                          {{ station.console.type.name }}
                         </span>
-                        {{ station.console.gen }} Generation
                       </p>
                     </td>
                     <td class="align-middle text-center text-sm">
@@ -345,7 +343,7 @@
                         <span class="text-dark">
                           {{ station.screen.make.name }}
                         </span>
-                        {{ station.screen.model_number }}
+                        {{ station.screen.model }}
                       </p>
                     </td>
                     <td class="align-middle text-end">

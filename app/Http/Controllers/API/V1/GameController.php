@@ -23,7 +23,7 @@ class GameController extends Controller
     {
         //
         $games = QueryBuilder::for(Game::class)
-                ->with(['categories'])
+                ->with(['categories','types'])
                 ->paginate($request->total)
                 ->appends($request->query());
         return $games;

@@ -465,6 +465,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -487,7 +489,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       selectAll: false,
       sort_direction: 'desc',
       sort_field: 'created_at',
-      url: ''
+      url: '',
+      fromToday: {
+        disabledDate: function disabledDate(date) {
+          return date && date.valueOf() < Date.now() - 86400000;
+        }
+      }
     };
   },
   watch: {
@@ -802,7 +809,7 @@ var render = function () {
                         [
                           _vm._v(
                             "\n                  " +
-                              _vm._s(booking.id) +
+                              _vm._s(booking.user.name) +
                               "\n                "
                           ),
                         ]
@@ -945,21 +952,29 @@ var render = function () {
                   "div",
                   { staticClass: "row" },
                   [
-                    _c("FormulateInput", {
-                      attrs: {
-                        type: "date",
-                        required: "",
-                        label: "Booking Date",
-                        validation: "required",
-                      },
-                      model: {
-                        value: _vm.form.booking_date,
-                        callback: function ($$v) {
-                          _vm.$set(_vm.form, "booking_date", $$v)
-                        },
-                        expression: "form.booking_date",
-                      },
-                    }),
+                    _c(
+                      "Col",
+                      { attrs: { span: "12" } },
+                      [
+                        _c("Label", [_vm._v("Date")]),
+                        _vm._v(" "),
+                        _c("DatePicker", {
+                          attrs: {
+                            type: "date",
+                            options: _vm.fromToday,
+                            placeholder: "Select date",
+                          },
+                          model: {
+                            value: _vm.form.booking_date,
+                            callback: function ($$v) {
+                              _vm.$set(_vm.form, "booking_date", $$v)
+                            },
+                            expression: "form.booking_date",
+                          },
+                        }),
+                      ],
+                      1
+                    ),
                   ],
                   1
                 ),

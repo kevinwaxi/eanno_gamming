@@ -239,7 +239,7 @@
               >
                 <div class="d-flex flex-column">
                   <h6 class="mb-1 text-dark font-weight-bold text-sm">
-                    {{ booking.id }}
+                    {{ booking.user.name }}
                   </h6>
                   <span class="text-xs">{{ booking.date }}</span>
                 </div>
@@ -273,19 +273,19 @@
                     <td>
                       <div class="text-center">
                         <p class="text-xs font-weight-bold mb-0">Date:</p>
-                        <h6 class="text-sm mb-0">{{booking.date}}</h6>
+                        <h6 class="text-sm mb-0">{{ booking.date }}</h6>
                       </div>
                     </td>
                     <td>
                       <div class="text-center">
                         <p class="text-xs font-weight-bold mb-0">Station:</p>
-                        <h6 class="text-sm mb-0">{{booking.station.name}}</h6>
+                        <h6 class="text-sm mb-0">{{ booking.station.name }}</h6>
                       </div>
                     </td>
                     <td>
                       <div class="text-center">
                         <p class="text-xs font-weight-bold mb-0">Time:</p>
-                        <h6 class="text-sm mb-0">{{booking.time}}</h6>
+                        <h6 class="text-sm mb-0">{{ booking.time }}</h6>
                       </div>
                     </td>
                     <td>
@@ -341,13 +341,15 @@
           </div>
           <div class="modal-body">
             <div class="row">
-              <FormulateInput
-                type="date"
-                required
-                label="Booking Date"
-                validation="required"
-                v-model="form.booking_date"
-              />
+              <Col span="12">
+                <Label>Date</Label>
+                <DatePicker
+                  type="date"
+                  :options="fromToday"
+                  v-model="form.booking_date"
+                  placeholder="Select date"
+                ></DatePicker>
+              </Col>
             </div>
             <div class="row mt-4">
               <div class="col-12">
@@ -468,6 +470,11 @@ export default {
       sort_direction: 'desc',
       sort_field: 'created_at',
       url: '',
+      fromToday: {
+        disabledDate(date) {
+          return date && date.valueOf() < Date.now() - 86400000
+        },
+      },
     }
   },
   watch: {

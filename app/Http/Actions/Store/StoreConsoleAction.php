@@ -11,8 +11,7 @@ class StoreConsoleAction
         # code...
         $console = Console::create([
             'serial_number' => $request->serial_number,
-            'type' => $request->type,
-            'gen' => $request->gen,
+            'type_id' => $request->type_id,
             'storage' => $request->storage,
             'storage_size' => $request->storage_size,
             'condition_id' => $request->condition_id,

@@ -18,7 +18,6 @@ class ConsoleResource extends JsonResource
             'id' => $this->id,
             'serial_number' => $this->serial_number,
             'type' => $this->type,
-            'generation' => $this->gen,
             'storage' => $this->storage,
             'storage_size' => $this->storage_size,
             'condition' => $this->condition,

@@ -4,6 +4,7 @@ namespace App\Http\Actions\Store;
 
 use App\Models\CategoryGame;
 use App\Models\Game;
+use App\Models\GameType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -20,9 +21,8 @@ class StoreGameAction
             'release_date' => $request->release_date,
             'players' => $request->players,
         ]);
-
+        // insert game category
         $categories = $request->category_id;
-
         $CategoryGames = [];
         foreach ($categories as $c) {
             array_push($CategoryGames, [
@@ -30,7 +30,17 @@ class StoreGameAction
                 'game_id' => $game->id,
             ]);
         }
-
         CategoryGame::insert($CategoryGames);
+
+        // insert game types
+        $types = $request->type_id;
+        $GameType = [];
+        foreach ($types as $t) {
+            array_push($GameType, [
+                'type_id' => $t,
+                'game_id' => $game->id,
+            ]);
+        }
+        GameType::insert($GameType);
     }
 }

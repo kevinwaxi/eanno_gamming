@@ -42,6 +42,18 @@
                         <Tag :color="c.color">{{ c.name }}</Tag>
                       </span>
                     </div>
+                    <div class="mt-1">
+                      <div class="row">Available games :</div>
+                      <div class="row">
+                        <div class="col-12">
+                          <span v-for="(console, i) in game.types" :key="i">
+                            <Tag type="dot" color="cyan" closable>
+                              {{ console.name }}
+                            </Tag>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </a>
@@ -85,15 +97,25 @@
               />
             </div>
             <div class="row mt-3">
-              <div class="col-8">
+              <div class="col-12">
                 <Label>Choose Categories</Label>
-                <Select v-model="form.category_id" multiple :max-tag-count="2">
+                <Select v-model="form.category_id" multiple :max-tag-count="5">
                   <Option
                     v-for="(category, i) in categories.data"
                     :value="category.id"
                     :key="i"
                   >
                     {{ category.name }}
+                  </Option>
+                </Select>
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-12">
+                <Label>Console Types Available</Label>
+                <Select v-model="form.type_id" multiple :max-tag-count="3">
+                  <Option v-for="(type, i) in types" :value="type.id" :key="i">
+                    {{ type.name }}
                   </Option>
                 </Select>
               </div>
@@ -280,16 +302,20 @@ export default {
       form: {
         cover_image: '',
         category_id: [],
+        type_id: [],
         category: [],
       },
       data: {
         cover_image: '',
         category_id: [],
+        type_id: [],
         category: [],
       },
       games: {},
       categories: {},
+      types: {},
       category: [],
+      type: [],
       token: '',
       total: 10,
       search: '',
@@ -331,6 +357,7 @@ export default {
     this.token = window.Laravel.csrfToken
     this.getGames()
     this.getCategories()
+    this.getConsoleTypes()
   },
   methods: {
     closeModals() {
@@ -347,8 +374,8 @@ export default {
       this.form.cover_image = ''
       this.form.release_date = ''
       this.form.players = ''
-      this.form.category_id = []
       this.category = []
+      this.type = []
     },
     createModal() {
       $('#modal-default').modal('show')
@@ -361,6 +388,9 @@ export default {
       for (let c of form.categories) {
         this.category.push(c.id)
       }
+      for (let t of form.types) {
+        this.type.push(t.id)
+      }
       let obj = {
         id: form.id,
         name: form.name,
@@ -369,6 +399,7 @@ export default {
         release_date: form.release_date,
         players: form.players,
         category_id: this.category,
+        type_id: this.type,
       }
       this.form = obj
     },
@@ -398,6 +429,12 @@ export default {
       if (res.status === 200) {
         this.checked = res.data
         this.selectAll = true
+      }
+    },
+    async getConsoleTypes() {
+      const res = await this.callApi('get', '/api/v1/types')
+      if (res.status === 200) {
+        this.types = res.data
       }
     },
     async getGames(page = 1) {

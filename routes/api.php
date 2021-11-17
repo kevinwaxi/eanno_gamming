@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InvitationController;
 use App\Http\Controllers\API\V1\GameController;
 use App\Http\Controllers\API\V1\MakeController;
+use App\Http\Controllers\API\V1\TypeController;
 use App\Http\Controllers\API\V1\UserController;
 use App\Http\Controllers\API\V1\PriceController;
 use App\Http\Controllers\API\V1\RolesController;
@@ -61,6 +62,8 @@ Route::prefix('v1')->middleware(['auth:api'])->group(function () {
     Route::apiResource('conditions', ConditionController::class);
     // api/v1/makes
     Route::apiResource('makes', MakeController::class);
+    // api/v1/type
+    Route::apiResource('types', TypeController::class);
     // api/v1/consoles
     Route::apiResource('consoles', ConsoleController::class);
     // api/v1/screens

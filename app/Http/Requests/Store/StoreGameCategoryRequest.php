@@ -26,7 +26,7 @@ class StoreGameCategoryRequest extends FormRequest
     {
         return [
             'name' => ['required', 'unique:categories'],
-            'description' => ['required', 'max:100', 'min:50'],
+            'description' => ['required', 'max:100'],
             'cover_photo' => ['required'],
             'color' => ['required'],
         ];

@@ -38,6 +38,7 @@ class StationController extends Controller
                     $query->where('id', $selected);
                 });
             })
+                ->with(['console', 'screen'])
                 ->search(trim($search_term))
                 ->orderBy($sort_field, $sort_direction)
                 ->paginate($paginate);

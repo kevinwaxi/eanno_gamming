@@ -22,6 +22,7 @@ class BookingResource extends JsonResource
             'end' => $this->end_time,
             'date' => Carbon::parse($this->booking_date)->format('d-m-Y'),
             'station' => $this->station,
+            'user' => $this->user
         ];
     }
 }

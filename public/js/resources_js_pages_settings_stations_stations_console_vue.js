@@ -418,20 +418,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -446,6 +432,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       form: {},
       consoles: {},
       conditions: [],
+      types: [],
       token: '',
       total: 20,
       search: '',
@@ -456,32 +443,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       sort_direction: 'desc',
       sort_field: 'created_at',
       url: '',
-      type: [{
-        name: 'Play Station 5',
-        value: 'ps5'
-      }, {
-        name: 'Play Station 4',
-        value: 'ps4'
-      }, {
-        name: 'Play Station 3',
-        value: 'ps3'
-      }, {
-        name: 'Play Station 2',
-        value: 'ps2'
-      }, {
-        name: 'X-Box 360',
-        value: 'xbox360'
-      }],
-      gen: [{
-        name: 'First Generation',
-        value: 'First'
-      }, {
-        name: 'Second Generation',
-        value: 'Second'
-      }, {
-        name: 'Third Generation',
-        value: 'Third'
-      }],
       storage: [{
         name: 'Solid State Disk',
         value: 'SSD'
@@ -520,6 +481,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }
   },
   mounted: function mounted() {
+    this.getType();
     this.getConsoles();
     this.getCondition();
   },
@@ -530,8 +492,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     restForm: function restForm() {
       this.form.serial_number = '';
-      this.form.type = '';
-      this.form.gen = '';
       this.form.storage = '';
       this.form.storage_size = '';
       this.form.condition_id = '';
@@ -544,8 +504,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var obj = {
         id: console.id,
         serial_number: console.serial_number,
-        type: console.type,
-        gen: console.generation,
         storage: console.storage,
         storage_size: console.storage_size,
         condition_id: console.condition.id
@@ -559,8 +517,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var obj = {
         id: console.id,
         serial_number: console.serial_number,
-        type: console.type,
-        gen: console.generation,
         storage: console.storage,
         storage_size: console.storage_size,
         condition_id: console.condition.id
@@ -640,36 +596,26 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee2);
       }))();
     },
-    getConsoles: function getConsoles() {
-      var _arguments = arguments,
-          _this4 = this;
+    getType: function getType() {
+      var _this4 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
-        var page, res, i;
+        var res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
-                page = _arguments.length > 0 && _arguments[0] !== undefined ? _arguments[0] : 1;
-                _context3.next = 3;
-                return _this4.callApi('get', "/api/v1/consoles?page=".concat(page, "\n        &total=").concat(_this4.total, "\n        &q=").concat(_this4.search, "\n        &select=").concat(_this4.selected, "\n        &sort_direction=").concat(_this4.sort_direction, "\n        &sort_field=").concat(_this4.sort_field));
+                _context3.next = 2;
+                return _this4.callApi('get', '/api/v1/types');
 
-              case 3:
+              case 2:
                 res = _context3.sent;
 
                 if (res.status === 200) {
-                  _this4.consoles = res.data;
-                } else {
-                  if (res.status === 401 || res.status === 422) {
-                    for (i in res.data.errors) {
-                      _this4.e(res.data.errors[i][0]);
-                    }
-                  } else {
-                    _this4.swr();
-                  }
+                  _this4.types = res.data;
                 }
 
-              case 5:
+              case 4:
               case "end":
                 return _context3.stop();
             }
@@ -677,41 +623,32 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee3);
       }))();
     },
-    createConsole: function createConsole() {
-      var _this5 = this;
+    getConsoles: function getConsoles() {
+      var _arguments = arguments,
+          _this5 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
-        var res, i;
+        var page, res, i;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
           while (1) {
             switch (_context4.prev = _context4.next) {
               case 0:
-                _this5.processing = true;
+                page = _arguments.length > 0 && _arguments[0] !== undefined ? _arguments[0] : 1;
                 _context4.next = 3;
-                return _this5.callApi('post', '/api/v1/consoles', _this5.form);
+                return _this5.callApi('get', "/api/v1/consoles?page=".concat(page, "\n        &total=").concat(_this5.total, "\n        &q=").concat(_this5.search, "\n        &select=").concat(_this5.selected, "\n        &sort_direction=").concat(_this5.sort_direction, "\n        &sort_field=").concat(_this5.sort_field));
 
               case 3:
                 res = _context4.sent;
 
                 if (res.status === 200) {
-                  _this5.s('Console created successfully');
-
-                  _this5.closeModal();
-
-                  _this5.getConsoles();
-
-                  _this5.processing = false;
+                  _this5.consoles = res.data;
                 } else {
-                  if (res.status === 422) {
+                  if (res.status === 401 || res.status === 422) {
                     for (i in res.data.errors) {
                       _this5.e(res.data.errors[i][0]);
                     }
-
-                    _this5.processing = false;
                   } else {
                     _this5.swr();
-
-                    _this5.processing = false;
                   }
                 }
 
@@ -723,7 +660,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee4);
       }))();
     },
-    updateConsole: function updateConsole(console_id) {
+    createConsole: function createConsole() {
       var _this6 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5() {
@@ -734,21 +671,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _this6.processing = true;
                 _context5.next = 3;
-                return _this6.callApi('put', "/api/v1/consoles/".concat(console_id), _this6.form);
+                return _this6.callApi('post', '/api/v1/consoles', _this6.form);
 
               case 3:
                 res = _context5.sent;
 
-                if (res.status == 200) {
+                if (res.status === 200) {
+                  _this6.s('Console created successfully');
+
                   _this6.closeModal();
 
                   _this6.getConsoles();
 
-                  _this6.s('Successfully updated console');
-
                   _this6.processing = false;
                 } else {
-                  if (res.status == 422) {
+                  if (res.status === 422) {
                     for (i in res.data.errors) {
                       _this6.e(res.data.errors[i][0]);
                     }
@@ -769,7 +706,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee5);
       }))();
     },
-    deleteConsole: function deleteConsole(console_id) {
+    updateConsole: function updateConsole(console_id) {
       var _this7 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee6() {
@@ -778,30 +715,32 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context6.prev = _context6.next) {
               case 0:
-                _this7.isDeleting = true;
+                _this7.processing = true;
                 _context6.next = 3;
-                return _this7.callApi('delete', "/api/v1/consoles/".concat(console_id));
+                return _this7.callApi('put', "/api/v1/consoles/".concat(console_id), _this7.form);
 
               case 3:
                 res = _context6.sent;
 
-                if (res.status == 204) {
-                  _this7.w('Console deleted');
-
-                  _this7.checked = _this7.checked.filter(function (id) {
-                    return id != console_id;
-                  });
-                  _this7.isDeleting = false;
-                  _this7.deleteModal = false;
+                if (res.status == 200) {
+                  _this7.closeModal();
 
                   _this7.getConsoles();
+
+                  _this7.s('Successfully updated console');
+
+                  _this7.processing = false;
                 } else {
-                  if (res.status !== 422) {
+                  if (res.status == 422) {
                     for (i in res.data.errors) {
                       _this7.e(res.data.errors[i][0]);
                     }
+
+                    _this7.processing = false;
                   } else {
                     _this7.swr();
+
+                    _this7.processing = false;
                   }
                 }
 
@@ -813,52 +752,96 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee6);
       }))();
     },
-    deleteImage: function deleteImage() {
-      var _arguments2 = arguments,
-          _this8 = this;
+    deleteConsole: function deleteConsole(console_id) {
+      var _this8 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee7() {
-        var editMode, image, res;
+        var res, i;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee7$(_context7) {
           while (1) {
             switch (_context7.prev = _context7.next) {
               case 0:
-                editMode = _arguments2.length > 0 && _arguments2[0] !== undefined ? _arguments2[0] : false;
+                _this8.isDeleting = true;
+                _context7.next = 3;
+                return _this8.callApi('delete', "/api/v1/consoles/".concat(console_id));
 
-                if (editMode) {
-                  // for editing
-                  _this8.newCover = true;
-                  image = _this8.form.cover_photo;
-                  _this8.form.cover_photo = '';
-
-                  _this8.$refs.uploads.clearFiles();
-                } else {
-                  image = _this8.form.cover_photo;
-                  _this8.form.cover_photo = '';
-
-                  _this8.$refs.uploads.clearFiles();
-                }
-
-                _context7.next = 4;
-                return _this8.callApi('post', '/api/v1/consoles/deleteCover', {
-                  image_name: image
-                });
-
-              case 4:
+              case 3:
                 res = _context7.sent;
 
-                if (res.status !== 200) {
-                  _this8.form.cover_photo = image;
+                if (res.status == 204) {
+                  _this8.w('Console deleted');
 
-                  _this8.swr();
+                  _this8.checked = _this8.checked.filter(function (id) {
+                    return id != console_id;
+                  });
+                  _this8.isDeleting = false;
+                  _this8.deleteModal = false;
+
+                  _this8.getConsoles();
+                } else {
+                  if (res.status !== 422) {
+                    for (i in res.data.errors) {
+                      _this8.e(res.data.errors[i][0]);
+                    }
+                  } else {
+                    _this8.swr();
+                  }
                 }
 
-              case 6:
+              case 5:
               case "end":
                 return _context7.stop();
             }
           }
         }, _callee7);
+      }))();
+    },
+    deleteImage: function deleteImage() {
+      var _arguments2 = arguments,
+          _this9 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee8() {
+        var editMode, image, res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee8$(_context8) {
+          while (1) {
+            switch (_context8.prev = _context8.next) {
+              case 0:
+                editMode = _arguments2.length > 0 && _arguments2[0] !== undefined ? _arguments2[0] : false;
+
+                if (editMode) {
+                  // for editing
+                  _this9.newCover = true;
+                  image = _this9.form.cover_photo;
+                  _this9.form.cover_photo = '';
+
+                  _this9.$refs.uploads.clearFiles();
+                } else {
+                  image = _this9.form.cover_photo;
+                  _this9.form.cover_photo = '';
+
+                  _this9.$refs.uploads.clearFiles();
+                }
+
+                _context8.next = 4;
+                return _this9.callApi('post', '/api/v1/consoles/deleteCover', {
+                  image_name: image
+                });
+
+              case 4:
+                res = _context8.sent;
+
+                if (res.status !== 200) {
+                  _this9.form.cover_photo = image;
+
+                  _this9.swr();
+                }
+
+              case 6:
+              case "end":
+                return _context8.stop();
+            }
+          }
+        }, _callee8);
       }))();
     },
     handleSuccess: function handleSuccess(res, file) {
@@ -1284,7 +1267,20 @@ var render = function () {
                                             ]
                                           ),
                                           _vm._v(" "),
-                                          _vm._m(6, true),
+                                          _c(
+                                            "p",
+                                            {
+                                              staticClass:
+                                                "text-sm font-weight-bold text-secondary mb-0",
+                                            },
+                                            [
+                                              _c("span", [
+                                                _vm._v(
+                                                  _vm._s(console.type.name)
+                                                ),
+                                              ]),
+                                            ]
+                                          ),
                                         ]
                                       ),
                                     ]
@@ -1348,7 +1344,7 @@ var render = function () {
                                   { staticClass: "align-middle text-end" },
                                   [
                                     _c("div", { staticClass: "btn-group" }, [
-                                      _vm._m(7, true),
+                                      _vm._m(6, true),
                                       _vm._v(" "),
                                       _c(
                                         "div",
@@ -1405,7 +1401,7 @@ var render = function () {
                                             ]
                                           ),
                                           _vm._v(" "),
-                                          _vm._m(8, true),
+                                          _vm._m(7, true),
                                         ]
                                       ),
                                     ]),
@@ -1487,7 +1483,7 @@ var render = function () {
                       _vm._v("Edit Console"),
                     ]),
                 _vm._v(" "),
-                _vm._m(9),
+                _vm._m(8),
               ]),
               _vm._v(" "),
               !_vm.editStatus
@@ -1526,68 +1522,27 @@ var render = function () {
                             "Select",
                             {
                               model: {
-                                value: _vm.form.type,
+                                value: _vm.form.type_id,
                                 callback: function ($$v) {
-                                  _vm.$set(_vm.form, "type", $$v)
+                                  _vm.$set(_vm.form, "type_id", $$v)
                                 },
-                                expression: "form.type",
+                                expression: "form.type_id",
                               },
                             },
-                            _vm._l(_vm.type, function (item) {
+                            _vm._l(_vm.types, function (type, i) {
                               return _c(
                                 "Option",
                                 {
-                                  key: item.value,
+                                  key: i,
                                   attrs: {
-                                    value: item.value,
+                                    value: type.id,
                                     clearable: "",
                                     filterable: "",
                                   },
                                 },
                                 [
                                   _vm._v(
-                                    "\n                  " + _vm._s(item.name)
-                                  ),
-                                ]
-                              )
-                            }),
-                            1
-                          ),
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "col-6" },
-                        [
-                          _c("Label", [_vm._v("Console Generation")]),
-                          _vm._v(" "),
-                          _c(
-                            "Select",
-                            {
-                              model: {
-                                value: _vm.form.gen,
-                                callback: function ($$v) {
-                                  _vm.$set(_vm.form, "gen", $$v)
-                                },
-                                expression: "form.gen",
-                              },
-                            },
-                            _vm._l(_vm.gen, function (item) {
-                              return _c(
-                                "Option",
-                                {
-                                  key: item.value,
-                                  attrs: {
-                                    value: item.value,
-                                    clearable: "",
-                                    filterable: "",
-                                  },
-                                },
-                                [
-                                  _vm._v(
-                                    "\n                  " + _vm._s(item.name)
+                                    "\n                  " + _vm._s(type.name)
                                   ),
                                 ]
                               )
@@ -1959,19 +1914,6 @@ var staticRenderFns = [
         },
       }),
     ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "p",
-      { staticClass: "text-sm font-weight-bold text-secondary mb-0" },
-      [
-        _c("span", { staticClass: "text-success" }, [_vm._v("8.232")]),
-        _vm._v(" orders\n                        "),
-      ]
-    )
   },
   function () {
     var _vm = this

@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Store;
 
+use Illuminate\Support\Str;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreConsoleRequest extends FormRequest
@@ -26,11 +27,10 @@ class StoreConsoleRequest extends FormRequest
         return [
             //
             'serial_number' => ['required', 'unique:consoles,serial_number'],
-            'type' => ['required'],
-            'gen' => ['required'],
             'storage' => ['required'],
             'storage_size' => ['required'],
             'condition_id' => ['required'],
+            'type_id' => ['required'],
         ];
     }
 
@@ -39,8 +39,16 @@ class StoreConsoleRequest extends FormRequest
         # code...
         return [
             'condition_id.required' => 'Please define the status condition of the console',
+            'type_id.required' => 'Please select the console type',
             'serial_number.required' => 'Please define the serial number this console',
-            'gen.required' => 'Please define the generation ',
         ];
+    }
+
+    public function prepareForValidation()
+    {
+        # code...
+        $this->merge([
+            'serial_number' => Str::of($this->serial_number)->upper()->__toString(),
+        ]);
     }
 }

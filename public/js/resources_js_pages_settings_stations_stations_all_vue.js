@@ -530,8 +530,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -1274,7 +1272,10 @@ var render = function () {
                                 _vm._v(_vm._s(station.name)),
                               ]),
                               _vm._v(" "),
-                              _vm._m(6, true),
+                              _c("p", {
+                                staticClass:
+                                  "text-sm font-weight-bold text-secondary mb-0",
+                              }),
                             ]
                           ),
                         ]),
@@ -1314,15 +1315,10 @@ var render = function () {
                             _c("span", { staticClass: "text-dark" }, [
                               _vm._v(
                                 "\n                        " +
-                                  _vm._s(station.console.type) +
+                                  _vm._s(station.console.type.name) +
                                   "\n                      "
                               ),
                             ]),
-                            _vm._v(
-                              "\n                      " +
-                                _vm._s(station.console.gen) +
-                                " Generation\n                    "
-                            ),
                           ]
                         ),
                       ]),
@@ -1375,7 +1371,7 @@ var render = function () {
                               ]),
                               _vm._v(
                                 "\n                      " +
-                                  _vm._s(station.screen.model_number) +
+                                  _vm._s(station.screen.model) +
                                   "\n                    "
                               ),
                             ]
@@ -1444,7 +1440,7 @@ var render = function () {
                       _vm._v("Edit Screen"),
                     ]),
                 _vm._v(" "),
-                _vm._m(7),
+                _vm._m(6),
               ]),
               _vm._v(" "),
               !_vm.editStatus
@@ -2114,19 +2110,6 @@ var staticRenderFns = [
         },
       }),
     ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "p",
-      { staticClass: "text-sm font-weight-bold text-secondary mb-0" },
-      [
-        _c("span", { staticClass: "text-success" }, [_vm._v("8.232")]),
-        _vm._v(" orders\n                        "),
-      ]
-    )
   },
   function () {
     var _vm = this
