@@ -279,13 +279,13 @@
                     <td>
                       <div class="text-center">
                         <p class="text-xs font-weight-bold mb-0">Station:</p>
-                        <h6 class="text-sm mb-0">{{ booking.station.name }}</h6>
+                        <h6 class="text-sm mb-0">{{ booking.date }}</h6>
                       </div>
                     </td>
                     <td>
                       <div class="text-center">
                         <p class="text-xs font-weight-bold mb-0">Time:</p>
-                        <h6 class="text-sm mb-0">{{ booking.time }}</h6>
+                        <h6 class="text-sm mb-0">{{ booking.time.h }} hour</h6>
                       </div>
                     </td>
                     <td>
@@ -367,23 +367,7 @@
                 </Select>
               </div>
             </div>
-            <div class="row mt-4">
-              <div class="col-12">
-                <Label>Station</Label>
-                <Select v-model="form.station_id">
-                  <Option
-                    v-for="(station, i) in stations"
-                    :value="station.id"
-                    :key="i"
-                    clearable
-                    filterable
-                  >
-                    {{ station.name }}
-                  </Option>
-                </Select>
-              </div>
-            </div>
-            <div class="row">
+            <div class="row mt-3">
               <Label>Time</Label>
               <div class="row">
                 <div class="col-6">
@@ -538,7 +522,7 @@ export default {
     async getBookings(page = 1) {
       const res = await this.callApi(
         'get',
-        `/api/v1/bookings?page=${page}
+        `/api/v1/bookings/mine?page=${page}
         &total=${this.total}
         &q=${this.search}
         &select=${this.selected}

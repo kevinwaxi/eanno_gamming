@@ -14,6 +14,11 @@ const routes = [
                 component: () => import("@pages/dashboards/admin/index.vue"),
             },
             {
+                path: "bookings",
+                name: "all_bookings",
+                component: () => import("@pages/dashboards/admin/bookings.vue"),
+            },
+            {
                 path: "statistics",
                 name: "stats_dashboard",
                 component: () =>

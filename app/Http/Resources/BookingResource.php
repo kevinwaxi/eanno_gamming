@@ -15,14 +15,17 @@ class BookingResource extends JsonResource
      */
     public function toArray($request)
     {
+        $start_time = new Carbon($this->start_time);
+        $end_time = new Carbon($this->end_time);
+        $total = $end_time->diff($start_time);
 
         return [
             'id' => $this->id,
             'start' => $this->start_time,
             'end' => $this->end_time,
             'date' => Carbon::parse($this->booking_date)->format('d-m-Y'),
-            'station' => $this->station,
-            'user' => $this->user
+            'user' => $this->user,
+            'time' => $total,
         ];
     }
 }

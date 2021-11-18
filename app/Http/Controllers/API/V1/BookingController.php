@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\API\V1;
 
-use App\Http\Actions\Store\StoreBookingAction;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Store\StoreBookingRequest;
-use App\Http\Resources\BookingResource;
 use App\Models\Booking;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Spatie\QueryBuilder\QueryBuilder;
+use App\Http\Resources\BookingResource;
+use App\Http\Actions\Store\StoreBookingAction;
+use App\Http\Requests\Store\StoreBookingRequest;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpKernel\Event\ResponseEvent;
 
 class BookingController extends Controller
@@ -69,6 +71,20 @@ class BookingController extends Controller
     {
         //
         $storeBookingAction->execute($request);
+    }
+
+    public function myBookings()
+    {
+        # code...
+        $user = Auth::user()->id;
+        $booking = Booking::where('user_id',$user);
+
+        $query = QueryBuilder::for($booking)
+            ->allowedFilters(['status','time'])
+            ->allowedSorts(['status','name'])
+            ->get();
+
+        return BookingResource::collection($query);
     }
 
     /**

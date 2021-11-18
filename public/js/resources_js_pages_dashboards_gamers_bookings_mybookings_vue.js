@@ -451,22 +451,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -611,7 +595,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 page = _arguments.length > 0 && _arguments[0] !== undefined ? _arguments[0] : 1;
                 _context3.next = 3;
-                return _this4.callApi('get', "/api/v1/bookings?page=".concat(page, "\n        &total=").concat(_this4.total, "\n        &q=").concat(_this4.search, "\n        &select=").concat(_this4.selected, "\n        &sort_direction=").concat(_this4.sort_direction, "\n        &sort_field=").concat(_this4.sort_field));
+                return _this4.callApi('get', "/api/v1/bookings/mine?page=".concat(page, "\n        &total=").concat(_this4.total, "\n        &q=").concat(_this4.search, "\n        &select=").concat(_this4.selected, "\n        &sort_direction=").concat(_this4.sort_direction, "\n        &sort_field=").concat(_this4.sort_field));
 
               case 3:
                 res = _context3.sent;
@@ -879,7 +863,7 @@ var render = function () {
                           ),
                           _vm._v(" "),
                           _c("h6", { staticClass: "text-sm mb-0" }, [
-                            _vm._v(_vm._s(booking.station.name)),
+                            _vm._v(_vm._s(booking.date)),
                           ]),
                         ]),
                       ]),
@@ -893,7 +877,7 @@ var render = function () {
                           ),
                           _vm._v(" "),
                           _c("h6", { staticClass: "text-sm mb-0" }, [
-                            _vm._v(_vm._s(booking.time)),
+                            _vm._v(_vm._s(booking.time.h) + " hour"),
                           ]),
                         ]),
                       ]),
@@ -1024,54 +1008,9 @@ var render = function () {
                   ),
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "row mt-4" }, [
-                  _c(
-                    "div",
-                    { staticClass: "col-12" },
-                    [
-                      _c("Label", [_vm._v("Station")]),
-                      _vm._v(" "),
-                      _c(
-                        "Select",
-                        {
-                          model: {
-                            value: _vm.form.station_id,
-                            callback: function ($$v) {
-                              _vm.$set(_vm.form, "station_id", $$v)
-                            },
-                            expression: "form.station_id",
-                          },
-                        },
-                        _vm._l(_vm.stations, function (station, i) {
-                          return _c(
-                            "Option",
-                            {
-                              key: i,
-                              attrs: {
-                                value: station.id,
-                                clearable: "",
-                                filterable: "",
-                              },
-                            },
-                            [
-                              _vm._v(
-                                "\n                  " +
-                                  _vm._s(station.name) +
-                                  "\n                "
-                              ),
-                            ]
-                          )
-                        }),
-                        1
-                      ),
-                    ],
-                    1
-                  ),
-                ]),
-                _vm._v(" "),
                 _c(
                   "div",
-                  { staticClass: "row" },
+                  { staticClass: "row mt-3" },
                   [
                     _c("Label", [_vm._v("Time")]),
                     _vm._v(" "),

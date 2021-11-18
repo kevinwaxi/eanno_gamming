@@ -41,10 +41,10 @@
                 <div class="collapse" id="dashboardsExamples">
                     <ul class="nav ms-4 ps-3">
                         <li class="nav-item">
-                            <a class="nav-link" href="../../pages/dashboards/default.html">
-                                <span class="sidenav-mini-icon"> H </span>
-                                <span class="sidenav-normal"> Home </span>
-                            </a>
+                            <router-link :to="{name:'all_bookings'}" class="nav-link">
+                                <span class="sidenav-mini-icon"> A </span>
+                                <span class="sidenav-normal"> All Bookings </span>
+                            </router-link>
                         </li>
                         <li class="nav-item ">
                             <router-link :to="{name:'my_bookings'}" class="nav-link " href="#">

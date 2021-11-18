@@ -1,21 +1,21 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\InvitationController;
+use App\Http\Controllers\API\V1\AvailabilityController;
+use App\Http\Controllers\API\V1\BookingController;
+use App\Http\Controllers\API\V1\CategoryController;
+use App\Http\Controllers\API\V1\ConditionController;
+use App\Http\Controllers\API\V1\ConsoleController;
 use App\Http\Controllers\API\V1\GameController;
 use App\Http\Controllers\API\V1\MakeController;
-use App\Http\Controllers\API\V1\TypeController;
-use App\Http\Controllers\API\V1\UserController;
+use App\Http\Controllers\API\V1\PermissionsController;
 use App\Http\Controllers\API\V1\PriceController;
 use App\Http\Controllers\API\V1\RolesController;
 use App\Http\Controllers\API\V1\ScreenController;
-use App\Http\Controllers\API\V1\BookingController;
-use App\Http\Controllers\API\V1\ConsoleController;
 use App\Http\Controllers\API\V1\StationController;
-use App\Http\Controllers\API\V1\CategoryController;
-use App\Http\Controllers\API\V1\ConditionController;
-use App\Http\Controllers\API\V1\PermissionsController;
-use App\Http\Controllers\API\V1\AvailabilityController;
+use App\Http\Controllers\API\V1\TypeController;
+use App\Http\Controllers\API\V1\UserController;
+use App\Http\Controllers\InvitationController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,6 +57,7 @@ Route::prefix('v1')->middleware(['auth:api'])->group(function () {
     Route::post('games/deleteCover', [GameController::class, 'deleteImage']);
     Route::apiResource('games', GameController::class);
     // api/v1/bookings
+    Route::get('bookings/mine', [BookingController::class, 'myBookings']);
     Route::apiResource('bookings', BookingController::class);
     // api/v1/condition
     Route::apiResource('conditions', ConditionController::class);

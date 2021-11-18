@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -20,6 +21,7 @@ class Booking extends Model
         'check_out',
         'booking_date',
         'token',
+        'status',
     ];
 
     protected $casts = [
@@ -27,6 +29,8 @@ class Booking extends Model
         'check_in' => 'datetime',
         'check_out' => 'datetime',
     ];
+
+    protected $dates = ['total'];
 
     /**
      * Get the user that owns the Booking
@@ -72,5 +76,10 @@ class Booking extends Model
                 });
 
         });
+    }
+
+    protected function serializeDate(DateTimeInterface $date)
+    {
+        return $date->format('Y-m-d H:i:s');
     }
 }
