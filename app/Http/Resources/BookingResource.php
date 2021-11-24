@@ -26,6 +26,7 @@ class BookingResource extends JsonResource
             'date' => Carbon::parse($this->booking_date)->format('d-m-Y'),
             'user' => $this->user,
             'time' => $total,
+            'status' => $this->status,
         ];
     }
 }

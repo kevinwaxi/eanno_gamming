@@ -2487,7 +2487,7 @@ var routes = [{
     }
   }, {
     path: "statistics",
-    name: "stats_dashboard",
+    name: "stats",
     component: function component() {
       return __webpack_require__.e(/*! import() */ "resources_js_pages_dashboards_admin_statistics_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/dashboards/admin/statistics.vue */ "./resources/js/pages/dashboards/admin/statistics.vue"));
     }
@@ -101416,6 +101416,302 @@ Vue.compile = compileToFunctions;
 
 /***/ }),
 
+/***/ "./node_modules/vuetrend/dist/vue-trend.esm.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/vuetrend/dist/vue-trend.esm.js ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+function int (value) {
+  return parseInt(value, 10)
+}
+
+/**
+ * https://en.wikipedia.org/wiki/Collinearity
+ * x=(x1+x2)/2
+ * y=(y1+y2)/2
+ */
+function checkCollinear (p0, p1, p2) {
+  return (
+    int(p0.x + p2.x) === int(2 * p1.x) && int(p0.y + p2.y) === int(2 * p1.y)
+  )
+}
+
+function getDistance (p1, p2) {
+  return Math.sqrt(Math.pow(p2.x - p1.x, 2) + Math.pow(p2.y - p1.y, 2))
+}
+
+function moveTo (to, from, radius) {
+  var vector = { x: to.x - from.x, y: to.y - from.y };
+  var length = Math.sqrt(vector.x * vector.x + vector.y * vector.y);
+  var unitVector = { x: vector.x / length, y: vector.y / length };
+
+  return {
+    x: from.x + unitVector.x * radius,
+    y: from.y + unitVector.y * radius
+  }
+}
+
+/**
+ *  Calculate the coordinate
+ * @param  {number[]|object[]}  arr
+ * @param  {object}             boundary
+ * @return {object[]}
+ */
+function genPoints (arr, ref, ref$1) {
+  var minX = ref.minX;
+  var minY = ref.minY;
+  var maxX = ref.maxX;
+  var maxY = ref.maxY;
+  var max = ref$1.max;
+  var min = ref$1.min;
+
+  arr = arr.map(function (item) { return (typeof item === 'number' ? item : item.value); });
+  var minValue = Math.min.apply(Math, arr.concat( [min] )) - 0.001;
+  var gridX = (maxX - minX) / (arr.length - 1);
+  var gridY = (maxY - minY) / (Math.max.apply(Math, arr.concat( [max] )) + 0.001 - minValue);
+
+  return arr.map(function (value, index) {
+    return {
+      x: index * gridX + minX,
+      y:
+        maxY -
+        (value - minValue) * gridY +
+        +(index === arr.length - 1) * 0.00001 -
+        +(index === 0) * 0.00001
+    }
+  })
+}
+
+/**
+ * From https://github.com/unsplash/react-trend/blob/master/src/helpers/DOM.helpers.js#L18
+ */
+function genPath (points, radius) {
+  var start = points.shift();
+
+  return (
+    "M" + (start.x) + " " + (start.y) +
+    points
+      .map(function (point, index) {
+        var next = points[index + 1];
+        var prev = points[index - 1] || start;
+        var isCollinear = next && checkCollinear(next, point, prev);
+
+        if (!next || isCollinear) {
+          return ("L" + (point.x) + " " + (point.y))
+        }
+
+        var threshold = Math.min(
+          getDistance(prev, point),
+          getDistance(next, point)
+        );
+        var isTooCloseForRadius = threshold / 2 < radius;
+        var radiusForPoint = isTooCloseForRadius ? threshold / 2 : radius;
+
+        var before = moveTo(prev, point, radiusForPoint);
+        var after = moveTo(next, point, radiusForPoint);
+
+        return ("L" + (before.x) + " " + (before.y) + "S" + (point.x) + " " + (point.y) + " " + (after.x) + " " + (after.y))
+      })
+      .join('')
+  )
+}
+
+var Path = {
+  props: ['smooth', 'data', 'boundary', 'radius', 'id', 'max', 'min'],
+
+  render: function render (h) {
+    var ref = this;
+    var data = ref.data;
+    var smooth = ref.smooth;
+    var boundary = ref.boundary;
+    var radius = ref.radius;
+    var id = ref.id;
+    var max = ref.max;
+    var min = ref.min;
+    var points = genPoints(data, boundary, { max: max, min: min });
+    var d = genPath(points, smooth ? radius : 0);
+
+    return h('path', {
+      attrs: { d: d, fill: 'none', stroke: ("url(#" + id + ")") }
+    })
+  }
+};
+
+var Gradient = {
+  props: ['gradient', 'gradientDirection', 'id'],
+
+  render: function render (h) {
+    var ref = this;
+    var gradient = ref.gradient;
+    var gradientDirection = ref.gradientDirection;
+    var id = ref.id;
+    var len = gradient.length - 1 || 1;
+    var stops = gradient
+      .slice()
+      .reverse()
+      .map(function (color, index) { return h('stop', {
+          attrs: {
+            offset: index / len,
+            'stop-color': color
+          }
+        }); }
+      );
+
+    return h('defs', [
+      h(
+        'linearGradient', {
+          attrs: {
+            id: id,
+            /*
+            x1: 0,
+            y1: 0,
+            x2: 0,
+            y2: 1
+            */
+            x1: +(gradientDirection === 'left'),
+            y1: +(gradientDirection === 'top'),
+            x2: +(gradientDirection === 'right'),
+            y2: +(gradientDirection === 'bottom')
+          }
+        },
+        stops
+      )
+    ])
+  }
+};
+
+var Trend$1 = {
+  name: 'Trend',
+
+  props: {
+    data: {
+      type: Array,
+      required: true
+    },
+    autoDraw: Boolean,
+    autoDrawDuration: {
+      type: Number,
+      default: 2000
+    },
+    autoDrawEasing: {
+      type: String,
+      default: 'ease'
+    },
+    gradient: {
+      type: Array,
+      default: function () { return ['#000']; }
+    },
+    gradientDirection: {
+      type: String,
+      default: 'top'
+    },
+    max: {
+      type: Number,
+      default: -Infinity
+    },
+    min: {
+      type: Number,
+      default: Infinity
+    },
+    height: Number,
+    width: Number,
+    padding: {
+      type: Number,
+      default: 8
+    },
+    radius: {
+      type: Number,
+      default: 10
+    },
+    smooth: Boolean
+  },
+
+  watch: {
+    data: {
+      immediate: true,
+      handler: function handler (val) {
+        var this$1 = this;
+
+        this.$nextTick(function () {
+          if (this$1.$isServer || !this$1.$refs.path || !this$1.autoDraw) {
+            return
+          }
+
+          var path = this$1.$refs.path.$el;
+          var length = path.getTotalLength();
+
+          path.style.transition = 'none';
+          path.style.strokeDasharray = length + ' ' + length;
+          path.style.strokeDashoffset = Math.abs(
+            length - (this$1.lastLength || 0)
+          );
+          path.getBoundingClientRect();
+          path.style.transition = "stroke-dashoffset " + (this$1.autoDrawDuration) + "ms " + (this$1.autoDrawEasing);
+          path.style.strokeDashoffset = 0;
+          this$1.lastLength = length;
+        });
+      }
+    }
+  },
+
+  render: function render (h) {
+    if (!this.data || this.data.length < 2) { return }
+    var ref = this;
+    var width = ref.width;
+    var height = ref.height;
+    var padding = ref.padding;
+    var viewWidth = width || 300;
+    var viewHeight = height || 75;
+    var boundary = {
+      minX: padding,
+      minY: padding,
+      maxX: viewWidth - padding,
+      maxY: viewHeight - padding
+    };
+    var props = this.$props;
+
+    props.boundary = boundary;
+    props.id = 'vue-trend-' + this._uid;
+    return h(
+      'svg', {
+        attrs: {
+          width: width || '100%',
+          height: height || '25%',
+          viewBox: ("0 0 " + viewWidth + " " + viewHeight)
+        }
+      },
+      [
+        h(Gradient, {
+          props: props
+        }),
+        h(Path, {
+          props: props,
+          ref: 'path'
+        })
+      ]
+    )
+  }
+};
+
+Trend$1.install = function (Vue) {
+  Vue.component(Trend$1.name, Trend$1);
+};
+
+if (typeof window !== 'undefined' && window.Vue) {
+  window.Vue.use(Trend$1);
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Trend$1);
+
+
+/***/ }),
+
 /***/ "./node_modules/axios/package.json":
 /*!*****************************************!*\
   !*** ./node_modules/axios/package.json ***!
@@ -101706,21 +102002,22 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var view_design_dist_styles_iview_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! view-design/dist/styles/iview.css */ "./node_modules/view-design/dist/styles/iview.css");
 /* harmony import */ var vue_form_wizard_dist_vue_form_wizard_min_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-form-wizard/dist/vue-form-wizard.min.css */ "./node_modules/vue-form-wizard/dist/vue-form-wizard.min.css");
-/* harmony import */ var view_design__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! view-design */ "./node_modules/view-design/dist/iview.js");
-/* harmony import */ var view_design__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(view_design__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var vue_clipboard2__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-clipboard2 */ "./node_modules/vue-clipboard2/vue-clipboard.js");
-/* harmony import */ var vue_clipboard2__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(vue_clipboard2__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var vue_form_wizard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-form-wizard */ "./node_modules/vue-form-wizard/dist/vue-form-wizard.js");
-/* harmony import */ var vue_form_wizard__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(vue_form_wizard__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _braid_vue_formulate__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @braid/vue-formulate */ "./node_modules/@braid/vue-formulate/dist/formulate.esm.js");
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
-/* harmony import */ var _modules_auth__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/auth */ "./resources/js/modules/auth.js");
-/* harmony import */ var _modules_common__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modules/common */ "./resources/js/modules/common.js");
-/* harmony import */ var view_design_dist_locale_en_US__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! view-design/dist/locale/en-US */ "./node_modules/view-design/dist/locale/en-US.js");
-/* harmony import */ var view_design_dist_locale_en_US__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(view_design_dist_locale_en_US__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _routes_index__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./routes/index */ "./resources/js/routes/index.js");
-/* harmony import */ var _store_index__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./store/index */ "./resources/js/store/index.js");
-/* harmony import */ var _store_index__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_store_index__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var vuetrend__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuetrend */ "./node_modules/vuetrend/dist/vue-trend.esm.js");
+/* harmony import */ var view_design__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! view-design */ "./node_modules/view-design/dist/iview.js");
+/* harmony import */ var view_design__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(view_design__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var vue_clipboard2__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-clipboard2 */ "./node_modules/vue-clipboard2/vue-clipboard.js");
+/* harmony import */ var vue_clipboard2__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(vue_clipboard2__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var vue_form_wizard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue-form-wizard */ "./node_modules/vue-form-wizard/dist/vue-form-wizard.js");
+/* harmony import */ var vue_form_wizard__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(vue_form_wizard__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _braid_vue_formulate__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @braid/vue-formulate */ "./node_modules/@braid/vue-formulate/dist/formulate.esm.js");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
+/* harmony import */ var _modules_auth__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modules/auth */ "./resources/js/modules/auth.js");
+/* harmony import */ var _modules_common__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./modules/common */ "./resources/js/modules/common.js");
+/* harmony import */ var view_design_dist_locale_en_US__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! view-design/dist/locale/en-US */ "./node_modules/view-design/dist/locale/en-US.js");
+/* harmony import */ var view_design_dist_locale_en_US__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(view_design_dist_locale_en_US__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _routes_index__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./routes/index */ "./resources/js/routes/index.js");
+/* harmony import */ var _store_index__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./store/index */ "./resources/js/store/index.js");
+/* harmony import */ var _store_index__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_store_index__WEBPACK_IMPORTED_MODULE_11__);
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js")["default"];
@@ -101736,12 +102033,14 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js"
 
 
 
-Vue.use((vue_form_wizard__WEBPACK_IMPORTED_MODULE_4___default()));
-Vue.use((vue_clipboard2__WEBPACK_IMPORTED_MODULE_3___default()));
-Vue.use((view_design__WEBPACK_IMPORTED_MODULE_2___default()), {
-  locale: (view_design_dist_locale_en_US__WEBPACK_IMPORTED_MODULE_8___default())
+
+Vue.use(vuetrend__WEBPACK_IMPORTED_MODULE_2__["default"]);
+Vue.use((vue_form_wizard__WEBPACK_IMPORTED_MODULE_5___default()));
+Vue.use((vue_clipboard2__WEBPACK_IMPORTED_MODULE_4___default()));
+Vue.use((view_design__WEBPACK_IMPORTED_MODULE_3___default()), {
+  locale: (view_design_dist_locale_en_US__WEBPACK_IMPORTED_MODULE_9___default())
 });
-Vue.use(_braid_vue_formulate__WEBPACK_IMPORTED_MODULE_5__["default"], {
+Vue.use(_braid_vue_formulate__WEBPACK_IMPORTED_MODULE_6__["default"], {
   classes: {
     outer: "form-group",
     input: "form-control",
@@ -101750,17 +102049,17 @@ Vue.use(_braid_vue_formulate__WEBPACK_IMPORTED_MODULE_5__["default"], {
     errors: "list-unstyled text-danger"
   }
 });
-Vue.mixin(_modules_common__WEBPACK_IMPORTED_MODULE_7__["default"]);
-Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_11__["default"]);
+Vue.mixin(_modules_common__WEBPACK_IMPORTED_MODULE_8__["default"]);
+Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_12__["default"]);
 Vue.component("pagination", __webpack_require__(/*! laravel-vue-pagination */ "./node_modules/laravel-vue-pagination/dist/laravel-vue-pagination.common.js"));
-_routes_index__WEBPACK_IMPORTED_MODULE_9__["default"].beforeEach(function (to, from, next) {
+_routes_index__WEBPACK_IMPORTED_MODULE_10__["default"].beforeEach(function (to, from, next) {
   window.document.title = to.meta && to.meta.title ? to.meta.title : "Eanno Gamming", next();
 });
-Vue.prototype.$auth = new _modules_auth__WEBPACK_IMPORTED_MODULE_6__["default"](window.user);
+Vue.prototype.$auth = new _modules_auth__WEBPACK_IMPORTED_MODULE_7__["default"](window.user);
 var app = new Vue({
   el: "#app",
-  router: _routes_index__WEBPACK_IMPORTED_MODULE_9__["default"],
-  store: (_store_index__WEBPACK_IMPORTED_MODULE_10___default())
+  router: _routes_index__WEBPACK_IMPORTED_MODULE_10__["default"],
+  store: (_store_index__WEBPACK_IMPORTED_MODULE_11___default())
 });
 })();
 

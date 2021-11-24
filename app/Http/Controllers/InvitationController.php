@@ -55,7 +55,7 @@ class InvitationController extends Controller
         $invitation->generateInvitationToken();
         $invitation->save();
 
-        $admin = User::role('admin','api')->get();
+        $admin = User::role('SuperAdmin', 'api')->get();
 
         Notification::send($admin, new UserRequestNotification($invitation));
 
@@ -84,6 +84,12 @@ class InvitationController extends Controller
         ]);
 
         return $invitation;
+    }
+
+    public function pending()
+    {
+        # code...
+        return Invitation::where('status', 'Pending')->get();
     }
 
 }

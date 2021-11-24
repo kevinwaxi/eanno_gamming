@@ -465,7 +465,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       bookings: {},
       stations: [],
       games: [],
-      total: 7,
+      total: 5,
       search: '',
       selected: '',
       checked: [],

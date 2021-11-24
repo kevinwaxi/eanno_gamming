@@ -445,7 +445,7 @@ export default {
       bookings: {},
       stations: [],
       games: [],
-      total: 7,
+      total: 5,
       search: '',
       selected: '',
       checked: [],

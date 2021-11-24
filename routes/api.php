@@ -38,12 +38,14 @@ Route::prefix('v1')->middleware(['auth:api'])->group(function () {
     Route::put('users/ban/{id}', [UserController::class, 'ban']);
     Route::put('users/assignRole/{id}', [UserController::class, 'assign']);
     Route::put('users/restore/{id}', [UserController::class, 'restore']);
+    Route::get('users/all', [UserController::class, 'allUsers']);
     Route::apiResource('users', UserController::class);
     // api/v1/permissions/
     Route::apiResource('permissions', PermissionsController::class);
     // api/v1/roles/
     Route::apiResource('roles', RolesController::class);
     // api/v1/invitations
+    Route::get('invitations/pending', [InvitationController::class, 'pending']);
     Route::apiResource('invitations', InvitationController::class);
     Route::get('invitations/approve/{id}', [InvitationController::class, 'approve']);
     //api/v1/pricing
@@ -57,6 +59,7 @@ Route::prefix('v1')->middleware(['auth:api'])->group(function () {
     Route::post('games/deleteCover', [GameController::class, 'deleteImage']);
     Route::apiResource('games', GameController::class);
     // api/v1/bookings
+    Route::get('bookings/today',[BookingController::class, 'todaysBookings']);
     Route::get('bookings/mine', [BookingController::class, 'myBookings']);
     Route::apiResource('bookings', BookingController::class);
     // api/v1/condition

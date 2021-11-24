@@ -5,6 +5,7 @@ window.Vue = require("vue").default;
 import "view-design/dist/styles/iview.css";
 import "vue-form-wizard/dist/vue-form-wizard.min.css";
 
+import Trend from "vuetrend";
 import ViewUI from "view-design";
 import VueClipboard from "vue-clipboard2";
 import VueFormWizard from "vue-form-wizard";
@@ -16,6 +17,7 @@ import locale from "view-design/dist/locale/en-US";
 import router from "./routes/index";
 import store from "./store/index";
 
+Vue.use(Trend);
 Vue.use(VueFormWizard);
 Vue.use(VueClipboard);
 Vue.use(ViewUI, { locale });

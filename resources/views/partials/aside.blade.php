@@ -45,6 +45,11 @@
                                 <span class="sidenav-mini-icon"> A </span>
                                 <span class="sidenav-normal"> All Bookings </span>
                             </router-link>
+                        </li> <li class="nav-item">
+                            <router-link :to="{name:'stats'}" class="nav-link">
+                                <span class="sidenav-mini-icon"> S </span>
+                                <span class="sidenav-normal"> Statistics </span>
+                            </router-link>
                         </li>
                         <li class="nav-item ">
                             <router-link :to="{name:'my_bookings'}" class="nav-link " href="#">

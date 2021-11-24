@@ -20,7 +20,7 @@ const routes = [
             },
             {
                 path: "statistics",
-                name: "stats_dashboard",
+                name: "stats",
                 component: () =>
                     import("@pages/dashboards/admin/statistics.vue"),
             },
