@@ -449,8 +449,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -932,41 +930,10 @@ var render = function () {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [
-                _c(
-                  "div",
-                  { staticClass: "row" },
-                  [
-                    _c(
-                      "Col",
-                      { attrs: { span: "12" } },
-                      [
-                        _c("Label", [_vm._v("Date")]),
-                        _vm._v(" "),
-                        _c("DatePicker", {
-                          attrs: {
-                            type: "date",
-                            options: _vm.fromToday,
-                            placeholder: "Select date",
-                          },
-                          model: {
-                            value: _vm.form.booking_date,
-                            callback: function ($$v) {
-                              _vm.$set(_vm.form, "booking_date", $$v)
-                            },
-                            expression: "form.booking_date",
-                          },
-                        }),
-                      ],
-                      1
-                    ),
-                  ],
-                  1
-                ),
-                _vm._v(" "),
                 _c("div", { staticClass: "row mt-4" }, [
                   _c(
                     "div",
-                    { staticClass: "col-12" },
+                    { staticClass: "col-6" },
                     [
                       _c("Label", [_vm._v("Game")]),
                       _vm._v(" "),
@@ -1006,6 +973,49 @@ var render = function () {
                     ],
                     1
                   ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "col-6" },
+                    [
+                      _c("Label", [_vm._v("Station")]),
+                      _vm._v(" "),
+                      _c(
+                        "Select",
+                        {
+                          model: {
+                            value: _vm.form.station_id,
+                            callback: function ($$v) {
+                              _vm.$set(_vm.form, "station_id", $$v)
+                            },
+                            expression: "form.station_id",
+                          },
+                        },
+                        _vm._l(_vm.stations, function (station, i) {
+                          return _c(
+                            "Option",
+                            {
+                              key: i,
+                              attrs: {
+                                value: station.id,
+                                clearable: "",
+                                filterable: "",
+                              },
+                            },
+                            [
+                              _vm._v(
+                                "\n                  " +
+                                  _vm._s(station.name) +
+                                  "\n                "
+                              ),
+                            ]
+                          )
+                        }),
+                        1
+                      ),
+                    ],
+                    1
+                  ),
                 ]),
                 _vm._v(" "),
                 _c(
@@ -1021,14 +1031,12 @@ var render = function () {
                         [
                           _c("Label", [_vm._v("Start Time")]),
                           _vm._v(" "),
-                          _c("TimePicker", {
-                            staticStyle: { width: "168px" },
+                          _c("DatePicker", {
                             attrs: {
-                              "disabled-hours": _vm.disabledHours,
-                              steps: [1, 30],
-                              confirm: "",
-                              format: "HH:mm",
-                              placeholder: "Select start time",
+                              type: "datetime",
+                              format: "yyyy-MM-dd HH:mm",
+                              placeholder:
+                                "Select date and time(Excluding seconds)",
                             },
                             model: {
                               value: _vm.form.start_time,
@@ -1038,6 +1046,8 @@ var render = function () {
                               expression: "form.start_time",
                             },
                           }),
+                          _vm._v(" "),
+                          _c("br"),
                         ],
                         1
                       ),
@@ -1048,14 +1058,12 @@ var render = function () {
                         [
                           _c("Label", [_vm._v("End Time")]),
                           _vm._v(" "),
-                          _c("TimePicker", {
-                            staticStyle: { width: "168px" },
+                          _c("DatePicker", {
                             attrs: {
-                              "disabled-hours": _vm.disabledHours,
-                              steps: [1, 30],
-                              confirm: "",
-                              format: "HH:mm",
-                              placeholder: "Select end time",
+                              type: "datetime",
+                              format: "yyyy-MM-dd HH:mm",
+                              placeholder:
+                                "Select date and time(Excluding seconds)",
                             },
                             model: {
                               value: _vm.form.end_time,

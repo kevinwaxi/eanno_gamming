@@ -2,11 +2,15 @@
   <div>
     <div class="row">
       <div class="col-6">
-        <h1>Calendar</h1>
+        <h1>Calendar 1</h1>
         <FullCalendar
           @click="showBooking"
+          :header="{
+            left: 'title',
+            center: 'dayGridMonth',
+            right: 'prev today next',
+          }"
           :options="calendarOptions"
-          :events="events"
         />
       </div>
     </div>
@@ -14,8 +18,11 @@
 </template>
 <script>
 import '@fullcalendar/core/vdom' // solves problem with Vite
+
 import FullCalendar from '@fullcalendar/vue'
 import dayGridPlugin from '@fullcalendar/daygrid'
+import timeGridPlugin from '@fullcalendar/timegrid'
+import listPlugin from '@fullcalendar/list'
 import interactionPlugin from '@fullcalendar/interaction'
 
 export default {
@@ -25,8 +32,10 @@ export default {
   data() {
     return {
       calendarOptions: {
-        plugins: [dayGridPlugin, interactionPlugin],
-        initialView: 'dayGridMonth',
+        plugins: [dayGridPlugin, interactionPlugin, timeGridPlugin, listPlugin],
+        initialView: 'timeGridDay',
+        weekends: false,
+        selectable: true,
       },
       events: '',
       newEvents: {

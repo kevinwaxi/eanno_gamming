@@ -45,7 +45,7 @@ class StationController extends Controller
 
             return StationResource::collection($station);
         } else {
-            $station = Station::all();
+            $station = Station::with(['console', 'screen'])->get();
             # code...
             return StationResource::collection($station);
         }

@@ -6,11 +6,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
+use Rinvex\Bookings\Traits\HasBookings;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, HasRoles;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles, HasBookings;
 
     protected $guard = 'api';
 
@@ -67,4 +68,10 @@ class User extends Authenticatable
                 });
         });
     }
+
+    public static function getBookingModel(): string
+    {
+        return Station::class;
+    }
+
 }
