@@ -42,7 +42,7 @@ router.beforeEach((to, from, next) => {
         next();
 });
 Vue.prototype.$auth = new auth(window.user);
-
+console.log('user obj from vue ',window.user)
 const app = new Vue({
     el: "#app",
     router: router,

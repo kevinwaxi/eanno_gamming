@@ -14708,21 +14708,23 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "row" }, [
-      _c(
-        "div",
-        { staticClass: "col-6" },
-        [
-          _c("h1", [_vm._v("Calendar")]),
-          _vm._v(" "),
-          _c("FullCalendar", {
-            attrs: { options: _vm.calendarOptions, events: _vm.events },
-            on: { click: _vm.showBooking },
-          }),
-        ],
-        1
-      ),
-    ]),
+    _vm.$auth.isAdmin
+      ? _c("div", { staticClass: "row" }, [
+          _c(
+            "div",
+            { staticClass: "col-6" },
+            [
+              _c("h1", [_vm._v("Calendar")]),
+              _vm._v(" "),
+              _c("FullCalendar", {
+                attrs: { options: _vm.calendarOptions, events: _vm.events },
+                on: { click: _vm.showBooking },
+              }),
+            ],
+            1
+          ),
+        ])
+      : _vm._e(),
   ])
 }
 var staticRenderFns = []

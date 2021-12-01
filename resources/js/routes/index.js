@@ -5,6 +5,17 @@ Vue.use(Router);
 
 const routes = [
     {
+        path:'/error',
+        component : ()=> import("@pages/Errors/index.vue"),
+        children: [
+            {
+                path: 'unavailable',
+                name:'NotFound',
+                component: ()=> import('@pages/Errors/notfound.vue')
+            }
+        ]
+    },
+    {
         path: "/dashboard",
         component: () => import("@pages/dashboards/index.vue"),
         children: [

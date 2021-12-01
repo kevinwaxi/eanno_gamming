@@ -2326,22 +2326,17 @@ var Auth = /*#__PURE__*/function () {
   }, {
     key: "isAdmin",
     value: function isAdmin() {
-      return this.roles().includes("Admin");
+      return this.roles().includes("SuperAdmin");
     }
   }, {
-    key: "isWorker",
-    value: function isWorker() {
-      return this.roles().includes("Worker");
+    key: "isCashier",
+    value: function isCashier() {
+      return this.roles().includes("Cashier");
     }
   }, {
-    key: "isContact",
-    value: function isContact() {
-      return this.roles().includes("Contact");
-    }
-  }, {
-    key: "isModerator",
-    value: function isModerator() {
-      return this.roles().includes("Moderator");
+    key: "isGamer",
+    value: function isGamer() {
+      return this.roles().includes("Gamer");
     }
   }, {
     key: "can",
@@ -2469,6 +2464,18 @@ __webpack_require__.r(__webpack_exports__);
 
 vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
 var routes = [{
+  path: '/error',
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ "resources_js_pages_Errors_index_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/Errors/index.vue */ "./resources/js/pages/Errors/index.vue"));
+  },
+  children: [{
+    path: 'unavailable',
+    name: 'NotFound',
+    component: function component() {
+      return __webpack_require__.e(/*! import() */ "resources_js_pages_Errors_notfound_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/Errors/notfound.vue */ "./resources/js/pages/Errors/notfound.vue"));
+    }
+  }]
+}, {
   path: "/dashboard",
   component: function component() {
     return __webpack_require__.e(/*! import() */ "resources_js_pages_dashboards_index_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/dashboards/index.vue */ "./resources/js/pages/dashboards/index.vue"));
@@ -101798,7 +101805,7 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_pages_dashboards_index_vue":1,"resources_js_pages_dashboards_admin_index_vue":1,"resources_js_pages_dashboards_admin_bookings_vue":1,"resources_js_pages_dashboards_admin_statistics_vue":1,"resources_js_pages_dashboards_gamers_index_vue":1,"resources_js_pages_dashboards_gamers_bookings_mybookings_vue":1,"resources_js_pages_settings_index_vue":1,"resources_js_pages_settings_invitations_index_vue":1,"resources_js_pages_settings_invitations_requested_vue":1,"resources_js_pages_settings_security_index_vue":1,"resources_js_pages_settings_security_permissions_permissions_vue":1,"resources_js_pages_settings_security_roles_roles_vue":1,"resources_js_pages_settings_profile_index_vue":1,"resources_js_pages_settings_profile_account_vue":1,"resources_js_pages_settings_profile_edit_vue":1,"resources_js_pages_settings_users_index_vue":1,"resources_js_pages_settings_users_all_vue":1,"resources_js_pages_settings_users_admin_vue":1,"resources_js_pages_settings_users_gamers_vue":1,"resources_js_pages_settings_users_cashiers_vue":1,"resources_js_pages_settings_stations_index_vue":1,"resources_js_pages_settings_stations_games_index_vue":1,"resources_js_pages_settings_stations_games_all_vue":1,"resources_js_pages_settings_stations_games_categories_vue":1,"resources_js_pages_settings_stations_stations_index_vue":1,"resources_js_pages_settings_stations_stations_all_vue":1,"resources_js_pages_settings_stations_stations_screen_vue":1,"resources_js_pages_settings_stations_stations_console_vue":1,"resources_js_pages_settings_stations_pricing_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_pages_Errors_index_vue":1,"resources_js_pages_Errors_notfound_vue":1,"resources_js_pages_dashboards_index_vue":1,"resources_js_pages_dashboards_admin_index_vue":1,"resources_js_pages_dashboards_admin_bookings_vue":1,"resources_js_pages_dashboards_admin_statistics_vue":1,"resources_js_pages_dashboards_gamers_index_vue":1,"resources_js_pages_dashboards_gamers_bookings_mybookings_vue":1,"resources_js_pages_settings_index_vue":1,"resources_js_pages_settings_invitations_index_vue":1,"resources_js_pages_settings_invitations_requested_vue":1,"resources_js_pages_settings_security_index_vue":1,"resources_js_pages_settings_security_permissions_permissions_vue":1,"resources_js_pages_settings_security_roles_roles_vue":1,"resources_js_pages_settings_profile_index_vue":1,"resources_js_pages_settings_profile_account_vue":1,"resources_js_pages_settings_profile_edit_vue":1,"resources_js_pages_settings_users_index_vue":1,"resources_js_pages_settings_users_all_vue":1,"resources_js_pages_settings_users_admin_vue":1,"resources_js_pages_settings_users_gamers_vue":1,"resources_js_pages_settings_users_cashiers_vue":1,"resources_js_pages_settings_stations_index_vue":1,"resources_js_pages_settings_stations_games_index_vue":1,"resources_js_pages_settings_stations_games_all_vue":1,"resources_js_pages_settings_stations_games_categories_vue":1,"resources_js_pages_settings_stations_stations_index_vue":1,"resources_js_pages_settings_stations_stations_all_vue":1,"resources_js_pages_settings_stations_stations_screen_vue":1,"resources_js_pages_settings_stations_stations_console_vue":1,"resources_js_pages_settings_stations_pricing_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};
@@ -102056,6 +102063,7 @@ _routes_index__WEBPACK_IMPORTED_MODULE_10__["default"].beforeEach(function (to, 
   window.document.title = to.meta && to.meta.title ? to.meta.title : "Eanno Gamming", next();
 });
 Vue.prototype.$auth = new _modules_auth__WEBPACK_IMPORTED_MODULE_7__["default"](window.user);
+console.log('user obj from vue ', window.user);
 var app = new Vue({
   el: "#app",
   router: _routes_index__WEBPACK_IMPORTED_MODULE_10__["default"],

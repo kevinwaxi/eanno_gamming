@@ -83,6 +83,15 @@
         </main>
 
     </div>
+    <script>
+        window.user = @json(
+            [
+            'user' => auth()->user(),
+            'roles' => auth()->user()->roles,
+            'permissions' => auth()->user()->getAllPermissions()
+        ]
+)
+    </script>
     {{-- vue files --}}
     <script src="{{ mix('js/app.js') }}"></script>
     <!--   Core JS Files   -->
@@ -103,9 +112,6 @@
             }
             Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
         }
-    </script>
-    <script>
-        window.user = @json(auth()->user())
     </script>
 </body>
 

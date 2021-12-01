@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="row">
+    <div class="row" v-if="$auth.isAdmin">
       <div class="col-6">
         <h1>Calendar</h1>
         <FullCalendar

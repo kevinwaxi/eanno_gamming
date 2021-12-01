@@ -126,7 +126,7 @@ class UserController extends Controller
         ]);
         $user = User::where('id', $id)->first();
 
-        $user->assignRole($request->roles);
+        $user->syncRoles($request->roles);
     }
 
     /**
