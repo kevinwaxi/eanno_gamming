@@ -340,19 +340,8 @@
             </button>
           </div>
           <div class="modal-body">
-            <div class="row">
-              <Col span="12">
-                <Label>Date</Label>
-                <DatePicker
-                  type="date"
-                  :options="fromToday"
-                  v-model="form.booking_date"
-                  placeholder="Select date"
-                ></DatePicker>
-              </Col>
-            </div>
             <div class="row mt-4">
-              <div class="col-12">
+              <div class="col-6">
                 <Label>Game</Label>
                 <Select v-model="form.game_id">
                   <Option
@@ -366,33 +355,42 @@
                   </Option>
                 </Select>
               </div>
+              <div class="col-6">
+                <Label>Station</Label>
+                <Select v-model="form.station_id">
+                  <Option
+                    v-for="(station, i) in stations"
+                    :value="station.id"
+                    :key="i"
+                    clearable
+                    filterable
+                  >
+                    {{ station.name }}
+                  </Option>
+                </Select>
+              </div>
             </div>
             <div class="row mt-3">
               <Label>Time</Label>
               <div class="row">
                 <div class="col-6">
                   <Label>Start Time</Label>
-                  <TimePicker
-                    :disabled-hours="disabledHours"
-                    :steps="[1, 30]"
-                    confirm
-                    format="HH:mm"
+                  <DatePicker
                     v-model="form.start_time"
-                    placeholder="Select start time"
-                    style="width: 168px"
-                  ></TimePicker>
+                    type="datetime"
+                    format="yyyy-MM-dd HH:mm"
+                    placeholder="Select date and time(Excluding seconds)"
+                  ></DatePicker>
+                  <br />
                 </div>
                 <div class="col-6">
                   <Label>End Time</Label>
-                  <TimePicker
-                    :disabled-hours="disabledHours"
-                    :steps="[1, 30]"
-                    confirm
+                  <DatePicker
                     v-model="form.end_time"
-                    format="HH:mm"
-                    placeholder="Select end time"
-                    style="width: 168px"
-                  ></TimePicker>
+                    type="datetime"
+                    format="yyyy-MM-dd HH:mm"
+                    placeholder="Select date and time(Excluding seconds)"
+                  ></DatePicker>
                 </div>
               </div>
             </div>

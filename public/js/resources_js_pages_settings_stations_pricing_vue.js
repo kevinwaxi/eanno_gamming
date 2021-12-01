@@ -434,10 +434,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -1158,22 +1154,24 @@ var render = function () {
                                   _vm._s(station.name) +
                                   "\n                  "
                               ),
-                              _c(
-                                "span",
-                                {
-                                  staticStyle: {
-                                    float: "right",
-                                    color: "rgb(228, 196, 196)",
-                                  },
-                                },
-                                [
-                                  _vm._v(
-                                    "\n                    " +
-                                      _vm._s(station.console.type) +
-                                      "\n                  "
-                                  ),
-                                ]
-                              ),
+                              station.console
+                                ? _c(
+                                    "span",
+                                    {
+                                      staticStyle: {
+                                        float: "right",
+                                        color: "rgb(228, 196, 196)",
+                                      },
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                    " +
+                                          _vm._s(station.console.type.name) +
+                                          "\n                  "
+                                      ),
+                                    ]
+                                  )
+                                : _vm._e(),
                             ]
                           )
                         }),

@@ -218,11 +218,7 @@
       </div>
     </div>
     <div class="row mt-lg-4 mt-2">
-      <div
-        class="col-6 mb-4"
-        v-for="(price, i) in prices.data"
-        :key="i"
-      >
+      <div class="col-6 mb-4" v-for="(price, i) in prices.data" :key="i">
         <div class="card">
           <div class="card-body p-3">
             <div class="d-flex">
@@ -325,8 +321,8 @@
                     :key="i"
                   >
                     {{ station.name }}
-                    <span style="float: right; color: rgb(228, 196, 196)">
-                      {{ station.console.type }}
+                    <span style="float: right; color: rgb(228, 196, 196)" v-if="station.console">
+                      {{ station.console.type.name }}
                     </span>
                   </Option>
                 </Select>

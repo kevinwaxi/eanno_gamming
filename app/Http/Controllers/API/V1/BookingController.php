@@ -73,6 +73,11 @@ class BookingController extends Controller
         $storeBookingAction->execute($request);
     }
 
+    public function approveBooking(Booking $booking)
+    {
+        # code...
+    }
+
     public function myBookings()
     {
         # code...

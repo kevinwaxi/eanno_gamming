@@ -61,6 +61,7 @@ Route::prefix('v1')->middleware(['auth:api'])->group(function () {
     // api/v1/bookings
     Route::get('bookings/today',[BookingController::class, 'todaysBookings']);
     Route::get('bookings/mine', [BookingController::class, 'myBookings']);
+    Route::patch('bookings/approve/{booking}',[BookingController::class,'approveBooking']);
     Route::apiResource('bookings', BookingController::class);
     // api/v1/condition
     Route::apiResource('conditions', ConditionController::class);
