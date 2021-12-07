@@ -12,13 +12,13 @@ export default class Auth {
     }
 
     isAdmin() {
-        return this.roles().includes("SuperAdmin");
+        return this.roles().includes("super-admin");
     }
     isCashier() {
-        return this.roles().includes("Cashier");
+        return this.roles().includes("cashier");
     }
     isGamer() {
-        return this.roles().includes("Gamer");
+        return this.roles().includes("user");
     }
 
     can($permissionName) {

@@ -73,7 +73,7 @@
             <li class="nav-item mt-3">
                 <h6 class="ps-4  ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Settings</h6>
             </li>
-            @role('SuperAdmin|Cashier')
+            @hasanyrole('super-admin|cashier')
                 <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#userPages" class="nav-link " aria-controls="userPages"
                         role="button" aria-expanded="false">
@@ -129,7 +129,7 @@
                         </ul>
                     </div>
                 </li>
-            @endrole
+            @endhasanyrole
             <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#profilePages" class="nav-link " aria-controls="profilePages"
                     role="button" aria-expanded="false">
@@ -173,7 +173,7 @@
                     </ul>
                 </div>
             </li>
-            @role('SuperAdmin|Cashier')
+            @role('super-admin')
                 <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#settingsPages" class="nav-link " aria-controls="settingsPages"
                         role="button" aria-expanded="false">

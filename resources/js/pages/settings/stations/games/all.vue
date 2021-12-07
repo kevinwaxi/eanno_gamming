@@ -9,7 +9,7 @@
               <p class="mb-0">List of all games</p>
             </div>
             <div class="col-4">
-              <a href="javascript:;" @click.prevent="createModal()">
+              <a href="javascript:;" @click.prevent="createModal()"  v-if="$auth.isAdmin">
                 <span class="badge bg-gradient-info ms-auto float-end">
                   Create Game
                 </span>

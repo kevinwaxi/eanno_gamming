@@ -2,27 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Permission;
-use App\Models\Role;
-use App\Models\User;
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class RolesAndPermissionsSeeder extends Seeder
-{
-
-    public function run()
-    {
-        app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
-
-        $this->call([
-            PermissionSeeder::class,
-            RoleSeeder::class,
-        ]);
-    }
-
-}
-
-class PermissionSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -31,74 +15,75 @@ class PermissionSeeder extends Seeder
      */
     public function run()
     {
+        // Reset cached roles and permissions
         app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
 
-        $permissions = [
-            'admin',
+        //Create Roles
+        $roleSuperAdmin = Role::create(['name' => 'super-admin']);
+        $roleCashier = Role::create(['name' => 'cashier']);
+        $roleCongregation = Role::create(['name' => 'user']);
 
-            'create users',
-            'read users',
-            'update users',
-            'delete users',
-            'block users',
-            'validate users',
-            'access accounts',
+        //Create Permissions and Assign Role
+        $permissions = $this->getPermissions();
 
-            'create roles',
-            'read roles',
-            'update roles',
-            'delete roles',
+        for ($i = 0; $i < count($permissions); $i++) {
+            $permissionGroup = $permissions[$i]['group_name'];
+            for ($j = 0; $j < count($permissions[$i]['permissions']); $j++) {
+                $permission = Permission::create([
+                    'name' => $permissions[$i]['permissions'][$j],
+                    'group_name' => $permissionGroup,
+                ]);
 
-            'create permissions',
-            'read permissions',
-            'update permissions',
-            'delete permissions',
+                //Super Admin: Role 1
+                //Using Gate::before() => Super admin has access to all features by default : AuthServiceProvider@boot
 
-            'create bookings',
-            'validate bookings',
-            'cancel bookings',
+                //Council: Role 2
+                $permission->assignRole($roleCashier);
 
-            'create resources',
-            'read resources',
-            'update resources',
-            'delete resources',
-        ];
+                //User: Role 3
+                if (
+                    $permissionGroup == 'dashboard'
+                    // || $permissionGroup == 'demogroup'
+                ) {
+                    $permission->assignRole($roleCongregation);
+                }
 
-        foreach ($permissions as $permission) {
-            Permission::create(['name' => $permission, 'guard_name' => 'api']);
-        }
-    }
-}
-
-class RoleSeeder extends Seeder
-{
-
-    public function run()
-    {
-        app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
-
-        $roles = [
-            'SuperAdmin',
-            'Cashier',
-            'Gamer',
-        ];
-
-        foreach ($roles as $role) {
-            $addedRole = Role::create(['name' => $role, 'guard_name' => 'api']);
-
-            switch ($role) {
-                case 'SuperAdmin':
-                    $addedRole->givePermissionTo(Permission::all());
-
-                    $user = User::where('name', 'superadmin')->first();
-                    if ($user) {
-                        $user->assignRole(['SuperAdmin']);
-                    }
-                    break;
-                default:
-                    $addedRole->givePermissionTo(['admin']);
-                    break;
             }
         }
+    }
+
+    public function permissionItem($groupName, $viewOnly = 0)
+    {
+        $permissions = [
+            "$groupName list",
+            "$groupName create",
+            "$groupName view",
+            "$groupName edit",
+            "$groupName delete",
+        ];
+
+        $permissions = $viewOnly ? ["$groupName view"] : $permissions;
+
+        $permissionItem = [
+            'group_name' => "$groupName",
+            'permissions' => $permissions,
+        ];
+
+        return $permissionItem;
+    }
+
+    //Generate Permission Array
+    public function getPermissions()
+    {
+        $permissions = [];
+        $permissions[] = $this->permissionItem('dashboard', 1);
+
+        $permissionGroups = ['user', 'admin', 'role', 'permission', 'calendar', 'bookings', 'request', 'consoles', 'station'];
+
+        foreach ($permissionGroups as $permissionGroup) {
+            $permissions[] = $this->permissionItem($permissionGroup);
+        }
+
+        return $permissions;
     }
 }
