@@ -16422,17 +16422,23 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-<<<<<<< HEAD
     _vm.$auth.isAdmin
       ? _c("div", { staticClass: "row" }, [
           _c(
             "div",
             { staticClass: "col-6" },
             [
-              _c("h1", [_vm._v("Calendar")]),
+              _c("h1", [_vm._v("Calendar 1")]),
               _vm._v(" "),
               _c("FullCalendar", {
-                attrs: { options: _vm.calendarOptions, events: _vm.events },
+                attrs: {
+                  header: {
+                    left: "title",
+                    center: "dayGridMonth",
+                    right: "prev today next",
+                  },
+                  options: _vm.calendarOptions,
+                },
                 on: { click: _vm.showBooking },
               }),
             ],
@@ -16440,30 +16446,6 @@ var render = function () {
           ),
         ])
       : _vm._e(),
-=======
-    _c("div", { staticClass: "row" }, [
-      _c(
-        "div",
-        { staticClass: "col-6" },
-        [
-          _c("h1", [_vm._v("Calendar 1")]),
-          _vm._v(" "),
-          _c("FullCalendar", {
-            attrs: {
-              header: {
-                left: "title",
-                center: "dayGridMonth",
-                right: "prev today next",
-              },
-              options: _vm.calendarOptions,
-            },
-            on: { click: _vm.showBooking },
-          }),
-        ],
-        1
-      ),
-    ]),
->>>>>>> 6ba25b5bb131a54cbb096bd5840f8e11cd42d2e3
   ])
 }
 var staticRenderFns = []

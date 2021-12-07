@@ -316,7 +316,7 @@
                                 </ul>
                             </div>
                         </li>
-                        @role('SuperAdmin|Cashier')
+                        @hasanyrole('super-admin|Cashier')
                             <li class="nav-item ">
                                 <a class="nav-link " data-bs-toggle="collapse" aria-expanded="false"
                                     href="#stationsPage">
@@ -346,7 +346,7 @@
                                     </ul>
                                 </div>
                             </li>
-                        @endrole
+                        @endhasanyrole
                     </ul>
                 </div>
             </li>

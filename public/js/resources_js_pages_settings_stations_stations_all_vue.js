@@ -1245,7 +1245,7 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm.$auth.can("update resources")
+    _vm.$auth.can("station list") || _vm.$auth.isAdmin
       ? _c("div", [
           _c("div", { staticClass: "row" }, [
             _c("div", { staticClass: "col-sm-4" }, [

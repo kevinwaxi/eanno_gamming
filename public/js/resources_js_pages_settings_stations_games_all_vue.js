@@ -969,25 +969,34 @@ var render = function () {
             _vm._m(0),
             _vm._v(" "),
             _c("div", { staticClass: "col-4" }, [
-              _c(
-                "a",
-                {
-                  attrs: { href: "javascript:;" },
-                  on: {
-                    click: function ($event) {
-                      $event.preventDefault()
-                      return _vm.createModal()
+              _vm.$auth.isAdmin || _vm.$auth.can("consoles create")
+                ? _c(
+                    "a",
+                    {
+                      attrs: { href: "javascript:;" },
+                      on: {
+                        click: function ($event) {
+                          $event.preventDefault()
+                          return _vm.createModal()
+                        },
+                      },
                     },
-                  },
-                },
-                [
-                  _c(
-                    "span",
-                    { staticClass: "badge bg-gradient-info ms-auto float-end" },
-                    [_vm._v("\n                Create Game\n              ")]
-                  ),
-                ]
-              ),
+                    [
+                      _c(
+                        "span",
+                        {
+                          staticClass:
+                            "badge bg-gradient-info ms-auto float-end",
+                        },
+                        [
+                          _vm._v(
+                            "\n                Create Game\n              "
+                          ),
+                        ]
+                      ),
+                    ]
+                  )
+                : _vm._e(),
             ]),
           ]),
         ]),

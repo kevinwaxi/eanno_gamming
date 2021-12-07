@@ -2326,17 +2326,17 @@ var Auth = /*#__PURE__*/function () {
   }, {
     key: "isAdmin",
     value: function isAdmin() {
-      return this.roles().includes("SuperAdmin");
+      return this.roles().includes("super-admin");
     }
   }, {
     key: "isCashier",
     value: function isCashier() {
-      return this.roles().includes("Cashier");
+      return this.roles().includes("cashier");
     }
   }, {
     key: "isGamer",
     value: function isGamer() {
-      return this.roles().includes("Gamer");
+      return this.roles().includes("user");
     }
   }, {
     key: "can",

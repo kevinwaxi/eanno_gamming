@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="$auth.can('update resources')">
+    <div v-if="$auth.can('station list') || $auth.isAdmin">
       <div class="row">
         <div class="col-sm-4">
           <div class="card">
