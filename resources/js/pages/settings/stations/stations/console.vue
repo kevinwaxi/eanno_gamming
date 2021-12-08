@@ -1,403 +1,420 @@
 <template>
   <div>
-    <div class="row mt-4">
-      <div class="col-12">
-        <div class="card mb-4">
-          <div class="card-header pb-0">
-            <div class="row">
-              <div class="col-8">
-                <h5 class="mb-2 col-8">Game Consoles</h5>
-                <p class="mb-0">
-                  Create game consoles and assign then to stations
-                </p>
-              </div>
-              <div class="col-4">
-                <a href="javascript:;" @click.prevent="createModal()">
-                  <span class="badge bg-gradient-info ms-auto float-end">
-                    Create Console
-                  </span>
-                </a>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-3 flex">
-                <label for="search"> Search </label>
-                <div class="input-group">
-                  <input
-                    name="search"
-                    class="form-control"
-                    type="text"
-                    v-model.lazy="search"
-                    placeholder="Console"
-                  />
+    <div v-if="$auth.isAdmin()||$auth.can('consoles list')">
+      <div class="row mt-4">
+        <div class="col-12">
+          <div class="card mb-4">
+            <div class="card-header pb-0">
+              <div class="row">
+                <div class="col-8">
+                  <h5 class="mb-2 col-8">Game Consoles</h5>
+                  <p class="mb-0" v-if="$auth.isAdmin()">
+                    Create game consoles and assign then to stations
+                  </p>
+                </div>
+                <div class="col-4">
+                  <a
+                    href="javascript:;"
+                    @click.prevent="createModal()"
+                    v-if="$auth.isAdmin()"
+                  >
+                    <span class="badge bg-gradient-info ms-auto float-end">
+                      Create Console
+                    </span>
+                  </a>
                 </div>
               </div>
-              <div class="col-3">
-                <label for="select">Select by:</label>
-                <select
-                  v-model="selected"
-                  class="form-select fmxw-200 d-none d-md-inline"
-                  aria-label="Fillter by role"
-                >
-                  <option selected="selected" value="">Show All</option>
-                  <option
-                    v-for="(condition, i) in conditions"
-                    :key="i"
-                    :value="condition.id"
+              <div class="row">
+                <div class="col-3 flex">
+                  <label for="search"> Search </label>
+                  <div class="input-group">
+                    <input
+                      name="search"
+                      class="form-control"
+                      type="text"
+                      v-model.lazy="search"
+                      placeholder="Console"
+                    />
+                  </div>
+                </div>
+                <div class="col-3">
+                  <label for="select">Select by:</label>
+                  <select
+                    v-model="selected"
+                    class="form-select fmxw-200 d-none d-md-inline"
+                    aria-label="Fillter by role"
                   >
-                    {{ condition.name }}
-                  </option>
-                </select>
+                    <option selected="selected" value="">Show All</option>
+                    <option
+                      v-for="(condition, i) in conditions"
+                      :key="i"
+                      :value="condition.id"
+                    >
+                      {{ condition.name }}
+                    </option>
+                  </select>
+                </div>
+                <div class="col-2">
+                  <label for="select">Show:</label>
+                  <select
+                    v-model="total"
+                    class="form-select fmxw-200 d-none d-md-inline"
+                    aria-label="show"
+                  >
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option v-if="consoles.data" :value="consoles.meta.total">
+                      All {{ consoles.meta.total }}
+                    </option>
+                  </select>
+                </div>
               </div>
-              <div class="col-2">
-                <label for="select">Show:</label>
-                <select
-                  v-model="total"
-                  class="form-select fmxw-200 d-none d-md-inline"
-                  aria-label="show"
+            </div>
+            <div class="card-body px-0 pt-0 pb-2" v-if="consoles.data">
+              <div
+                class="alert alert-dark alert-dismissible fade show"
+                role="alert"
+                v-if="consoles.data.length <= 0"
+              >
+                <span class="alert-icon"><i class="ni ni-like-2"></i></span>
+                <span class="alert-text text-white">
+                  <strong>Not Found!</strong>
+                  There are no consoles avilable!
+                </span>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="alert"
+                  aria-label="Close"
                 >
-                  <option value="5">5</option>
-                  <option value="10">10</option>
-                  <option value="20">20</option>
-                  <option v-if="consoles.data" :value="consoles.meta.total">
-                    All {{ consoles.meta.total }}
-                  </option>
-                </select>
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+
+              <div class="table-responsive p-0" v-else>
+                <table class="table align-items-center mb-0">
+                  <thead>
+                    <tr>
+                      <th
+                        class="
+                          text-uppercase text-secondary text-xxs
+                          font-weight-bolder
+                          opacity-7
+                        "
+                      >
+                        Serial Number
+                      </th>
+                      <th
+                        class="
+                          text-uppercase text-secondary text-xxs
+                          font-weight-bolder
+                          opacity-7
+                          ps-2
+                        "
+                      >
+                        Size
+                      </th>
+                      <th
+                        class="
+                          text-center text-uppercase text-secondary text-xxs
+                          font-weight-bolder
+                          opacity-7
+                        "
+                      >
+                        Status
+                      </th>
+                      <th
+                        class="
+                          text-center text-uppercase text-secondary text-xxs
+                          font-weight-bolder
+                          opacity-7
+                        "
+                      >
+                        Actions
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr v-for="(console, i) in consoles.data" :key="i">
+                      <td>
+                        <div class="d-flex px-3 py-1">
+                          <div>
+                            <img
+                              src="https://images.pexels.com/photos/3945659/pexels-photo-3945659.jpeg"
+                              alt="image"
+                              class="avatar me-3"
+                            />
+                          </div>
+                          <div
+                            class="d-flex flex-column justify-content-center"
+                          >
+                            <h6 class="mb-0 text-sm">
+                              {{ console.serial_number }}
+                            </h6>
+                            <p
+                              class="
+                                text-sm
+                                font-weight-bold
+                                text-secondary
+                                mb-0
+                              "
+                            >
+                              <span>{{ console.type.name }}</span>
+                            </p>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <p class="text-sm font-weight-bold mb-0">
+                          {{ console.storage_size }}
+                        </p>
+                      </td>
+                      <td class="align-middle text-center text-sm">
+                        <p class="text-sm font-weight-bold mb-0">
+                          <Tag :color="console.condition.color">
+                            {{ console.condition.name }}
+                          </Tag>
+                        </p>
+                      </td>
+                      <td class="align-middle text-end">
+                        <div class="btn-group">
+                          <button
+                            class="
+                              btn btn-link
+                              text-dark
+                              dropdown-toggle dropdown-toggle-split
+                              m-0
+                              p-0
+                            "
+                            data-bs-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                          >
+                            <span class="icon icon-sm"
+                              ><span
+                                class="fas fa-ellipsis-h icon-secondary"
+                              ></span> </span
+                            ><span class="sr-only">Toggle Dropdown</span>
+                          </button>
+                          <div class="dropdown-menu py-0" style="">
+                            <a
+                              class="dropdown-item text-default rounded-top"
+                              href="#"
+                              @click.prevent="changeStatusModal(console)"
+                            >
+                              <span
+                                class="fas fa-chart-line me-2"
+                                aria-hidden="true"
+                              >
+                              </span>
+                              Change Status
+                            </a>
+                            <a
+                              class="dropdown-item"
+                              href="javacript:;"
+                              @click.prevent="editModal(console)"
+                            >
+                              <span class="fas fa-edit me-2"></span>
+                              Edit Console
+                            </a>
+                            <a class="dropdown-item rounded-bottom">
+                              <span class="fas fa-trash-alt me-2"></span>
+                              Delete
+                            </a>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="card-footer pt-0 p-3 d-flex align-items-center">
+              <div class="w-60">
+                <p class="text-sm" v-if="consoles.data">
+                  Showing
+                  <b>{{ consoles.meta.from }}</b> to
+                  <b>{{ consoles.meta.to }}</b> out of
+                  <b>{{ consoles.meta.total }}</b> entries
+                </p>
+              </div>
+              <div class="w-40 text-end">
+                <pagination
+                  class="pagination mb-0 pagination-sm"
+                  :data="consoles"
+                  @pagination-change-page="getConsoles"
+                >
+                </pagination>
               </div>
             </div>
           </div>
-          <div class="card-body px-0 pt-0 pb-2" v-if="consoles.data">
-            <div
-              class="alert alert-dark alert-dismissible fade show"
-              role="alert"
-              v-if="consoles.data.length <= 0"
-            >
-              <span class="alert-icon"><i class="ni ni-like-2"></i></span>
-              <span class="alert-text text-white">
-                <strong>Not Found!</strong>
-                There are no consoles avilable!
-              </span>
+        </div>
+      </div>
+      <!-- Modal -->
+
+      <!-- Create edit Modal -->
+      <div
+        class="modal fade"
+        id="modal-default"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="modal-default"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 v-if="!editMode" class="modal-title">Create Console</h5>
+              <h5 v-else class="modal-title">Edit Console</h5>
               <button
                 type="button"
                 class="btn-close"
-                data-bs-dismiss="alert"
+                data-bs-dismiss="modal"
                 aria-label="Close"
               >
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-
-            <div class="table-responsive p-0" v-else>
-              <table class="table align-items-center mb-0">
-                <thead>
-                  <tr>
-                    <th
-                      class="
-                        text-uppercase text-secondary text-xxs
-                        font-weight-bolder
-                        opacity-7
-                      "
+            <div class="modal-body" v-if="!editStatus">
+              <div class="row">
+                <FormulateInput
+                  type="text"
+                  required
+                  label="Serial Number"
+                  validation="required"
+                  v-model="form.serial_number"
+                />
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <Label>Console Type</Label>
+                  <Select v-model="form.type_id">
+                    <Option
+                      v-for="(type, i) in types"
+                      :value="type.id"
+                      :key="i"
+                      clearable
+                      filterable
                     >
-                      Serial Number
-                    </th>
-                    <th
-                      class="
-                        text-uppercase text-secondary text-xxs
-                        font-weight-bolder
-                        opacity-7
-                        ps-2
-                      "
+                      {{ type.name }}</Option
                     >
-                      Size
-                    </th>
-                    <th
-                      class="
-                        text-center text-uppercase text-secondary text-xxs
-                        font-weight-bolder
-                        opacity-7
-                      "
+                  </Select>
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-12">
+                  <Label>Storage Type</Label>
+                  <Select v-model="form.storage">
+                    <Option
+                      v-for="item in storage"
+                      :value="item.value"
+                      :key="item.value"
+                      clearable
+                      filterable
                     >
-                      Status
-                    </th>
-                    <th
-                      class="
-                        text-center text-uppercase text-secondary text-xxs
-                        font-weight-bolder
-                        opacity-7
-                      "
+                      {{ item.name }}</Option
                     >
-                      Actions
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr v-for="(console, i) in consoles.data" :key="i">
-                    <td>
-                      <div class="d-flex px-3 py-1">
-                        <div>
-                          <img
-                            src="https://images.pexels.com/photos/3945659/pexels-photo-3945659.jpeg"
-                            alt="image"
-                            class="avatar me-3"
-                          />
-                        </div>
-                        <div class="d-flex flex-column justify-content-center">
-                          <h6 class="mb-0 text-sm">
-                            {{ console.serial_number }}
-                          </h6>
-                          <p
-                            class="text-sm font-weight-bold text-secondary mb-0"
-                          >
-                            <span>{{ console.type.name }}</span>
-                          </p>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <p class="text-sm font-weight-bold mb-0">
-                        {{ console.storage_size }}
-                      </p>
-                    </td>
-                    <td class="align-middle text-center text-sm">
-                      <p class="text-sm font-weight-bold mb-0">
-                        <Tag :color="console.condition.color">
-                          {{ console.condition.name }}
-                        </Tag>
-                      </p>
-                    </td>
-                    <td class="align-middle text-end">
-                      <div class="btn-group">
-                        <button
-                          class="
-                            btn btn-link
-                            text-dark
-                            dropdown-toggle dropdown-toggle-split
-                            m-0
-                            p-0
-                          "
-                          data-bs-toggle="dropdown"
-                          aria-haspopup="true"
-                          aria-expanded="false"
-                        >
-                          <span class="icon icon-sm"
-                            ><span
-                              class="fas fa-ellipsis-h icon-secondary"
-                            ></span> </span
-                          ><span class="sr-only">Toggle Dropdown</span>
-                        </button>
-                        <div class="dropdown-menu py-0" style="">
-                          <a
-                            class="dropdown-item text-default rounded-top"
-                            href="#"
-                            @click.prevent="changeStatusModal(console)"
-                          >
-                            <span
-                              class="fas fa-chart-line me-2"
-                              aria-hidden="true"
-                            >
-                            </span>
-                            Change Status
-                          </a>
-                          <a
-                            class="dropdown-item"
-                            href="javacript:;"
-                            @click.prevent="editModal(console)"
-                          >
-                            <span class="fas fa-edit me-2"></span>
-                            Edit Console
-                          </a>
-                          <a class="dropdown-item rounded-bottom">
-                            <span class="fas fa-trash-alt me-2"></span>
-                            Delete
-                          </a>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <div class="card-footer pt-0 p-3 d-flex align-items-center">
-            <div class="w-60">
-              <p class="text-sm" v-if="consoles.data">
-                Showing
-                <b>{{ consoles.meta.from }}</b> to
-                <b>{{ consoles.meta.to }}</b> out of
-                <b>{{ consoles.meta.total }}</b> entries
-              </p>
-            </div>
-            <div class="w-40 text-end">
-              <pagination
-                class="pagination mb-0 pagination-sm"
-                :data="consoles"
-                @pagination-change-page="getConsoles"
-              >
-              </pagination>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Modal -->
-
-    <!-- Create edit Modal -->
-    <div
-      class="modal fade"
-      id="modal-default"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="modal-default"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 v-if="!editMode" class="modal-title">Create Console</h5>
-            <h5 v-else class="modal-title">Edit Console</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body" v-if="!editStatus">
-            <div class="row">
-              <FormulateInput
-                type="text"
-                required
-                label="Serial Number"
-                validation="required"
-                v-model="form.serial_number"
-              />
-            </div>
-            <div class="row">
-              <div class="col-6">
-                <Label>Console Type</Label>
-                <Select v-model="form.type_id">
+                  </Select>
+                </div>
+              </div>
+              <div class="row mt-3">
+                <FormulateInput
+                  type="number"
+                  required
+                  validation="required"
+                  label="Storage Size in GB"
+                  v-model="form.storage_size"
+                />
+              </div>
+              <div class="row mt-3">
+                <Label>Status / Condition</Label>
+                <Select v-model="form.condition_id">
                   <Option
-                    v-for="(type, i) in types"
-                    :value="type.id"
+                    v-for="(condition, i) in conditions"
+                    :value="condition.id"
                     :key="i"
                     clearable
                     filterable
                   >
-                    {{ type.name }}</Option
-                  >
+                    {{ condition.name }}
+                  </Option>
                 </Select>
               </div>
             </div>
-            <div class="row mt-3">
-              <div class="col-12">
-                <Label>Storage Type</Label>
-                <Select v-model="form.storage">
+            <div class="modal-body" v-if="editStatus">
+              <div class="row mt-3">
+                <Label>Status / Condition</Label>
+                <Select v-model="form.condition_id">
                   <Option
-                    v-for="item in storage"
-                    :value="item.value"
-                    :key="item.value"
+                    v-for="(condition, i) in conditions"
+                    :value="condition.id"
+                    :key="i"
                     clearable
                     filterable
                   >
-                    {{ item.name }}</Option
-                  >
+                    {{ condition.name }}
+                  </Option>
                 </Select>
               </div>
             </div>
-            <div class="row mt-3">
-              <FormulateInput
-                type="number"
-                required
-                validation="required"
-                label="Storage Size in GB"
-                v-model="form.storage_size"
-              />
+            <div class="modal-footer" v-if="!editStatus">
+              <button
+                type="button"
+                class="btn bg-gradient-secondary"
+                data-bs-dismiss="modal"
+                @click="closeModal"
+              >
+                Close
+              </button>
+              <button
+                v-if="editMode"
+                type="button"
+                class="btn bg-gradient-primary"
+                @click="updateConsole(form.id)"
+                :disabled="processing"
+              >
+                {{ processing ? 'Saving ...' : 'Save Changes' }}
+              </button>
+              <button
+                v-else
+                type="button"
+                class="btn bg-gradient-primary"
+                @click="createConsole()"
+                :disabled="processing"
+              >
+                {{ processing ? 'Creating ...' : 'Create' }}
+              </button>
             </div>
-            <div class="row mt-3">
-              <Label>Status / Condition</Label>
-              <Select v-model="form.condition_id">
-                <Option
-                  v-for="(condition, i) in conditions"
-                  :value="condition.id"
-                  :key="i"
-                  clearable
-                  filterable
-                >
-                  {{ condition.name }}
-                </Option>
-              </Select>
+            <div class="modal-footer" v-else>
+              <button
+                type="button"
+                class="btn bg-gradient-secondary"
+                data-bs-dismiss="modal"
+                @click="closeModal"
+              >
+                Close
+              </button>
+              <button
+                type="button"
+                class="btn bg-gradient-primary"
+                @click="updateConsole(form.id)"
+                :disabled="processing"
+              >
+                {{ processing ? 'Saving ...' : 'Save Changes' }}
+              </button>
             </div>
-          </div>
-          <div class="modal-body" v-if="editStatus">
-            <div class="row mt-3">
-              <Label>Status / Condition</Label>
-              <Select v-model="form.condition_id">
-                <Option
-                  v-for="(condition, i) in conditions"
-                  :value="condition.id"
-                  :key="i"
-                  clearable
-                  filterable
-                >
-                  {{ condition.name }}
-                </Option>
-              </Select>
-            </div>
-          </div>
-          <div class="modal-footer" v-if="!editStatus">
-            <button
-              type="button"
-              class="btn bg-gradient-secondary"
-              data-bs-dismiss="modal"
-              @click="closeModal"
-            >
-              Close
-            </button>
-            <button
-              v-if="editMode"
-              type="button"
-              class="btn bg-gradient-primary"
-              @click="updateConsole(form.id)"
-              :disabled="processing"
-            >
-              {{ processing ? 'Saving ...' : 'Save Changes' }}
-            </button>
-            <button
-              v-else
-              type="button"
-              class="btn bg-gradient-primary"
-              @click="createConsole()"
-              :disabled="processing"
-            >
-              {{ processing ? 'Creating ...' : 'Create' }}
-            </button>
-          </div>
-          <div class="modal-footer" v-else>
-            <button
-              type="button"
-              class="btn bg-gradient-secondary"
-              data-bs-dismiss="modal"
-              @click="closeModal"
-            >
-              Close
-            </button>
-            <button
-              type="button"
-              class="btn bg-gradient-primary"
-              @click="updateConsole(form.id)"
-              :disabled="processing"
-            >
-              {{ processing ? 'Saving ...' : 'Save Changes' }}
-            </button>
           </div>
         </div>
       </div>
     </div>
+    <div v-else>
+      <Notfound />
+    </div>
   </div>
 </template>
 <script>
+import Notfound from '@/pages/Errors/notfound.vue'
 export default {
   data() {
     return {
@@ -676,6 +693,7 @@ export default {
       })
     },
   },
+  components: { Notfound },
 }
 </script>
 <style>

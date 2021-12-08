@@ -1,70 +1,78 @@
 <template>
-  <div class="row">
-    <div class="col-12">
-      <div class="card">
-        <div class="card-header p-4">
-          <div class="row">
-            <div class="col-8">
-              <h5 class="mb-2 col-8">Game Categories</h5>
-              <p class="mb-0">
-                Create game categories and assign then to games
-              </p>
-            </div>
-            <div class="col-4">
-              <a href="javascript:;" @click.prevent="createModal()">
-                <span class="badge bg-gradient-info ms-auto float-end">
-                  Create Category
-                </span>
-              </a>
+  <div>
+    <div class="row" v-if="$auth.isAdmin() || $auth.isCashier()">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header p-4">
+            <div class="row">
+              <div class="col-8">
+                <h5 class="mb-2 col-8">Game Categories</h5>
+                <p class="mb-0" v-if="$auth.isAdmin()">
+                  Create game categories and assign then to games
+                </p>
+              </div>
+              <div class="col-4">
+                <a
+                  href="javascript:;"
+                  @click.prevent="createModal()"
+                  v-if="$auth.isAdmin()"
+                >
+                  <span class="badge bg-gradient-info ms-auto float-end">
+                    Create Category
+                  </span>
+                </a>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="card-body p-4">
-          <div class="row">
-            <div
-              class="col-lg-4 col-md-6 col-12 mt-3"
-              v-for="(category, i) in categories.data"
-              :key="i"
-            >
-              <div class="card text-center">
-                <div
-                  class="
-                    overflow-hidden
-                    position-relative
-                    border-radius-lg
-                    bg-cover
-                    p-3
-                  "
-                  :style="{ backgroundImage: `url(${category.cover})` }"
-                >
-                  <span class="mask bg-gradient-dark opacity-6"></span>
+          <div class="card-body p-4">
+            <div class="row">
+              <div
+                class="col-lg-4 col-md-6 col-12 mt-3"
+                v-for="(category, i) in categories.data"
+                :key="i"
+              >
+                <div class="card text-center">
                   <div
                     class="
-                      card-body
+                      overflow-hidden
                       position-relative
-                      z-index-1
-                      d-flex
-                      flex-column
-                      mt-5
+                      border-radius-lg
+                      bg-cover
+                      p-3
                     "
+                    :style="{ backgroundImage: `url(${category.cover})` }"
                   >
-                    <p class="text-white font-weight-bolder">
-                      {{ category.description }}
-                    </p>
-                    <a
+                    <span class="mask bg-gradient-dark opacity-6"></span>
+                    <div
                       class="
-                        text-white text-sm
-                        font-weight-bold
-                        mb-0
-                        icon-move-right
-                        mt-4
+                        card-body
+                        position-relative
+                        z-index-1
+                        d-flex
+                        flex-column
+                        mt-5
                       "
-                      href="javascript:;"
-                      @click.prevent="editModal(category)"
                     >
-                      Edit
-                      <i class="fas fa-pen text-sm ms-1" aria-hidden="true"></i>
-                    </a>
+                      <p class="text-white font-weight-bolder">
+                        {{ category.description }}
+                      </p>
+                      <a
+                      v-if="$auth.isAdmin()"
+                        class="
+                          text-white text-sm
+                          font-weight-bold
+                          mb-0
+                          icon-move-right
+                          mt-4
+                        "
+                        href="javascript:;"
+                        @click.prevent="editModal(category)"
+                      >
+                        Edit
+                        <i class="fas fa-pen text-sm ms-1" aria-hidden="true">
+                        </i>
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -72,144 +80,148 @@
           </div>
         </div>
       </div>
-    </div>
-    <!-- Modal Create or edit -->
-    <!-- create and edit modal -->
+      <!-- Modal Create or edit -->
+      <!-- create and edit modal -->
 
-    <!-- Modal -->
-    <div
-      class="modal fade"
-      id="modal-default"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="modal-default"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 v-if="!editMode" class="modal-title">Create category</h5>
-            <h5 v-else class="modal-title">Edit category</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <div class="row">
-              <FormulateInput
-                type="text"
-                required
-                label="Category Name"
-                validation="required"
-                v-model="form.name"
-              />
-            </div>
-            <div class="row">
-              <Label>Color</Label>
-              <Select v-model="form.color">
-                <Option
-                  v-for="item in color"
-                  :value="item.value"
-                  :key="item.value"
-                  clearable
-                  filterable
-                >
-                  {{ item.name }}</Option
-                >
-              </Select>
-            </div>
-            <div class="row mt-3">
-              <FormulateInput
-                type="textarea"
-                required
-                validation="required|max:100"
-                label="Category Details"
-                v-model="form.description"
-              />
-            </div>
-            <div class="row mt-3">
-              <Label>Upload Cover Image</Label>
-              <Upload
-                v-show="!editMode || newCover"
-                ref="uploads"
-                type="drag"
-                action="/api/v1/categories/upload"
-                :headers="{
-                  'x-csrf-token': token,
-                  'X-Requested-With': 'XMLHttpRequest',
-                }"
-                :on-success="handleSuccess"
-                :on-error="handleError"
-                :format="['jpg', 'jpeg', 'png']"
-                :max-size="2048"
-                :on-format-error="handleFormatError"
-                :on-exceeded-size="handleMaxSize"
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="modal-default"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="modal-default"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 v-if="!editMode" class="modal-title">Create category</h5>
+              <h5 v-else class="modal-title">Edit category</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
               >
-                <div style="padding: 20px 0">
-                  <Icon
-                    type="ios-cloud-upload"
-                    size="52"
-                    style="color: #3399ff"
-                  ></Icon>
-                  <p>Click or drag files here to upload</p>
-                </div>
-              </Upload>
-              <div class="demo-upload-list" v-if="form.cover_photo">
-                <img :src="`${form.cover_photo}`" alt="" />
-                <div class="demo-upload-list-cover">
-                  <Icon
-                    v-if="editMode"
-                    type="ios-trash-outline"
-                    @click="deleteImage(true)"
-                  ></Icon>
-                  <Icon
-                    v-else
-                    type="ios-trash-outline"
-                    @click="deleteImage"
-                  ></Icon>
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <FormulateInput
+                  type="text"
+                  required
+                  label="Category Name"
+                  validation="required"
+                  v-model="form.name"
+                />
+              </div>
+              <div class="row">
+                <Label>Color</Label>
+                <Select v-model="form.color">
+                  <Option
+                    v-for="item in color"
+                    :value="item.value"
+                    :key="item.value"
+                    clearable
+                    filterable
+                  >
+                    {{ item.name }}
+                  </Option>
+                </Select>
+              </div>
+              <div class="row mt-3">
+                <FormulateInput
+                  type="textarea"
+                  required
+                  validation="required|max:100"
+                  label="Category Details"
+                  v-model="form.description"
+                />
+              </div>
+              <div class="row mt-3">
+                <Label>Upload Cover Image</Label>
+                <Upload
+                  v-show="!editMode || newCover"
+                  ref="uploads"
+                  type="drag"
+                  action="/api/v1/categories/upload"
+                  :headers="{
+                    'x-csrf-token': token,
+                    'X-Requested-With': 'XMLHttpRequest',
+                  }"
+                  :on-success="handleSuccess"
+                  :on-error="handleError"
+                  :format="['jpg', 'jpeg', 'png']"
+                  :max-size="2048"
+                  :on-format-error="handleFormatError"
+                  :on-exceeded-size="handleMaxSize"
+                >
+                  <div style="padding: 20px 0">
+                    <Icon
+                      type="ios-cloud-upload"
+                      size="52"
+                      style="color: #3399ff"
+                    ></Icon>
+                    <p>Click or drag files here to upload</p>
+                  </div>
+                </Upload>
+                <div class="demo-upload-list" v-if="form.cover_photo">
+                  <img :src="`${form.cover_photo}`" alt="" />
+                  <div class="demo-upload-list-cover">
+                    <Icon
+                      v-if="editMode"
+                      type="ios-trash-outline"
+                      @click="deleteImage(true)"
+                    ></Icon>
+                    <Icon
+                      v-else
+                      type="ios-trash-outline"
+                      @click="deleteImage"
+                    ></Icon>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn bg-gradient-secondary"
-              data-bs-dismiss="modal"
-              @click="closeModal"
-            >
-              Close
-            </button>
-            <button
-              v-if="editMode"
-              type="button"
-              class="btn bg-gradient-primary"
-              @click="updateCategory(form.id)"
-              :disabled="processing"
-            >
-              {{ processing ? 'Saving ...' : 'Save Changes' }}
-            </button>
-            <button
-              v-else
-              type="button"
-              class="btn bg-gradient-primary"
-              @click="createCategory()"
-              :disabled="processing"
-            >
-              {{ processing ? 'Creating ...' : 'Create' }}
-            </button>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn bg-gradient-secondary"
+                data-bs-dismiss="modal"
+                @click="closeModal"
+              >
+                Close
+              </button>
+              <button
+                v-if="editMode"
+                type="button"
+                class="btn bg-gradient-primary"
+                @click="updateCategory(form.id)"
+                :disabled="processing"
+              >
+                {{ processing ? 'Saving ...' : 'Save Changes' }}
+              </button>
+              <button
+                v-else
+                type="button"
+                class="btn bg-gradient-primary"
+                @click="createCategory()"
+                :disabled="processing"
+              >
+                {{ processing ? 'Creating ...' : 'Create' }}
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </div>
+    <div v-else>
+      <Notfound />
+    </div>
   </div>
 </template>
 <script>
+import Notfound from '@/pages/Errors/notfound.vue'
 export default {
   data() {
     return {
@@ -506,6 +518,7 @@ export default {
       })
     },
   },
+  components: { Notfound },
 }
 </script>
 <style>

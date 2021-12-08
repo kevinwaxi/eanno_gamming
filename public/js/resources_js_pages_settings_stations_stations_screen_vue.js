@@ -1,6 +1,57 @@
 "use strict";
 (self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_pages_settings_stations_stations_screen_vue"],{
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/Errors/notfound.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/Errors/notfound.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  methods: {
+    goHome: function goHome() {
+      this.$router.push('my_bookings');
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/settings/stations/stations/screen.vue?vue&type=script&lang=js&":
 /*!***********************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/settings/stations/stations/screen.vue?vue&type=script&lang=js& ***!
@@ -13,6 +64,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _pages_Errors_notfound_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/pages/Errors/notfound.vue */ "./resources/js/pages/Errors/notfound.vue");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -430,6 +482,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -891,6 +960,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         desc: 'File  ' + file.name + ' is too large, no more than 2M.'
       });
     }
+  },
+  components: {
+    Notfound: _pages_Errors_notfound_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   }
 });
 
@@ -948,6 +1020,44 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ }),
 
+/***/ "./resources/js/pages/Errors/notfound.vue":
+/*!************************************************!*\
+  !*** ./resources/js/pages/Errors/notfound.vue ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _notfound_vue_vue_type_template_id_0fbe0a8c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./notfound.vue?vue&type=template&id=0fbe0a8c& */ "./resources/js/pages/Errors/notfound.vue?vue&type=template&id=0fbe0a8c&");
+/* harmony import */ var _notfound_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./notfound.vue?vue&type=script&lang=js& */ "./resources/js/pages/Errors/notfound.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _notfound_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _notfound_vue_vue_type_template_id_0fbe0a8c___WEBPACK_IMPORTED_MODULE_0__.render,
+  _notfound_vue_vue_type_template_id_0fbe0a8c___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/pages/Errors/notfound.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/pages/settings/stations/stations/screen.vue":
 /*!******************************************************************!*\
   !*** ./resources/js/pages/settings/stations/stations/screen.vue ***!
@@ -988,6 +1098,21 @@ component.options.__file = "resources/js/pages/settings/stations/stations/screen
 
 /***/ }),
 
+/***/ "./resources/js/pages/Errors/notfound.vue?vue&type=script&lang=js&":
+/*!*************************************************************************!*\
+  !*** ./resources/js/pages/Errors/notfound.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_notfound_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./notfound.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/Errors/notfound.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_notfound_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
 /***/ "./resources/js/pages/settings/stations/stations/screen.vue?vue&type=script&lang=js&":
 /*!*******************************************************************************************!*\
   !*** ./resources/js/pages/settings/stations/stations/screen.vue?vue&type=script&lang=js& ***!
@@ -1015,6 +1140,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/pages/Errors/notfound.vue?vue&type=template&id=0fbe0a8c&":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/pages/Errors/notfound.vue?vue&type=template&id=0fbe0a8c& ***!
+  \*******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_notfound_vue_vue_type_template_id_0fbe0a8c___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_notfound_vue_vue_type_template_id_0fbe0a8c___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_notfound_vue_vue_type_template_id_0fbe0a8c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./notfound.vue?vue&type=template&id=0fbe0a8c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/Errors/notfound.vue?vue&type=template&id=0fbe0a8c&");
+
+
+/***/ }),
+
 /***/ "./resources/js/pages/settings/stations/stations/screen.vue?vue&type=template&id=48b24282&":
 /*!*************************************************************************************************!*\
   !*** ./resources/js/pages/settings/stations/stations/screen.vue?vue&type=template&id=48b24282& ***!
@@ -1027,6 +1168,88 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_screen_vue_vue_type_template_id_48b24282___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_screen_vue_vue_type_template_id_48b24282___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./screen.vue?vue&type=template&id=48b24282& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/settings/stations/stations/screen.vue?vue&type=template&id=48b24282&");
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/Errors/notfound.vue?vue&type=template&id=0fbe0a8c&":
+/*!**********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/Errors/notfound.vue?vue&type=template&id=0fbe0a8c& ***!
+  \**********************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("main", { staticClass: "main-content mt-0" }, [
+      _c("section", { staticClass: "my-10" }, [
+        _c("div", { staticClass: "container" }, [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-lg-6 my-auto" }, [
+              _c(
+                "h1",
+                {
+                  staticClass:
+                    "display-1 text-bolder text-gradient text-danger",
+                },
+                [_vm._v("\n              Error 404\n            ")]
+              ),
+              _vm._v(" "),
+              _c("h2", [_vm._v("Erm. Page not found")]),
+              _vm._v(" "),
+              _c("p", { staticClass: "lead" }, [
+                _vm._v(
+                  "\n              We suggest you to go to the homepage while we solve this issue.\n            "
+                ),
+              ]),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass: "btn bg-gradient-dark mt-4",
+                  attrs: { href: "#", type: "button" },
+                  on: {
+                    click: function ($event) {
+                      return _vm.goHome()
+                    },
+                  },
+                },
+                [_vm._v("\n              Go to Homepage\n            ")]
+              ),
+            ]),
+            _vm._v(" "),
+            _vm._m(0),
+          ]),
+        ]),
+      ]),
+    ]),
+  ])
+}
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-lg-6 my-auto position-relative" }, [
+      _c("img", {
+        staticClass: "w-100 position-relative",
+        attrs: {
+          src: "/assets/img/illustrations/error-404.png",
+          alt: "404-error",
+        },
+      }),
+    ])
+  },
+]
+render._withStripped = true
+
 
 
 /***/ }),
@@ -1046,838 +1269,922 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", { staticClass: "row mt-4" }, [
-      _c("div", { staticClass: "col-12" }, [
-        _c("div", { staticClass: "card mb-4" }, [
-          _c("div", { staticClass: "card-header pb-0" }, [
-            _c("div", { staticClass: "row" }, [
-              _vm._m(0),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-4" }, [
-                _c(
-                  "a",
-                  {
-                    attrs: { href: "javascript:;" },
-                    on: {
-                      click: function ($event) {
-                        $event.preventDefault()
-                        return _vm.createModal()
-                      },
-                    },
-                  },
-                  [
-                    _c(
-                      "span",
-                      {
-                        staticClass: "badge bg-gradient-info ms-auto float-end",
-                      },
-                      [
-                        _vm._v(
-                          "\n                  Create Screen\n                "
-                        ),
-                      ]
-                    ),
-                  ]
-                ),
-              ]),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-3 flex" }, [
-                _c("label", { attrs: { for: "search" } }, [_vm._v(" Search ")]),
-                _vm._v(" "),
-                _c("div", { staticClass: "input-group" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model.lazy",
-                        value: _vm.search,
-                        expression: "search",
-                        modifiers: { lazy: true },
-                      },
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      name: "search",
-                      type: "text",
-                      placeholder: "Find Screen",
-                    },
-                    domProps: { value: _vm.search },
-                    on: {
-                      change: function ($event) {
-                        _vm.search = $event.target.value
-                      },
-                    },
-                  }),
-                ]),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-3" }, [
-                _c("label", { attrs: { for: "select" } }, [
-                  _vm._v("Select by:"),
-                ]),
-                _vm._v(" "),
-                _c(
-                  "select",
-                  {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.selected,
-                        expression: "selected",
-                      },
-                    ],
-                    staticClass: "form-select fmxw-200 d-none d-md-inline",
-                    attrs: { "aria-label": "Fillter by role" },
-                    on: {
-                      change: function ($event) {
-                        var $$selectedVal = Array.prototype.filter
-                          .call($event.target.options, function (o) {
-                            return o.selected
-                          })
-                          .map(function (o) {
-                            var val = "_value" in o ? o._value : o.value
-                            return val
-                          })
-                        _vm.selected = $event.target.multiple
-                          ? $$selectedVal
-                          : $$selectedVal[0]
-                      },
-                    },
-                  },
-                  [
-                    _c(
-                      "option",
-                      { attrs: { selected: "selected", value: "" } },
-                      [_vm._v("Show All")]
-                    ),
-                    _vm._v(" "),
-                    _vm._l(_vm.conditions, function (condition, i) {
-                      return _c(
-                        "option",
-                        { key: i, domProps: { value: condition.id } },
-                        [
-                          _vm._v(
-                            "\n                  " +
-                              _vm._s(condition.name) +
-                              "\n                "
-                          ),
-                        ]
-                      )
-                    }),
-                  ],
-                  2
-                ),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-2" }, [
-                _c("label", { attrs: { for: "select" } }, [_vm._v("Show:")]),
-                _vm._v(" "),
-                _c(
-                  "select",
-                  {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.total,
-                        expression: "total",
-                      },
-                    ],
-                    staticClass: "form-select fmxw-200 d-none d-md-inline",
-                    attrs: { "aria-label": "show" },
-                    on: {
-                      change: function ($event) {
-                        var $$selectedVal = Array.prototype.filter
-                          .call($event.target.options, function (o) {
-                            return o.selected
-                          })
-                          .map(function (o) {
-                            var val = "_value" in o ? o._value : o.value
-                            return val
-                          })
-                        _vm.total = $event.target.multiple
-                          ? $$selectedVal
-                          : $$selectedVal[0]
-                      },
-                    },
-                  },
-                  [
-                    _c("option", { attrs: { value: "5" } }, [_vm._v("5")]),
-                    _vm._v(" "),
-                    _c("option", { attrs: { value: "10" } }, [_vm._v("10")]),
-                    _vm._v(" "),
-                    _c("option", { attrs: { value: "20" } }, [_vm._v("20")]),
-                    _vm._v(" "),
-                    _vm.screens.data
-                      ? _c(
-                          "option",
-                          { domProps: { value: _vm.screens.meta.total } },
-                          [
+  return _vm.$auth.isAdmin() || _vm.$auth.can("screen list")
+    ? _c("div", [
+        _c("div", [
+          _c("div", { staticClass: "row mt-4" }, [
+            _c("div", { staticClass: "col-12" }, [
+              _c("div", { staticClass: "card mb-4" }, [
+                _c("div", { staticClass: "card-header pb-0" }, [
+                  _c("div", { staticClass: "row" }, [
+                    _c("div", { staticClass: "col-8" }, [
+                      _c("h5", { staticClass: "mb-2 col-8" }, [
+                        _vm._v("Game Screens"),
+                      ]),
+                      _vm._v(" "),
+                      _vm.$auth.isAdmin()
+                        ? _c("p", { staticClass: "mb-0" }, [
                             _vm._v(
-                              "\n                  All " +
-                                _vm._s(_vm.screens.meta.total) +
-                                "\n                "
+                              "\n                  Create game screens and assign then to stations\n                "
                             ),
-                          ]
-                        )
-                      : _vm._e(),
+                          ])
+                        : _vm._e(),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-4" }, [
+                      _vm.$auth.isAdmin()
+                        ? _c(
+                            "a",
+                            {
+                              attrs: { href: "javascript:;" },
+                              on: {
+                                click: function ($event) {
+                                  $event.preventDefault()
+                                  return _vm.createModal()
+                                },
+                              },
+                            },
+                            [
+                              _c(
+                                "span",
+                                {
+                                  staticClass:
+                                    "badge bg-gradient-info ms-auto float-end",
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                    Create Screen\n                  "
+                                  ),
+                                ]
+                              ),
+                            ]
+                          )
+                        : _vm._e(),
+                    ]),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row" }, [
+                    _c("div", { staticClass: "col-3 flex" }, [
+                      _c("label", { attrs: { for: "search" } }, [
+                        _vm._v(" Search "),
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "input-group" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model.lazy",
+                              value: _vm.search,
+                              expression: "search",
+                              modifiers: { lazy: true },
+                            },
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            name: "search",
+                            type: "text",
+                            placeholder: "Find Screen",
+                          },
+                          domProps: { value: _vm.search },
+                          on: {
+                            change: function ($event) {
+                              _vm.search = $event.target.value
+                            },
+                          },
+                        }),
+                      ]),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-3" }, [
+                      _c("label", { attrs: { for: "select" } }, [
+                        _vm._v("Select by:"),
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.selected,
+                              expression: "selected",
+                            },
+                          ],
+                          staticClass:
+                            "form-select fmxw-200 d-none d-md-inline",
+                          attrs: { "aria-label": "Fillter by role" },
+                          on: {
+                            change: function ($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function (o) {
+                                  return o.selected
+                                })
+                                .map(function (o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.selected = $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            },
+                          },
+                        },
+                        [
+                          _c(
+                            "option",
+                            { attrs: { selected: "selected", value: "" } },
+                            [_vm._v("Show All")]
+                          ),
+                          _vm._v(" "),
+                          _vm._l(_vm.conditions, function (condition, i) {
+                            return _c(
+                              "option",
+                              { key: i, domProps: { value: condition.id } },
+                              [
+                                _vm._v(
+                                  "\n                    " +
+                                    _vm._s(condition.name) +
+                                    "\n                  "
+                                ),
+                              ]
+                            )
+                          }),
+                        ],
+                        2
+                      ),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-2" }, [
+                      _c("label", { attrs: { for: "select" } }, [
+                        _vm._v("Show:"),
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.total,
+                              expression: "total",
+                            },
+                          ],
+                          staticClass:
+                            "form-select fmxw-200 d-none d-md-inline",
+                          attrs: { "aria-label": "show" },
+                          on: {
+                            change: function ($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function (o) {
+                                  return o.selected
+                                })
+                                .map(function (o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.total = $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            },
+                          },
+                        },
+                        [
+                          _c("option", { attrs: { value: "5" } }, [
+                            _vm._v("5"),
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "10" } }, [
+                            _vm._v("10"),
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "20" } }, [
+                            _vm._v("20"),
+                          ]),
+                          _vm._v(" "),
+                          _vm.screens.data
+                            ? _c(
+                                "option",
+                                { domProps: { value: _vm.screens.meta.total } },
+                                [
+                                  _vm._v(
+                                    "\n                    All " +
+                                      _vm._s(_vm.screens.meta.total) +
+                                      "\n                  "
+                                  ),
+                                ]
+                              )
+                            : _vm._e(),
+                        ]
+                      ),
+                    ]),
+                  ]),
+                ]),
+                _vm._v(" "),
+                _vm.screens.data
+                  ? _c("div", { staticClass: "card-body px-0 pt-0 pb-2" }, [
+                      _vm.screens.data.length <= 0
+                        ? _c(
+                            "div",
+                            {
+                              staticClass:
+                                "alert alert-dark alert-dismissible fade show",
+                              attrs: { role: "alert" },
+                            },
+                            [
+                              _vm._m(0),
+                              _vm._v(" "),
+                              _vm._m(1),
+                              _vm._v(" "),
+                              _vm._m(2),
+                            ]
+                          )
+                        : _c("div", { staticClass: "table-responsive p-0" }, [
+                            _c(
+                              "table",
+                              { staticClass: "table align-items-center mb-0" },
+                              [
+                                _vm._m(3),
+                                _vm._v(" "),
+                                _c(
+                                  "tbody",
+                                  _vm._l(
+                                    _vm.screens.data,
+                                    function (screen, i) {
+                                      return _c("tr", { key: i }, [
+                                        _c("td", [
+                                          _c(
+                                            "div",
+                                            { staticClass: "d-flex px-3 py-1" },
+                                            [
+                                              _vm._m(4, true),
+                                              _vm._v(" "),
+                                              _c(
+                                                "div",
+                                                {
+                                                  staticClass:
+                                                    "d-flex flex-column justify-content-center",
+                                                },
+                                                [
+                                                  _c(
+                                                    "h6",
+                                                    {
+                                                      staticClass:
+                                                        "mb-0 text-sm",
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        "\n                            " +
+                                                          _vm._s(
+                                                            screen.serial_number
+                                                          ) +
+                                                          "\n                          "
+                                                      ),
+                                                    ]
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "p",
+                                                    {
+                                                      staticClass:
+                                                        "\n                              text-sm\n                              font-weight-bold\n                              text-secondary\n                              mb-0\n                            ",
+                                                    },
+                                                    [
+                                                      _c(
+                                                        "span",
+                                                        {
+                                                          staticClass:
+                                                            "text-success",
+                                                        },
+                                                        [
+                                                          _vm._v(
+                                                            "\n                              " +
+                                                              _vm._s(
+                                                                screen.make.name
+                                                              ) +
+                                                              "\n                            "
+                                                          ),
+                                                        ]
+                                                      ),
+                                                      _vm._v(
+                                                        "\n                            model\n                          "
+                                                      ),
+                                                    ]
+                                                  ),
+                                                ]
+                                              ),
+                                            ]
+                                          ),
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("td", [
+                                          _c(
+                                            "p",
+                                            {
+                                              staticClass:
+                                                "text-sm font-weight-bold mb-0",
+                                            },
+                                            [
+                                              _vm._v(
+                                                "\n                        " +
+                                                  _vm._s(screen.size) +
+                                                  " inch\n                      "
+                                              ),
+                                            ]
+                                          ),
+                                        ]),
+                                        _vm._v(" "),
+                                        _c(
+                                          "td",
+                                          {
+                                            staticClass:
+                                              "align-middle text-center text-sm",
+                                          },
+                                          [
+                                            _c(
+                                              "p",
+                                              {
+                                                staticClass:
+                                                  "text-sm font-weight-bold mb-0",
+                                              },
+                                              [
+                                                _c(
+                                                  "Tag",
+                                                  {
+                                                    attrs: {
+                                                      color:
+                                                        screen.condition.color,
+                                                    },
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                          " +
+                                                        _vm._s(
+                                                          screen.condition.name
+                                                        ) +
+                                                        "\n                        "
+                                                    ),
+                                                  ]
+                                                ),
+                                              ],
+                                              1
+                                            ),
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "td",
+                                          {
+                                            staticClass:
+                                              "align-middle text-end",
+                                          },
+                                          [
+                                            _c(
+                                              "div",
+                                              { staticClass: "btn-group" },
+                                              [
+                                                _vm._m(5, true),
+                                                _vm._v(" "),
+                                                _vm.$auth.isAdmin()
+                                                  ? _c(
+                                                      "div",
+                                                      {
+                                                        staticClass:
+                                                          "dropdown-menu py-0",
+                                                      },
+                                                      [
+                                                        _c(
+                                                          "a",
+                                                          {
+                                                            staticClass:
+                                                              "dropdown-item text-default rounded-top",
+                                                            attrs: {
+                                                              href: "#",
+                                                            },
+                                                            on: {
+                                                              click: function (
+                                                                $event
+                                                              ) {
+                                                                $event.preventDefault()
+                                                                return _vm.changeStatusModal(
+                                                                  screen
+                                                                )
+                                                              },
+                                                            },
+                                                          },
+                                                          [
+                                                            _c("span", {
+                                                              staticClass:
+                                                                "fas fa-chart-line me-2",
+                                                              attrs: {
+                                                                "aria-hidden":
+                                                                  "true",
+                                                              },
+                                                            }),
+                                                            _vm._v(
+                                                              "\n                            Change Status\n                          "
+                                                            ),
+                                                          ]
+                                                        ),
+                                                        _vm._v(" "),
+                                                        _c(
+                                                          "a",
+                                                          {
+                                                            staticClass:
+                                                              "dropdown-item",
+                                                            attrs: {
+                                                              href: "javacript:;",
+                                                            },
+                                                            on: {
+                                                              click: function (
+                                                                $event
+                                                              ) {
+                                                                $event.preventDefault()
+                                                                return _vm.editModal(
+                                                                  screen
+                                                                )
+                                                              },
+                                                            },
+                                                          },
+                                                          [
+                                                            _c("span", {
+                                                              staticClass:
+                                                                "fas fa-edit me-2",
+                                                            }),
+                                                            _vm._v(
+                                                              "\n                            Edit Screen\n                          "
+                                                            ),
+                                                          ]
+                                                        ),
+                                                        _vm._v(" "),
+                                                        _vm._m(6, true),
+                                                      ]
+                                                    )
+                                                  : _vm._e(),
+                                              ]
+                                            ),
+                                          ]
+                                        ),
+                                      ])
+                                    }
+                                  ),
+                                  0
+                                ),
+                              ]
+                            ),
+                          ]),
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "card-footer pt-0 p-3 d-flex align-items-center",
+                  },
+                  [
+                    _c("div", { staticClass: "w-60" }, [
+                      _vm.screens.data
+                        ? _c("p", { staticClass: "text-sm" }, [
+                            _vm._v(
+                              "\n                Showing\n                "
+                            ),
+                            _c("b", [_vm._v(_vm._s(_vm.screens.meta.from))]),
+                            _vm._v(" to\n                "),
+                            _c("b", [_vm._v(_vm._s(_vm.screens.meta.to))]),
+                            _vm._v(" out of\n                "),
+                            _c("b", [_vm._v(_vm._s(_vm.screens.meta.total))]),
+                            _vm._v(" entries\n              "),
+                          ])
+                        : _vm._e(),
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "w-40 text-end" },
+                      [
+                        _c("pagination", {
+                          staticClass: "pagination mb-0 pagination-sm",
+                          attrs: { data: _vm.screens },
+                          on: { "pagination-change-page": _vm.getScreens },
+                        }),
+                      ],
+                      1
+                    ),
                   ]
                 ),
               ]),
             ]),
           ]),
           _vm._v(" "),
-          _vm.screens.data
-            ? _c("div", { staticClass: "card-body px-0 pt-0 pb-2" }, [
-                _vm.screens.data.length <= 0
-                  ? _c(
-                      "div",
-                      {
-                        staticClass:
-                          "alert alert-dark alert-dismissible fade show",
-                        attrs: { role: "alert" },
-                      },
-                      [
-                        _vm._m(1),
-                        _vm._v(" "),
-                        _vm._m(2),
-                        _vm._v(" "),
-                        _vm._m(3),
-                      ]
-                    )
-                  : _c("div", { staticClass: "table-responsive p-0" }, [
-                      _c(
-                        "table",
-                        { staticClass: "table align-items-center mb-0" },
-                        [
-                          _vm._m(4),
+          _c(
+            "div",
+            {
+              staticClass: "modal fade",
+              attrs: {
+                id: "modal-default",
+                tabindex: "-1",
+                role: "dialog",
+                "aria-labelledby": "modal-default",
+                "aria-hidden": "true",
+              },
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass: "modal-dialog modal-dialog-centered",
+                  attrs: { role: "document" },
+                },
+                [
+                  _c("div", { staticClass: "modal-content" }, [
+                    _c("div", { staticClass: "modal-header" }, [
+                      !_vm.editMode
+                        ? _c("h5", { staticClass: "modal-title" }, [
+                            _vm._v("Create Screen"),
+                          ])
+                        : _c("h5", { staticClass: "modal-title" }, [
+                            _vm._v("Edit Screen"),
+                          ]),
+                      _vm._v(" "),
+                      _vm._m(7),
+                    ]),
+                    _vm._v(" "),
+                    !_vm.editStatus
+                      ? _c("div", { staticClass: "modal-body" }, [
+                          _c(
+                            "div",
+                            { staticClass: "row" },
+                            [
+                              _c("FormulateInput", {
+                                attrs: {
+                                  type: "text",
+                                  required: "",
+                                  label: "Serial Number",
+                                  validation: "required",
+                                },
+                                model: {
+                                  value: _vm.form.serial_number,
+                                  callback: function ($$v) {
+                                    _vm.$set(_vm.form, "serial_number", $$v)
+                                  },
+                                  expression: "form.serial_number",
+                                },
+                              }),
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "row mt-3" }, [
+                            _c(
+                              "div",
+                              { staticClass: "col-8" },
+                              [
+                                _c("Label", [_vm._v("Make / Brand")]),
+                                _vm._v(" "),
+                                _c(
+                                  "Select",
+                                  {
+                                    model: {
+                                      value: _vm.form.make_id,
+                                      callback: function ($$v) {
+                                        _vm.$set(_vm.form, "make_id", $$v)
+                                      },
+                                      expression: "form.make_id",
+                                    },
+                                  },
+                                  _vm._l(_vm.makes, function (make, i) {
+                                    return _c(
+                                      "Option",
+                                      {
+                                        key: i,
+                                        attrs: {
+                                          value: make.id,
+                                          clearable: "",
+                                          filterable: "",
+                                        },
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                    " +
+                                            _vm._s(make.name) +
+                                            "\n                  "
+                                        ),
+                                      ]
+                                    )
+                                  }),
+                                  1
+                                ),
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "col-4" },
+                              [
+                                _c("FormulateInput", {
+                                  attrs: {
+                                    type: "text",
+                                    required: "",
+                                    label: "Model Number",
+                                    validation: "required",
+                                  },
+                                  model: {
+                                    value: _vm.form.model_number,
+                                    callback: function ($$v) {
+                                      _vm.$set(_vm.form, "model_number", $$v)
+                                    },
+                                    expression: "form.model_number",
+                                  },
+                                }),
+                              ],
+                              1
+                            ),
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "row mt-3" }, [
+                            _c(
+                              "div",
+                              { staticClass: "col-6" },
+                              [
+                                _c("Label", [_vm._v("Screen Feature")]),
+                                _vm._v(" "),
+                                _c(
+                                  "Select",
+                                  {
+                                    model: {
+                                      value: _vm.form.feature,
+                                      callback: function ($$v) {
+                                        _vm.$set(_vm.form, "feature", $$v)
+                                      },
+                                      expression: "form.feature",
+                                    },
+                                  },
+                                  _vm._l(_vm.feature, function (item) {
+                                    return _c(
+                                      "Option",
+                                      {
+                                        key: item.value,
+                                        attrs: {
+                                          value: item.value,
+                                          clearable: "",
+                                          filterable: "",
+                                        },
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                    " +
+                                            _vm._s(item.name) +
+                                            "\n                  "
+                                        ),
+                                      ]
+                                    )
+                                  }),
+                                  1
+                                ),
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "col-6" },
+                              [
+                                _c("FormulateInput", {
+                                  attrs: {
+                                    type: "number",
+                                    required: "",
+                                    label: "Size (In '' inches)",
+                                    validation: "required",
+                                  },
+                                  model: {
+                                    value: _vm.form.size,
+                                    callback: function ($$v) {
+                                      _vm.$set(_vm.form, "size", $$v)
+                                    },
+                                    expression: "form.size",
+                                  },
+                                }),
+                              ],
+                              1
+                            ),
+                          ]),
                           _vm._v(" "),
                           _c(
-                            "tbody",
-                            _vm._l(_vm.screens.data, function (screen, i) {
-                              return _c("tr", { key: i }, [
-                                _c("td", [
-                                  _c(
-                                    "div",
-                                    { staticClass: "d-flex px-3 py-1" },
-                                    [
-                                      _vm._m(5, true),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        {
-                                          staticClass:
-                                            "d-flex flex-column justify-content-center",
-                                        },
-                                        [
-                                          _c(
-                                            "h6",
-                                            { staticClass: "mb-0 text-sm" },
-                                            [
-                                              _vm._v(
-                                                "\n                          " +
-                                                  _vm._s(screen.serial_number) +
-                                                  "\n                        "
-                                              ),
-                                            ]
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "p",
-                                            {
-                                              staticClass:
-                                                "text-sm font-weight-bold text-secondary mb-0",
-                                            },
-                                            [
-                                              _c(
-                                                "span",
-                                                { staticClass: "text-success" },
-                                                [
-                                                  _vm._v(
-                                                    "\n                            " +
-                                                      _vm._s(screen.make.name) +
-                                                      "\n                          "
-                                                  ),
-                                                ]
-                                              ),
-                                              _vm._v(
-                                                "\n                          model\n                        "
-                                              ),
-                                            ]
-                                          ),
-                                        ]
-                                      ),
-                                    ]
-                                  ),
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _c(
-                                    "p",
+                            "div",
+                            { staticClass: "row mt-3" },
+                            [
+                              _c("Label", [_vm._v("Status / Condition")]),
+                              _vm._v(" "),
+                              _c(
+                                "Select",
+                                {
+                                  model: {
+                                    value: _vm.form.condition_id,
+                                    callback: function ($$v) {
+                                      _vm.$set(_vm.form, "condition_id", $$v)
+                                    },
+                                    expression: "form.condition_id",
+                                  },
+                                },
+                                _vm._l(_vm.conditions, function (condition, i) {
+                                  return _c(
+                                    "Option",
                                     {
-                                      staticClass:
-                                        "text-sm font-weight-bold mb-0",
+                                      key: i,
+                                      attrs: {
+                                        value: condition.id,
+                                        clearable: "",
+                                        filterable: "",
+                                      },
                                     },
                                     [
                                       _vm._v(
-                                        "\n                      " +
-                                          _vm._s(screen.size) +
-                                          " inch\n                    "
+                                        "\n                  " +
+                                          _vm._s(condition.name) +
+                                          "\n                "
                                       ),
                                     ]
-                                  ),
-                                ]),
-                                _vm._v(" "),
-                                _c(
-                                  "td",
-                                  {
-                                    staticClass:
-                                      "align-middle text-center text-sm",
-                                  },
-                                  [
-                                    _c(
-                                      "p",
-                                      {
-                                        staticClass:
-                                          "text-sm font-weight-bold mb-0",
-                                      },
-                                      [
-                                        _c(
-                                          "Tag",
-                                          {
-                                            attrs: {
-                                              color: screen.condition.color,
-                                            },
-                                          },
-                                          [
-                                            _vm._v(
-                                              "\n                        " +
-                                                _vm._s(screen.condition.name) +
-                                                "\n                      "
-                                            ),
-                                          ]
-                                        ),
-                                      ],
-                                      1
-                                    ),
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "td",
-                                  { staticClass: "align-middle text-end" },
-                                  [
-                                    _c("div", { staticClass: "btn-group" }, [
-                                      _vm._m(6, true),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        { staticClass: "dropdown-menu py-0" },
-                                        [
-                                          _c(
-                                            "a",
-                                            {
-                                              staticClass:
-                                                "dropdown-item text-default rounded-top",
-                                              attrs: { href: "#" },
-                                              on: {
-                                                click: function ($event) {
-                                                  $event.preventDefault()
-                                                  return _vm.changeStatusModal(
-                                                    screen
-                                                  )
-                                                },
-                                              },
-                                            },
-                                            [
-                                              _c("span", {
-                                                staticClass:
-                                                  "fas fa-chart-line me-2",
-                                                attrs: {
-                                                  "aria-hidden": "true",
-                                                },
-                                              }),
-                                              _vm._v(
-                                                "\n                          Change Status\n                        "
-                                              ),
-                                            ]
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "a",
-                                            {
-                                              staticClass: "dropdown-item",
-                                              attrs: { href: "javacript:;" },
-                                              on: {
-                                                click: function ($event) {
-                                                  $event.preventDefault()
-                                                  return _vm.editModal(screen)
-                                                },
-                                              },
-                                            },
-                                            [
-                                              _c("span", {
-                                                staticClass: "fas fa-edit me-2",
-                                              }),
-                                              _vm._v(
-                                                "\n                          Edit Screen\n                        "
-                                              ),
-                                            ]
-                                          ),
-                                          _vm._v(" "),
-                                          _vm._m(7, true),
-                                        ]
-                                      ),
-                                    ]),
-                                  ]
-                                ),
-                              ])
-                            }),
-                            0
+                                  )
+                                }),
+                                1
+                              ),
+                            ],
+                            1
                           ),
-                        ]
-                      ),
-                    ]),
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "card-footer pt-0 p-3 d-flex align-items-center" },
-            [
-              _c("div", { staticClass: "w-60" }, [
-                _vm.screens.data
-                  ? _c("p", { staticClass: "text-sm" }, [
-                      _vm._v("\n              Showing\n              "),
-                      _c("b", [_vm._v(_vm._s(_vm.screens.meta.from))]),
-                      _vm._v(" to\n              "),
-                      _c("b", [_vm._v(_vm._s(_vm.screens.meta.to))]),
-                      _vm._v(" out of\n              "),
-                      _c("b", [_vm._v(_vm._s(_vm.screens.meta.total))]),
-                      _vm._v(" entries\n            "),
-                    ])
-                  : _vm._e(),
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "w-40 text-end" },
-                [
-                  _c("pagination", {
-                    staticClass: "pagination mb-0 pagination-sm",
-                    attrs: { data: _vm.screens },
-                    on: { "pagination-change-page": _vm.getScreens },
-                  }),
-                ],
-                1
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.editStatus
+                      ? _c("div", { staticClass: "modal-body" }, [
+                          _c(
+                            "div",
+                            { staticClass: "row mt-3" },
+                            [
+                              _c("Label", [_vm._v("Status / Condition")]),
+                              _vm._v(" "),
+                              _c(
+                                "Select",
+                                {
+                                  model: {
+                                    value: _vm.form.condition_id,
+                                    callback: function ($$v) {
+                                      _vm.$set(_vm.form, "condition_id", $$v)
+                                    },
+                                    expression: "form.condition_id",
+                                  },
+                                },
+                                _vm._l(_vm.conditions, function (condition, i) {
+                                  return _c(
+                                    "Option",
+                                    {
+                                      key: i,
+                                      attrs: {
+                                        value: condition.id,
+                                        clearable: "",
+                                        filterable: "",
+                                      },
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                  " +
+                                          _vm._s(condition.name) +
+                                          "\n                "
+                                      ),
+                                    ]
+                                  )
+                                }),
+                                1
+                              ),
+                            ],
+                            1
+                          ),
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    !_vm.editStatus
+                      ? _c("div", { staticClass: "modal-footer" }, [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn bg-gradient-secondary",
+                              attrs: {
+                                type: "button",
+                                "data-bs-dismiss": "modal",
+                              },
+                              on: { click: _vm.closeModal },
+                            },
+                            [_vm._v("\n              Close\n            ")]
+                          ),
+                          _vm._v(" "),
+                          _vm.editMode
+                            ? _c(
+                                "button",
+                                {
+                                  staticClass: "btn bg-gradient-primary",
+                                  attrs: {
+                                    type: "button",
+                                    disabled: _vm.processing,
+                                  },
+                                  on: {
+                                    click: function ($event) {
+                                      return _vm.updateScreen(_vm.form.id)
+                                    },
+                                  },
+                                },
+                                [
+                                  _vm._v(
+                                    "\n              " +
+                                      _vm._s(
+                                        _vm.processing
+                                          ? "Saving ..."
+                                          : "Save Changes"
+                                      ) +
+                                      "\n            "
+                                  ),
+                                ]
+                              )
+                            : _c(
+                                "button",
+                                {
+                                  staticClass: "btn bg-gradient-primary",
+                                  attrs: {
+                                    type: "button",
+                                    disabled: _vm.processing,
+                                  },
+                                  on: {
+                                    click: function ($event) {
+                                      return _vm.createScreen()
+                                    },
+                                  },
+                                },
+                                [
+                                  _vm._v(
+                                    "\n              " +
+                                      _vm._s(
+                                        _vm.processing
+                                          ? "Creating ..."
+                                          : "Create"
+                                      ) +
+                                      "\n            "
+                                  ),
+                                ]
+                              ),
+                        ])
+                      : _c("div", { staticClass: "modal-footer" }, [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn bg-gradient-secondary",
+                              attrs: {
+                                type: "button",
+                                "data-bs-dismiss": "modal",
+                              },
+                              on: { click: _vm.closeModal },
+                            },
+                            [_vm._v("\n              Close\n            ")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn bg-gradient-primary",
+                              attrs: {
+                                type: "button",
+                                disabled: _vm.processing,
+                              },
+                              on: {
+                                click: function ($event) {
+                                  return _vm.updateScreen(_vm.form.id)
+                                },
+                              },
+                            },
+                            [
+                              _vm._v(
+                                "\n              " +
+                                  _vm._s(
+                                    _vm.processing
+                                      ? "Saving ..."
+                                      : "Save Changes"
+                                  ) +
+                                  "\n            "
+                              ),
+                            ]
+                          ),
+                        ]),
+                  ]),
+                ]
               ),
             ]
           ),
         ]),
-      ]),
-    ]),
-    _vm._v(" "),
-    _c(
-      "div",
-      {
-        staticClass: "modal fade",
-        attrs: {
-          id: "modal-default",
-          tabindex: "-1",
-          role: "dialog",
-          "aria-labelledby": "modal-default",
-          "aria-hidden": "true",
-        },
-      },
-      [
-        _c(
-          "div",
-          {
-            staticClass: "modal-dialog modal-dialog-centered",
-            attrs: { role: "document" },
-          },
-          [
-            _c("div", { staticClass: "modal-content" }, [
-              _c("div", { staticClass: "modal-header" }, [
-                !_vm.editMode
-                  ? _c("h5", { staticClass: "modal-title" }, [
-                      _vm._v("Create Screen"),
-                    ])
-                  : _c("h5", { staticClass: "modal-title" }, [
-                      _vm._v("Edit Screen"),
-                    ]),
-                _vm._v(" "),
-                _vm._m(8),
-              ]),
-              _vm._v(" "),
-              !_vm.editStatus
-                ? _c("div", { staticClass: "modal-body" }, [
-                    _c(
-                      "div",
-                      { staticClass: "row" },
-                      [
-                        _c("FormulateInput", {
-                          attrs: {
-                            type: "text",
-                            required: "",
-                            label: "Serial Number",
-                            validation: "required",
-                          },
-                          model: {
-                            value: _vm.form.serial_number,
-                            callback: function ($$v) {
-                              _vm.$set(_vm.form, "serial_number", $$v)
-                            },
-                            expression: "form.serial_number",
-                          },
-                        }),
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "row mt-3" }, [
-                      _c(
-                        "div",
-                        { staticClass: "col-8" },
-                        [
-                          _c("Label", [_vm._v("Make / Brand")]),
-                          _vm._v(" "),
-                          _c(
-                            "Select",
-                            {
-                              model: {
-                                value: _vm.form.make_id,
-                                callback: function ($$v) {
-                                  _vm.$set(_vm.form, "make_id", $$v)
-                                },
-                                expression: "form.make_id",
-                              },
-                            },
-                            _vm._l(_vm.makes, function (make, i) {
-                              return _c(
-                                "Option",
-                                {
-                                  key: i,
-                                  attrs: {
-                                    value: make.id,
-                                    clearable: "",
-                                    filterable: "",
-                                  },
-                                },
-                                [
-                                  _vm._v(
-                                    "\n                  " +
-                                      _vm._s(make.name) +
-                                      "\n                "
-                                  ),
-                                ]
-                              )
-                            }),
-                            1
-                          ),
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "col-4" },
-                        [
-                          _c("FormulateInput", {
-                            attrs: {
-                              type: "text",
-                              required: "",
-                              label: "Model Number",
-                              validation: "required",
-                            },
-                            model: {
-                              value: _vm.form.model_number,
-                              callback: function ($$v) {
-                                _vm.$set(_vm.form, "model_number", $$v)
-                              },
-                              expression: "form.model_number",
-                            },
-                          }),
-                        ],
-                        1
-                      ),
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "row mt-3" }, [
-                      _c(
-                        "div",
-                        { staticClass: "col-6" },
-                        [
-                          _c("Label", [_vm._v("Screen Feature")]),
-                          _vm._v(" "),
-                          _c(
-                            "Select",
-                            {
-                              model: {
-                                value: _vm.form.feature,
-                                callback: function ($$v) {
-                                  _vm.$set(_vm.form, "feature", $$v)
-                                },
-                                expression: "form.feature",
-                              },
-                            },
-                            _vm._l(_vm.feature, function (item) {
-                              return _c(
-                                "Option",
-                                {
-                                  key: item.value,
-                                  attrs: {
-                                    value: item.value,
-                                    clearable: "",
-                                    filterable: "",
-                                  },
-                                },
-                                [
-                                  _vm._v(
-                                    "\n                  " +
-                                      _vm._s(item.name) +
-                                      "\n                "
-                                  ),
-                                ]
-                              )
-                            }),
-                            1
-                          ),
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "col-6" },
-                        [
-                          _c("FormulateInput", {
-                            attrs: {
-                              type: "number",
-                              required: "",
-                              label: "Size (In '' inches)",
-                              validation: "required",
-                            },
-                            model: {
-                              value: _vm.form.size,
-                              callback: function ($$v) {
-                                _vm.$set(_vm.form, "size", $$v)
-                              },
-                              expression: "form.size",
-                            },
-                          }),
-                        ],
-                        1
-                      ),
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "row mt-3" },
-                      [
-                        _c("Label", [_vm._v("Status / Condition")]),
-                        _vm._v(" "),
-                        _c(
-                          "Select",
-                          {
-                            model: {
-                              value: _vm.form.condition_id,
-                              callback: function ($$v) {
-                                _vm.$set(_vm.form, "condition_id", $$v)
-                              },
-                              expression: "form.condition_id",
-                            },
-                          },
-                          _vm._l(_vm.conditions, function (condition, i) {
-                            return _c(
-                              "Option",
-                              {
-                                key: i,
-                                attrs: {
-                                  value: condition.id,
-                                  clearable: "",
-                                  filterable: "",
-                                },
-                              },
-                              [
-                                _vm._v(
-                                  "\n                " +
-                                    _vm._s(condition.name) +
-                                    "\n              "
-                                ),
-                              ]
-                            )
-                          }),
-                          1
-                        ),
-                      ],
-                      1
-                    ),
-                  ])
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.editStatus
-                ? _c("div", { staticClass: "modal-body" }, [
-                    _c(
-                      "div",
-                      { staticClass: "row mt-3" },
-                      [
-                        _c("Label", [_vm._v("Status / Condition")]),
-                        _vm._v(" "),
-                        _c(
-                          "Select",
-                          {
-                            model: {
-                              value: _vm.form.condition_id,
-                              callback: function ($$v) {
-                                _vm.$set(_vm.form, "condition_id", $$v)
-                              },
-                              expression: "form.condition_id",
-                            },
-                          },
-                          _vm._l(_vm.conditions, function (condition, i) {
-                            return _c(
-                              "Option",
-                              {
-                                key: i,
-                                attrs: {
-                                  value: condition.id,
-                                  clearable: "",
-                                  filterable: "",
-                                },
-                              },
-                              [
-                                _vm._v(
-                                  "\n                " +
-                                    _vm._s(condition.name) +
-                                    "\n              "
-                                ),
-                              ]
-                            )
-                          }),
-                          1
-                        ),
-                      ],
-                      1
-                    ),
-                  ])
-                : _vm._e(),
-              _vm._v(" "),
-              !_vm.editStatus
-                ? _c("div", { staticClass: "modal-footer" }, [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn bg-gradient-secondary",
-                        attrs: { type: "button", "data-bs-dismiss": "modal" },
-                        on: { click: _vm.closeModal },
-                      },
-                      [_vm._v("\n            Close\n          ")]
-                    ),
-                    _vm._v(" "),
-                    _vm.editMode
-                      ? _c(
-                          "button",
-                          {
-                            staticClass: "btn bg-gradient-primary",
-                            attrs: { type: "button", disabled: _vm.processing },
-                            on: {
-                              click: function ($event) {
-                                return _vm.updateScreen(_vm.form.id)
-                              },
-                            },
-                          },
-                          [
-                            _vm._v(
-                              "\n            " +
-                                _vm._s(
-                                  _vm.processing ? "Saving ..." : "Save Changes"
-                                ) +
-                                "\n          "
-                            ),
-                          ]
-                        )
-                      : _c(
-                          "button",
-                          {
-                            staticClass: "btn bg-gradient-primary",
-                            attrs: { type: "button", disabled: _vm.processing },
-                            on: {
-                              click: function ($event) {
-                                return _vm.createScreen()
-                              },
-                            },
-                          },
-                          [
-                            _vm._v(
-                              "\n            " +
-                                _vm._s(
-                                  _vm.processing ? "Creating ..." : "Create"
-                                ) +
-                                "\n          "
-                            ),
-                          ]
-                        ),
-                  ])
-                : _c("div", { staticClass: "modal-footer" }, [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn bg-gradient-secondary",
-                        attrs: { type: "button", "data-bs-dismiss": "modal" },
-                        on: { click: _vm.closeModal },
-                      },
-                      [_vm._v("\n            Close\n          ")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn bg-gradient-primary",
-                        attrs: { type: "button", disabled: _vm.processing },
-                        on: {
-                          click: function ($event) {
-                            return _vm.updateScreen(_vm.form.id)
-                          },
-                        },
-                      },
-                      [
-                        _vm._v(
-                          "\n            " +
-                            _vm._s(
-                              _vm.processing ? "Saving ..." : "Save Changes"
-                            ) +
-                            "\n          "
-                        ),
-                      ]
-                    ),
-                  ]),
-            ]),
-          ]
-        ),
-      ]
-    ),
-  ])
+      ])
+    : _c("div", [_c("Notfound")], 1)
 }
 var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-8" }, [
-      _c("h5", { staticClass: "mb-2 col-8" }, [_vm._v("Game Screens")]),
-      _vm._v(" "),
-      _c("p", { staticClass: "mb-0" }, [
-        _vm._v(
-          "\n                Create game screens and assign then to stations\n              "
-        ),
-      ]),
-    ])
-  },
   function () {
     var _vm = this
     var _h = _vm.$createElement
@@ -1892,7 +2199,9 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("span", { staticClass: "alert-text text-white" }, [
       _c("strong", [_vm._v("Not Found!")]),
-      _vm._v("\n              There are no screens avilable!\n            "),
+      _vm._v(
+        "\n                There are no screens avilable!\n              "
+      ),
     ])
   },
   function () {
@@ -1922,36 +2231,40 @@ var staticRenderFns = [
           "th",
           {
             staticClass:
-              "\n                      text-uppercase text-secondary text-xxs\n                      font-weight-bolder\n                      opacity-7\n                    ",
+              "\n                        text-uppercase text-secondary text-xxs\n                        font-weight-bolder\n                        opacity-7\n                      ",
           },
-          [_vm._v("\n                    Serial Number\n                  ")]
+          [
+            _vm._v(
+              "\n                      Serial Number\n                    "
+            ),
+          ]
         ),
         _vm._v(" "),
         _c(
           "th",
           {
             staticClass:
-              "\n                      text-uppercase text-secondary text-xxs\n                      font-weight-bolder\n                      opacity-7\n                      ps-2\n                    ",
+              "\n                        text-uppercase text-secondary text-xxs\n                        font-weight-bolder\n                        opacity-7\n                        ps-2\n                      ",
           },
-          [_vm._v("\n                    Size\n                  ")]
+          [_vm._v("\n                      Size\n                    ")]
         ),
         _vm._v(" "),
         _c(
           "th",
           {
             staticClass:
-              "\n                      text-center text-uppercase text-secondary text-xxs\n                      font-weight-bolder\n                      opacity-7\n                    ",
+              "\n                        text-center text-uppercase text-secondary text-xxs\n                        font-weight-bolder\n                        opacity-7\n                      ",
           },
-          [_vm._v("\n                    Status\n                  ")]
+          [_vm._v("\n                      Status\n                    ")]
         ),
         _vm._v(" "),
         _c(
           "th",
           {
             staticClass:
-              "\n                      text-center text-uppercase text-secondary text-xxs\n                      font-weight-bolder\n                      opacity-7\n                    ",
+              "\n                        text-center text-uppercase text-secondary text-xxs\n                        font-weight-bolder\n                        opacity-7\n                      ",
           },
-          [_vm._v("\n                    Actions\n                  ")]
+          [_vm._v("\n                      Actions\n                    ")]
         ),
       ]),
     ])
@@ -1978,7 +2291,7 @@ var staticRenderFns = [
       "button",
       {
         staticClass:
-          "\n                          btn btn-link\n                          text-dark\n                          dropdown-toggle dropdown-toggle-split\n                          m-0\n                          p-0\n                        ",
+          "\n                            btn btn-link\n                            text-dark\n                            dropdown-toggle dropdown-toggle-split\n                            m-0\n                            p-0\n                          ",
         attrs: {
           "data-bs-toggle": "dropdown",
           "aria-haspopup": "true",
@@ -1999,7 +2312,9 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("a", { staticClass: "dropdown-item rounded-bottom" }, [
       _c("span", { staticClass: "fas fa-trash-alt me-2" }),
-      _vm._v("\n                          Delete\n                        "),
+      _vm._v(
+        "\n                            Delete\n                          "
+      ),
     ])
   },
   function () {

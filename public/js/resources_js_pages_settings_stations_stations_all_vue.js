@@ -593,6 +593,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -1245,7 +1251,7 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm.$auth.can("station list") || _vm.$auth.isAdmin
+    _vm.$auth.can("station list") || _vm.$auth.isAdmin()
       ? _c("div", [
           _c("div", { staticClass: "row" }, [
             _c("div", { staticClass: "col-sm-4" }, [
@@ -1293,35 +1299,49 @@ var render = function () {
               _c("div", { staticClass: "card mb-4" }, [
                 _c("div", { staticClass: "card-header pb-0" }, [
                   _c("div", { staticClass: "row" }, [
-                    _vm._m(3),
+                    _c("div", { staticClass: "col-8" }, [
+                      _c("h5", { staticClass: "mb-2 col-8" }, [
+                        _vm._v("Game Stations"),
+                      ]),
+                      _vm._v(" "),
+                      _vm.$auth.isAdmin()
+                        ? _c("p", { staticClass: "mb-0" }, [
+                            _vm._v(
+                              "\n                  Create game stations\n                "
+                            ),
+                          ])
+                        : _vm._e(),
+                    ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "col-4" }, [
-                      _c(
-                        "a",
-                        {
-                          attrs: { href: "javascript:;" },
-                          on: {
-                            click: function ($event) {
-                              $event.preventDefault()
-                              return _vm.createModal()
-                            },
-                          },
-                        },
-                        [
-                          _c(
-                            "span",
+                      _vm.$auth.isAdmin()
+                        ? _c(
+                            "a",
                             {
-                              staticClass:
-                                "badge bg-gradient-info ms-auto float-end",
+                              attrs: { href: "javascript:;" },
+                              on: {
+                                click: function ($event) {
+                                  $event.preventDefault()
+                                  return _vm.createModal()
+                                },
+                              },
                             },
                             [
-                              _vm._v(
-                                "\n                    Create Station\n                  "
+                              _c(
+                                "span",
+                                {
+                                  staticClass:
+                                    "badge bg-gradient-info ms-auto float-end",
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                    Create Station\n                  "
+                                  ),
+                                ]
                               ),
                             ]
-                          ),
-                        ]
-                      ),
+                          )
+                        : _vm._e(),
                     ]),
                   ]),
                   _vm._v(" "),
@@ -1493,7 +1513,7 @@ var render = function () {
                       "table",
                       { staticClass: "table align-items-center mb-0" },
                       [
-                        _vm._m(4),
+                        _vm._m(3),
                         _vm._v(" "),
                         _c(
                           "tbody",
@@ -1501,7 +1521,7 @@ var render = function () {
                             return _c("tr", { key: i }, [
                               _c("td", [
                                 _c("div", { staticClass: "d-flex px-3 py-1" }, [
-                                  _vm._m(5, true),
+                                  _vm._m(4, true),
                                   _vm._v(" "),
                                   _c(
                                     "div",
@@ -1702,7 +1722,7 @@ var render = function () {
                             _vm._v("Edit Screen"),
                           ]),
                       _vm._v(" "),
-                      _vm._m(6),
+                      _vm._m(5),
                     ]),
                     _vm._v(" "),
                     !_vm.editStatus
@@ -2326,16 +2346,6 @@ var staticRenderFns = [
           ]),
         ]),
       ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-8" }, [
-      _c("h5", { staticClass: "mb-2 col-8" }, [_vm._v("Game Stations")]),
-      _vm._v(" "),
-      _c("p", { staticClass: "mb-0" }, [_vm._v("Create game stations")]),
     ])
   },
   function () {

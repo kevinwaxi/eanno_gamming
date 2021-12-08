@@ -21,7 +21,7 @@ class RolesAndPermissionsSeeder extends Seeder
         //Create Roles
         $roleSuperAdmin = Role::create(['name' => 'super-admin']);
         $roleCashier = Role::create(['name' => 'cashier']);
-        $roleCongregation = Role::create(['name' => 'user']);
+        $roleUser = Role::create(['name' => 'user']);
 
         //Create Permissions and Assign Role
         $permissions = $this->getPermissions();
@@ -45,7 +45,7 @@ class RolesAndPermissionsSeeder extends Seeder
                     $permissionGroup == 'dashboard'
                     // || $permissionGroup == 'demogroup'
                 ) {
-                    $permission->assignRole($roleCongregation);
+                    $permission->assignRole($roleUser);
                 }
 
             }
@@ -78,8 +78,18 @@ class RolesAndPermissionsSeeder extends Seeder
         $permissions = [];
         $permissions[] = $this->permissionItem('dashboard', 1);
 
-        $permissionGroups = ['user', 'admin', 'role', 'permission', 'calendar', 'bookings', 'request', 'consoles', 'station'];
-
+        $permissionGroups = [
+            'user',
+            'admin',
+            'role',
+            'permission',
+            'calendar',
+            'bookings',
+            'request',
+            'consoles',
+            'station',
+            'price',
+        ];
         foreach ($permissionGroups as $permissionGroup) {
             $permissions[] = $this->permissionItem($permissionGroup);
         }

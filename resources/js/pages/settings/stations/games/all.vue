@@ -1,293 +1,311 @@
 <template>
-  <div class="row">
-    <div class="col-12">
-      <div class="card">
-        <div class="card-header p-4">
-          <div class="row">
-            <div class="col-8">
-              <h5 class="mb-2 col-8">All Games</h5>
-              <p class="mb-0">List of all games</p>
-            </div>
-            <div class="col-4">
-              <a href="javascript:;" @click.prevent="createModal()"  v-if="$auth.isAdmin || $auth.can('consoles create')">
-                <span class="badge bg-gradient-info ms-auto float-end">
-                  Create Game
-                </span>
-              </a>
+  <div>
+    <div class="row" v-if="$auth.isAdmin() || $auth.isCashier()">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header p-4">
+            <div class="row">
+              <div class="col-8">
+                <h5 class="mb-2 col-8">All Games</h5>
+                <p class="mb-0">List of all games</p>
+              </div>
+              <div class="col-4">
+                <a
+                  href="javascript:;"
+                  @click.prevent="createModal()"
+                  v-if="$auth.isAdmin() || $auth.can('consoles create')"
+                >
+                  <span class="badge bg-gradient-info ms-auto float-end">
+                    Create Game
+                  </span>
+                </a>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="card-body p-4">
-          <div class="row">
-            <div
-              class="col-md-4 mt-3 h-25"
-              v-for="(game, i) in games.data"
-              :key="i"
-            >
-              <a href="javascript:;" @click.prevent="showGameModal(game)">
-                <div class="card card-background move-on-hover">
-                  <div
-                    class="full-background"
-                    :style="{ backgroundImage: `url(${game.cover_image})` }"
-                  ></div>
-                  <div class="card-body pt-12">
-                    <h4 class="text-white">{{ game.name }}</h4>
-                    <p>{{ game.about_game }}</p>
-                    <div class="mt-3">
-                      <span
-                        v-for="(c, i) in game.categories"
-                        :key="i"
-                        class="fw-normal text-gray"
-                      >
-                        <Tag :color="c.color">{{ c.name }}</Tag>
-                      </span>
-                    </div>
-                    <div class="mt-1">
-                      <div class="row">Available games :</div>
-                      <div class="row">
-                        <div class="col-12">
-                          <span v-for="(console, i) in game.types" :key="i">
-                            <Tag type="dot" color="cyan" closable>
-                              {{ console.name }}
-                            </Tag>
-                          </span>
+          <div class="card-body p-4">
+            <div class="row">
+              <div
+                class="col-md-4 mt-3 h-25"
+                v-for="(game, i) in games.data"
+                :key="i"
+              >
+                <a href="javascript:;" @click.prevent="showGameModal(game)">
+                  <div class="card card-background move-on-hover">
+                    <div
+                      class="full-background"
+                      :style="{ backgroundImage: `url(${game.cover_image})` }"
+                    ></div>
+                    <div class="card-body pt-12">
+                      <h4 class="text-white">{{ game.name }}</h4>
+                      <p>{{ game.about_game }}</p>
+                      <div class="mt-3">
+                        <span
+                          v-for="(c, i) in game.categories"
+                          :key="i"
+                          class="fw-normal text-gray"
+                        >
+                          <Tag :color="c.color">{{ c.name }}</Tag>
+                        </span>
+                      </div>
+                      <div class="mt-1">
+                        <div class="row">Available games :</div>
+                        <div class="row">
+                          <div class="col-12">
+                            <span v-for="(console, i) in game.types" :key="i">
+                              <Tag type="dot" color="cyan" closable>
+                                {{ console.name }}
+                              </Tag>
+                            </span>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </a>
+                </a>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <!-- Modal Create , Edit or show details -->
-    <!-- Modal -->
-    <div
-      class="modal fade"
-      id="modal-default"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="modal-default"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 v-if="!editMode" class="modal-title">Create game</h5>
-            <h5 v-else class="modal-title">Edit game</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body" v-show="!detailMode">
-            <div class="row">
-              <FormulateInput
-                type="text"
-                required
-                label="Game Name"
-                validation="required"
-                v-model="form.name"
-              />
-            </div>
-            <div class="row mt-3">
-              <div class="col-12">
-                <Label>Choose Categories</Label>
-                <Select v-model="form.category_id" multiple :max-tag-count="5">
-                  <Option
-                    v-for="(category, i) in categories.data"
-                    :value="category.id"
-                    :key="i"
-                  >
-                    {{ category.name }}
-                  </Option>
-                </Select>
-              </div>
-            </div>
-            <div class="row mt-3">
-              <div class="col-12">
-                <Label>Console Types Available</Label>
-                <Select v-model="form.type_id" multiple :max-tag-count="3">
-                  <Option v-for="(type, i) in types" :value="type.id" :key="i">
-                    {{ type.name }}
-                  </Option>
-                </Select>
-              </div>
-            </div>
-            <div class="row mt-3">
-              <FormulateInput
-                type="textarea"
-                required
-                validation="required|max:100,length"
-                label="Game Details"
-                v-model="form.about_game"
-              />
-            </div>
-            <div class="row mt-3">
-              <Label>Upload Cover Image</Label>
-              <Upload
-                v-show="!editMode || newCover"
-                ref="uploads"
-                type="drag"
-                action="/api/v1/games/upload"
-                :headers="{
-                  'x-csrf-token': token,
-                  'X-Requested-With': 'XMLHttpRequest',
-                }"
-                :on-success="handleSuccess"
-                :on-error="handleError"
-                :format="['jpg', 'jpeg', 'png']"
-                :max-size="2048"
-                :on-format-error="handleFormatError"
-                :on-exceeded-size="handleMaxSize"
+      <!-- Modal Create , Edit or show details -->
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="modal-default"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="modal-default"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 v-if="!editMode" class="modal-title">Create game</h5>
+              <h5 v-else class="modal-title">Edit game</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
               >
-                <div style="padding: 20px 0">
-                  <Icon
-                    type="ios-cloud-upload"
-                    size="52"
-                    style="color: #3399ff"
-                  ></Icon>
-                  <p>Click or drag files here to upload</p>
-                </div>
-              </Upload>
-              <div class="demo-upload-list" v-if="form.cover_image">
-                <img :src="`${form.cover_image}`" alt="" />
-                <div class="demo-upload-list-cover">
-                  <Icon
-                    v-if="editMode"
-                    type="ios-trash-outline"
-                    @click="deleteImage(true)"
-                  ></Icon>
-                  <Icon
-                    v-else
-                    type="ios-trash-outline"
-                    @click="deleteImage"
-                  ></Icon>
-                </div>
-              </div>
+                <span aria-hidden="true">&times;</span>
+              </button>
             </div>
-            <div class="row mt-3">
-              <div class="col-6">
-                <Label>Release Date</Label>
-                <DatePicker
-                  type="date"
-                  placeholder="Select date"
-                  v-model="form.release_date"
-                ></DatePicker>
-              </div>
-              <div class="col-6">
+            <div class="modal-body" v-show="!detailMode">
+              <div class="row">
                 <FormulateInput
-                  type="number"
+                  type="text"
                   required
+                  label="Game Name"
                   validation="required"
-                  label="Game Number Of players"
-                  v-model="form.players"
+                  v-model="form.name"
                 />
               </div>
-            </div>
-          </div>
-          <div class="modal-body" v-show="detailMode">
-            <div class="card">
-              <div
-                class="card-header p-0 mx-3 mt-3 position-relative z-index-1"
-              >
-                <a href="javascript:;" class="d-block">
-                  <img
-                    :src="data.cover_image"
-                    class="img-fluid border-radius-lg"
-                  />
-                </a>
+              <div class="row mt-3">
+                <div class="col-12">
+                  <Label>Choose Categories</Label>
+                  <Select
+                    v-model="form.category_id"
+                    multiple
+                    :max-tag-count="5"
+                  >
+                    <Option
+                      v-for="(category, i) in categories.data"
+                      :value="category.id"
+                      :key="i"
+                    >
+                      {{ category.name }}
+                    </Option>
+                  </Select>
+                </div>
               </div>
-              <div class="card-body pt-2">
-                <a
-                  href="javascript:;"
-                  class="card-title h5 d-block text-darker"
+              <div class="row mt-3">
+                <div class="col-12">
+                  <Label>Console Types Available</Label>
+                  <Select v-model="form.type_id" multiple :max-tag-count="3">
+                    <Option
+                      v-for="(type, i) in types"
+                      :value="type.id"
+                      :key="i"
+                    >
+                      {{ type.name }}
+                    </Option>
+                  </Select>
+                </div>
+              </div>
+              <div class="row mt-3">
+                <FormulateInput
+                  type="textarea"
+                  required
+                  validation="required|max:100,length"
+                  label="Game Details"
+                  v-model="form.about_game"
+                />
+              </div>
+              <div class="row mt-3">
+                <Label>Upload Cover Image</Label>
+                <Upload
+                  v-show="!editMode || newCover"
+                  ref="uploads"
+                  type="drag"
+                  action="/api/v1/games/upload"
+                  :headers="{
+                    'x-csrf-token': token,
+                    'X-Requested-With': 'XMLHttpRequest',
+                  }"
+                  :on-success="handleSuccess"
+                  :on-error="handleError"
+                  :format="['jpg', 'jpeg', 'png']"
+                  :max-size="2048"
+                  :on-format-error="handleFormatError"
+                  :on-exceeded-size="handleMaxSize"
                 >
-                  {{ data.name }}
-                </a>
-                <span
-                  v-for="(c, i) in data.categories"
-                  :key="i"
-                  class="fw-normal text-gray"
-                >
-                  <Tag :color="c.color">{{ c.name }}</Tag>
-                </span>
-                <p class="card-description mb-4">
-                  {{ data.about }}
-                </p>
-                <div class="author align-items-center">
-                  <img
-                    src="https://demos.creative-tim.com/soft-ui-design-system-pro/assets/img/team-2.jpg"
-                    alt="..."
-                    class="avatar shadow"
+                  <div style="padding: 20px 0">
+                    <Icon
+                      type="ios-cloud-upload"
+                      size="52"
+                      style="color: #3399ff"
+                    ></Icon>
+                    <p>Click or drag files here to upload</p>
+                  </div>
+                </Upload>
+                <div class="demo-upload-list" v-if="form.cover_image">
+                  <img :src="`${form.cover_image}`" alt="" />
+                  <div class="demo-upload-list-cover">
+                    <Icon
+                      v-if="editMode"
+                      type="ios-trash-outline"
+                      @click="deleteImage(true)"
+                    ></Icon>
+                    <Icon
+                      v-else
+                      type="ios-trash-outline"
+                      @click="deleteImage"
+                    ></Icon>
+                  </div>
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-6">
+                  <Label>Release Date</Label>
+                  <DatePicker
+                    type="date"
+                    placeholder="Select date"
+                    v-model="form.release_date"
+                  ></DatePicker>
+                </div>
+                <div class="col-6">
+                  <FormulateInput
+                    type="number"
+                    required
+                    validation="required"
+                    label="Game Number Of players"
+                    v-model="form.players"
                   />
-                  <div class="name ps-3">
-                    <span>Mathew Glock</span>
-                    <div class="stats">
-                      <small>{{ data.created_at }}</small>
+                </div>
+              </div>
+            </div>
+            <div class="modal-body" v-show="detailMode">
+              <div class="card">
+                <div
+                  class="card-header p-0 mx-3 mt-3 position-relative z-index-1"
+                >
+                  <a href="javascript:;" class="d-block">
+                    <img
+                      :src="data.cover_image"
+                      class="img-fluid border-radius-lg"
+                    />
+                  </a>
+                </div>
+                <div class="card-body pt-2">
+                  <a
+                    href="javascript:;"
+                    class="card-title h5 d-block text-darker"
+                  >
+                    {{ data.name }}
+                  </a>
+                  <span
+                    v-for="(c, i) in data.categories"
+                    :key="i"
+                    class="fw-normal text-gray"
+                  >
+                    <Tag :color="c.color">{{ c.name }}</Tag>
+                  </span>
+                  <p class="card-description mb-4">
+                    {{ data.about }}
+                  </p>
+                  <div class="author align-items-center">
+                    <img
+                      src="https://demos.creative-tim.com/soft-ui-design-system-pro/assets/img/team-2.jpg"
+                      alt="..."
+                      class="avatar shadow"
+                    />
+                    <div class="name ps-3">
+                      <span>Mathew Glock</span>
+                      <div class="stats">
+                        <small>{{ data.created_at }}</small>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="modal-footer" v-show="!detailMode">
-            <button
-              type="button"
-              class="btn bg-gradient-secondary"
-              data-bs-dismiss="modal"
-              @click="closeModal"
-            >
-              Close
-            </button>
-            <button
-              v-if="editMode"
-              type="button"
-              class="btn bg-gradient-primary"
-              @click="updateGame(form.id)"
-              :disabled="processing"
-            >
-              {{ processing ? 'Saving ...' : 'Save Changes' }}
-            </button>
-            <button
-              v-else
-              type="button"
-              class="btn bg-gradient-primary"
-              @click="createGame()"
-              :disabled="processing"
-            >
-              {{ processing ? 'Creating ...' : 'Create' }}
-            </button>
-          </div>
-          <div class="modal-footer" v-show="detailMode">
-            <button
-              type="button"
-              class="btn bg-gradient-secondary"
-              data-bs-dismiss="modal"
-              @click="closeModals"
-            >
-              Close
-            </button>
-            <button
-              type="button"
-              class="btn bg-gradient-primary"
-              @click="showEditModal(data)"
-            >
-              {{ processing ? 'Saving ...' : 'Edit Game' }}
-            </button>
+            <div class="modal-footer" v-show="!detailMode">
+              <button
+                type="button"
+                class="btn bg-gradient-secondary"
+                data-bs-dismiss="modal"
+                @click="closeModal"
+              >
+                Close
+              </button>
+              <button
+                v-if="editMode"
+                type="button"
+                class="btn bg-gradient-primary"
+                @click="updateGame(form.id)"
+                :disabled="processing"
+              >
+                {{ processing ? 'Saving ...' : 'Save Changes' }}
+              </button>
+              <button
+                v-else
+                type="button"
+                class="btn bg-gradient-primary"
+                @click="createGame()"
+                :disabled="processing"
+              >
+                {{ processing ? 'Creating ...' : 'Create' }}
+              </button>
+            </div>
+            <div class="modal-footer" v-show="detailMode">
+              <button
+                type="button"
+                class="btn bg-gradient-secondary"
+                data-bs-dismiss="modal"
+                @click="closeModals"
+              >
+                Close
+              </button>
+              <button
+                type="button"
+                class="btn bg-gradient-primary"
+                @click="showEditModal(data)"
+              >
+                {{ processing ? 'Saving ...' : 'Edit Game' }}
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </div>
+    <div v-else>
+      <Notfound />
+    </div>
   </div>
 </template>
 <script>
+import Notfound from '@/pages/Errors/notfound.vue'
 export default {
   data() {
     return {
@@ -580,6 +598,7 @@ export default {
       })
     },
   },
+  components: { Notfound },
 }
 </script>
 <style>

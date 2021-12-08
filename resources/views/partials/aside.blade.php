@@ -40,7 +40,7 @@
                 </a>
                 <div class="collapse" id="dashboardsExamples">
                     <ul class="nav ms-4 ps-3">
-                        @role('SuperAdmin')
+                        @role('super-admin|cashier')
                             <li class="nav-item">
                                 <router-link :to="{name:'all_bookings'}" class="nav-link">
                                     <span class="sidenav-mini-icon"> A </span>
@@ -102,30 +102,34 @@
                     </a>
                     <div class="collapse " id="userPages">
                         <ul class="nav ms-4 ps-3">
-                            <li class="nav-item ">
-                                <router-link :to="{name:'all_users'}" class="nav-link">
-                                    <span class="sidenav-mini-icon"> U </span>
-                                    <span class="sidenav-normal"> All Users</span>
-                                </router-link>
-                            </li>
-                            <li class="nav-item ">
-                                <router-link :to="{name:'all_admins'}" class="nav-link">
-                                    <span class="sidenav-mini-icon"> A </span>
-                                    <span class="sidenav-normal"> Admins </span>
-                                </router-link>
-                            </li>
-                            <li class="nav-item ">
-                                <router-link :to="{name:'all_gamers'}" class="nav-link">
-                                    <span class="sidenav-mini-icon"> G </span>
-                                    <span class="sidenav-normal"> Gamers </span>
-                                </router-link>
-                            </li>
-                            <li class="nav-item ">
-                                <router-link :to="{name:'all_cashiers'}" class="nav-link">
-                                    <span class="sidenav-mini-icon"> C </span>
-                                    <span class="sidenav-normal"> Cashiers </span>
-                                </router-link>
-                            </li>
+                            @hasanyrole('cashier|super-admin')
+                                @hasrole('super-admin')
+                                    <li class="nav-item ">
+                                        <router-link :to="{name:'all_users'}" class="nav-link">
+                                            <span class="sidenav-mini-icon"> U </span>
+                                            <span class="sidenav-normal"> All Users</span>
+                                        </router-link>
+                                    </li>
+                                    <li class="nav-item ">
+                                        <router-link :to="{name:'all_admins'}" class="nav-link">
+                                            <span class="sidenav-mini-icon"> A </span>
+                                            <span class="sidenav-normal"> Admins </span>
+                                        </router-link>
+                                    </li>
+                                    <li class="nav-item ">
+                                        <router-link :to="{name:'all_cashiers'}" class="nav-link">
+                                            <span class="sidenav-mini-icon"> C </span>
+                                            <span class="sidenav-normal"> Cashiers </span>
+                                        </router-link>
+                                    </li>
+                                @endhasrole
+                                <li class="nav-item ">
+                                    <router-link :to="{name:'all_gamers'}" class="nav-link">
+                                        <span class="sidenav-mini-icon"> G </span>
+                                        <span class="sidenav-normal"> Gamers </span>
+                                    </router-link>
+                                </li>
+                            @endhasanyrole
                         </ul>
                     </div>
                 </li>
@@ -173,7 +177,7 @@
                     </ul>
                 </div>
             </li>
-            @role('super-admin')
+            @hasanyrole('super-admin|cashier')
                 <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#settingsPages" class="nav-link " aria-controls="settingsPages"
                         role="button" aria-expanded="false">
@@ -258,7 +262,7 @@
                         </ul>
                     </div>
                 </li>
-            @endrole
+            @endhasanyrole
             <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#stationPages" class="nav-link " aria-controls="stationPages"
                     role="button" aria-expanded="false">
@@ -316,7 +320,7 @@
                                 </ul>
                             </div>
                         </li>
-                        @hasanyrole('super-admin|Cashier')
+                        @hasanyrole('super-admin|cashier')
                             <li class="nav-item ">
                                 <a class="nav-link " data-bs-toggle="collapse" aria-expanded="false"
                                     href="#stationsPage">

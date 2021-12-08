@@ -1,6 +1,57 @@
 "use strict";
 (self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_pages_settings_stations_pricing_vue"],{
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/Errors/notfound.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/Errors/notfound.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  methods: {
+    goHome: function goHome() {
+      this.$router.push('my_bookings');
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/settings/stations/pricing.vue?vue&type=script&lang=js&":
 /*!***************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/settings/stations/pricing.vue?vue&type=script&lang=js& ***!
@@ -13,6 +64,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _pages_Errors_notfound_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/pages/Errors/notfound.vue */ "./resources/js/pages/Errors/notfound.vue");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -434,6 +486,30 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -804,8 +880,49 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee7);
       }))();
     }
+  },
+  components: {
+    Notfound: _pages_Errors_notfound_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   }
 });
+
+/***/ }),
+
+/***/ "./resources/js/pages/Errors/notfound.vue":
+/*!************************************************!*\
+  !*** ./resources/js/pages/Errors/notfound.vue ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _notfound_vue_vue_type_template_id_0fbe0a8c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./notfound.vue?vue&type=template&id=0fbe0a8c& */ "./resources/js/pages/Errors/notfound.vue?vue&type=template&id=0fbe0a8c&");
+/* harmony import */ var _notfound_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./notfound.vue?vue&type=script&lang=js& */ "./resources/js/pages/Errors/notfound.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _notfound_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _notfound_vue_vue_type_template_id_0fbe0a8c___WEBPACK_IMPORTED_MODULE_0__.render,
+  _notfound_vue_vue_type_template_id_0fbe0a8c___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/pages/Errors/notfound.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
 
 /***/ }),
 
@@ -847,6 +964,21 @@ component.options.__file = "resources/js/pages/settings/stations/pricing.vue"
 
 /***/ }),
 
+/***/ "./resources/js/pages/Errors/notfound.vue?vue&type=script&lang=js&":
+/*!*************************************************************************!*\
+  !*** ./resources/js/pages/Errors/notfound.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_notfound_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./notfound.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/Errors/notfound.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_notfound_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
 /***/ "./resources/js/pages/settings/stations/pricing.vue?vue&type=script&lang=js&":
 /*!***********************************************************************************!*\
   !*** ./resources/js/pages/settings/stations/pricing.vue?vue&type=script&lang=js& ***!
@@ -862,6 +994,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/pages/Errors/notfound.vue?vue&type=template&id=0fbe0a8c&":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/pages/Errors/notfound.vue?vue&type=template&id=0fbe0a8c& ***!
+  \*******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_notfound_vue_vue_type_template_id_0fbe0a8c___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_notfound_vue_vue_type_template_id_0fbe0a8c___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_notfound_vue_vue_type_template_id_0fbe0a8c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./notfound.vue?vue&type=template&id=0fbe0a8c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/Errors/notfound.vue?vue&type=template&id=0fbe0a8c&");
+
+
+/***/ }),
+
 /***/ "./resources/js/pages/settings/stations/pricing.vue?vue&type=template&id=dcffa46e&":
 /*!*****************************************************************************************!*\
   !*** ./resources/js/pages/settings/stations/pricing.vue?vue&type=template&id=dcffa46e& ***!
@@ -874,6 +1022,88 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_pricing_vue_vue_type_template_id_dcffa46e___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_pricing_vue_vue_type_template_id_dcffa46e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./pricing.vue?vue&type=template&id=dcffa46e& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/settings/stations/pricing.vue?vue&type=template&id=dcffa46e&");
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/Errors/notfound.vue?vue&type=template&id=0fbe0a8c&":
+/*!**********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/Errors/notfound.vue?vue&type=template&id=0fbe0a8c& ***!
+  \**********************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("main", { staticClass: "main-content mt-0" }, [
+      _c("section", { staticClass: "my-10" }, [
+        _c("div", { staticClass: "container" }, [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-lg-6 my-auto" }, [
+              _c(
+                "h1",
+                {
+                  staticClass:
+                    "display-1 text-bolder text-gradient text-danger",
+                },
+                [_vm._v("\n              Error 404\n            ")]
+              ),
+              _vm._v(" "),
+              _c("h2", [_vm._v("Erm. Page not found")]),
+              _vm._v(" "),
+              _c("p", { staticClass: "lead" }, [
+                _vm._v(
+                  "\n              We suggest you to go to the homepage while we solve this issue.\n            "
+                ),
+              ]),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass: "btn bg-gradient-dark mt-4",
+                  attrs: { href: "#", type: "button" },
+                  on: {
+                    click: function ($event) {
+                      return _vm.goHome()
+                    },
+                  },
+                },
+                [_vm._v("\n              Go to Homepage\n            ")]
+              ),
+            ]),
+            _vm._v(" "),
+            _vm._m(0),
+          ]),
+        ]),
+      ]),
+    ]),
+  ])
+}
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-lg-6 my-auto position-relative" }, [
+      _c("img", {
+        staticClass: "w-100 position-relative",
+        attrs: {
+          src: "/assets/img/illustrations/error-404.png",
+          alt: "404-error",
+        },
+      }),
+    ])
+  },
+]
+render._withStripped = true
+
 
 
 /***/ }),
@@ -894,495 +1124,524 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-lg-8 col-12" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-lg-4 col-12" }, [
-            _c(
-              "div",
-              {
-                staticClass:
-                  "card card-background card-background-mask-info h-100 tilt",
-                staticStyle: {
-                  "will-change": "transform",
-                  transform: "perspective(1000px) rotateX(0deg) rotateY(0deg)",
-                },
-                attrs: { "data-tilt": "" },
-              },
-              [
-                _c("div", {
-                  staticClass: "full-background",
-                  staticStyle: {
-                    "background-image":
-                      "url('/assets/img/curved-images/white-curved.jpeg')",
-                  },
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "card-body pt-4 text-center" }, [
-                  _c("h2", { staticClass: "text-white mb-0 mt-2 up" }, [
-                    _vm._v("Earnings"),
-                  ]),
-                  _vm._v(" "),
-                  _c("h1", { staticClass: "text-white mb-0 up" }, [
-                    _vm._v("$15,800"),
-                  ]),
-                  _vm._v(" "),
+    _vm.$auth.isAdmin() || _vm.$auth.can("price list")
+      ? _c("div", [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-lg-8 col-12" }, [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-lg-4 col-12" }, [
                   _c(
-                    "span",
+                    "div",
                     {
                       staticClass:
-                        "badge badge-lg d-block bg-gradient-dark mb-2 up",
+                        "\n                card card-background card-background-mask-info\n                h-100\n                tilt\n              ",
+                      staticStyle: {
+                        "will-change": "transform",
+                        transform:
+                          "perspective(1000px) rotateX(0deg) rotateY(0deg)",
+                      },
+                      attrs: { "data-tilt": "" },
                     },
                     [
-                      _vm._v(
-                        "\n                +15% since last week\n              "
-                      ),
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      staticClass: "btn btn-outline-white mb-2 px-5 up",
-                      attrs: { href: "javascript:;" },
-                      on: {
-                        click: function ($event) {
-                          $event.preventDefault()
-                          return _vm.createModal.apply(null, arguments)
+                      _c("div", {
+                        staticClass: "full-background",
+                        staticStyle: {
+                          "background-image":
+                            "url('/assets/img/curved-images/white-curved.jpeg')",
                         },
-                      },
-                    },
-                    [_vm._v("\n                Create Price\n              ")]
-                  ),
-                ]),
-              ]
-            ),
-          ]),
-          _vm._v(" "),
-          _vm._m(0),
-          _vm._v(" "),
-          _vm._m(1),
-        ]),
-      ]),
-      _vm._v(" "),
-      _vm._m(2),
-    ]),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "row mt-lg-4 mt-2" },
-      _vm._l(_vm.prices.data, function (price, i) {
-        return _c("div", { key: i, staticClass: "col-6 mb-4" }, [
-          _c("div", { staticClass: "card" }, [
-            _c("div", { staticClass: "card-body p-3" }, [
-              _c("div", { staticClass: "d-flex" }, [
-                _vm._m(3, true),
-                _vm._v(" "),
-                _c("div", { staticClass: "ms-3 my-auto" }, [
-                  _c("h6", [_vm._v(_vm._s(price.price) + " per Hour")]),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "ms-auto" }, [
-                  _c("div", { staticClass: "dropdown" }, [
-                    _vm._m(4, true),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "dropdown-menu dropdown-menu-end me-sm-n4 me-n3",
-                        attrs: { "aria-labelledby": "navbarDropdownMenuLink" },
-                      },
-                      [
+                      }),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "card-body pt-4 text-center" }, [
+                        _c("h2", { staticClass: "text-white mb-0 mt-2 up" }, [
+                          _vm._v("Earnings"),
+                        ]),
+                        _vm._v(" "),
+                        _c("h1", { staticClass: "text-white mb-0 up" }, [
+                          _vm._v("$15,800"),
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "span",
+                          {
+                            staticClass:
+                              "badge badge-lg d-block bg-gradient-dark mb-2 up",
+                          },
+                          [
+                            _vm._v(
+                              "\n                  +15% since last week\n                "
+                            ),
+                          ]
+                        ),
+                        _vm._v(" "),
                         _c(
                           "a",
                           {
-                            staticClass: "dropdown-item",
+                            staticClass: "btn btn-outline-white mb-2 px-5 up",
                             attrs: { href: "javascript:;" },
                             on: {
                               click: function ($event) {
                                 $event.preventDefault()
-                                return _vm.editModal(price)
+                                return _vm.createModal.apply(null, arguments)
                               },
                             },
                           },
                           [
                             _vm._v(
-                              "\n                    Edit Package\n                  "
+                              "\n                  Create Price\n                "
                             ),
                           ]
                         ),
-                        _vm._v(" "),
-                        _c(
-                          "a",
-                          {
-                            staticClass: "dropdown-item",
-                            attrs: { href: "javascript:;" },
-                          },
-                          [
-                            _vm._v(
-                              "\n                    Delete action\n                  "
-                            ),
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "a",
-                          {
-                            staticClass: "dropdown-item",
-                            attrs: { href: "javascript:;" },
-                          },
-                          [
-                            _vm._v(
-                              "\n                    Totally Delete\n                  "
-                            ),
-                          ]
-                        ),
-                      ]
-                    ),
-                  ]),
-                ]),
-              ]),
-              _vm._v(" "),
-              _c("p", { staticClass: "text-sm mt-3" }, [
-                _vm._v(
-                  "\n            " + _vm._s(price.details) + "\n          "
-                ),
-              ]),
-              _vm._v(" "),
-              _c("hr", { staticClass: "horizontal dark" }),
-              _vm._v(" "),
-              _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col-6" }, [
-                  _c("h6", { staticClass: "text-sm mb-0" }, [
-                    _vm._v(_vm._s(price.players)),
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "p",
-                    {
-                      staticClass:
-                        "text-secondary text-sm font-weight-bold mb-0",
-                    },
-                    [_vm._v("\n                Participants\n              ")]
+                      ]),
+                    ]
                   ),
                 ]),
                 _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "col-6 text-end" },
-                  _vm._l(price.station, function (p, i) {
-                    return _c(
-                      "span",
-                      { key: i },
-                      [
-                        _c("Tag", { attrs: { color: "geekblue" } }, [
-                          _vm._v(_vm._s(p.name)),
-                        ]),
-                      ],
-                      1
-                    )
-                  }),
-                  0
-                ),
+                _vm._m(0),
+                _vm._v(" "),
+                _vm._m(1),
               ]),
             ]),
+            _vm._v(" "),
+            _vm._m(2),
           ]),
-        ])
-      }),
-      0
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      {
-        staticClass: "modal fade",
-        attrs: {
-          id: "modal-default",
-          tabindex: "-1",
-          role: "dialog",
-          "aria-labelledby": "modal-default",
-          "aria-hidden": "true",
-        },
-      },
-      [
-        _c(
-          "div",
-          {
-            staticClass: "modal-dialog modal-dialog-centered",
-            attrs: { role: "document" },
-          },
-          [
-            _c("div", { staticClass: "modal-content" }, [
-              _c("div", { staticClass: "modal-header" }, [
-                !_vm.editMode
-                  ? _c("h5", { staticClass: "modal-title" }, [
-                      _vm._v("Create Price"),
-                    ])
-                  : _c("h5", { staticClass: "modal-title" }, [
-                      _vm._v("Edit Price"),
-                    ]),
-                _vm._v(" "),
-                _vm._m(5),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-body" }, [
-                _c("div", { staticClass: "row" }, [
-                  _c(
-                    "div",
-                    { staticClass: "col-12" },
-                    [
-                      _c(
-                        "Select",
-                        {
-                          attrs: { multiple: "", "max-tag-count": 5 },
-                          model: {
-                            value: _vm.form.station_id,
-                            callback: function ($$v) {
-                              _vm.$set(_vm.form, "station_id", $$v)
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "row mt-lg-4 mt-2" },
+            _vm._l(_vm.prices.data, function (price, i) {
+              return _c("div", { key: i, staticClass: "col-6 mb-4" }, [
+                _c("div", { staticClass: "card" }, [
+                  _c("div", { staticClass: "card-body p-3" }, [
+                    _c("div", { staticClass: "d-flex" }, [
+                      _vm._m(3, true),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "ms-3 my-auto" }, [
+                        _c("h6", [_vm._v(_vm._s(price.price) + " per Hour")]),
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "ms-auto" }, [
+                        _c("div", { staticClass: "dropdown" }, [
+                          _vm._m(4, true),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "dropdown-menu dropdown-menu-end me-sm-n4 me-n3",
+                              attrs: {
+                                "aria-labelledby": "navbarDropdownMenuLink",
+                              },
                             },
-                            expression: "form.station_id",
-                          },
-                        },
-                        _vm._l(_vm.stations.data, function (station, i) {
-                          return _c(
-                            "Option",
-                            { key: i, attrs: { value: station.id } },
                             [
-                              _vm._v(
-                                "\n                  " +
-                                  _vm._s(station.name) +
-                                  "\n                  "
-                              ),
-                              station.console
-                                ? _c(
-                                    "span",
-                                    {
-                                      staticStyle: {
-                                        float: "right",
-                                        color: "rgb(228, 196, 196)",
-                                      },
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "dropdown-item",
+                                  attrs: { href: "javascript:;" },
+                                  on: {
+                                    click: function ($event) {
+                                      $event.preventDefault()
+                                      return _vm.editModal(price)
                                     },
-                                    [
-                                      _vm._v(
-                                        "\n                    " +
-                                          _vm._s(station.console.type.name) +
-                                          "\n                  "
-                                      ),
-                                    ]
-                                  )
-                                : _vm._e(),
+                                  },
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                      Edit Package\n                    "
+                                  ),
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "dropdown-item",
+                                  attrs: { href: "javascript:;" },
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                      Delete action\n                    "
+                                  ),
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "dropdown-item",
+                                  attrs: { href: "javascript:;" },
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                      Totally Delete\n                    "
+                                  ),
+                                ]
+                              ),
                             ]
+                          ),
+                        ]),
+                      ]),
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "text-sm mt-3" }, [
+                      _vm._v(
+                        "\n              " +
+                          _vm._s(price.details) +
+                          "\n            "
+                      ),
+                    ]),
+                    _vm._v(" "),
+                    _c("hr", { staticClass: "horizontal dark" }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "row" }, [
+                      _c("div", { staticClass: "col-6" }, [
+                        _c("h6", { staticClass: "text-sm mb-0" }, [
+                          _vm._v(_vm._s(price.players)),
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "p",
+                          {
+                            staticClass:
+                              "text-secondary text-sm font-weight-bold mb-0",
+                          },
+                          [
+                            _vm._v(
+                              "\n                  Participants\n                "
+                            ),
+                          ]
+                        ),
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "col-6 text-end" },
+                        _vm._l(price.station, function (p, i) {
+                          return _c(
+                            "span",
+                            { key: i },
+                            [
+                              _c("Tag", { attrs: { color: "geekblue" } }, [
+                                _vm._v(_vm._s(p.name)),
+                              ]),
+                            ],
+                            1
                           )
                         }),
-                        1
+                        0
                       ),
-                    ],
-                    1
-                  ),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "row" }, [
-                  _c(
-                    "div",
-                    { staticClass: "col-12" },
-                    [
-                      _c("FormulateInput", {
-                        attrs: {
-                          type: "number",
-                          required: "",
-                          label: "Price per Hour",
-                          validation: "required|number|between:50,500",
-                          min: "50",
-                          max: "500",
-                          "error-behavior": "submit",
-                        },
-                        model: {
-                          value: _vm.form.price,
-                          callback: function ($$v) {
-                            _vm.$set(_vm.form, "price", $$v)
-                          },
-                          expression: "form.price",
-                        },
-                      }),
-                    ],
-                    1
-                  ),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "row" }, [
-                  _c(
-                    "div",
-                    { staticClass: "col-12" },
-                    [
-                      _c("FormulateInput", {
-                        attrs: {
-                          type: "textarea",
-                          label: "Enter a details about your pricing",
-                          validation: "required|max:100,length",
-                          "validation-name": "details",
-                          "error-behavior": "live",
-                        },
-                        model: {
-                          value: _vm.form.details,
-                          callback: function ($$v) {
-                            _vm.$set(_vm.form, "details", $$v)
-                          },
-                          expression: "form.details",
-                        },
-                      }),
-                    ],
-                    1
-                  ),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "row" }, [
-                  _c(
-                    "div",
-                    { staticClass: "col-6" },
-                    [
-                      _c("FormulateInput", {
-                        attrs: {
-                          type: "number",
-                          required: "",
-                          label: "Number of Players",
-                          validation: "required|number|between:0,5",
-                          min: "0",
-                          max: "5",
-                          "error-behavior": "submit",
-                        },
-                        model: {
-                          value: _vm.form.number_of_players,
-                          callback: function ($$v) {
-                            _vm.$set(_vm.form, "number_of_players", $$v)
-                          },
-                          expression: "form.number_of_players",
-                        },
-                      }),
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-12" }, [
-                    _c(
-                      "div",
-                      { staticClass: "form-check form-switch my-auto" },
-                      [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.form.is_available,
-                              expression: "form.is_available",
-                            },
-                          ],
-                          staticClass: "form-check-input",
-                          attrs: {
-                            checked: "",
-                            type: "checkbox",
-                            id: "flexSwitchCheckDefault1",
-                          },
-                          domProps: {
-                            checked: Array.isArray(_vm.form.is_available)
-                              ? _vm._i(_vm.form.is_available, null) > -1
-                              : _vm.form.is_available,
-                          },
-                          on: {
-                            change: function ($event) {
-                              var $$a = _vm.form.is_available,
-                                $$el = $event.target,
-                                $$c = $$el.checked ? true : false
-                              if (Array.isArray($$a)) {
-                                var $$v = null,
-                                  $$i = _vm._i($$a, $$v)
-                                if ($$el.checked) {
-                                  $$i < 0 &&
-                                    _vm.$set(
-                                      _vm.form,
-                                      "is_available",
-                                      $$a.concat([$$v])
-                                    )
-                                } else {
-                                  $$i > -1 &&
-                                    _vm.$set(
-                                      _vm.form,
-                                      "is_available",
-                                      $$a
-                                        .slice(0, $$i)
-                                        .concat($$a.slice($$i + 1))
-                                    )
-                                }
-                              } else {
-                                _vm.$set(_vm.form, "is_available", $$c)
-                              }
-                            },
-                          },
-                        }),
-                      ]
-                    ),
+                    ]),
                   ]),
                 ]),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-footer" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn bg-gradient-secondary",
-                    attrs: { type: "button", "data-bs-dismiss": "modal" },
-                    on: { click: _vm.closeModal },
-                  },
-                  [_vm._v("\n            Close\n          ")]
-                ),
-                _vm._v(" "),
-                _vm.editMode
-                  ? _c(
-                      "button",
-                      {
-                        staticClass: "btn bg-gradient-primary",
-                        attrs: { type: "button", disabled: _vm.processing },
-                        on: {
-                          click: function ($event) {
-                            return _vm.updatePrice(_vm.form.id)
-                          },
-                        },
-                      },
-                      [
-                        _vm._v(
-                          "\n            " +
-                            _vm._s(
-                              _vm.processing ? "Saving ..." : "Save Changes"
-                            ) +
-                            "\n          "
+              ])
+            }),
+            0
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "modal fade",
+              attrs: {
+                id: "modal-default",
+                tabindex: "-1",
+                role: "dialog",
+                "aria-labelledby": "modal-default",
+                "aria-hidden": "true",
+              },
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass: "modal-dialog modal-dialog-centered",
+                  attrs: { role: "document" },
+                },
+                [
+                  _c("div", { staticClass: "modal-content" }, [
+                    _c("div", { staticClass: "modal-header" }, [
+                      !_vm.editMode
+                        ? _c("h5", { staticClass: "modal-title" }, [
+                            _vm._v("Create Price"),
+                          ])
+                        : _c("h5", { staticClass: "modal-title" }, [
+                            _vm._v("Edit Price"),
+                          ]),
+                      _vm._v(" "),
+                      _vm._m(5),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "modal-body" }, [
+                      _c("div", { staticClass: "row" }, [
+                        _c(
+                          "div",
+                          { staticClass: "col-12" },
+                          [
+                            _c(
+                              "Select",
+                              {
+                                attrs: { multiple: "", "max-tag-count": 5 },
+                                model: {
+                                  value: _vm.form.station_id,
+                                  callback: function ($$v) {
+                                    _vm.$set(_vm.form, "station_id", $$v)
+                                  },
+                                  expression: "form.station_id",
+                                },
+                              },
+                              _vm._l(_vm.stations.data, function (station, i) {
+                                return _c(
+                                  "Option",
+                                  { key: i, attrs: { value: station.id } },
+                                  [
+                                    _vm._v(
+                                      "\n                    " +
+                                        _vm._s(station.name) +
+                                        "\n                    "
+                                    ),
+                                    station.console
+                                      ? _c(
+                                          "span",
+                                          {
+                                            staticStyle: {
+                                              float: "right",
+                                              color: "rgb(228, 196, 196)",
+                                            },
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\n                      " +
+                                                _vm._s(
+                                                  station.console.type.name
+                                                ) +
+                                                "\n                    "
+                                            ),
+                                          ]
+                                        )
+                                      : _vm._e(),
+                                  ]
+                                )
+                              }),
+                              1
+                            ),
+                          ],
+                          1
                         ),
-                      ]
-                    )
-                  : _c(
-                      "button",
-                      {
-                        staticClass: "btn bg-gradient-primary",
-                        attrs: { type: "button", disabled: _vm.processing },
-                        on: {
-                          click: function ($event) {
-                            return _vm.createPrice()
-                          },
-                        },
-                      },
-                      [
-                        _vm._v(
-                          "\n            " +
-                            _vm._s(_vm.processing ? "Creating ..." : "Create") +
-                            "\n          "
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "row" }, [
+                        _c(
+                          "div",
+                          { staticClass: "col-12" },
+                          [
+                            _c("FormulateInput", {
+                              attrs: {
+                                type: "number",
+                                required: "",
+                                label: "Price per Hour",
+                                validation: "required|number|between:50,500",
+                                min: "50",
+                                max: "500",
+                                "error-behavior": "submit",
+                              },
+                              model: {
+                                value: _vm.form.price,
+                                callback: function ($$v) {
+                                  _vm.$set(_vm.form, "price", $$v)
+                                },
+                                expression: "form.price",
+                              },
+                            }),
+                          ],
+                          1
                         ),
-                      ]
-                    ),
-              ]),
-            ]),
-          ]
-        ),
-      ]
-    ),
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "row" }, [
+                        _c(
+                          "div",
+                          { staticClass: "col-12" },
+                          [
+                            _c("FormulateInput", {
+                              attrs: {
+                                type: "textarea",
+                                label: "Enter a details about your pricing",
+                                validation: "required|max:100,length",
+                                "validation-name": "details",
+                                "error-behavior": "live",
+                              },
+                              model: {
+                                value: _vm.form.details,
+                                callback: function ($$v) {
+                                  _vm.$set(_vm.form, "details", $$v)
+                                },
+                                expression: "form.details",
+                              },
+                            }),
+                          ],
+                          1
+                        ),
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "row" }, [
+                        _c(
+                          "div",
+                          { staticClass: "col-6" },
+                          [
+                            _c("FormulateInput", {
+                              attrs: {
+                                type: "number",
+                                required: "",
+                                label: "Number of Players",
+                                validation: "required|number|between:0,5",
+                                min: "0",
+                                max: "5",
+                                "error-behavior": "submit",
+                              },
+                              model: {
+                                value: _vm.form.number_of_players,
+                                callback: function ($$v) {
+                                  _vm.$set(_vm.form, "number_of_players", $$v)
+                                },
+                                expression: "form.number_of_players",
+                              },
+                            }),
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-12" }, [
+                          _c(
+                            "div",
+                            { staticClass: "form-check form-switch my-auto" },
+                            [
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.form.is_available,
+                                    expression: "form.is_available",
+                                  },
+                                ],
+                                staticClass: "form-check-input",
+                                attrs: {
+                                  checked: "",
+                                  type: "checkbox",
+                                  id: "flexSwitchCheckDefault1",
+                                },
+                                domProps: {
+                                  checked: Array.isArray(_vm.form.is_available)
+                                    ? _vm._i(_vm.form.is_available, null) > -1
+                                    : _vm.form.is_available,
+                                },
+                                on: {
+                                  change: function ($event) {
+                                    var $$a = _vm.form.is_available,
+                                      $$el = $event.target,
+                                      $$c = $$el.checked ? true : false
+                                    if (Array.isArray($$a)) {
+                                      var $$v = null,
+                                        $$i = _vm._i($$a, $$v)
+                                      if ($$el.checked) {
+                                        $$i < 0 &&
+                                          _vm.$set(
+                                            _vm.form,
+                                            "is_available",
+                                            $$a.concat([$$v])
+                                          )
+                                      } else {
+                                        $$i > -1 &&
+                                          _vm.$set(
+                                            _vm.form,
+                                            "is_available",
+                                            $$a
+                                              .slice(0, $$i)
+                                              .concat($$a.slice($$i + 1))
+                                          )
+                                      }
+                                    } else {
+                                      _vm.$set(_vm.form, "is_available", $$c)
+                                    }
+                                  },
+                                },
+                              }),
+                            ]
+                          ),
+                        ]),
+                      ]),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "modal-footer" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn bg-gradient-secondary",
+                          attrs: { type: "button", "data-bs-dismiss": "modal" },
+                          on: { click: _vm.closeModal },
+                        },
+                        [_vm._v("\n              Close\n            ")]
+                      ),
+                      _vm._v(" "),
+                      _vm.editMode
+                        ? _c(
+                            "button",
+                            {
+                              staticClass: "btn bg-gradient-primary",
+                              attrs: {
+                                type: "button",
+                                disabled: _vm.processing,
+                              },
+                              on: {
+                                click: function ($event) {
+                                  return _vm.updatePrice(_vm.form.id)
+                                },
+                              },
+                            },
+                            [
+                              _vm._v(
+                                "\n              " +
+                                  _vm._s(
+                                    _vm.processing
+                                      ? "Saving ..."
+                                      : "Save Changes"
+                                  ) +
+                                  "\n            "
+                              ),
+                            ]
+                          )
+                        : _c(
+                            "button",
+                            {
+                              staticClass: "btn bg-gradient-primary",
+                              attrs: {
+                                type: "button",
+                                disabled: _vm.processing,
+                              },
+                              on: {
+                                click: function ($event) {
+                                  return _vm.createPrice()
+                                },
+                              },
+                            },
+                            [
+                              _vm._v(
+                                "\n              " +
+                                  _vm._s(
+                                    _vm.processing ? "Creating ..." : "Create"
+                                  ) +
+                                  "\n            "
+                              ),
+                            ]
+                          ),
+                    ]),
+                  ]),
+                ]
+              ),
+            ]
+          ),
+        ])
+      : _c("div", [_c("Notfound")], 1),
   ])
 }
 var staticRenderFns = [
@@ -1399,7 +1658,7 @@ var staticRenderFns = [
                 "div",
                 {
                   staticClass:
-                    "\n                      icon icon-shape\n                      bg-gradient-dark\n                      text-center\n                      border-radius-md\n                    ",
+                    "\n                        icon icon-shape\n                        bg-gradient-dark\n                        text-center\n                        border-radius-md\n                      ",
                 },
                 [
                   _c("i", {
@@ -1420,7 +1679,7 @@ var staticRenderFns = [
                   },
                   [
                     _vm._v(
-                      "\n                      Today's Money\n                    "
+                      "\n                        Today's Money\n                      "
                     ),
                   ]
                 ),
@@ -1442,7 +1701,7 @@ var staticRenderFns = [
                 "div",
                 {
                   staticClass:
-                    "\n                      icon icon-shape\n                      bg-gradient-dark\n                      text-center\n                      border-radius-md\n                    ",
+                    "\n                        icon icon-shape\n                        bg-gradient-dark\n                        text-center\n                        border-radius-md\n                      ",
                 },
                 [
                   _c("i", {
@@ -1463,14 +1722,14 @@ var staticRenderFns = [
                   },
                   [
                     _vm._v(
-                      "\n                      Sessions\n                    "
+                      "\n                        Sessions\n                      "
                     ),
                   ]
                 ),
                 _vm._v(" "),
                 _c("h5", { staticClass: "font-weight-bolder mb-0" }, [
                   _vm._v(
-                    "\n                      9,600\n                      "
+                    "\n                        9,600\n                        "
                   ),
                   _c(
                     "span",
@@ -1498,7 +1757,7 @@ var staticRenderFns = [
                 "div",
                 {
                   staticClass:
-                    "\n                      icon icon-shape\n                      bg-gradient-dark\n                      text-center\n                      border-radius-md\n                    ",
+                    "\n                        icon icon-shape\n                        bg-gradient-dark\n                        text-center\n                        border-radius-md\n                      ",
                 },
                 [
                   _c("i", {
@@ -1519,21 +1778,21 @@ var staticRenderFns = [
                   },
                   [
                     _vm._v(
-                      "\n                      Today's Users\n                    "
+                      "\n                        Today's Users\n                      "
                     ),
                   ]
                 ),
                 _vm._v(" "),
                 _c("h5", { staticClass: "font-weight-bolder mb-0" }, [
                   _vm._v(
-                    "\n                      2,300\n                      "
+                    "\n                        2,300\n                        "
                   ),
                   _c(
                     "span",
                     { staticClass: "text-success text-sm font-weight-bolder" },
                     [
                       _vm._v(
-                        "\n                        +3%\n                      "
+                        "\n                          +3%\n                        "
                       ),
                     ]
                   ),
@@ -1552,7 +1811,7 @@ var staticRenderFns = [
                 "div",
                 {
                   staticClass:
-                    "\n                      icon icon-shape\n                      bg-gradient-dark\n                      text-center\n                      border-radius-md\n                    ",
+                    "\n                        icon icon-shape\n                        bg-gradient-dark\n                        text-center\n                        border-radius-md\n                      ",
                 },
                 [
                   _c("i", {
@@ -1573,13 +1832,15 @@ var staticRenderFns = [
                   },
                   [
                     _vm._v(
-                      "\n                      Sign-ups\n                    "
+                      "\n                        Sign-ups\n                      "
                     ),
                   ]
                 ),
                 _vm._v(" "),
                 _c("h5", { staticClass: "font-weight-bolder mb-0" }, [
-                  _vm._v("\n                      348\n                      "),
+                  _vm._v(
+                    "\n                        348\n                        "
+                  ),
                   _c(
                     "span",
                     { staticClass: "text-success text-sm font-weight-bolder" },
@@ -1637,7 +1898,7 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("p", { staticClass: "text-sm" }, [
             _vm._v(
-              "\n            The website was initially built in PHP, I need a professional ruby\n            programmer to shift it.\n          "
+              "\n              The website was initially built in PHP, I need a professional\n              ruby programmer to shift it.\n            "
             ),
           ]),
           _vm._v(" "),
@@ -1651,7 +1912,7 @@ var staticRenderFns = [
                 ]),
                 _vm._v("3,000"),
                 _c("span", { staticClass: "text-secondary text-sm ms-1" }, [
-                  _vm._v("/ month\n              "),
+                  _vm._v("/ month\n                "),
                 ]),
               ]),
               _vm._v(" "),

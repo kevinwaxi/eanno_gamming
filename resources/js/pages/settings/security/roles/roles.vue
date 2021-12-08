@@ -1,316 +1,328 @@
 <template>
   <div>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="card">
-          <div class="card-header pb-0 p-3">
-            <div class="row">
-              <div class="col-8 d-flex">
-                <h6 class="mb-0">Permissions List</h6>
-              </div>
-              <div class="col-4">
-                <a href="javascript:;" @click.prevent="createModal()">
-                  <span class="badge bg-gradient-info ms-auto float-end">
-                    Create Role
-                  </span>
-                </a>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-3 flex">
-                <label for="search"> Search </label>
-                <div class="input-group">
-                  <input
-                    name="search"
-                    class="form-control"
-                    type="text"
-                    v-model.lazy="search"
-                    placeholder="permission or role name"
-                  />
+    <div v-if="$auth.isAdmin() || $auth.can('role list')">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header pb-0 p-3">
+              <div class="row">
+                <div class="col-8 d-flex">
+                  <h6 class="mb-0">Permissions List</h6>
+                </div>
+                <div class="col-4">
+                  <a
+                    href="javascript:;"
+                    @click.prevent="createModal()"
+                    v-if="$auth.isAdmin()"
+                  >
+                    <span class="badge bg-gradient-info ms-auto float-end">
+                      Create Role
+                    </span>
+                  </a>
                 </div>
               </div>
-              <div class="col-3">
-                <label for="select">Roles can:</label>
-                <select
-                  v-model="selected"
-                  class="form-select fmxw-200 d-none d-md-inline"
-                  aria-label="Fillter by role"
-                >
-                  <option selected="selected" value="">Show All</option>
-                  <option
-                    v-for="(permission, i) in permissions"
-                    :key="i"
-                    :value="permission.id"
+              <div class="row">
+                <div class="col-3 flex">
+                  <label for="search"> Search </label>
+                  <div class="input-group">
+                    <input
+                      name="search"
+                      class="form-control"
+                      type="text"
+                      v-model.lazy="search"
+                      placeholder="permission or role name"
+                    />
+                  </div>
+                </div>
+                <div class="col-3">
+                  <label for="select">Roles can:</label>
+                  <select
+                    v-model="selected"
+                    class="form-select fmxw-200 d-none d-md-inline"
+                    aria-label="Fillter by role"
                   >
-                    {{ permission.name }}
-                  </option>
-                </select>
-              </div>
-              <div class="col-2">
-                <label for="select">Show:</label>
-                <select
-                  v-model="total"
-                  class="form-select fmxw-200 d-none d-md-inline"
-                  aria-label="show"
-                >
-                  <option value="10">10</option>
-                  <option value="20">20</option>
-                  <option value="30">30</option>
-                  <option v-if="roles.data" :value="roles.meta.total">
-                    All {{ roles.meta.total }}
-                  </option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <div class="card-body pt-4 p-3">
-            <ul class="list-group">
-              <li
-                class="
-                  list-group-item
-                  border-0
-                  d-flex
-                  p-4
-                  mb-2
-                  bg-gray-100
-                  border-radius-lg
-                "
-                v-for="(role, i) in roles.data"
-                :key="i"
-                :class="isChecked(role.id) ? 'card-selected' : ''"
-              >
-                <div class="d-flex flex-column">
-                  <h6 class="mb-3 text-sm">{{ role.name }}</h6>
-                  <span class="mb-2 text-xs">
-                    Permissions:
-                    <span
-                      v-for="(p, i) in role.permissions"
+                    <option selected="selected" value="">Show All</option>
+                    <option
+                      v-for="(permission, i) in permissions"
                       :key="i"
-                      class="fw-normal text-gray"
+                      :value="permission.id"
                     >
-                      <Tag color="geekblue">{{ p.name }}</Tag>
-                    </span>
-                  </span>
-                  <span class="mb-2 text-xs">
-                    Users:
-                    <div class="avatar-group mt-2">
-                      <a
-                        href="javascript:;"
-                        class="avatar avatar-xs rounded-circle"
-                        data-bs-toggle="tooltip"
-                        data-bs-placement="bottom"
-                        title=""
-                        data-bs-original-title="Nick Daniel"
-                      >
-                        <img
-                          alt="Image placeholder"
-                          src="/assets/img/team-3.jpg"
-                        />
-                      </a>
-                      <a
-                        href="javascript:;"
-                        class="avatar avatar-xs rounded-circle"
-                        data-bs-toggle="tooltip"
-                        data-bs-placement="bottom"
-                        title=""
-                        data-bs-original-title="Peterson"
-                      >
-                        <img
-                          alt="Image placeholder"
-                          src="/assets/img/team-4.jpg"
-                        />
-                      </a>
-                      <a
-                        href="javascript:;"
-                        class="avatar avatar-xs rounded-circle"
-                        data-bs-toggle="tooltip"
-                        data-bs-placement="bottom"
-                        title=""
-                        data-bs-original-title="Elena Morison"
-                      >
-                        <img
-                          alt="Image placeholder"
-                          src="/assets/img/team-1.jpg"
-                        />
-                      </a>
-                      <a
-                        href="javascript:;"
-                        class="avatar avatar-xs rounded-circle"
-                        data-bs-toggle="tooltip"
-                        data-bs-placement="bottom"
-                        title=""
-                        data-bs-original-title="Ryan Milly"
-                      >
-                        <img
-                          alt="Image placeholder"
-                          src="/assets/img/team-2.jpg"
-                        />
-                      </a>
-                    </div>
-                  </span>
-                  <span class="text-xs">
-                    Date Created:
-                    <span class="text-dark ms-sm-2 font-weight-bold">
-                      {{ role.created_at }}
-                    </span>
-                  </span>
+                      {{ permission.name }}
+                    </option>
+                  </select>
                 </div>
-                <div class="ms-auto text-end col-2">
-                  <a
-                    class="btn btn-link text-danger text-gradient px-3 mb-0"
-                    href="javascript:;"
-                    @click="showDeleteModal(role)"
+                <div class="col-2">
+                  <label for="select">Show:</label>
+                  <select
+                    v-model="total"
+                    class="form-select fmxw-200 d-none d-md-inline"
+                    aria-label="show"
                   >
-                    <i class="far fa-trash-alt me-2" aria-hidden="true"></i>
-                    Delete
-                  </a>
-                  <a
-                    class="btn btn-link text-dark px-3 mb-0"
-                    href="javascript:;"
-                    @click="editModal(role)"
-                  >
-                    <i
-                      class="fas fa-pencil-alt text-dark me-2"
-                      aria-hidden="true"
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="30">30</option>
+                    <option v-if="roles.data" :value="roles.meta.total">
+                      All {{ roles.meta.total }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="card-body pt-4 p-3">
+              <ul class="list-group">
+                <li
+                  class="
+                    list-group-item
+                    border-0
+                    d-flex
+                    p-4
+                    mb-2
+                    bg-gray-100
+                    border-radius-lg
+                  "
+                  v-for="(role, i) in roles.data"
+                  :key="i"
+                  :class="isChecked(role.id) ? 'card-selected' : ''"
+                >
+                  <div class="d-flex flex-column">
+                    <h6 class="mb-3 text-sm">{{ role.name }}</h6>
+                    <span class="mb-2 text-xs">
+                      Permissions:
+                      <span
+                        v-for="(p, i) in role.permissions"
+                        :key="i"
+                        class="fw-normal text-gray"
+                      >
+                        <Tag color="geekblue">{{ p.name }}</Tag>
+                      </span>
+                    </span>
+                    <span class="mb-2 text-xs">
+                      Users:
+                      <div class="avatar-group mt-2">
+                        <a
+                          href="javascript:;"
+                          class="avatar avatar-xs rounded-circle"
+                          data-bs-toggle="tooltip"
+                          data-bs-placement="bottom"
+                          title=""
+                          data-bs-original-title="Nick Daniel"
+                        >
+                          <img
+                            alt="Image placeholder"
+                            src="/assets/img/team-3.jpg"
+                          />
+                        </a>
+                        <a
+                          href="javascript:;"
+                          class="avatar avatar-xs rounded-circle"
+                          data-bs-toggle="tooltip"
+                          data-bs-placement="bottom"
+                          title=""
+                          data-bs-original-title="Peterson"
+                        >
+                          <img
+                            alt="Image placeholder"
+                            src="/assets/img/team-4.jpg"
+                          />
+                        </a>
+                        <a
+                          href="javascript:;"
+                          class="avatar avatar-xs rounded-circle"
+                          data-bs-toggle="tooltip"
+                          data-bs-placement="bottom"
+                          title=""
+                          data-bs-original-title="Elena Morison"
+                        >
+                          <img
+                            alt="Image placeholder"
+                            src="/assets/img/team-1.jpg"
+                          />
+                        </a>
+                        <a
+                          href="javascript:;"
+                          class="avatar avatar-xs rounded-circle"
+                          data-bs-toggle="tooltip"
+                          data-bs-placement="bottom"
+                          title=""
+                          data-bs-original-title="Ryan Milly"
+                        >
+                          <img
+                            alt="Image placeholder"
+                            src="/assets/img/team-2.jpg"
+                          />
+                        </a>
+                      </div>
+                    </span>
+                    <span class="text-xs">
+                      Date Created:
+                      <span class="text-dark ms-sm-2 font-weight-bold">
+                        {{ role.created_at }}
+                      </span>
+                    </span>
+                  </div>
+                  <div class="ms-auto text-end col-2">
+                    <a
+                    v-if="$auth.isAdmin()"
+                      class="btn btn-link text-danger text-gradient px-3 mb-0"
+                      href="javascript:;"
+                      @click="showDeleteModal(role)"
                     >
-                    </i>
-                    Edit
-                  </a>
-                </div>
-              </li>
-            </ul>
+                      <i class="far fa-trash-alt me-2" aria-hidden="true"></i>
+                      Delete
+                    </a>
+                    <a
+                      v-if="$auth.isAdmin()"
+                      class="btn btn-link text-dark px-3 mb-0"
+                      href="javascript:;"
+                      @click="editModal(role)"
+                    >
+                      <i
+                        class="fas fa-pencil-alt text-dark me-2"
+                        aria-hidden="true"
+                      >
+                      </i>
+                      Edit
+                    </a>
+                  </div>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <!-- Create/Edit/Assign roles modal -->
-    <!-- Modal -->
-    <div
-      class="modal fade"
-      id="modal-default"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="modal-default"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 v-if="!editMode" class="modal-title">Create Role</h5>
-            <h5 v-else class="modal-title">Edit Role</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <div>
-              <FormulateInput
-                type="text"
-                required
-                label="Role Name"
-                validation="required"
-                v-model="form.name"
-              />
+      <!-- Create/Edit/Assign roles modal -->
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="modal-default"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="modal-default"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 v-if="!editMode" class="modal-title">Create Role</h5>
+              <h5 v-else class="modal-title">Edit Role</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
             </div>
-            <div>
-              <Select v-model="form.permissions" multiple :max-tag-count="5">
-                <Option v-for="p in permissions" :value="p.id" :key="p.id">
-                  {{ p.name }}
-                </Option>
-              </Select>
+            <div class="modal-body">
+              <div>
+                <FormulateInput
+                  type="text"
+                  required
+                  label="Role Name"
+                  validation="required"
+                  v-model="form.name"
+                />
+              </div>
+              <div>
+                <Select v-model="form.permissions" multiple :max-tag-count="5">
+                  <Option v-for="p in permissions" :value="p.id" :key="p.id">
+                    {{ p.name }}
+                  </Option>
+                </Select>
+              </div>
             </div>
-          </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn bg-gradient-secondary"
-              data-bs-dismiss="modal"
-              @click="resetForm()"
-            >
-              Close
-            </button>
-            <button
-              v-if="editMode"
-              type="button"
-              class="btn bg-gradient-primary"
-              @click="updateRole(form.id)"
-              :disabled="processing"
-            >
-              {{ processing ? 'Saving ...' : 'Save Changes' }}
-            </button>
-            <button
-              v-else
-              type="button"
-              class="btn bg-gradient-primary"
-              @click="createRole()"
-            >
-              {{ processing ? 'Creating ...' : 'Create' }}
-            </button>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn bg-gradient-secondary"
+                data-bs-dismiss="modal"
+                @click="resetForm()"
+              >
+                Close
+              </button>
+              <button
+                v-if="editMode"
+                type="button"
+                class="btn bg-gradient-primary"
+                @click="updateRole(form.id)"
+                :disabled="processing"
+              >
+                {{ processing ? 'Saving ...' : 'Save Changes' }}
+              </button>
+              <button
+                v-else
+                type="button"
+                class="btn bg-gradient-primary"
+                @click="createRole()"
+              >
+                {{ processing ? 'Creating ...' : 'Create' }}
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Delete Modal -->
-    <Modal v-model="deleteModal" width="400">
-      <p slot="header" style="'color:#f60;text-align:center">
-        <Icon type="ios-information-circle"></Icon>
-        <span>Delete Confirmation</span>
-      </p>
-      <div style="text-align: center">
-        <p>
-          Are you sure you would like to delete
-          <span>
-            <Tag color="volcano">{{ form.name }} role</Tag>
-          </span>
-          ?
+      <!-- Delete Modal -->
+      <Modal v-model="deleteModal" width="400">
+        <p slot="header" style="'color:#f60;text-align:center">
+          <Icon type="ios-information-circle"></Icon>
+          <span>Delete Confirmation</span>
         </p>
-        <p>This process is irriversible</p>
-      </div>
-      <div slot="footer">
-        <Button
-          type="error"
-          size="large"
-          long
-          :loading="isDeleting"
-          :disabled="isDeleting"
-          @click="deleteRole(form.id)"
-        >
-          Delete
-        </Button>
-      </div>
-    </Modal>
+        <div style="text-align: center">
+          <p>
+            Are you sure you would like to delete
+            <span>
+              <Tag color="volcano">{{ form.name }} role</Tag>
+            </span>
+            ?
+          </p>
+          <p>This process is irreversible</p>
+        </div>
+        <div slot="footer">
+          <Button
+            type="error"
+            size="large"
+            long
+            :loading="isDeleting"
+            :disabled="isDeleting"
+            @click="deleteRole(form.id)"
+          >
+            Delete
+          </Button>
+        </div>
+      </Modal>
 
-    <Modal v-model="massDeleteModal" width="400">
-      <p slot="header" style="'color:#f60;text-align:center">
-        <Icon type="ios-information-circle"></Icon>
-        <span>Delete Confirmation</span>
-      </p>
-      <div style="text-align: center">
-        <p>Are you sure you would like to delete selected records?</p>
-        <p>This process is irriversible</p>
-      </div>
-      <div slot="footer">
-        <Button
-          type="error"
-          size="large"
-          long
-          :loading="isDeleting"
-          :disabled="isDeleting"
-          @click="deleteRecords(checked)"
-        >
-          Delete
-        </Button>
-      </div>
-    </Modal>
+      <Modal v-model="massDeleteModal" width="400">
+        <p slot="header" style="'color:#f60;text-align:center">
+          <Icon type="ios-information-circle"></Icon>
+          <span>Delete Confirmation</span>
+        </p>
+        <div style="text-align: center">
+          <p>Are you sure you would like to delete selected records?</p>
+          <p>This process is irreversible</p>
+        </div>
+        <div slot="footer">
+          <Button
+            type="error"
+            size="large"
+            long
+            :loading="isDeleting"
+            :disabled="isDeleting"
+            @click="deleteRecords(checked)"
+          >
+            Delete
+          </Button>
+        </div>
+      </Modal>
+    </div>
+    <div v-else>
+      <Notfound />
+    </div>
   </div>
 </template>
 <script>
+import Notfound from '@/pages/Errors/notfound.vue'
 export default {
   data() {
     return {
@@ -537,5 +549,6 @@ export default {
       }
     },
   },
+  components: { Notfound },
 }
 </script>

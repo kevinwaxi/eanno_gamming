@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="$auth.can('station list') || $auth.isAdmin">
+    <div v-if="$auth.can('station list') || $auth.isAdmin()">
       <div class="row">
         <div class="col-sm-4">
           <div class="card">
@@ -191,10 +191,16 @@
               <div class="row">
                 <div class="col-8">
                   <h5 class="mb-2 col-8">Game Stations</h5>
-                  <p class="mb-0">Create game stations</p>
+                  <p class="mb-0" v-if="$auth.isAdmin()">
+                    Create game stations
+                  </p>
                 </div>
                 <div class="col-4">
-                  <a href="javascript:;" @click.prevent="createModal()">
+                  <a
+                    href="javascript:;"
+                    @click.prevent="createModal()"
+                    v-if="$auth.isAdmin()"
+                  >
                     <span class="badge bg-gradient-info ms-auto float-end">
                       Create Station
                     </span>
@@ -516,7 +522,7 @@
       </div>
     </div>
     <div v-else>
-        <not-found></not-found>
+      <not-found></not-found>
     </div>
   </div>
 </template>

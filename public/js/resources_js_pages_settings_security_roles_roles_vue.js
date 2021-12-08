@@ -1,6 +1,57 @@
 "use strict";
 (self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_pages_settings_security_roles_roles_vue"],{
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/Errors/notfound.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/Errors/notfound.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  methods: {
+    goHome: function goHome() {
+      this.$router.push('my_bookings');
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/settings/security/roles/roles.vue?vue&type=script&lang=js&":
 /*!*******************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/settings/security/roles/roles.vue?vue&type=script&lang=js& ***!
@@ -13,6 +64,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _pages_Errors_notfound_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/pages/Errors/notfound.vue */ "./resources/js/pages/Errors/notfound.vue");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -337,6 +389,18 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -728,8 +792,49 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         }, _callee7);
       }))();
     }
+  },
+  components: {
+    Notfound: _pages_Errors_notfound_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   }
 });
+
+/***/ }),
+
+/***/ "./resources/js/pages/Errors/notfound.vue":
+/*!************************************************!*\
+  !*** ./resources/js/pages/Errors/notfound.vue ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _notfound_vue_vue_type_template_id_0fbe0a8c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./notfound.vue?vue&type=template&id=0fbe0a8c& */ "./resources/js/pages/Errors/notfound.vue?vue&type=template&id=0fbe0a8c&");
+/* harmony import */ var _notfound_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./notfound.vue?vue&type=script&lang=js& */ "./resources/js/pages/Errors/notfound.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _notfound_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _notfound_vue_vue_type_template_id_0fbe0a8c___WEBPACK_IMPORTED_MODULE_0__.render,
+  _notfound_vue_vue_type_template_id_0fbe0a8c___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/pages/Errors/notfound.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
 
 /***/ }),
 
@@ -771,6 +876,21 @@ component.options.__file = "resources/js/pages/settings/security/roles/roles.vue
 
 /***/ }),
 
+/***/ "./resources/js/pages/Errors/notfound.vue?vue&type=script&lang=js&":
+/*!*************************************************************************!*\
+  !*** ./resources/js/pages/Errors/notfound.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_notfound_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./notfound.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/Errors/notfound.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_notfound_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
 /***/ "./resources/js/pages/settings/security/roles/roles.vue?vue&type=script&lang=js&":
 /*!***************************************************************************************!*\
   !*** ./resources/js/pages/settings/security/roles/roles.vue?vue&type=script&lang=js& ***!
@@ -783,6 +903,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_roles_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./roles.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/settings/security/roles/roles.vue?vue&type=script&lang=js&");
  /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_roles_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/pages/Errors/notfound.vue?vue&type=template&id=0fbe0a8c&":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/pages/Errors/notfound.vue?vue&type=template&id=0fbe0a8c& ***!
+  \*******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_notfound_vue_vue_type_template_id_0fbe0a8c___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_notfound_vue_vue_type_template_id_0fbe0a8c___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_notfound_vue_vue_type_template_id_0fbe0a8c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./notfound.vue?vue&type=template&id=0fbe0a8c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/Errors/notfound.vue?vue&type=template&id=0fbe0a8c&");
+
 
 /***/ }),
 
@@ -802,6 +938,88 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/Errors/notfound.vue?vue&type=template&id=0fbe0a8c&":
+/*!**********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/Errors/notfound.vue?vue&type=template&id=0fbe0a8c& ***!
+  \**********************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("main", { staticClass: "main-content mt-0" }, [
+      _c("section", { staticClass: "my-10" }, [
+        _c("div", { staticClass: "container" }, [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-lg-6 my-auto" }, [
+              _c(
+                "h1",
+                {
+                  staticClass:
+                    "display-1 text-bolder text-gradient text-danger",
+                },
+                [_vm._v("\n              Error 404\n            ")]
+              ),
+              _vm._v(" "),
+              _c("h2", [_vm._v("Erm. Page not found")]),
+              _vm._v(" "),
+              _c("p", { staticClass: "lead" }, [
+                _vm._v(
+                  "\n              We suggest you to go to the homepage while we solve this issue.\n            "
+                ),
+              ]),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass: "btn bg-gradient-dark mt-4",
+                  attrs: { href: "#", type: "button" },
+                  on: {
+                    click: function ($event) {
+                      return _vm.goHome()
+                    },
+                  },
+                },
+                [_vm._v("\n              Go to Homepage\n            ")]
+              ),
+            ]),
+            _vm._v(" "),
+            _vm._m(0),
+          ]),
+        ]),
+      ]),
+    ]),
+  ])
+}
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-lg-6 my-auto position-relative" }, [
+      _c("img", {
+        staticClass: "w-100 position-relative",
+        attrs: {
+          src: "/assets/img/illustrations/error-404.png",
+          alt: "404-error",
+        },
+      }),
+    ])
+  },
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/settings/security/roles/roles.vue?vue&type=template&id=191a966f&":
 /*!************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/settings/security/roles/roles.vue?vue&type=template&id=191a966f& ***!
@@ -817,614 +1035,658 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-12" }, [
-          _c("div", { staticClass: "card" }, [
-            _c("div", { staticClass: "card-header pb-0 p-3" }, [
-              _c("div", { staticClass: "row" }, [
-                _vm._m(0),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-4" }, [
-                  _c(
-                    "a",
-                    {
-                      attrs: { href: "javascript:;" },
-                      on: {
-                        click: function ($event) {
-                          $event.preventDefault()
-                          return _vm.createModal()
-                        },
-                      },
-                    },
-                    [
-                      _c(
-                        "span",
-                        {
-                          staticClass:
-                            "badge bg-gradient-info ms-auto float-end",
-                        },
-                        [
-                          _vm._v(
-                            "\n                  Create Role\n                "
-                          ),
-                        ]
-                      ),
-                    ]
-                  ),
-                ]),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col-3 flex" }, [
-                  _c("label", { attrs: { for: "search" } }, [
-                    _vm._v(" Search "),
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "input-group" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model.lazy",
-                          value: _vm.search,
-                          expression: "search",
-                          modifiers: { lazy: true },
-                        },
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        name: "search",
-                        type: "text",
-                        placeholder: "permission or role name",
-                      },
-                      domProps: { value: _vm.search },
-                      on: {
-                        change: function ($event) {
-                          _vm.search = $event.target.value
-                        },
-                      },
-                    }),
-                  ]),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-3" }, [
-                  _c("label", { attrs: { for: "select" } }, [
-                    _vm._v("Roles can:"),
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "select",
-                    {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.selected,
-                          expression: "selected",
-                        },
-                      ],
-                      staticClass: "form-select fmxw-200 d-none d-md-inline",
-                      attrs: { "aria-label": "Fillter by role" },
-                      on: {
-                        change: function ($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function (o) {
-                              return o.selected
-                            })
-                            .map(function (o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
-                          _vm.selected = $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
-                        },
-                      },
-                    },
-                    [
-                      _c(
-                        "option",
-                        { attrs: { selected: "selected", value: "" } },
-                        [_vm._v("Show All")]
-                      ),
+  return _c("div", [
+    _vm.$auth.isAdmin() || _vm.$auth.can("role list")
+      ? _c(
+          "div",
+          [
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-md-12" }, [
+                _c("div", { staticClass: "card" }, [
+                  _c("div", { staticClass: "card-header pb-0 p-3" }, [
+                    _c("div", { staticClass: "row" }, [
+                      _vm._m(0),
                       _vm._v(" "),
-                      _vm._l(_vm.permissions, function (permission, i) {
-                        return _c(
-                          "option",
-                          { key: i, domProps: { value: permission.id } },
-                          [
-                            _vm._v(
-                              "\n                  " +
-                                _vm._s(permission.name) +
-                                "\n                "
-                            ),
-                          ]
-                        )
-                      }),
-                    ],
-                    2
-                  ),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-2" }, [
-                  _c("label", { attrs: { for: "select" } }, [_vm._v("Show:")]),
-                  _vm._v(" "),
-                  _c(
-                    "select",
-                    {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.total,
-                          expression: "total",
-                        },
-                      ],
-                      staticClass: "form-select fmxw-200 d-none d-md-inline",
-                      attrs: { "aria-label": "show" },
-                      on: {
-                        change: function ($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function (o) {
-                              return o.selected
-                            })
-                            .map(function (o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
-                          _vm.total = $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
-                        },
-                      },
-                    },
-                    [
-                      _c("option", { attrs: { value: "10" } }, [_vm._v("10")]),
+                      _c("div", { staticClass: "col-4" }, [
+                        _vm.$auth.isAdmin()
+                          ? _c(
+                              "a",
+                              {
+                                attrs: { href: "javascript:;" },
+                                on: {
+                                  click: function ($event) {
+                                    $event.preventDefault()
+                                    return _vm.createModal()
+                                  },
+                                },
+                              },
+                              [
+                                _c(
+                                  "span",
+                                  {
+                                    staticClass:
+                                      "badge bg-gradient-info ms-auto float-end",
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                    Create Role\n                  "
+                                    ),
+                                  ]
+                                ),
+                              ]
+                            )
+                          : _vm._e(),
+                      ]),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "row" }, [
+                      _c("div", { staticClass: "col-3 flex" }, [
+                        _c("label", { attrs: { for: "search" } }, [
+                          _vm._v(" Search "),
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "input-group" }, [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model.lazy",
+                                value: _vm.search,
+                                expression: "search",
+                                modifiers: { lazy: true },
+                              },
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              name: "search",
+                              type: "text",
+                              placeholder: "permission or role name",
+                            },
+                            domProps: { value: _vm.search },
+                            on: {
+                              change: function ($event) {
+                                _vm.search = $event.target.value
+                              },
+                            },
+                          }),
+                        ]),
+                      ]),
                       _vm._v(" "),
-                      _c("option", { attrs: { value: "20" } }, [_vm._v("20")]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "30" } }, [_vm._v("30")]),
-                      _vm._v(" "),
-                      _vm.roles.data
-                        ? _c(
-                            "option",
-                            { domProps: { value: _vm.roles.meta.total } },
-                            [
-                              _vm._v(
-                                "\n                  All " +
-                                  _vm._s(_vm.roles.meta.total) +
-                                  "\n                "
-                              ),
-                            ]
-                          )
-                        : _vm._e(),
-                    ]
-                  ),
-                ]),
-              ]),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body pt-4 p-3" }, [
-              _c(
-                "ul",
-                { staticClass: "list-group" },
-                _vm._l(_vm.roles.data, function (role, i) {
-                  return _c(
-                    "li",
-                    {
-                      key: i,
-                      staticClass:
-                        "\n                list-group-item\n                border-0\n                d-flex\n                p-4\n                mb-2\n                bg-gray-100\n                border-radius-lg\n              ",
-                      class: _vm.isChecked(role.id) ? "card-selected" : "",
-                    },
-                    [
-                      _c("div", { staticClass: "d-flex flex-column" }, [
-                        _c("h6", { staticClass: "mb-3 text-sm" }, [
-                          _vm._v(_vm._s(role.name)),
+                      _c("div", { staticClass: "col-3" }, [
+                        _c("label", { attrs: { for: "select" } }, [
+                          _vm._v("Roles can:"),
                         ]),
                         _vm._v(" "),
                         _c(
-                          "span",
-                          { staticClass: "mb-2 text-xs" },
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.selected,
+                                expression: "selected",
+                              },
+                            ],
+                            staticClass:
+                              "form-select fmxw-200 d-none d-md-inline",
+                            attrs: { "aria-label": "Fillter by role" },
+                            on: {
+                              change: function ($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function (o) {
+                                    return o.selected
+                                  })
+                                  .map(function (o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.selected = $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              },
+                            },
+                          },
                           [
-                            _vm._v(
-                              "\n                  Permissions:\n                  "
+                            _c(
+                              "option",
+                              { attrs: { selected: "selected", value: "" } },
+                              [_vm._v("Show All")]
                             ),
-                            _vm._l(role.permissions, function (p, i) {
+                            _vm._v(" "),
+                            _vm._l(_vm.permissions, function (permission, i) {
                               return _c(
-                                "span",
-                                { key: i, staticClass: "fw-normal text-gray" },
+                                "option",
+                                { key: i, domProps: { value: permission.id } },
                                 [
-                                  _c("Tag", { attrs: { color: "geekblue" } }, [
-                                    _vm._v(_vm._s(p.name)),
-                                  ]),
-                                ],
-                                1
+                                  _vm._v(
+                                    "\n                    " +
+                                      _vm._s(permission.name) +
+                                      "\n                  "
+                                  ),
+                                ]
                               )
                             }),
                           ],
                           2
                         ),
-                        _vm._v(" "),
-                        _vm._m(1, true),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "text-xs" }, [
-                          _vm._v(
-                            "\n                  Date Created:\n                  "
-                          ),
-                          _c(
-                            "span",
-                            {
-                              staticClass: "text-dark ms-sm-2 font-weight-bold",
-                            },
-                            [
-                              _vm._v(
-                                "\n                    " +
-                                  _vm._s(role.created_at) +
-                                  "\n                  "
-                              ),
-                            ]
-                          ),
-                        ]),
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "ms-auto text-end col-2" }, [
+                      _c("div", { staticClass: "col-2" }, [
+                        _c("label", { attrs: { for: "select" } }, [
+                          _vm._v("Show:"),
+                        ]),
+                        _vm._v(" "),
                         _c(
-                          "a",
+                          "select",
                           {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.total,
+                                expression: "total",
+                              },
+                            ],
                             staticClass:
-                              "btn btn-link text-danger text-gradient px-3 mb-0",
-                            attrs: { href: "javascript:;" },
+                              "form-select fmxw-200 d-none d-md-inline",
+                            attrs: { "aria-label": "show" },
                             on: {
-                              click: function ($event) {
-                                return _vm.showDeleteModal(role)
+                              change: function ($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function (o) {
+                                    return o.selected
+                                  })
+                                  .map(function (o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.total = $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
                               },
                             },
                           },
                           [
-                            _c("i", {
-                              staticClass: "far fa-trash-alt me-2",
-                              attrs: { "aria-hidden": "true" },
-                            }),
-                            _vm._v(
-                              "\n                  Delete\n                "
+                            _c("option", { attrs: { value: "10" } }, [
+                              _vm._v("10"),
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "20" } }, [
+                              _vm._v("20"),
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "30" } }, [
+                              _vm._v("30"),
+                            ]),
+                            _vm._v(" "),
+                            _vm.roles.data
+                              ? _c(
+                                  "option",
+                                  { domProps: { value: _vm.roles.meta.total } },
+                                  [
+                                    _vm._v(
+                                      "\n                    All " +
+                                        _vm._s(_vm.roles.meta.total) +
+                                        "\n                  "
+                                    ),
+                                  ]
+                                )
+                              : _vm._e(),
+                          ]
+                        ),
+                      ]),
+                    ]),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "card-body pt-4 p-3" }, [
+                    _c(
+                      "ul",
+                      { staticClass: "list-group" },
+                      _vm._l(_vm.roles.data, function (role, i) {
+                        return _c(
+                          "li",
+                          {
+                            key: i,
+                            staticClass:
+                              "\n                  list-group-item\n                  border-0\n                  d-flex\n                  p-4\n                  mb-2\n                  bg-gray-100\n                  border-radius-lg\n                ",
+                            class: _vm.isChecked(role.id)
+                              ? "card-selected"
+                              : "",
+                          },
+                          [
+                            _c("div", { staticClass: "d-flex flex-column" }, [
+                              _c("h6", { staticClass: "mb-3 text-sm" }, [
+                                _vm._v(_vm._s(role.name)),
+                              ]),
+                              _vm._v(" "),
+                              _c(
+                                "span",
+                                { staticClass: "mb-2 text-xs" },
+                                [
+                                  _vm._v(
+                                    "\n                    Permissions:\n                    "
+                                  ),
+                                  _vm._l(role.permissions, function (p, i) {
+                                    return _c(
+                                      "span",
+                                      {
+                                        key: i,
+                                        staticClass: "fw-normal text-gray",
+                                      },
+                                      [
+                                        _c(
+                                          "Tag",
+                                          { attrs: { color: "geekblue" } },
+                                          [_vm._v(_vm._s(p.name))]
+                                        ),
+                                      ],
+                                      1
+                                    )
+                                  }),
+                                ],
+                                2
+                              ),
+                              _vm._v(" "),
+                              _vm._m(1, true),
+                              _vm._v(" "),
+                              _c("span", { staticClass: "text-xs" }, [
+                                _vm._v(
+                                  "\n                    Date Created:\n                    "
+                                ),
+                                _c(
+                                  "span",
+                                  {
+                                    staticClass:
+                                      "text-dark ms-sm-2 font-weight-bold",
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                      " +
+                                        _vm._s(role.created_at) +
+                                        "\n                    "
+                                    ),
+                                  ]
+                                ),
+                              ]),
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "ms-auto text-end col-2" },
+                              [
+                                _vm.$auth.isAdmin()
+                                  ? _c(
+                                      "a",
+                                      {
+                                        staticClass:
+                                          "btn btn-link text-danger text-gradient px-3 mb-0",
+                                        attrs: { href: "javascript:;" },
+                                        on: {
+                                          click: function ($event) {
+                                            return _vm.showDeleteModal(role)
+                                          },
+                                        },
+                                      },
+                                      [
+                                        _c("i", {
+                                          staticClass: "far fa-trash-alt me-2",
+                                          attrs: { "aria-hidden": "true" },
+                                        }),
+                                        _vm._v(
+                                          "\n                    Delete\n                  "
+                                        ),
+                                      ]
+                                    )
+                                  : _vm._e(),
+                                _vm._v(" "),
+                                _vm.$auth.isAdmin()
+                                  ? _c(
+                                      "a",
+                                      {
+                                        staticClass:
+                                          "btn btn-link text-dark px-3 mb-0",
+                                        attrs: { href: "javascript:;" },
+                                        on: {
+                                          click: function ($event) {
+                                            return _vm.editModal(role)
+                                          },
+                                        },
+                                      },
+                                      [
+                                        _c("i", {
+                                          staticClass:
+                                            "fas fa-pencil-alt text-dark me-2",
+                                          attrs: { "aria-hidden": "true" },
+                                        }),
+                                        _vm._v(
+                                          "\n                    Edit\n                  "
+                                        ),
+                                      ]
+                                    )
+                                  : _vm._e(),
+                              ]
                             ),
                           ]
+                        )
+                      }),
+                      0
+                    ),
+                  ]),
+                ]),
+              ]),
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "modal fade",
+                attrs: {
+                  id: "modal-default",
+                  tabindex: "-1",
+                  role: "dialog",
+                  "aria-labelledby": "modal-default",
+                  "aria-hidden": "true",
+                },
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass: "modal-dialog modal-dialog-centered",
+                    attrs: { role: "document" },
+                  },
+                  [
+                    _c("div", { staticClass: "modal-content" }, [
+                      _c("div", { staticClass: "modal-header" }, [
+                        !_vm.editMode
+                          ? _c("h5", { staticClass: "modal-title" }, [
+                              _vm._v("Create Role"),
+                            ])
+                          : _c("h5", { staticClass: "modal-title" }, [
+                              _vm._v("Edit Role"),
+                            ]),
+                        _vm._v(" "),
+                        _vm._m(2),
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "modal-body" }, [
+                        _c(
+                          "div",
+                          [
+                            _c("FormulateInput", {
+                              attrs: {
+                                type: "text",
+                                required: "",
+                                label: "Role Name",
+                                validation: "required",
+                              },
+                              model: {
+                                value: _vm.form.name,
+                                callback: function ($$v) {
+                                  _vm.$set(_vm.form, "name", $$v)
+                                },
+                                expression: "form.name",
+                              },
+                            }),
+                          ],
+                          1
                         ),
                         _vm._v(" "),
                         _c(
-                          "a",
+                          "div",
+                          [
+                            _c(
+                              "Select",
+                              {
+                                attrs: { multiple: "", "max-tag-count": 5 },
+                                model: {
+                                  value: _vm.form.permissions,
+                                  callback: function ($$v) {
+                                    _vm.$set(_vm.form, "permissions", $$v)
+                                  },
+                                  expression: "form.permissions",
+                                },
+                              },
+                              _vm._l(_vm.permissions, function (p) {
+                                return _c(
+                                  "Option",
+                                  { key: p.id, attrs: { value: p.id } },
+                                  [
+                                    _vm._v(
+                                      "\n                  " +
+                                        _vm._s(p.name) +
+                                        "\n                "
+                                    ),
+                                  ]
+                                )
+                              }),
+                              1
+                            ),
+                          ],
+                          1
+                        ),
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "modal-footer" }, [
+                        _c(
+                          "button",
                           {
-                            staticClass: "btn btn-link text-dark px-3 mb-0",
-                            attrs: { href: "javascript:;" },
+                            staticClass: "btn bg-gradient-secondary",
+                            attrs: {
+                              type: "button",
+                              "data-bs-dismiss": "modal",
+                            },
                             on: {
                               click: function ($event) {
-                                return _vm.editModal(role)
+                                return _vm.resetForm()
                               },
                             },
                           },
-                          [
-                            _c("i", {
-                              staticClass: "fas fa-pencil-alt text-dark me-2",
-                              attrs: { "aria-hidden": "true" },
-                            }),
-                            _vm._v(
-                              "\n                  Edit\n                "
-                            ),
-                          ]
+                          [_vm._v("\n              Close\n            ")]
                         ),
+                        _vm._v(" "),
+                        _vm.editMode
+                          ? _c(
+                              "button",
+                              {
+                                staticClass: "btn bg-gradient-primary",
+                                attrs: {
+                                  type: "button",
+                                  disabled: _vm.processing,
+                                },
+                                on: {
+                                  click: function ($event) {
+                                    return _vm.updateRole(_vm.form.id)
+                                  },
+                                },
+                              },
+                              [
+                                _vm._v(
+                                  "\n              " +
+                                    _vm._s(
+                                      _vm.processing
+                                        ? "Saving ..."
+                                        : "Save Changes"
+                                    ) +
+                                    "\n            "
+                                ),
+                              ]
+                            )
+                          : _c(
+                              "button",
+                              {
+                                staticClass: "btn bg-gradient-primary",
+                                attrs: { type: "button" },
+                                on: {
+                                  click: function ($event) {
+                                    return _vm.createRole()
+                                  },
+                                },
+                              },
+                              [
+                                _vm._v(
+                                  "\n              " +
+                                    _vm._s(
+                                      _vm.processing ? "Creating ..." : "Create"
+                                    ) +
+                                    "\n            "
+                                ),
+                              ]
+                            ),
                       ]),
-                    ]
-                  )
-                }),
-                0
-              ),
-            ]),
-          ]),
-        ]),
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "modal fade",
-          attrs: {
-            id: "modal-default",
-            tabindex: "-1",
-            role: "dialog",
-            "aria-labelledby": "modal-default",
-            "aria-hidden": "true",
-          },
-        },
-        [
-          _c(
-            "div",
-            {
-              staticClass: "modal-dialog modal-dialog-centered",
-              attrs: { role: "document" },
-            },
-            [
-              _c("div", { staticClass: "modal-content" }, [
-                _c("div", { staticClass: "modal-header" }, [
-                  !_vm.editMode
-                    ? _c("h5", { staticClass: "modal-title" }, [
-                        _vm._v("Create Role"),
-                      ])
-                    : _c("h5", { staticClass: "modal-title" }, [
-                        _vm._v("Edit Role"),
-                      ]),
+                    ]),
+                  ]
+                ),
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "Modal",
+              {
+                attrs: { width: "400" },
+                model: {
+                  value: _vm.deleteModal,
+                  callback: function ($$v) {
+                    _vm.deleteModal = $$v
+                  },
+                  expression: "deleteModal",
+                },
+              },
+              [
+                _c(
+                  "p",
+                  {
+                    staticStyle: { "'color": "#f60", "text-align": "center" },
+                    attrs: { slot: "header" },
+                    slot: "header",
+                  },
+                  [
+                    _c("Icon", { attrs: { type: "ios-information-circle" } }),
+                    _vm._v(" "),
+                    _c("span", [_vm._v("Delete Confirmation")]),
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("div", { staticStyle: { "text-align": "center" } }, [
+                  _c("p", [
+                    _vm._v(
+                      "\n          Are you sure you would like to delete\n          "
+                    ),
+                    _c(
+                      "span",
+                      [
+                        _c("Tag", { attrs: { color: "volcano" } }, [
+                          _vm._v(_vm._s(_vm.form.name) + " role"),
+                        ]),
+                      ],
+                      1
+                    ),
+                    _vm._v("\n          ?\n        "),
+                  ]),
                   _vm._v(" "),
-                  _vm._m(2),
+                  _c("p", [_vm._v("This process is irreversible")]),
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "modal-body" }, [
-                  _c(
-                    "div",
-                    [
-                      _c("FormulateInput", {
+                _c(
+                  "div",
+                  { attrs: { slot: "footer" }, slot: "footer" },
+                  [
+                    _c(
+                      "Button",
+                      {
                         attrs: {
-                          type: "text",
-                          required: "",
-                          label: "Role Name",
-                          validation: "required",
+                          type: "error",
+                          size: "large",
+                          long: "",
+                          loading: _vm.isDeleting,
+                          disabled: _vm.isDeleting,
                         },
-                        model: {
-                          value: _vm.form.name,
-                          callback: function ($$v) {
-                            _vm.$set(_vm.form, "name", $$v)
+                        on: {
+                          click: function ($event) {
+                            return _vm.deleteRole(_vm.form.id)
                           },
-                          expression: "form.name",
-                        },
-                      }),
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    [
-                      _c(
-                        "Select",
-                        {
-                          attrs: { multiple: "", "max-tag-count": 5 },
-                          model: {
-                            value: _vm.form.permissions,
-                            callback: function ($$v) {
-                              _vm.$set(_vm.form, "permissions", $$v)
-                            },
-                            expression: "form.permissions",
-                          },
-                        },
-                        _vm._l(_vm.permissions, function (p) {
-                          return _c(
-                            "Option",
-                            { key: p.id, attrs: { value: p.id } },
-                            [
-                              _vm._v(
-                                "\n                " +
-                                  _vm._s(p.name) +
-                                  "\n              "
-                              ),
-                            ]
-                          )
-                        }),
-                        1
-                      ),
-                    ],
-                    1
-                  ),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "modal-footer" }, [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn bg-gradient-secondary",
-                      attrs: { type: "button", "data-bs-dismiss": "modal" },
-                      on: {
-                        click: function ($event) {
-                          return _vm.resetForm()
                         },
                       },
-                    },
-                    [_vm._v("\n            Close\n          ")]
-                  ),
-                  _vm._v(" "),
-                  _vm.editMode
-                    ? _c(
-                        "button",
-                        {
-                          staticClass: "btn bg-gradient-primary",
-                          attrs: { type: "button", disabled: _vm.processing },
-                          on: {
-                            click: function ($event) {
-                              return _vm.updateRole(_vm.form.id)
-                            },
-                          },
-                        },
-                        [
-                          _vm._v(
-                            "\n            " +
-                              _vm._s(
-                                _vm.processing ? "Saving ..." : "Save Changes"
-                              ) +
-                              "\n          "
-                          ),
-                        ]
-                      )
-                    : _c(
-                        "button",
-                        {
-                          staticClass: "btn bg-gradient-primary",
-                          attrs: { type: "button" },
-                          on: {
-                            click: function ($event) {
-                              return _vm.createRole()
-                            },
-                          },
-                        },
-                        [
-                          _vm._v(
-                            "\n            " +
-                              _vm._s(
-                                _vm.processing ? "Creating ..." : "Create"
-                              ) +
-                              "\n          "
-                          ),
-                        ]
-                      ),
-                ]),
-              ]),
-            ]
-          ),
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "Modal",
-        {
-          attrs: { width: "400" },
-          model: {
-            value: _vm.deleteModal,
-            callback: function ($$v) {
-              _vm.deleteModal = $$v
-            },
-            expression: "deleteModal",
-          },
-        },
-        [
-          _c(
-            "p",
-            {
-              staticStyle: { "'color": "#f60", "text-align": "center" },
-              attrs: { slot: "header" },
-              slot: "header",
-            },
-            [
-              _c("Icon", { attrs: { type: "ios-information-circle" } }),
-              _vm._v(" "),
-              _c("span", [_vm._v("Delete Confirmation")]),
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c("div", { staticStyle: { "text-align": "center" } }, [
-            _c("p", [
-              _vm._v(
-                "\n        Are you sure you would like to delete\n        "
-              ),
-              _c(
-                "span",
-                [
-                  _c("Tag", { attrs: { color: "volcano" } }, [
-                    _vm._v(_vm._s(_vm.form.name) + " role"),
+                      [_vm._v("\n          Delete\n        ")]
+                    ),
+                  ],
+                  1
+                ),
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "Modal",
+              {
+                attrs: { width: "400" },
+                model: {
+                  value: _vm.massDeleteModal,
+                  callback: function ($$v) {
+                    _vm.massDeleteModal = $$v
+                  },
+                  expression: "massDeleteModal",
+                },
+              },
+              [
+                _c(
+                  "p",
+                  {
+                    staticStyle: { "'color": "#f60", "text-align": "center" },
+                    attrs: { slot: "header" },
+                    slot: "header",
+                  },
+                  [
+                    _c("Icon", { attrs: { type: "ios-information-circle" } }),
+                    _vm._v(" "),
+                    _c("span", [_vm._v("Delete Confirmation")]),
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("div", { staticStyle: { "text-align": "center" } }, [
+                  _c("p", [
+                    _vm._v(
+                      "Are you sure you would like to delete selected records?"
+                    ),
                   ]),
-                ],
-                1
-              ),
-              _vm._v("\n        ?\n      "),
-            ]),
-            _vm._v(" "),
-            _c("p", [_vm._v("This process is irriversible")]),
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { attrs: { slot: "footer" }, slot: "footer" },
-            [
-              _c(
-                "Button",
-                {
-                  attrs: {
-                    type: "error",
-                    size: "large",
-                    long: "",
-                    loading: _vm.isDeleting,
-                    disabled: _vm.isDeleting,
-                  },
-                  on: {
-                    click: function ($event) {
-                      return _vm.deleteRole(_vm.form.id)
-                    },
-                  },
-                },
-                [_vm._v("\n        Delete\n      ")]
-              ),
-            ],
-            1
-          ),
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "Modal",
-        {
-          attrs: { width: "400" },
-          model: {
-            value: _vm.massDeleteModal,
-            callback: function ($$v) {
-              _vm.massDeleteModal = $$v
-            },
-            expression: "massDeleteModal",
-          },
-        },
-        [
-          _c(
-            "p",
-            {
-              staticStyle: { "'color": "#f60", "text-align": "center" },
-              attrs: { slot: "header" },
-              slot: "header",
-            },
-            [
-              _c("Icon", { attrs: { type: "ios-information-circle" } }),
-              _vm._v(" "),
-              _c("span", [_vm._v("Delete Confirmation")]),
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c("div", { staticStyle: { "text-align": "center" } }, [
-            _c("p", [
-              _vm._v("Are you sure you would like to delete selected records?"),
-            ]),
-            _vm._v(" "),
-            _c("p", [_vm._v("This process is irriversible")]),
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { attrs: { slot: "footer" }, slot: "footer" },
-            [
-              _c(
-                "Button",
-                {
-                  attrs: {
-                    type: "error",
-                    size: "large",
-                    long: "",
-                    loading: _vm.isDeleting,
-                    disabled: _vm.isDeleting,
-                  },
-                  on: {
-                    click: function ($event) {
-                      return _vm.deleteRecords(_vm.checked)
-                    },
-                  },
-                },
-                [_vm._v("\n        Delete\n      ")]
-              ),
-            ],
-            1
-          ),
-        ]
-      ),
-    ],
-    1
-  )
+                  _vm._v(" "),
+                  _c("p", [_vm._v("This process is irreversible")]),
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { attrs: { slot: "footer" }, slot: "footer" },
+                  [
+                    _c(
+                      "Button",
+                      {
+                        attrs: {
+                          type: "error",
+                          size: "large",
+                          long: "",
+                          loading: _vm.isDeleting,
+                          disabled: _vm.isDeleting,
+                        },
+                        on: {
+                          click: function ($event) {
+                            return _vm.deleteRecords(_vm.checked)
+                          },
+                        },
+                      },
+                      [_vm._v("\n          Delete\n        ")]
+                    ),
+                  ],
+                  1
+                ),
+              ]
+            ),
+          ],
+          1
+        )
+      : _c("div", [_c("Notfound")], 1),
+  ])
 }
 var staticRenderFns = [
   function () {
@@ -1440,7 +1702,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("span", { staticClass: "mb-2 text-xs" }, [
-      _vm._v("\n                  Users:\n                  "),
+      _vm._v("\n                    Users:\n                    "),
       _c("div", { staticClass: "avatar-group mt-2" }, [
         _c(
           "a",

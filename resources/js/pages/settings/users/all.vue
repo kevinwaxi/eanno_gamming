@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container-fluid py-4" v-if="$auth.can('update users')">
+    <div class="container-fluid py-4" v-if="$auth.can('list users')">
       <div class="row">
         <div class="col-lg-6 col-12">
           <div class="row">

@@ -1,6 +1,57 @@
 "use strict";
 (self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_pages_settings_stations_games_all_vue"],{
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/Errors/notfound.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/Errors/notfound.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  methods: {
+    goHome: function goHome() {
+      this.$router.push('my_bookings');
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/settings/stations/games/all.vue?vue&type=script&lang=js&":
 /*!*****************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/settings/stations/games/all.vue?vue&type=script&lang=js& ***!
@@ -13,6 +64,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _pages_Errors_notfound_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/pages/Errors/notfound.vue */ "./resources/js/pages/Errors/notfound.vue");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -314,6 +366,24 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -806,6 +876,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         desc: 'File  ' + file.name + ' is too large, no more than 2M.'
       });
     }
+  },
+  components: {
+    Notfound: _pages_Errors_notfound_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   }
 });
 
@@ -863,6 +936,44 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ }),
 
+/***/ "./resources/js/pages/Errors/notfound.vue":
+/*!************************************************!*\
+  !*** ./resources/js/pages/Errors/notfound.vue ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _notfound_vue_vue_type_template_id_0fbe0a8c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./notfound.vue?vue&type=template&id=0fbe0a8c& */ "./resources/js/pages/Errors/notfound.vue?vue&type=template&id=0fbe0a8c&");
+/* harmony import */ var _notfound_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./notfound.vue?vue&type=script&lang=js& */ "./resources/js/pages/Errors/notfound.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _notfound_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _notfound_vue_vue_type_template_id_0fbe0a8c___WEBPACK_IMPORTED_MODULE_0__.render,
+  _notfound_vue_vue_type_template_id_0fbe0a8c___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/pages/Errors/notfound.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/pages/settings/stations/games/all.vue":
 /*!************************************************************!*\
   !*** ./resources/js/pages/settings/stations/games/all.vue ***!
@@ -903,6 +1014,21 @@ component.options.__file = "resources/js/pages/settings/stations/games/all.vue"
 
 /***/ }),
 
+/***/ "./resources/js/pages/Errors/notfound.vue?vue&type=script&lang=js&":
+/*!*************************************************************************!*\
+  !*** ./resources/js/pages/Errors/notfound.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_notfound_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./notfound.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/Errors/notfound.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_notfound_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
 /***/ "./resources/js/pages/settings/stations/games/all.vue?vue&type=script&lang=js&":
 /*!*************************************************************************************!*\
   !*** ./resources/js/pages/settings/stations/games/all.vue?vue&type=script&lang=js& ***!
@@ -930,6 +1056,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/pages/Errors/notfound.vue?vue&type=template&id=0fbe0a8c&":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/pages/Errors/notfound.vue?vue&type=template&id=0fbe0a8c& ***!
+  \*******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_notfound_vue_vue_type_template_id_0fbe0a8c___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_notfound_vue_vue_type_template_id_0fbe0a8c___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_notfound_vue_vue_type_template_id_0fbe0a8c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./notfound.vue?vue&type=template&id=0fbe0a8c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/Errors/notfound.vue?vue&type=template&id=0fbe0a8c&");
+
+
+/***/ }),
+
 /***/ "./resources/js/pages/settings/stations/games/all.vue?vue&type=template&id=22325bd4&":
 /*!*******************************************************************************************!*\
   !*** ./resources/js/pages/settings/stations/games/all.vue?vue&type=template&id=22325bd4& ***!
@@ -942,6 +1084,88 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_all_vue_vue_type_template_id_22325bd4___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_all_vue_vue_type_template_id_22325bd4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./all.vue?vue&type=template&id=22325bd4& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/settings/stations/games/all.vue?vue&type=template&id=22325bd4&");
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/Errors/notfound.vue?vue&type=template&id=0fbe0a8c&":
+/*!**********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/Errors/notfound.vue?vue&type=template&id=0fbe0a8c& ***!
+  \**********************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("main", { staticClass: "main-content mt-0" }, [
+      _c("section", { staticClass: "my-10" }, [
+        _c("div", { staticClass: "container" }, [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-lg-6 my-auto" }, [
+              _c(
+                "h1",
+                {
+                  staticClass:
+                    "display-1 text-bolder text-gradient text-danger",
+                },
+                [_vm._v("\n              Error 404\n            ")]
+              ),
+              _vm._v(" "),
+              _c("h2", [_vm._v("Erm. Page not found")]),
+              _vm._v(" "),
+              _c("p", { staticClass: "lead" }, [
+                _vm._v(
+                  "\n              We suggest you to go to the homepage while we solve this issue.\n            "
+                ),
+              ]),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass: "btn bg-gradient-dark mt-4",
+                  attrs: { href: "#", type: "button" },
+                  on: {
+                    click: function ($event) {
+                      return _vm.goHome()
+                    },
+                  },
+                },
+                [_vm._v("\n              Go to Homepage\n            ")]
+              ),
+            ]),
+            _vm._v(" "),
+            _vm._m(0),
+          ]),
+        ]),
+      ]),
+    ]),
+  ])
+}
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-lg-6 my-auto position-relative" }, [
+      _c("img", {
+        staticClass: "w-100 position-relative",
+        attrs: {
+          src: "/assets/img/illustrations/error-404.png",
+          alt: "404-error",
+        },
+      }),
+    ])
+  },
+]
+render._withStripped = true
+
 
 
 /***/ }),
@@ -961,685 +1185,744 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "row" }, [
-    _c("div", { staticClass: "col-12" }, [
-      _c("div", { staticClass: "card" }, [
-        _c("div", { staticClass: "card-header p-4" }, [
-          _c("div", { staticClass: "row" }, [
-            _vm._m(0),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-4" }, [
-              _vm.$auth.isAdmin || _vm.$auth.can("consoles create")
-                ? _c(
-                    "a",
-                    {
-                      attrs: { href: "javascript:;" },
-                      on: {
-                        click: function ($event) {
-                          $event.preventDefault()
-                          return _vm.createModal()
-                        },
-                      },
-                    },
-                    [
-                      _c(
-                        "span",
-                        {
-                          staticClass:
-                            "badge bg-gradient-info ms-auto float-end",
-                        },
-                        [
-                          _vm._v(
-                            "\n                Create Game\n              "
-                          ),
-                        ]
-                      ),
-                    ]
-                  )
-                : _vm._e(),
-            ]),
-          ]),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "card-body p-4" }, [
-          _c(
-            "div",
-            { staticClass: "row" },
-            _vm._l(_vm.games.data, function (game, i) {
-              return _c("div", { key: i, staticClass: "col-md-4 mt-3 h-25" }, [
-                _c(
-                  "a",
-                  {
-                    attrs: { href: "javascript:;" },
-                    on: {
-                      click: function ($event) {
-                        $event.preventDefault()
-                        return _vm.showGameModal(game)
-                      },
-                    },
-                  },
-                  [
-                    _c(
-                      "div",
-                      { staticClass: "card card-background move-on-hover" },
-                      [
-                        _c("div", {
-                          staticClass: "full-background",
-                          style: {
-                            backgroundImage: "url(" + game.cover_image + ")",
+  return _c("div", [
+    _vm.$auth.isAdmin() || _vm.$auth.isCashier()
+      ? _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-12" }, [
+            _c("div", { staticClass: "card" }, [
+              _c("div", { staticClass: "card-header p-4" }, [
+                _c("div", { staticClass: "row" }, [
+                  _vm._m(0),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-4" }, [
+                    _vm.$auth.isAdmin() || _vm.$auth.can("consoles create")
+                      ? _c(
+                          "a",
+                          {
+                            attrs: { href: "javascript:;" },
+                            on: {
+                              click: function ($event) {
+                                $event.preventDefault()
+                                return _vm.createModal()
+                              },
+                            },
                           },
-                        }),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "card-body pt-12" }, [
-                          _c("h4", { staticClass: "text-white" }, [
-                            _vm._v(_vm._s(game.name)),
-                          ]),
-                          _vm._v(" "),
-                          _c("p", [_vm._v(_vm._s(game.about_game))]),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            { staticClass: "mt-3" },
-                            _vm._l(game.categories, function (c, i) {
-                              return _c(
-                                "span",
-                                { key: i, staticClass: "fw-normal text-gray" },
-                                [
-                                  _c("Tag", { attrs: { color: c.color } }, [
-                                    _vm._v(_vm._s(c.name)),
-                                  ]),
-                                ],
-                                1
-                              )
-                            }),
-                            0
-                          ),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "mt-1" }, [
-                            _c("div", { staticClass: "row" }, [
-                              _vm._v("Available games :"),
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "row" }, [
-                              _c(
-                                "div",
-                                { staticClass: "col-12" },
-                                _vm._l(game.types, function (console, i) {
-                                  return _c(
-                                    "span",
-                                    { key: i },
-                                    [
-                                      _c(
-                                        "Tag",
-                                        {
-                                          attrs: {
-                                            type: "dot",
-                                            color: "cyan",
-                                            closable: "",
-                                          },
-                                        },
-                                        [
-                                          _vm._v(
-                                            "\n                            " +
-                                              _vm._s(console.name) +
-                                              "\n                          "
-                                          ),
-                                        ]
-                                      ),
-                                    ],
-                                    1
-                                  )
-                                }),
-                                0
-                              ),
-                            ]),
-                          ]),
-                        ]),
-                      ]
-                    ),
-                  ]
-                ),
-              ])
-            }),
-            0
-          ),
-        ]),
-      ]),
-    ]),
-    _vm._v(" "),
-    _c(
-      "div",
-      {
-        staticClass: "modal fade",
-        attrs: {
-          id: "modal-default",
-          tabindex: "-1",
-          role: "dialog",
-          "aria-labelledby": "modal-default",
-          "aria-hidden": "true",
-        },
-      },
-      [
-        _c(
-          "div",
-          {
-            staticClass: "modal-dialog modal-dialog-centered",
-            attrs: { role: "document" },
-          },
-          [
-            _c("div", { staticClass: "modal-content" }, [
-              _c("div", { staticClass: "modal-header" }, [
-                !_vm.editMode
-                  ? _c("h5", { staticClass: "modal-title" }, [
-                      _vm._v("Create game"),
-                    ])
-                  : _c("h5", { staticClass: "modal-title" }, [
-                      _vm._v("Edit game"),
-                    ]),
-                _vm._v(" "),
-                _vm._m(1),
+                          [
+                            _c(
+                              "span",
+                              {
+                                staticClass:
+                                  "badge bg-gradient-info ms-auto float-end",
+                              },
+                              [
+                                _vm._v(
+                                  "\n                  Create Game\n                "
+                                ),
+                              ]
+                            ),
+                          ]
+                        )
+                      : _vm._e(),
+                  ]),
+                ]),
               ]),
               _vm._v(" "),
-              _c(
-                "div",
-                {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value: !_vm.detailMode,
-                      expression: "!detailMode",
-                    },
-                  ],
-                  staticClass: "modal-body",
-                },
-                [
-                  _c(
-                    "div",
-                    { staticClass: "row" },
-                    [
-                      _c("FormulateInput", {
-                        attrs: {
-                          type: "text",
-                          required: "",
-                          label: "Game Name",
-                          validation: "required",
-                        },
-                        model: {
-                          value: _vm.form.name,
-                          callback: function ($$v) {
-                            _vm.$set(_vm.form, "name", $$v)
-                          },
-                          expression: "form.name",
-                        },
-                      }),
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "row mt-3" }, [
-                    _c(
+              _c("div", { staticClass: "card-body p-4" }, [
+                _c(
+                  "div",
+                  { staticClass: "row" },
+                  _vm._l(_vm.games.data, function (game, i) {
+                    return _c(
                       "div",
-                      { staticClass: "col-12" },
+                      { key: i, staticClass: "col-md-4 mt-3 h-25" },
                       [
-                        _c("Label", [_vm._v("Choose Categories")]),
-                        _vm._v(" "),
                         _c(
-                          "Select",
+                          "a",
                           {
-                            attrs: { multiple: "", "max-tag-count": 5 },
-                            model: {
-                              value: _vm.form.category_id,
-                              callback: function ($$v) {
-                                _vm.$set(_vm.form, "category_id", $$v)
+                            attrs: { href: "javascript:;" },
+                            on: {
+                              click: function ($event) {
+                                $event.preventDefault()
+                                return _vm.showGameModal(game)
                               },
-                              expression: "form.category_id",
                             },
                           },
-                          _vm._l(_vm.categories.data, function (category, i) {
-                            return _c(
-                              "Option",
-                              { key: i, attrs: { value: category.id } },
-                              [
-                                _vm._v(
-                                  "\n                  " +
-                                    _vm._s(category.name) +
-                                    "\n                "
-                                ),
-                              ]
-                            )
-                          }),
-                          1
-                        ),
-                      ],
-                      1
-                    ),
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "row mt-3" }, [
-                    _c(
-                      "div",
-                      { staticClass: "col-12" },
-                      [
-                        _c("Label", [_vm._v("Console Types Available")]),
-                        _vm._v(" "),
-                        _c(
-                          "Select",
-                          {
-                            attrs: { multiple: "", "max-tag-count": 3 },
-                            model: {
-                              value: _vm.form.type_id,
-                              callback: function ($$v) {
-                                _vm.$set(_vm.form, "type_id", $$v)
-                              },
-                              expression: "form.type_id",
-                            },
-                          },
-                          _vm._l(_vm.types, function (type, i) {
-                            return _c(
-                              "Option",
-                              { key: i, attrs: { value: type.id } },
-                              [
-                                _vm._v(
-                                  "\n                  " +
-                                    _vm._s(type.name) +
-                                    "\n                "
-                                ),
-                              ]
-                            )
-                          }),
-                          1
-                        ),
-                      ],
-                      1
-                    ),
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "row mt-3" },
-                    [
-                      _c("FormulateInput", {
-                        attrs: {
-                          type: "textarea",
-                          required: "",
-                          validation: "required|max:100,length",
-                          label: "Game Details",
-                        },
-                        model: {
-                          value: _vm.form.about_game,
-                          callback: function ($$v) {
-                            _vm.$set(_vm.form, "about_game", $$v)
-                          },
-                          expression: "form.about_game",
-                        },
-                      }),
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "row mt-3" },
-                    [
-                      _c("Label", [_vm._v("Upload Cover Image")]),
-                      _vm._v(" "),
-                      _c(
-                        "Upload",
-                        {
-                          directives: [
-                            {
-                              name: "show",
-                              rawName: "v-show",
-                              value: !_vm.editMode || _vm.newCover,
-                              expression: "!editMode || newCover",
-                            },
-                          ],
-                          ref: "uploads",
-                          attrs: {
-                            type: "drag",
-                            action: "/api/v1/games/upload",
-                            headers: {
-                              "x-csrf-token": _vm.token,
-                              "X-Requested-With": "XMLHttpRequest",
-                            },
-                            "on-success": _vm.handleSuccess,
-                            "on-error": _vm.handleError,
-                            format: ["jpg", "jpeg", "png"],
-                            "max-size": 2048,
-                            "on-format-error": _vm.handleFormatError,
-                            "on-exceeded-size": _vm.handleMaxSize,
-                          },
-                        },
-                        [
-                          _c(
-                            "div",
-                            { staticStyle: { padding: "20px 0" } },
-                            [
-                              _c("Icon", {
-                                staticStyle: { color: "#3399ff" },
-                                attrs: { type: "ios-cloud-upload", size: "52" },
-                              }),
-                              _vm._v(" "),
-                              _c("p", [
-                                _vm._v("Click or drag files here to upload"),
-                              ]),
-                            ],
-                            1
-                          ),
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _vm.form.cover_image
-                        ? _c("div", { staticClass: "demo-upload-list" }, [
-                            _c("img", {
-                              attrs: {
-                                src: "" + _vm.form.cover_image,
-                                alt: "",
-                              },
-                            }),
-                            _vm._v(" "),
+                          [
                             _c(
                               "div",
-                              { staticClass: "demo-upload-list-cover" },
+                              {
+                                staticClass:
+                                  "card card-background move-on-hover",
+                              },
                               [
-                                _vm.editMode
-                                  ? _c("Icon", {
-                                      attrs: { type: "ios-trash-outline" },
-                                      on: {
-                                        click: function ($event) {
-                                          return _vm.deleteImage(true)
+                                _c("div", {
+                                  staticClass: "full-background",
+                                  style: {
+                                    backgroundImage:
+                                      "url(" + game.cover_image + ")",
+                                  },
+                                }),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "card-body pt-12" }, [
+                                  _c("h4", { staticClass: "text-white" }, [
+                                    _vm._v(_vm._s(game.name)),
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("p", [_vm._v(_vm._s(game.about_game))]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "mt-3" },
+                                    _vm._l(game.categories, function (c, i) {
+                                      return _c(
+                                        "span",
+                                        {
+                                          key: i,
+                                          staticClass: "fw-normal text-gray",
                                         },
-                                      },
-                                    })
-                                  : _c("Icon", {
-                                      attrs: { type: "ios-trash-outline" },
-                                      on: { click: _vm.deleteImage },
+                                        [
+                                          _c(
+                                            "Tag",
+                                            { attrs: { color: c.color } },
+                                            [_vm._v(_vm._s(c.name))]
+                                          ),
+                                        ],
+                                        1
+                                      )
                                     }),
-                              ],
-                              1
+                                    0
+                                  ),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "mt-1" }, [
+                                    _c("div", { staticClass: "row" }, [
+                                      _vm._v("Available games :"),
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "row" }, [
+                                      _c(
+                                        "div",
+                                        { staticClass: "col-12" },
+                                        _vm._l(
+                                          game.types,
+                                          function (console, i) {
+                                            return _c(
+                                              "span",
+                                              { key: i },
+                                              [
+                                                _c(
+                                                  "Tag",
+                                                  {
+                                                    attrs: {
+                                                      type: "dot",
+                                                      color: "cyan",
+                                                      closable: "",
+                                                    },
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                              " +
+                                                        _vm._s(console.name) +
+                                                        "\n                            "
+                                                    ),
+                                                  ]
+                                                ),
+                                              ],
+                                              1
+                                            )
+                                          }
+                                        ),
+                                        0
+                                      ),
+                                    ]),
+                                  ]),
+                                ]),
+                              ]
                             ),
-                          ])
-                        : _vm._e(),
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "row mt-3" }, [
-                    _c(
-                      "div",
-                      { staticClass: "col-6" },
-                      [
-                        _c("Label", [_vm._v("Release Date")]),
-                        _vm._v(" "),
-                        _c("DatePicker", {
-                          attrs: { type: "date", placeholder: "Select date" },
-                          model: {
-                            value: _vm.form.release_date,
-                            callback: function ($$v) {
-                              _vm.$set(_vm.form, "release_date", $$v)
-                            },
-                            expression: "form.release_date",
-                          },
-                        }),
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "col-6" },
-                      [
-                        _c("FormulateInput", {
-                          attrs: {
-                            type: "number",
-                            required: "",
-                            validation: "required",
-                            label: "Game Number Of players",
-                          },
-                          model: {
-                            value: _vm.form.players,
-                            callback: function ($$v) {
-                              _vm.$set(_vm.form, "players", $$v)
-                            },
-                            expression: "form.players",
-                          },
-                        }),
-                      ],
-                      1
-                    ),
-                  ]),
-                ]
-              ),
-              _vm._v(" "),
+                          ]
+                        ),
+                      ]
+                    )
+                  }),
+                  0
+                ),
+              ]),
+            ]),
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "modal fade",
+              attrs: {
+                id: "modal-default",
+                tabindex: "-1",
+                role: "dialog",
+                "aria-labelledby": "modal-default",
+                "aria-hidden": "true",
+              },
+            },
+            [
               _c(
                 "div",
                 {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value: _vm.detailMode,
-                      expression: "detailMode",
-                    },
-                  ],
-                  staticClass: "modal-body",
+                  staticClass: "modal-dialog modal-dialog-centered",
+                  attrs: { role: "document" },
                 },
                 [
-                  _c("div", { staticClass: "card" }, [
+                  _c("div", { staticClass: "modal-content" }, [
+                    _c("div", { staticClass: "modal-header" }, [
+                      !_vm.editMode
+                        ? _c("h5", { staticClass: "modal-title" }, [
+                            _vm._v("Create game"),
+                          ])
+                        : _c("h5", { staticClass: "modal-title" }, [
+                            _vm._v("Edit game"),
+                          ]),
+                      _vm._v(" "),
+                      _vm._m(1),
+                    ]),
+                    _vm._v(" "),
                     _c(
                       "div",
                       {
-                        staticClass:
-                          "card-header p-0 mx-3 mt-3 position-relative z-index-1",
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: !_vm.detailMode,
+                            expression: "!detailMode",
+                          },
+                        ],
+                        staticClass: "modal-body",
                       },
                       [
                         _c(
-                          "a",
-                          {
-                            staticClass: "d-block",
-                            attrs: { href: "javascript:;" },
-                          },
+                          "div",
+                          { staticClass: "row" },
                           [
-                            _c("img", {
-                              staticClass: "img-fluid border-radius-lg",
-                              attrs: { src: _vm.data.cover_image },
+                            _c("FormulateInput", {
+                              attrs: {
+                                type: "text",
+                                required: "",
+                                label: "Game Name",
+                                validation: "required",
+                              },
+                              model: {
+                                value: _vm.form.name,
+                                callback: function ($$v) {
+                                  _vm.$set(_vm.form, "name", $$v)
+                                },
+                                expression: "form.name",
+                              },
                             }),
-                          ]
-                        ),
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "card-body pt-2" },
-                      [
-                        _c(
-                          "a",
-                          {
-                            staticClass: "card-title h5 d-block text-darker",
-                            attrs: { href: "javascript:;" },
-                          },
-                          [
-                            _vm._v(
-                              "\n                " +
-                                _vm._s(_vm.data.name) +
-                                "\n              "
-                            ),
-                          ]
+                          ],
+                          1
                         ),
                         _vm._v(" "),
-                        _vm._l(_vm.data.categories, function (c, i) {
-                          return _c(
-                            "span",
-                            { key: i, staticClass: "fw-normal text-gray" },
+                        _c("div", { staticClass: "row mt-3" }, [
+                          _c(
+                            "div",
+                            { staticClass: "col-12" },
                             [
-                              _c("Tag", { attrs: { color: c.color } }, [
-                                _vm._v(_vm._s(c.name)),
-                              ]),
+                              _c("Label", [_vm._v("Choose Categories")]),
+                              _vm._v(" "),
+                              _c(
+                                "Select",
+                                {
+                                  attrs: { multiple: "", "max-tag-count": 5 },
+                                  model: {
+                                    value: _vm.form.category_id,
+                                    callback: function ($$v) {
+                                      _vm.$set(_vm.form, "category_id", $$v)
+                                    },
+                                    expression: "form.category_id",
+                                  },
+                                },
+                                _vm._l(
+                                  _vm.categories.data,
+                                  function (category, i) {
+                                    return _c(
+                                      "Option",
+                                      { key: i, attrs: { value: category.id } },
+                                      [
+                                        _vm._v(
+                                          "\n                    " +
+                                            _vm._s(category.name) +
+                                            "\n                  "
+                                        ),
+                                      ]
+                                    )
+                                  }
+                                ),
+                                1
+                              ),
                             ],
                             1
-                          )
-                        }),
+                          ),
+                        ]),
                         _vm._v(" "),
-                        _c("p", { staticClass: "card-description mb-4" }, [
-                          _vm._v(
-                            "\n                " +
-                              _vm._s(_vm.data.about) +
-                              "\n              "
+                        _c("div", { staticClass: "row mt-3" }, [
+                          _c(
+                            "div",
+                            { staticClass: "col-12" },
+                            [
+                              _c("Label", [_vm._v("Console Types Available")]),
+                              _vm._v(" "),
+                              _c(
+                                "Select",
+                                {
+                                  attrs: { multiple: "", "max-tag-count": 3 },
+                                  model: {
+                                    value: _vm.form.type_id,
+                                    callback: function ($$v) {
+                                      _vm.$set(_vm.form, "type_id", $$v)
+                                    },
+                                    expression: "form.type_id",
+                                  },
+                                },
+                                _vm._l(_vm.types, function (type, i) {
+                                  return _c(
+                                    "Option",
+                                    { key: i, attrs: { value: type.id } },
+                                    [
+                                      _vm._v(
+                                        "\n                    " +
+                                          _vm._s(type.name) +
+                                          "\n                  "
+                                      ),
+                                    ]
+                                  )
+                                }),
+                                1
+                              ),
+                            ],
+                            1
                           ),
                         ]),
                         _vm._v(" "),
                         _c(
                           "div",
-                          { staticClass: "author align-items-center" },
+                          { staticClass: "row mt-3" },
                           [
-                            _c("img", {
-                              staticClass: "avatar shadow",
+                            _c("FormulateInput", {
                               attrs: {
-                                src: "https://demos.creative-tim.com/soft-ui-design-system-pro/assets/img/team-2.jpg",
-                                alt: "...",
+                                type: "textarea",
+                                required: "",
+                                validation: "required|max:100,length",
+                                label: "Game Details",
+                              },
+                              model: {
+                                value: _vm.form.about_game,
+                                callback: function ($$v) {
+                                  _vm.$set(_vm.form, "about_game", $$v)
+                                },
+                                expression: "form.about_game",
                               },
                             }),
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "row mt-3" },
+                          [
+                            _c("Label", [_vm._v("Upload Cover Image")]),
                             _vm._v(" "),
-                            _c("div", { staticClass: "name ps-3" }, [
-                              _c("span", [_vm._v("Mathew Glock")]),
+                            _c(
+                              "Upload",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: !_vm.editMode || _vm.newCover,
+                                    expression: "!editMode || newCover",
+                                  },
+                                ],
+                                ref: "uploads",
+                                attrs: {
+                                  type: "drag",
+                                  action: "/api/v1/games/upload",
+                                  headers: {
+                                    "x-csrf-token": _vm.token,
+                                    "X-Requested-With": "XMLHttpRequest",
+                                  },
+                                  "on-success": _vm.handleSuccess,
+                                  "on-error": _vm.handleError,
+                                  format: ["jpg", "jpeg", "png"],
+                                  "max-size": 2048,
+                                  "on-format-error": _vm.handleFormatError,
+                                  "on-exceeded-size": _vm.handleMaxSize,
+                                },
+                              },
+                              [
+                                _c(
+                                  "div",
+                                  { staticStyle: { padding: "20px 0" } },
+                                  [
+                                    _c("Icon", {
+                                      staticStyle: { color: "#3399ff" },
+                                      attrs: {
+                                        type: "ios-cloud-upload",
+                                        size: "52",
+                                      },
+                                    }),
+                                    _vm._v(" "),
+                                    _c("p", [
+                                      _vm._v(
+                                        "Click or drag files here to upload"
+                                      ),
+                                    ]),
+                                  ],
+                                  1
+                                ),
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _vm.form.cover_image
+                              ? _c("div", { staticClass: "demo-upload-list" }, [
+                                  _c("img", {
+                                    attrs: {
+                                      src: "" + _vm.form.cover_image,
+                                      alt: "",
+                                    },
+                                  }),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "demo-upload-list-cover" },
+                                    [
+                                      _vm.editMode
+                                        ? _c("Icon", {
+                                            attrs: {
+                                              type: "ios-trash-outline",
+                                            },
+                                            on: {
+                                              click: function ($event) {
+                                                return _vm.deleteImage(true)
+                                              },
+                                            },
+                                          })
+                                        : _c("Icon", {
+                                            attrs: {
+                                              type: "ios-trash-outline",
+                                            },
+                                            on: { click: _vm.deleteImage },
+                                          }),
+                                    ],
+                                    1
+                                  ),
+                                ])
+                              : _vm._e(),
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "row mt-3" }, [
+                          _c(
+                            "div",
+                            { staticClass: "col-6" },
+                            [
+                              _c("Label", [_vm._v("Release Date")]),
                               _vm._v(" "),
-                              _c("div", { staticClass: "stats" }, [
-                                _c("small", [
-                                  _vm._v(_vm._s(_vm.data.created_at)),
-                                ]),
-                              ]),
-                            ]),
+                              _c("DatePicker", {
+                                attrs: {
+                                  type: "date",
+                                  placeholder: "Select date",
+                                },
+                                model: {
+                                  value: _vm.form.release_date,
+                                  callback: function ($$v) {
+                                    _vm.$set(_vm.form, "release_date", $$v)
+                                  },
+                                  expression: "form.release_date",
+                                },
+                              }),
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "col-6" },
+                            [
+                              _c("FormulateInput", {
+                                attrs: {
+                                  type: "number",
+                                  required: "",
+                                  validation: "required",
+                                  label: "Game Number Of players",
+                                },
+                                model: {
+                                  value: _vm.form.players,
+                                  callback: function ($$v) {
+                                    _vm.$set(_vm.form, "players", $$v)
+                                  },
+                                  expression: "form.players",
+                                },
+                              }),
+                            ],
+                            1
+                          ),
+                        ]),
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.detailMode,
+                            expression: "detailMode",
+                          },
+                        ],
+                        staticClass: "modal-body",
+                      },
+                      [
+                        _c("div", { staticClass: "card" }, [
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "card-header p-0 mx-3 mt-3 position-relative z-index-1",
+                            },
+                            [
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "d-block",
+                                  attrs: { href: "javascript:;" },
+                                },
+                                [
+                                  _c("img", {
+                                    staticClass: "img-fluid border-radius-lg",
+                                    attrs: { src: _vm.data.cover_image },
+                                  }),
+                                ]
+                              ),
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "card-body pt-2" },
+                            [
+                              _c(
+                                "a",
+                                {
+                                  staticClass:
+                                    "card-title h5 d-block text-darker",
+                                  attrs: { href: "javascript:;" },
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                  " +
+                                      _vm._s(_vm.data.name) +
+                                      "\n                "
+                                  ),
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _vm._l(_vm.data.categories, function (c, i) {
+                                return _c(
+                                  "span",
+                                  {
+                                    key: i,
+                                    staticClass: "fw-normal text-gray",
+                                  },
+                                  [
+                                    _c("Tag", { attrs: { color: c.color } }, [
+                                      _vm._v(_vm._s(c.name)),
+                                    ]),
+                                  ],
+                                  1
+                                )
+                              }),
+                              _vm._v(" "),
+                              _c(
+                                "p",
+                                { staticClass: "card-description mb-4" },
+                                [
+                                  _vm._v(
+                                    "\n                  " +
+                                      _vm._s(_vm.data.about) +
+                                      "\n                "
+                                  ),
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "author align-items-center" },
+                                [
+                                  _c("img", {
+                                    staticClass: "avatar shadow",
+                                    attrs: {
+                                      src: "https://demos.creative-tim.com/soft-ui-design-system-pro/assets/img/team-2.jpg",
+                                      alt: "...",
+                                    },
+                                  }),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "name ps-3" }, [
+                                    _c("span", [_vm._v("Mathew Glock")]),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "stats" }, [
+                                      _c("small", [
+                                        _vm._v(_vm._s(_vm.data.created_at)),
+                                      ]),
+                                    ]),
+                                  ]),
+                                ]
+                              ),
+                            ],
+                            2
+                          ),
+                        ]),
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: !_vm.detailMode,
+                            expression: "!detailMode",
+                          },
+                        ],
+                        staticClass: "modal-footer",
+                      },
+                      [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn bg-gradient-secondary",
+                            attrs: {
+                              type: "button",
+                              "data-bs-dismiss": "modal",
+                            },
+                            on: { click: _vm.closeModal },
+                          },
+                          [_vm._v("\n              Close\n            ")]
+                        ),
+                        _vm._v(" "),
+                        _vm.editMode
+                          ? _c(
+                              "button",
+                              {
+                                staticClass: "btn bg-gradient-primary",
+                                attrs: {
+                                  type: "button",
+                                  disabled: _vm.processing,
+                                },
+                                on: {
+                                  click: function ($event) {
+                                    return _vm.updateGame(_vm.form.id)
+                                  },
+                                },
+                              },
+                              [
+                                _vm._v(
+                                  "\n              " +
+                                    _vm._s(
+                                      _vm.processing
+                                        ? "Saving ..."
+                                        : "Save Changes"
+                                    ) +
+                                    "\n            "
+                                ),
+                              ]
+                            )
+                          : _c(
+                              "button",
+                              {
+                                staticClass: "btn bg-gradient-primary",
+                                attrs: {
+                                  type: "button",
+                                  disabled: _vm.processing,
+                                },
+                                on: {
+                                  click: function ($event) {
+                                    return _vm.createGame()
+                                  },
+                                },
+                              },
+                              [
+                                _vm._v(
+                                  "\n              " +
+                                    _vm._s(
+                                      _vm.processing ? "Creating ..." : "Create"
+                                    ) +
+                                    "\n            "
+                                ),
+                              ]
+                            ),
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.detailMode,
+                            expression: "detailMode",
+                          },
+                        ],
+                        staticClass: "modal-footer",
+                      },
+                      [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn bg-gradient-secondary",
+                            attrs: {
+                              type: "button",
+                              "data-bs-dismiss": "modal",
+                            },
+                            on: { click: _vm.closeModals },
+                          },
+                          [_vm._v("\n              Close\n            ")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn bg-gradient-primary",
+                            attrs: { type: "button" },
+                            on: {
+                              click: function ($event) {
+                                return _vm.showEditModal(_vm.data)
+                              },
+                            },
+                          },
+                          [
+                            _vm._v(
+                              "\n              " +
+                                _vm._s(
+                                  _vm.processing ? "Saving ..." : "Edit Game"
+                                ) +
+                                "\n            "
+                            ),
                           ]
                         ),
-                      ],
-                      2
+                      ]
                     ),
                   ]),
                 ]
               ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value: !_vm.detailMode,
-                      expression: "!detailMode",
-                    },
-                  ],
-                  staticClass: "modal-footer",
-                },
-                [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn bg-gradient-secondary",
-                      attrs: { type: "button", "data-bs-dismiss": "modal" },
-                      on: { click: _vm.closeModal },
-                    },
-                    [_vm._v("\n            Close\n          ")]
-                  ),
-                  _vm._v(" "),
-                  _vm.editMode
-                    ? _c(
-                        "button",
-                        {
-                          staticClass: "btn bg-gradient-primary",
-                          attrs: { type: "button", disabled: _vm.processing },
-                          on: {
-                            click: function ($event) {
-                              return _vm.updateGame(_vm.form.id)
-                            },
-                          },
-                        },
-                        [
-                          _vm._v(
-                            "\n            " +
-                              _vm._s(
-                                _vm.processing ? "Saving ..." : "Save Changes"
-                              ) +
-                              "\n          "
-                          ),
-                        ]
-                      )
-                    : _c(
-                        "button",
-                        {
-                          staticClass: "btn bg-gradient-primary",
-                          attrs: { type: "button", disabled: _vm.processing },
-                          on: {
-                            click: function ($event) {
-                              return _vm.createGame()
-                            },
-                          },
-                        },
-                        [
-                          _vm._v(
-                            "\n            " +
-                              _vm._s(
-                                _vm.processing ? "Creating ..." : "Create"
-                              ) +
-                              "\n          "
-                          ),
-                        ]
-                      ),
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value: _vm.detailMode,
-                      expression: "detailMode",
-                    },
-                  ],
-                  staticClass: "modal-footer",
-                },
-                [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn bg-gradient-secondary",
-                      attrs: { type: "button", "data-bs-dismiss": "modal" },
-                      on: { click: _vm.closeModals },
-                    },
-                    [_vm._v("\n            Close\n          ")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn bg-gradient-primary",
-                      attrs: { type: "button" },
-                      on: {
-                        click: function ($event) {
-                          return _vm.showEditModal(_vm.data)
-                        },
-                      },
-                    },
-                    [
-                      _vm._v(
-                        "\n            " +
-                          _vm._s(_vm.processing ? "Saving ..." : "Edit Game") +
-                          "\n          "
-                      ),
-                    ]
-                  ),
-                ]
-              ),
-            ]),
-          ]
-        ),
-      ]
-    ),
+            ]
+          ),
+        ])
+      : _c("div", [_c("Notfound")], 1),
   ])
 }
 var staticRenderFns = [
