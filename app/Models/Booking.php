@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Booking extends Model
 {
@@ -73,13 +74,23 @@ class Booking extends Model
                 ->orWhereHas('station', function ($query) use ($term) {
                     $query->where('name', 'like', $term);
                 });
-
         });
     }
 
     public function getTotalHoursAttribute()
     {
         # code...
+        $start = Carbon::parse($this->start_time);
+        $end = Carbon::parse($this->end_time);
 
+        $total = $end->diffInHours($start);
+
+        return $total;
+    }
+
+    public function getDateForHumansAttribute()
+    {
+        # code...
+        return $this->booking_date->format('d, M Y');
     }
 }

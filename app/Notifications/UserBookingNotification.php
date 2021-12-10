@@ -48,9 +48,9 @@ class UserBookingNotification extends Notification
             ->line('User name: ' . $this->booking->user->name)
             ->line('User phone number: ' . $this->booking->user->phone)
             ->line('User suggested game details')
-            ->line('Date: ' . $this->booking->booking_date)
+            ->line('Date: ' . $this->booking->date_for_humans)
             ->line('Game: ' . $this->booking->game->name)
-            ->line('start time: ' . $this->booking->total_hours . 'Hours')
+            ->line('Total Hours: ' . $this->booking->total_hours . ' Hours')
             ->line('Head on to dashboard settings to check approve or ignore this')
             ->action('Click here', url('/dashboard/gaming/bookings'));
     }

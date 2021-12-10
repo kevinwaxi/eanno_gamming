@@ -23,8 +23,8 @@ class StoreBookingAction
             'end_time' => Carbon::parse($request->end_time)->format('H:i'),
         ]);
 
-        $admin = User::role('super-admin', 'web')->get();
+        $admins = User::role(['super-admin','cashier'], 'web')->get();
 
-        Notification::send($admin, new UserBookingNotification($booking));
+        Notification::send($admins, new UserBookingNotification($booking));
     }
 }
