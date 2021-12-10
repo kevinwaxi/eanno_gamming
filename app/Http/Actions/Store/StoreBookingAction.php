@@ -1,10 +1,11 @@
 <?php
 namespace App\Http\Actions\Store;
 
-use App\Models\Station;
+use App\Models\Booking;
 use App\Models\User;
-use App\Notifications\BookingRequestNotification;
+use App\Notifications\UserBookingNotification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Notification;
 
@@ -12,30 +13,18 @@ class StoreBookingAction
 {
     public function execute(Request $request)
     {
-        $user = Auth::user();
-        $station = Station::where($request->station_id);
+        $user = Auth::user()->id;
 
-        // Extends \Rinvex\Bookings\Models\BookableBooking
-        $serviceBooking = new \App\Models\ServiceBooking;
+        $booking = Booking::create([
+            'booking_date' => date('d-m-Y', strtotime($request->booking_date)),
+            'user_id' => $user,
+            'game_id' => $request->game_id,
+            'start_time' => Carbon::parse($request->start_time)->format('H:i'),
+            'end_time' => Carbon::parse($request->end_time)->format('H:i'),
+        ]);
 
-        // Create a new booking explicitly
-        $serviceBooking->make(['starts_at' => \Carbon\Carbon::now(), 'ends_at' => \Carbon\Carbon::tomorrow()])
-            ->customer()->associate($user)
-            ->bookable()->associate($station)
-            ->save();
-        # code...
+        $admin = User::role('super-admin', 'web')->get();
 
-        // $booking = Booking::create([
-        //     'booking_date' => $request->booking_date,
-        //     'user_id' => auth()->id(),
-        //     'station_id' => $request->station_id,
-        //     'game_id' => $request->game_id,
-        //     'start_time' => Carbon::parse($request->start_time)->format('H:i'),
-        //     'end_time' => Carbon::parse($request->end_time)->format('H:i'),
-        // ]);
-
-        $admin = User::role('SuperAdmin', 'api')->get();
-
-        Notification::send($admin, new BookingRequestNotification($station));
+        Notification::send($admin, new UserBookingNotification($booking));
     }
 }

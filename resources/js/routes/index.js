@@ -56,17 +56,6 @@ const routes = [
         component: () => import("@pages/settings/index.vue"),
         children: [
             {
-                path: "business",
-                component: () => import("@pages/settings/business/index.vue"),
-                children: [
-                    {
-                        path: 'opening_hours',
-                        name:'opening_hours',
-
-                    }
-                ],
-            },
-            {
                 path: "invitations",
                 component: () =>
                     import("@pages/settings/invitations/index.vue"),

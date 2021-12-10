@@ -55,7 +55,7 @@ class InvitationController extends Controller
         $invitation->generateInvitationToken();
         $invitation->save();
 
-        $admin = User::role('SuperAdmin', 'api')->get();
+        $admin = User::role('super-admin')->get();
 
         Notification::send($admin, new UserRequestNotification($invitation));
 

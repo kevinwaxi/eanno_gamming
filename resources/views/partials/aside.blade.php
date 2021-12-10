@@ -50,7 +50,7 @@
                             <li class="nav-item">
                                 <router-link :to="{name:'stats'}" class="nav-link">
                                     <span class="sidenav-mini-icon"> S </span>
-                                    <span class="sidenav-normal"> Statistics </span>
+                                    <span class="sidenav-normal"> Analytics </span>
                                 </router-link>
                             </li>
                             <li class="nav-item ">
@@ -59,6 +59,12 @@
                                     <span class="sidenav-normal"> System </span>
                                 </a>
                             </li>
+                            <li class="nav-item ">
+                                <router-link :to="{name:'pending_booking'}" class="nav-link " href="#">
+                                    <span class="sidenav-mini-icon"> P </span>
+                                    <span class="sidenav-normal"> Pending Booking </span>
+                                </router-link>
+                            </li>
                         @endrole
                         <li class="nav-item ">
                             <router-link :to="{name:'my_bookings'}" class="nav-link " href="#">
@@ -66,7 +72,6 @@
                                 <span class="sidenav-normal"> Bookings </span>
                             </router-link>
                         </li>
-
                     </ul>
                 </div>
             </li>

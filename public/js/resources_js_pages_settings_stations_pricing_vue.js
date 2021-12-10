@@ -519,7 +519,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       processing: false,
       deletingItem: null,
       form: {
-        station_id: []
+        station_id: [],
+        is_available: true
       },
       prices: {},
       stations: {},

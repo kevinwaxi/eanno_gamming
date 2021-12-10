@@ -252,207 +252,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       disabledHours: [22, 23, 0, 1, 2, 3, 4, 5, 6, 7],
+      step: [1, 15],
       deleteModal: false,
       massDeleteModal: false,
       isDeleting: false,
@@ -522,7 +326,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.restForm();
     },
     restForm: function restForm() {
-      this.form.station_id = '';
       this.form.game_id = '';
       this.start_time = '';
       this.end_time = '';
@@ -631,7 +434,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                   _this5.closeModal();
 
-                  _this5.s('You have successfully made a resevation');
+                  _this5.s('You have successfully made a reservation.');
+
+                  _this5.s('Be patient as you await to confirmation.');
 
                   _this5.getBookings();
                 } else {
@@ -747,13 +552,81 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("div", { staticClass: "row" }, [
-      _vm._m(0),
+      _c("div", { staticClass: "col-lg-8" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-12 col-md-10" }, [
+            _c("div", { staticClass: "card" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c("div", { staticClass: "table-responsive" }, [
+                _c("table", { staticClass: "table align-items-center" }, [
+                  _c(
+                    "tbody",
+                    _vm._l(_vm.bookings.data, function (booking, i) {
+                      return _c("tr", { key: i }, [
+                        _c("td", [
+                          _c("div", { staticClass: "text-center" }, [
+                            _c(
+                              "p",
+                              { staticClass: "text-xs font-weight-bold mb-0" },
+                              [_vm._v("Date:")]
+                            ),
+                            _vm._v(" "),
+                            _c("h6", { staticClass: "text-sm mb-0" }, [
+                              _vm._v(_vm._s(booking.date)),
+                            ]),
+                          ]),
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c("div", { staticClass: "text-center" }, [
+                            _c(
+                              "p",
+                              { staticClass: "text-xs font-weight-bold mb-0" },
+                              [_vm._v("Station:")]
+                            ),
+                            _vm._v(" "),
+                            _c("h6", { staticClass: "text-sm mb-0" }, [
+                              _vm._v(_vm._s(booking.date)),
+                            ]),
+                          ]),
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c("div", { staticClass: "text-center" }, [
+                            _c(
+                              "p",
+                              { staticClass: "text-xs font-weight-bold mb-0" },
+                              [_vm._v("Time:")]
+                            ),
+                            _vm._v(" "),
+                            _c("h6", { staticClass: "text-sm mb-0" }, [
+                              _vm._v(_vm._s(booking.time.h) + " hour"),
+                            ]),
+                          ]),
+                        ]),
+                        _vm._v(" "),
+                        _vm._m(1, true),
+                        _vm._v(" "),
+                        _vm._m(2, true),
+                        _vm._v(" "),
+                        _vm._m(3, true),
+                      ])
+                    }),
+                    0
+                  ),
+                ]),
+              ]),
+            ]),
+          ]),
+        ]),
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "col-lg-4" }, [
         _c("div", { staticClass: "card h-100" }, [
           _c("div", { staticClass: "card-header pb-0 p-3" }, [
             _c("div", { staticClass: "row" }, [
-              _vm._m(1),
+              _vm._m(4),
               _vm._v(" "),
               _c("div", { staticClass: "col-6 text-end" }, [
                 _c(
@@ -813,7 +686,7 @@ var render = function () {
                             _vm._s(booking.end) +
                             "\n                "
                         ),
-                        _vm._m(2, true),
+                        _vm._m(5, true),
                       ]
                     ),
                   ]
@@ -821,76 +694,6 @@ var render = function () {
               }),
               0
             ),
-          ]),
-        ]),
-      ]),
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "col-lg-8" }, [
-      _c("div", { staticClass: "row mt-4" }, [
-        _c("div", { staticClass: "col-12 col-md-10" }, [
-          _c("div", { staticClass: "card" }, [
-            _vm._m(3),
-            _vm._v(" "),
-            _c("div", { staticClass: "table-responsive" }, [
-              _c("table", { staticClass: "table align-items-center" }, [
-                _c(
-                  "tbody",
-                  _vm._l(_vm.bookings.data, function (booking, i) {
-                    return _c("tr", { key: i }, [
-                      _c("td", [
-                        _c("div", { staticClass: "text-center" }, [
-                          _c(
-                            "p",
-                            { staticClass: "text-xs font-weight-bold mb-0" },
-                            [_vm._v("Date:")]
-                          ),
-                          _vm._v(" "),
-                          _c("h6", { staticClass: "text-sm mb-0" }, [
-                            _vm._v(_vm._s(booking.date)),
-                          ]),
-                        ]),
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c("div", { staticClass: "text-center" }, [
-                          _c(
-                            "p",
-                            { staticClass: "text-xs font-weight-bold mb-0" },
-                            [_vm._v("Station:")]
-                          ),
-                          _vm._v(" "),
-                          _c("h6", { staticClass: "text-sm mb-0" }, [
-                            _vm._v(_vm._s(booking.date)),
-                          ]),
-                        ]),
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c("div", { staticClass: "text-center" }, [
-                          _c(
-                            "p",
-                            { staticClass: "text-xs font-weight-bold mb-0" },
-                            [_vm._v("Time:")]
-                          ),
-                          _vm._v(" "),
-                          _c("h6", { staticClass: "text-sm mb-0" }, [
-                            _vm._v(_vm._s(booking.time.h) + " hour"),
-                          ]),
-                        ]),
-                      ]),
-                      _vm._v(" "),
-                      _vm._m(4, true),
-                      _vm._v(" "),
-                      _vm._m(5, true),
-                      _vm._v(" "),
-                      _vm._m(6, true),
-                    ])
-                  }),
-                  0
-                ),
-              ]),
-            ]),
           ]),
         ]),
       ]),
@@ -926,7 +729,7 @@ var render = function () {
                       _vm._v("Edit Booking"),
                     ]),
                 _vm._v(" "),
-                _vm._m(7),
+                _vm._m(6),
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [
@@ -957,6 +760,8 @@ var render = function () {
                                 value: game.id,
                                 clearable: "",
                                 filterable: "",
+                                placeholder:
+                                  "Choose game you would like to play",
                               },
                             },
                             [
@@ -973,50 +778,55 @@ var render = function () {
                     ],
                     1
                   ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "col-6" },
-                    [
-                      _c("Label", [_vm._v("Station")]),
-                      _vm._v(" "),
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "row mt-3" },
+                  [
+                    _c("Label", [_vm._v(" Booking Date ")]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-8" }, [
                       _c(
-                        "Select",
+                        "div",
                         {
-                          model: {
-                            value: _vm.form.station_id,
-                            callback: function ($$v) {
-                              _vm.$set(_vm.form, "station_id", $$v)
-                            },
-                            expression: "form.station_id",
-                          },
+                          staticClass:
+                            "input-group input-group-alternative mb-4",
                         },
-                        _vm._l(_vm.stations, function (station, i) {
-                          return _c(
-                            "Option",
-                            {
-                              key: i,
-                              attrs: {
-                                value: station.id,
-                                clearable: "",
-                                filterable: "",
+                        [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.booking_date,
+                                expression: "form.booking_date",
+                              },
+                            ],
+                            staticClass: "form-control",
+                            attrs: { placeholder: "Pick Date", type: "date" },
+                            domProps: { value: _vm.form.booking_date },
+                            on: {
+                              input: function ($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.form,
+                                  "booking_date",
+                                  $event.target.value
+                                )
                               },
                             },
-                            [
-                              _vm._v(
-                                "\n                  " +
-                                  _vm._s(station.name) +
-                                  "\n                "
-                              ),
-                            ]
-                          )
-                        }),
-                        1
+                          }),
+                          _vm._v(" "),
+                          _vm._m(7),
+                        ]
                       ),
-                    ],
-                    1
-                  ),
-                ]),
+                    ]),
+                  ],
+                  1
+                ),
                 _vm._v(" "),
                 _c(
                   "div",
@@ -1031,12 +841,13 @@ var render = function () {
                         [
                           _c("Label", [_vm._v("Start Time")]),
                           _vm._v(" "),
-                          _c("DatePicker", {
+                          _c("TimePicker", {
                             attrs: {
-                              type: "datetime",
-                              format: "yyyy-MM-dd HH:mm",
-                              placeholder:
-                                "Select date and time(Excluding seconds)",
+                              type: "time",
+                              format: "HH:mm",
+                              "disabled-hours": _vm.disabledHours,
+                              steps: _vm.step,
+                              placeholder: "Select start time",
                             },
                             model: {
                               value: _vm.form.start_time,
@@ -1058,12 +869,13 @@ var render = function () {
                         [
                           _c("Label", [_vm._v("End Time")]),
                           _vm._v(" "),
-                          _c("DatePicker", {
+                          _c("TimePicker", {
                             attrs: {
-                              type: "datetime",
-                              format: "yyyy-MM-dd HH:mm",
-                              placeholder:
-                                "Select date and time(Excluding seconds)",
+                              type: "time",
+                              format: "HH:mm",
+                              "disabled-hours": _vm.disabledHours,
+                              steps: _vm.step,
+                              placeholder: "Select end time",
                             },
                             model: {
                               value: _vm.form.end_time,
@@ -1147,314 +959,6 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-lg-8" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-xl-6 mb-xl-0 mb-4" }, [
-          _c("div", { staticClass: "card bg-transparent shadow-xl" }, [
-            _c(
-              "div",
-              {
-                staticClass:
-                  "overflow-hidden position-relative border-radius-xl",
-                staticStyle: {
-                  "background-image":
-                    "url('/assets/img/curved-images/curved14.jpg')",
-                },
-              },
-              [
-                _c("span", { staticClass: "mask bg-gradient-dark" }),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "card-body position-relative z-index-1 p-3" },
-                  [
-                    _c("i", {
-                      staticClass: "fas fa-wifi text-white p-2",
-                      attrs: { "aria-hidden": "true" },
-                    }),
-                    _vm._v(" "),
-                    _c("h5", { staticClass: "text-white mt-4 mb-5 pb-2" }, [
-                      _vm._v(
-                        "\n                  0705   007723\n                "
-                      ),
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "d-flex" }, [
-                      _c("div", { staticClass: "d-flex" }, [
-                        _c("div", { staticClass: "me-4" }, [
-                          _c(
-                            "p",
-                            {
-                              staticClass: "text-white text-sm opacity-8 mb-0",
-                            },
-                            [
-                              _vm._v(
-                                "\n                        Card Holder\n                      "
-                              ),
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c("h6", { staticClass: "text-white mb-0" }, [
-                            _vm._v("Jack Peterson"),
-                          ]),
-                        ]),
-                        _vm._v(" "),
-                        _c("div", [
-                          _c(
-                            "p",
-                            {
-                              staticClass: "text-white text-sm opacity-8 mb-0",
-                            },
-                            [_vm._v("Expires")]
-                          ),
-                          _vm._v(" "),
-                          _c("h6", { staticClass: "text-white mb-0" }, [
-                            _vm._v("11/22"),
-                          ]),
-                        ]),
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            "\n                      ms-auto\n                      w-20\n                      d-flex\n                      align-items-end\n                      justify-content-end\n                    ",
-                        },
-                        [
-                          _c("img", {
-                            staticClass: "w-60 mt-2",
-                            attrs: {
-                              src: "/assets/img/logos/mastercard.png",
-                              alt: "logo",
-                            },
-                          }),
-                        ]
-                      ),
-                    ]),
-                  ]
-                ),
-              ]
-            ),
-          ]),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-xl-6" }, [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-md-6" }, [
-              _c("div", { staticClass: "card" }, [
-                _c("div", { staticClass: "card-header mx-4 p-3 text-center" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "\n                      icon icon-shape icon-lg\n                      bg-gradient-primary\n                      shadow\n                      text-center\n                      border-radius-lg\n                    ",
-                    },
-                    [
-                      _c("i", {
-                        staticClass: "fas fa-landmark opacity-10",
-                        attrs: { "aria-hidden": "true" },
-                      }),
-                    ]
-                  ),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "card-body pt-0 p-3 text-center" }, [
-                  _c("h6", { staticClass: "text-center mb-0" }, [
-                    _vm._v("Salary"),
-                  ]),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "text-xs" }, [
-                    _vm._v("Belong Interactive"),
-                  ]),
-                  _vm._v(" "),
-                  _c("hr", { staticClass: "horizontal dark my-3" }),
-                  _vm._v(" "),
-                  _c("h5", { staticClass: "mb-0" }, [_vm._v("+$2000")]),
-                ]),
-              ]),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-md-6 mt-md-0 mt-4" }, [
-              _c("div", { staticClass: "card" }, [
-                _c("div", { staticClass: "card-header mx-4 p-3 text-center" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "\n                      icon icon-shape icon-lg\n                      bg-gradient-primary\n                      shadow\n                      text-center\n                      border-radius-lg\n                    ",
-                    },
-                    [
-                      _c("i", {
-                        staticClass: "fab fa-paypal opacity-10",
-                        attrs: { "aria-hidden": "true" },
-                      }),
-                    ]
-                  ),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "card-body pt-0 p-3 text-center" }, [
-                  _c("h6", { staticClass: "text-center mb-0" }, [
-                    _vm._v("Paypal"),
-                  ]),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "text-xs" }, [
-                    _vm._v("Freelance Payment"),
-                  ]),
-                  _vm._v(" "),
-                  _c("hr", { staticClass: "horizontal dark my-3" }),
-                  _vm._v(" "),
-                  _c("h5", { staticClass: "mb-0" }, [_vm._v("$455.00")]),
-                ]),
-              ]),
-            ]),
-          ]),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-12 mb-lg-0 mb-4" }, [
-          _c("div", { staticClass: "card mt-4" }, [
-            _c("div", { staticClass: "card-header pb-0 p-3" }, [
-              _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col-6 d-flex align-items-center" }, [
-                  _c("h6", { staticClass: "mb-0" }, [_vm._v("Payment Method")]),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-6 text-end" }, [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "btn bg-gradient-dark mb-0",
-                      attrs: { href: "javascript:;" },
-                    },
-                    [
-                      _c("i", {
-                        staticClass: "fas fa-plus",
-                        attrs: { "aria-hidden": "true" },
-                      }),
-                      _vm._v("  Add New Card"),
-                    ]
-                  ),
-                ]),
-              ]),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body p-3" }, [
-              _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col-md-6 mb-md-0 mb-4" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "\n                      card card-body\n                      border\n                      card-plain\n                      border-radius-lg\n                      d-flex\n                      align-items-center\n                      flex-row\n                    ",
-                    },
-                    [
-                      _c("img", {
-                        staticClass: "w-10 me-3 mb-0",
-                        attrs: {
-                          src: "/assets/img/logos/mastercard.png",
-                          alt: "logo",
-                        },
-                      }),
-                      _vm._v(" "),
-                      _c("h6", { staticClass: "mb-0" }, [
-                        _vm._v(
-                          "\n                      ****   ****   ****   7852\n                    "
-                        ),
-                      ]),
-                      _vm._v(" "),
-                      _c("i", {
-                        staticClass:
-                          "\n                        fas\n                        fa-pencil-alt\n                        ms-auto\n                        text-dark\n                        cursor-pointer\n                      ",
-                        attrs: {
-                          "data-bs-toggle": "tooltip",
-                          "data-bs-placement": "top",
-                          title: "",
-                          "aria-hidden": "true",
-                          "data-bs-original-title": "Edit Card",
-                          "aria-label": "Edit Card",
-                        },
-                      }),
-                      _c("span", { staticClass: "sr-only" }, [
-                        _vm._v("Edit Card"),
-                      ]),
-                    ]
-                  ),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-md-6" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "\n                      card card-body\n                      border\n                      card-plain\n                      border-radius-lg\n                      d-flex\n                      align-items-center\n                      flex-row\n                    ",
-                    },
-                    [
-                      _c("img", {
-                        staticClass: "w-10 me-3 mb-0",
-                        attrs: {
-                          src: "/assets/img/logos/visa.png",
-                          alt: "logo",
-                        },
-                      }),
-                      _vm._v(" "),
-                      _c("h6", { staticClass: "mb-0" }, [
-                        _vm._v(
-                          "\n                      ****   ****   ****   5248\n                    "
-                        ),
-                      ]),
-                      _vm._v(" "),
-                      _c("i", {
-                        staticClass:
-                          "\n                        fas\n                        fa-pencil-alt\n                        ms-auto\n                        text-dark\n                        cursor-pointer\n                      ",
-                        attrs: {
-                          "data-bs-toggle": "tooltip",
-                          "data-bs-placement": "top",
-                          title: "",
-                          "aria-hidden": "true",
-                          "data-bs-original-title": "Edit Card",
-                          "aria-label": "Edit Card",
-                        },
-                      }),
-                      _c("span", { staticClass: "sr-only" }, [
-                        _vm._v("Edit Card"),
-                      ]),
-                    ]
-                  ),
-                ]),
-              ]),
-            ]),
-          ]),
-        ]),
-      ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-6 d-flex align-items-center" }, [
-      _c("h6", { staticClass: "mb-0" }, [_vm._v("Your Pending Bookings")]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      { staticClass: "btn btn-link text-dark text-sm mb-0 px-0 ms-4" },
-      [
-        _c("i", {
-          staticClass: "fas fa-file-pdf text-lg me-1",
-          attrs: { "aria-hidden": "true" },
-        }),
-        _vm._v("\n                  PDF\n                "),
-      ]
-    )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card-header pb-0 p-3" }, [
       _c("div", { staticClass: "d-flex justify-content-between" }, [
         _c("h6", { staticClass: "mb-2" }, [_vm._v("Previous Bookings")]),
@@ -1507,6 +1011,30 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-6 d-flex align-items-center" }, [
+      _c("h6", { staticClass: "mb-0" }, [_vm._v("Your Pending Bookings")]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      { staticClass: "btn btn-link text-dark text-sm mb-0 px-0 ms-4" },
+      [
+        _c("i", {
+          staticClass: "fas fa-file-pdf text-lg me-1",
+          attrs: { "aria-hidden": "true" },
+        }),
+        _vm._v("\n                  PDF\n                "),
+      ]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c(
       "button",
       {
@@ -1519,6 +1047,14 @@ var staticRenderFns = [
       },
       [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
     )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "input-group-text" }, [
+      _c("i", { staticClass: "ni ni-zoom-split-in" }),
+    ])
   },
 ]
 render._withStripped = true

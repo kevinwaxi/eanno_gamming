@@ -24,10 +24,21 @@ class StoreBookingRequest extends FormRequest
     public function rules()
     {
         return [
-            'station_id' => ['required'],
+            'game_id' => ['required'],
             'start_time' => ['required'],
             'end_time' => ['required', 'after:start_time'],
-            'game_id' => ['required'],
+            'booking_date' => ['required']
+        ];
+    }
+
+    public function messages()
+    {
+        # code...
+        return [
+            'game_id.required' => 'Please select a game',
+            'start_time.required' => 'Please select start time',
+            'end_time.required' => 'Please select end time',
+            'end_time.after' => 'End time should be after start time'
         ];
     }
 }

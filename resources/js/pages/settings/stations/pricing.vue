@@ -448,6 +448,7 @@ export default {
       deletingItem: null,
       form: {
         station_id: [],
+        is_available: true,
       },
       prices: {},
       stations: {},
