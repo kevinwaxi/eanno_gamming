@@ -40,6 +40,11 @@ const routes = [
                 component: () => import("@pages/dashboards/gamers/index.vue"),
                 children: [
                     {
+                        name: 'pending',
+                        path: 'all',
+                        component: () => import('@pages/dashboards/admin/allbookings.vue')
+                    },
+                    {
                         name: "my_bookings",
                         path: "bookings",
                         component: () =>

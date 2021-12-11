@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers\API\V1;
 
+use App\Http\Actions\Store\StoreBookingAction;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Store\StoreBookingRequest;
+use App\Http\Resources\BookingResource;
 use App\Models\Booking;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use Spatie\QueryBuilder\QueryBuilder;
-use App\Http\Resources\BookingResource;
-use App\Http\Actions\Store\StoreBookingAction;
-use App\Http\Requests\Store\StoreBookingRequest;
 use Illuminate\Support\Facades\Auth;
-use Symfony\Component\HttpKernel\Event\ResponseEvent;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class BookingController extends Controller
 {
@@ -37,9 +36,12 @@ class BookingController extends Controller
                 $sort_field = 'created_at';
             }
 
-            $bookings = Booking::where('user_id', $user_id)
-                ->search(trim($search_term))
+            $bookings = Booking::when($selected,
+                function ($query) use ($selected) {
+                    $query->where('status', $selected);
+               })->search(trim($search_term))
                 ->orderBy($sort_field, $sort_direction)
+                ->with('game')
                 ->paginate($paginate);
 
             return BookingResource::collection($bookings);
@@ -55,9 +57,9 @@ class BookingController extends Controller
         # code...
         $date = date($request->booking_date);
 
-       $booking = Booking::where('booking_date', $date)->get();
+        $booking = Booking::where('booking_date', $date)->get();
 
-       return response()->json($booking);
+        return response()->json($booking);
 
     }
 
@@ -82,12 +84,12 @@ class BookingController extends Controller
     {
         # code...
         $user = Auth::user()->id;
-        $booking = Booking::where('user_id',$user);
+        $booking = Booking::where('user_id', $user);
 
         $query = QueryBuilder::for($booking)
-            ->allowedFilters(['status','time'])
-            ->allowedSorts(['status','name'])
-            ->get();
+                ->allowedFilters(['status', 'time'])
+                ->allowedSorts(['status', 'name'])
+                ->get();
 
         return BookingResource::collection($query);
     }

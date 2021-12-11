@@ -23,8 +23,9 @@ class BookingResource extends JsonResource
             'id' => $this->id,
             'start' => $this->start_time,
             'end' => $this->end_time,
-            'date' => Carbon::parse($this->booking_date)->format('d-m-Y'),
+            'date' => Carbon::parse($this->booking_date)->format('d M,Y'),
             'user' => $this->user,
+            'game' => $this->game,
             'time' => $total,
             'status' => $this->status,
         ];

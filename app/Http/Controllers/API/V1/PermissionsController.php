@@ -99,7 +99,7 @@ class PermissionsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $permission
+     * @param  obj  $permission
      * @return \Illuminate\Http\Response
      */
     public function destroy(Permission $permission)

@@ -8,7 +8,7 @@
               <div class="card-header pb-0 px-3">
                 <div class="row">
                   <div class="col-md-6">
-                    <h6 class="mb-0">Requested Accounts</h6>
+                    <h6 class="mb-0">Requested Bookings</h6>
                   </div>
                   <div
                     class="
@@ -40,16 +40,16 @@
                     <select
                       v-model="selected"
                       class="form-select fmxw-200 d-none d-md-inline"
-                      aria-label="Fillter by role"
+                      aria-label="Filter by status"
                     >
                       <option selected="selected" value="">Show All</option>
                       <option selected="selected" value="Registered">
-                        Registered
+                        Verified
                       </option>
                       <option selected="selected" value="Pending">
                         Pending
                       </option>
-                      <option selected="selected" value="Sent">Sent</option>
+                      <option selected="selected" value="Sent">Rejected</option>
                     </select>
                   </div>
                   <div class="col-2">
@@ -62,10 +62,7 @@
                       <option value="10">10</option>
                       <option value="20">20</option>
                       <option value="30">30</option>
-                      <option
-                        v-if="bookings.data"
-                        :value="bookings.meta.total"
-                      >
+                      <option v-if="bookings.data" :value="bookings.meta.total">
                         All {{ bookings.meta.total }}
                       </option>
                     </select>
@@ -85,8 +82,8 @@
                       mb-2
                       border-radius-lg
                     "
-                    v-for="(booking, i) in bookings.data"
-                    :key="i"
+                    v-for="booking in bookings.data"
+                    :key="booking.id"
                   >
                     <div class="col-md-7 col-6">
                       <div
@@ -98,87 +95,41 @@
                           p-3
                         "
                       >
-                        <p class="text-xs mb-2">
-                          Generated
-                          <!-- generate logic in time process -->
-                          <span
-                            v-if="
-                              booking.days.i < 2 && booking.days.d < 1
-                            "
-                          >
-                            a few seconds
+                        <div class="d-flex flex-column">
+                          <h6 class="mb-3 text-sm">{{ booking.user.name }}</h6>
+                          <span class="mb-2 text-xs">
+                            Game:
+                            <span class="text-dark font-weight-bold ms-2">
+                              {{ booking.game.name }}
+                            </span>
                           </span>
-                          <span
-                            v-if="
-                              booking.days.i > 2 &&
-                              booking.days.d < 1 &&
-                              booking.days.h < 1
-                            "
-                          >
-                            {{ booking.days.i }} minuntes
+                          <span class="mb-2 text-xs">
+                            Date:
+                            <span class="text-dark ms-2 font-weight-bold">
+                              {{ booking.date }} from {{ booking.start }} to
+                              {{ booking.end }} for approx
+                              <i>{{ booking.time.h }} hours</i>
+                            </span>
                           </span>
-                          <span
-                            v-if="
-                              booking.days.h >= 1 && booking.days.d < 1
-                            "
-                          >
-                            {{ booking.days.h }} hours
+                          <span class="mb-2 text-xs">
+                            Recommendation:
+                            <span class="text-dark ms-2 font-weight-bold">
+                              Please suggest the best time and which station to
+                              play on.
+                            </span>
                           </span>
-                          <span v-if="booking.days.d >= 1">
-                            {{ booking.days.d }} day
+                          <span class="mb-2 text-xs">
+                            Approx Charges:
+                            <span class="text-dark ms-2 font-weight-bold">
+                              {{ booking.time.h }} * 250/=.
+                            </span>
                           </span>
-                          <span v-if="booking.days.d > 1">
-                            {{ booking.days.d }} days
-                          </span>
-                          ago by
-                          <span class="font-weight-bolder">
-                            {{ booking.email }}
-                          </span>
-                        </p>
-                        <p class="text-xs mb-3">
-                          <span class="font-weight-bolder">
-                            ({{ booking.phone }})
-                          </span>
-                        </p>
-                        <div class="d-flex align-items-center">
-                          <div class="form-group w-70">
-                            <div class="input-group bg-gray-200">
-                              <input
-                                class="form-control form-control-sm"
-                                :value="booking.booking_token"
-                                type="text"
-                                disabled=""
-                                onfocus="focused(this)"
-                                onfocusout="defocused(this)"
-                              />
-                              <span
-                                class="input-group-text bg-transparent"
-                                data-bs-toggle="tooltip"
-                                data-bs-placement="top"
-                                title=""
-                                data-bs-original-title="Referral code expires in 24 hours"
-                                aria-label="Referral code expires in 24 hours"
-                              >
-                                <i class="ni ni-key-25"> </i>
-                              </span>
-                            </div>
-                          </div>
-                          <a
-                            href="javascript:;"
-                            class="btn btn-sm btn-outline-secondary ms-2 px-3"
-                            v-clipboard:copy="booking.booking_token"
-                            v-clipboard:success="onCopy"
-                            v-clipboard:error="onError"
-                          >
-                            Copy
-                          </a>
                         </div>
-                        <p class="text-xs mb-1">You cannot generate codes.</p>
                       </div>
                     </div>
                     <div
                       class="ms-auto text-end"
-                      v-if="booking.status == 'Pending'"
+                      v-if="booking.status === 'Pending'"
                     >
                       <a
                         class="
@@ -196,13 +147,14 @@
                       <a
                         class="btn btn-link text-danger px-3 mb-0"
                         href="javascript:;"
+                        @click.prevent="editBooking(booking)"
                       >
                         <i
                           class="fas fa-pencil-alt text-danger me-2"
                           aria-hidden="true"
                         >
                         </i>
-                        Deny
+                        Edit
                       </a>
                     </div>
                     <div
@@ -243,6 +195,33 @@
           </div>
         </div>
       </div>
+      <!-- Modals start here -->
+      <div
+        class="modal fade"
+        id="modal-default"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="modal-default"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 v-if="!editMode" class="modal-title">Approve Booking</h5>
+              <h5 v-else class="modal-title">Deny Booking</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              >
+
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <div v-else>
       <Notfound />
@@ -274,6 +253,90 @@ export default {
       sort_field: 'created_at',
       url: '',
     }
+  },
+
+  watch: {
+    total: function (value) {
+      this.getBookings()
+    },
+    search: function (value) {
+      this.getBookings()
+    },
+    selected: function (value) {
+      this.getBookings()
+    },
+    selectPage: function (value) {
+      this.checked = []
+      if (value) {
+        this.bookings.data.forEach((bookings) => {
+          this.checked.push(bookings.id)
+        })
+      } else {
+        this.checked = []
+        this.selectAll = false
+      }
+    },
+    checked: function (value) {
+      this.url = '/api/v1/bookings/export/' + this.checked
+    },
+  },
+  mounted() {
+    this.getBookings()
+  },
+  methods: {
+    showApproveModal(booking) {
+      this.approveModal = true
+      this.form = booking
+    },
+    async getBookings(page = 1) {
+      const res = await this.callApi(
+        'get',
+        `/api/v1/bookings?page=${page}
+        &total=${this.total}
+        &q=${this.search}
+        &select=${this.selected}
+        &sort_direction=${this.sort_direction}
+        &sort_field=${this.sort_field}`
+      )
+      if (res.status === 200) {
+        this.bookings = res.data
+      } else {
+        if (res.status === 401 || res.status === 422) {
+          for (let i in res.data.errors) {
+            this.e(res.data.errors[i][0])
+          }
+        } else {
+          this.swr()
+        }
+      }
+    },
+    async approveRequest(booking_id) {
+      this.isProcessing = true
+      const res = await this.callApi(
+        'get',
+        `/api/v1/bookings/approve/${booking_id}`
+      )
+      if (res.status === 200) {
+        this.approveModal = false
+        this.isProcessing = false
+        this.s('Sent booking link')
+        this.getBookings()
+      } else {
+        if (res.status !== 422) {
+          for (let i in res.data.errors) {
+            this.e(res.data.errors[i][0])
+          }
+        } else {
+          this.swr()
+        }
+      }
+    },
+    onCopy: function (e) {
+      this.s('You just copied: ' + e.text)
+    },
+    onError: function (e) {
+      this.e('Failed to copy texts')
+    },
   },
 }
 </script>

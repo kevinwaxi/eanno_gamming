@@ -60,7 +60,7 @@
                                 </a>
                             </li>
                             <li class="nav-item ">
-                                <router-link :to="{name:'pending_booking'}" class="nav-link " href="#">
+                                <router-link :to="{name:'pending'}" class="nav-link " href="#">
                                     <span class="sidenav-mini-icon"> P </span>
                                     <span class="sidenav-normal"> Pending Booking </span>
                                 </router-link>

@@ -5,11 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Rinvex\Bookings\Traits\Bookable;
 
 class Station extends Model
 {
-    use HasFactory, Bookable;
+    use HasFactory;
 
     protected $guarded = [];
 
@@ -51,22 +50,5 @@ class Station extends Model
         $query->where(function ($query) use ($term) {
             $query->where('name', 'like', $term);
         });
-    }
-
-    public static function getBookingModel(): string
-    {
-        # code...
-        return User::class;
-    }
-
-    public static function getRateModel(): string
-    {
-        return Price::class;
-    }
-
-    public static function getAvailabilityModel(): string
-    {
-        # code...
-        return Available::class;
     }
 }
