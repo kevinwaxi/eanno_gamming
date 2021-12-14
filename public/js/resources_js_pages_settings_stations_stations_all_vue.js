@@ -1396,7 +1396,7 @@ var render = function () {
                           ],
                           staticClass:
                             "form-select fmxw-200 d-none d-md-inline",
-                          attrs: { "aria-label": "Fillter by role" },
+                          attrs: { "aria-label": "Filter by role" },
                           on: {
                             change: function ($event) {
                               var $$selectedVal = Array.prototype.filter

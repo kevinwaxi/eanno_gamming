@@ -225,7 +225,7 @@
                   <select
                     v-model="selected"
                     class="form-select fmxw-200 d-none d-md-inline"
-                    aria-label="Fillter by role"
+                    aria-label="Filter by role"
                   >
                     <option selected="selected" value="">Show All</option>
                     <option

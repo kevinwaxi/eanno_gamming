@@ -301,6 +301,67 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -308,11 +369,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   data: function data() {
     return {
-      approveModal: false,
-      deleteModal: false,
-      massDeleteModal: false,
       isProcessing: false,
-      editMode: false,
       processing: false,
       deletingItem: null,
       form: {},
@@ -360,9 +417,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     this.getBookings();
   },
   methods: {
-    showApproveModal: function showApproveModal(booking) {
-      this.approveModal = true;
-      this.form = booking;
+    approveModal: function approveModal(booking) {
+      var obj = {
+        name: booking.user.name,
+        created_at: booking.created_at,
+        time: booking.booking_date,
+        game: booking.game.name,
+        status: booking.status
+      };
+      this.form = obj;
+      $('#modal-default').modal('show');
     },
     getBookings: function getBookings() {
       var _arguments = arguments,
@@ -689,7 +753,7 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm.$auth.isAdmin() || _vm.$auth.isCashier
+    _vm.$auth.isAdmin() || _vm.$auth.isCashier()
       ? _c("div", [
           _c("div", { staticClass: "container-fluid py-4" }, [
             _c("div", { staticClass: "row" }, [
@@ -1017,7 +1081,7 @@ var render = function () {
                                       attrs: { href: "javascript:;" },
                                       on: {
                                         click: function ($event) {
-                                          return _vm.showApproveModal(booking)
+                                          return _vm.approveModal(booking)
                                         },
                                       },
                                     },
@@ -1027,89 +1091,24 @@ var render = function () {
                                         attrs: { "aria-hidden": "true" },
                                       }),
                                       _vm._v(
-                                        "\n                      Approve\n                    "
+                                        "\n                      Approved\n                    "
                                       ),
                                     ]
                                   ),
                                   _vm._v(" "),
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass:
-                                        "btn btn-link text-danger px-3 mb-0",
-                                      attrs: { href: "javascript:;" },
-                                      on: {
-                                        click: function ($event) {
-                                          $event.preventDefault()
-                                          return _vm.editBooking(booking)
-                                        },
-                                      },
-                                    },
-                                    [
-                                      _c("i", {
-                                        staticClass:
-                                          "fas fa-pencil-alt text-danger me-2",
-                                        attrs: { "aria-hidden": "true" },
-                                      }),
-                                      _vm._v(
-                                        "\n                      Edit\n                    "
-                                      ),
-                                    ]
-                                  ),
+                                  _vm._m(2, true),
                                 ])
                               : _vm._e(),
                             _vm._v(" "),
                             booking.status == "Sent"
                               ? _c("div", { staticClass: "ms-auto text-end" }, [
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass:
-                                        "\n                        btn btn-link\n                        text-success text-gradient\n                        px-3\n                        mb-0\n                      ",
-                                      attrs: { href: "javascript:;" },
-                                      on: {
-                                        click: function ($event) {
-                                          return _vm.showApproveModal(booking)
-                                        },
-                                      },
-                                    },
-                                    [
-                                      _c("i", {
-                                        staticClass: "fa fa-plane me-2",
-                                        attrs: { "aria-hidden": "true" },
-                                      }),
-                                      _vm._v(
-                                        "\n                      Sent\n                    "
-                                      ),
-                                    ]
-                                  ),
+                                  _vm._m(3, true),
                                 ])
                               : _vm._e(),
                             _vm._v(" "),
                             booking.status == "Registered"
                               ? _c("div", { staticClass: "ms-auto text-end" }, [
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass:
-                                        "btn btn-link text-info text-gradient px-3 mb-0",
-                                      attrs: { href: "javascript:;" },
-                                      on: {
-                                        click: function ($event) {
-                                          return _vm.showApproveModal(booking)
-                                        },
-                                      },
-                                    },
-                                    [
-                                      _c("i", {
-                                        staticClass: "fa fa-check me-2",
-                                        attrs: { "aria-hidden": "true" },
-                                      }),
-                                      _vm._v(
-                                        "\n                      Registered\n                    "
-                                      ),
-                                    ]
-                                  ),
+                                  _vm._m(4, true),
                                 ])
                               : _vm._e(),
                           ]
@@ -1139,22 +1138,70 @@ var render = function () {
               _c(
                 "div",
                 {
-                  staticClass: "modal-dialog modal-dialog-centered",
+                  staticClass:
+                    "modal-dialog modal- modal-dialog-centered modal-",
                   attrs: { role: "document" },
                 },
                 [
                   _c("div", { staticClass: "modal-content" }, [
-                    _c("div", { staticClass: "modal-header" }, [
-                      !_vm.editMode
-                        ? _c("h5", { staticClass: "modal-title" }, [
-                            _vm._v("Approve Booking"),
-                          ])
-                        : _c("h5", { staticClass: "modal-title" }, [
-                            _vm._v("Deny Booking"),
+                    _vm._m(5),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "modal-body" }, [
+                      _c("div", { staticClass: "card" }, [
+                        _c("div", { staticClass: "card-header p-3 pb-0" }, [
+                          _c("div", { staticClass: "row" }, [
+                            _c("div", { staticClass: "col-8 d-flex" }, [
+                              _vm._m(6),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "d-flex flex-column justify-content-center",
+                                },
+                                [
+                                  _c("h6", { staticClass: "mb-0 text-sm" }, [
+                                    _vm._v(_vm._s(_vm.form.name)),
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("p", { staticClass: "text-xs" }, [
+                                    _vm._v(_vm._s(_vm.form.created_at)),
+                                  ]),
+                                ]
+                              ),
+                            ]),
+                            _vm._v(" "),
+                            _vm._m(7),
                           ]),
-                      _vm._v(" "),
-                      _vm._m(2),
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "card-body p-3 pt-1" }, [
+                          _c("h6", [
+                            _vm._v(
+                              "\n                  " +
+                                _vm._s(_vm.form.name) +
+                                " would like to play " +
+                                _vm._s(_vm.form.game) +
+                                " at\n                  " +
+                                _vm._s(_vm.form.time) +
+                                " for " +
+                                _vm._s(_vm.form.time) +
+                                ".\n                "
+                            ),
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "text-sm" }, [
+                            _vm._v(
+                              "\n                  Please recommend suitable time and date else accept the\n                  request\n                "
+                            ),
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(8),
+                        ]),
+                      ]),
                     ]),
+                    _vm._v(" "),
+                    _vm._m(9),
                   ]),
                 ]
               ),
@@ -1208,17 +1255,154 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c(
-      "button",
+      "a",
       {
-        staticClass: "btn-close",
-        attrs: {
-          type: "button",
-          "data-bs-dismiss": "modal",
-          "aria-label": "Close",
-        },
+        staticClass: "btn btn-link text-danger px-3 mb-0",
+        attrs: { href: "javascript:;" },
       },
-      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      [
+        _c("i", {
+          staticClass: "fas fa-pencil-alt text-danger me-2",
+          attrs: { "aria-hidden": "true" },
+        }),
+        _vm._v("\n                      Edit\n                    "),
+      ]
     )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass:
+          "\n                        btn btn-link\n                        text-success text-gradient\n                        px-3\n                        mb-0\n                      ",
+        attrs: { href: "javascript:;" },
+      },
+      [
+        _c("i", {
+          staticClass: "fa fa-plane me-2",
+          attrs: { "aria-hidden": "true" },
+        }),
+        _vm._v("\n                      Sent\n                    "),
+      ]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass: "btn btn-link text-info text-gradient px-3 mb-0",
+        attrs: { href: "javascript:;" },
+      },
+      [
+        _c("i", {
+          staticClass: "fa fa-check me-2",
+          attrs: { "aria-hidden": "true" },
+        }),
+        _vm._v("\n                      Registered\n                    "),
+      ]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h6",
+        { staticClass: "modal-title", attrs: { id: "modal-title-default" } },
+        [_vm._v("\n              Type your modal title\n            ")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn-close",
+          attrs: {
+            type: "button",
+            "data-bs-dismiss": "modal",
+            "aria-label": "Close",
+          },
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      ),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("img", {
+        staticClass: "avatar avatar-sm me-2",
+        attrs: { src: "/assets/img/team-3.jpg", alt: "avatar image" },
+      }),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-4" }, [
+      _c("span", { staticClass: "badge bg-gradient-info ms-auto float-end" }, [
+        _vm._v("\n                      Recommendation\n                    "),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "d-flex bg-gray-100 border-radius-lg p-3" },
+      [
+        _c("h4", { staticClass: "my-auto" }, [
+          _c("span", { staticClass: "text-secondary text-sm me-1" }, [
+            _vm._v("$"),
+          ]),
+          _vm._v("\n                    3,000\n                    "),
+          _c("span", { staticClass: "text-secondary text-sm ms-1" }, [
+            _vm._v(" / month "),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "btn btn-outline-dark mb-0 ms-auto",
+            attrs: { href: "javascript:;" },
+          },
+          [_vm._v("\n                    Apply\n                  ")]
+        ),
+      ]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        { staticClass: "btn bg-gradient-primary", attrs: { type: "button" } },
+        [_vm._v("\n              Save changes\n            ")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-link ml-auto",
+          attrs: { type: "button", "data-bs-dismiss": "modal" },
+        },
+        [_vm._v("\n              Close\n            ")]
+      ),
+    ])
   },
 ]
 render._withStripped = true
