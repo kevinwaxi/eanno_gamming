@@ -1,6 +1,9 @@
 <template>
   <div>
-    <div class="container-fluid py-4" v-if="$auth.can('list users') || $auth.isAdmin()">
+    <div
+      class="container-fluid py-4"
+      v-if="$auth.can('list users') || $auth.isAdmin()"
+    >
       <div class="row">
         <div class="col-lg-6 col-12">
           <div class="row">
@@ -229,7 +232,7 @@
                         class="text-white font-weight-bolder mb-0 mt-3"
                         v-if="users.data"
                       >
-                        {{ users.data.length }}
+                        {{banned_users.length }}
                       </h5>
                       <span class="text-white text-sm">Banned Users</span>
                     </div>
@@ -745,7 +748,7 @@
                     <td>
                       <div
                         class="ms-auto text-end"
-                        v-if="$auth.can('update users')"
+                        v-if="$auth.can('update users') || $auth.isAdmin()"
                       >
                         <a
                           v-if="
@@ -936,6 +939,7 @@ export default {
       },
       role: [],
       users: {},
+      banned_users: [],
       roles: {},
       total: 20,
       search: '',
@@ -980,6 +984,7 @@ export default {
   },
   mounted() {
     this.getUsers()
+    this.getBannedUsers()
     this.getRoles()
   },
   methods: {
@@ -1080,6 +1085,20 @@ export default {
         }
       }
     },
+    async getBannedUsers() {
+      const res = await this.callApi('get', '/api/v1/users/banned_users')
+      if (res.status === 200) {
+        this.banned_users = res.data
+      } else {
+        if (res.status === 401) {
+          for (let i in res.data.errors) {
+            this.e(res.data.errors[i][0])
+          }
+        } else {
+          this.swr()
+        }
+      }
+    },
     async getRoles() {
       const res = await this.callApi('get', '/api/v1/roles')
       if (res.status === 200) {
@@ -1141,6 +1160,7 @@ export default {
         this.banMode = false
         this.closeModal()
         this.getUsers()
+        this.getBannedUsers()
         this.w('Banned user: ' + user.username)
         this.processing = false
       } else {

@@ -81,6 +81,7 @@ class RegisterController extends Controller
             'phone' => $data['phone'],
             'password' => Hash::make($data['password']),
         ]);
+        $user ->assignRole('User');
         $invitation->registered_at = $user->created_at;
         $invitation->status = ('Registered');
         $invitation->save();

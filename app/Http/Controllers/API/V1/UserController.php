@@ -110,6 +110,14 @@ class UserController extends Controller
 
     }
 
+    public function banned()
+    {
+        # code...
+        $banned_users = User::whereNotNull('banned_until')->get();
+
+        return $banned_users;
+    }
+
     public function restore($id)
     {
         # code...

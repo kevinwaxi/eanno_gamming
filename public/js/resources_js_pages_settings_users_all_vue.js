@@ -994,6 +994,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -1014,6 +1017,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       },
       role: [],
       users: {},
+      banned_users: [],
       roles: {},
       total: 20,
       search: '',
@@ -1061,6 +1065,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   },
   mounted: function mounted() {
     this.getUsers();
+    this.getBannedUsers();
     this.getRoles();
   },
   methods: {
@@ -1209,23 +1214,31 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         }, _callee2);
       }))();
     },
-    getRoles: function getRoles() {
+    getBannedUsers: function getBannedUsers() {
       var _this4 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
-        var res;
+        var res, i;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
                 _context3.next = 2;
-                return _this4.callApi('get', '/api/v1/roles');
+                return _this4.callApi('get', '/api/v1/users/banned_users');
 
               case 2:
                 res = _context3.sent;
 
                 if (res.status === 200) {
-                  _this4.roles = res.data;
+                  _this4.banned_users = res.data;
+                } else {
+                  if (res.status === 401) {
+                    for (i in res.data.errors) {
+                      _this4.e(res.data.errors[i][0]);
+                    }
+                  } else {
+                    _this4.swr();
+                  }
                 }
 
               case 4:
@@ -1236,45 +1249,26 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         }, _callee3);
       }))();
     },
-    createUser: function createUser() {
+    getRoles: function getRoles() {
       var _this5 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
-        var res, i;
+        var res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
           while (1) {
             switch (_context4.prev = _context4.next) {
               case 0:
-                _this5.processing = true;
-                _context4.next = 3;
-                return _this5.callApi('post', '/api/v1/users', _this5.form);
+                _context4.next = 2;
+                return _this5.callApi('get', '/api/v1/roles');
 
-              case 3:
+              case 2:
                 res = _context4.sent;
 
-                if (res.status === 201) {
-                  _this5.s('User created successfully');
-
-                  _this5.closeModal();
-
-                  _this5.getUsers();
-
-                  _this5.processing = false;
-                } else {
-                  if (res.status === 422) {
-                    for (i in res.data.errors) {
-                      _this5.e(res.data.errors[i][0]);
-                    }
-
-                    _this5.processing = false;
-                  } else {
-                    _this5.swr();
-
-                    _this5.processing = false;
-                  }
+                if (res.status === 200) {
+                  _this5.roles = res.data;
                 }
 
-              case 5:
+              case 4:
               case "end":
                 return _context4.stop();
             }
@@ -1282,7 +1276,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         }, _callee4);
       }))();
     },
-    updateUser: function updateUser(user_id) {
+    createUser: function createUser() {
       var _this6 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5() {
@@ -1293,21 +1287,21 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
               case 0:
                 _this6.processing = true;
                 _context5.next = 3;
-                return _this6.callApi('put', "/api/v1/users/".concat(user_id), _this6.form);
+                return _this6.callApi('post', '/api/v1/users', _this6.form);
 
               case 3:
                 res = _context5.sent;
 
-                if (res.status == 200) {
+                if (res.status === 201) {
+                  _this6.s('User created successfully');
+
                   _this6.closeModal();
 
                   _this6.getUsers();
 
-                  _this6.s('Successfully updated user');
-
                   _this6.processing = false;
                 } else {
-                  if (res.status == 422) {
+                  if (res.status === 422) {
                     for (i in res.data.errors) {
                       _this6.e(res.data.errors[i][0]);
                     }
@@ -1328,7 +1322,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         }, _callee5);
       }))();
     },
-    banUser: function banUser(user) {
+    updateUser: function updateUser(user_id) {
       var _this7 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee6() {
@@ -1339,19 +1333,17 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
               case 0:
                 _this7.processing = true;
                 _context6.next = 3;
-                return _this7.callApi('put', "/api/v1/users/ban/".concat(user.id), _this7.form);
+                return _this7.callApi('put', "/api/v1/users/".concat(user_id), _this7.form);
 
               case 3:
                 res = _context6.sent;
 
-                if (res.status === 200) {
-                  _this7.banMode = false;
-
+                if (res.status == 200) {
                   _this7.closeModal();
 
                   _this7.getUsers();
 
-                  _this7.w('Banned user: ' + user.username);
+                  _this7.s('Successfully updated user');
 
                   _this7.processing = false;
                 } else {
@@ -1376,7 +1368,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         }, _callee6);
       }))();
     },
-    assignRole: function assignRole(user) {
+    banUser: function banUser(user) {
       var _this8 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee7() {
@@ -1387,7 +1379,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
               case 0:
                 _this8.processing = true;
                 _context7.next = 3;
-                return _this8.callApi('put', "/api/v1/users/assignRole/".concat(user.id), _this8.form);
+                return _this8.callApi('put', "/api/v1/users/ban/".concat(user.id), _this8.form);
 
               case 3:
                 res = _context7.sent;
@@ -1399,7 +1391,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
                   _this8.getUsers();
 
-                  _this8.s('Assigned role to: ' + user.username);
+                  _this8.getBannedUsers();
+
+                  _this8.w('Banned user: ' + user.username);
 
                   _this8.processing = false;
                 } else {
@@ -1424,28 +1418,47 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         }, _callee7);
       }))();
     },
-    restoreUser: function restoreUser(user_id) {
+    assignRole: function assignRole(user) {
       var _this9 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee8() {
-        var res;
+        var res, i;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee8$(_context8) {
           while (1) {
             switch (_context8.prev = _context8.next) {
               case 0:
-                _context8.next = 2;
-                return _this9.callApi('put', "/api/v1/users/restore/".concat(user_id), _this9.form);
+                _this9.processing = true;
+                _context8.next = 3;
+                return _this9.callApi('put', "/api/v1/users/assignRole/".concat(user.id), _this9.form);
 
-              case 2:
+              case 3:
                 res = _context8.sent;
 
                 if (res.status === 200) {
+                  _this9.banMode = false;
+
+                  _this9.closeModal();
+
                   _this9.getUsers();
 
-                  _this9.s('Successfully restored user');
+                  _this9.s('Assigned role to: ' + user.username);
+
+                  _this9.processing = false;
+                } else {
+                  if (res.status == 422) {
+                    for (i in res.data.errors) {
+                      _this9.e(res.data.errors[i][0]);
+                    }
+
+                    _this9.processing = false;
+                  } else {
+                    _this9.swr();
+
+                    _this9.processing = false;
+                  }
                 }
 
-              case 4:
+              case 5:
               case "end":
                 return _context8.stop();
             }
@@ -1453,43 +1466,28 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         }, _callee8);
       }))();
     },
-    deleteUser: function deleteUser(user_id) {
+    restoreUser: function restoreUser(user_id) {
       var _this10 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee9() {
-        var res, i;
+        var res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee9$(_context9) {
           while (1) {
             switch (_context9.prev = _context9.next) {
               case 0:
-                _this10.isDeleting = true;
-                _context9.next = 3;
-                return _this10.callApi('delete', "/api/v1/users/".concat(user_id));
+                _context9.next = 2;
+                return _this10.callApi('put', "/api/v1/users/restore/".concat(user_id), _this10.form);
 
-              case 3:
+              case 2:
                 res = _context9.sent;
 
-                if (res.status == 204) {
-                  _this10.w('User deleted');
-
-                  _this10.checked = _this10.checked.filter(function (id) {
-                    return id != user_id;
-                  });
-                  _this10.isDeleting = false;
-                  _this10.deleteModal = false;
-
+                if (res.status === 200) {
                   _this10.getUsers();
-                } else {
-                  if (res.status !== 422) {
-                    for (i in res.data.errors) {
-                      _this10.e(res.data.errors[i][0]);
-                    }
-                  } else {
-                    _this10.swr();
-                  }
+
+                  _this10.s('Successfully restored user');
                 }
 
-              case 5:
+              case 4:
               case "end":
                 return _context9.stop();
             }
@@ -1497,7 +1495,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         }, _callee9);
       }))();
     },
-    deleteRecords: function deleteRecords(checked) {
+    deleteUser: function deleteUser(user_id) {
       var _this11 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee10() {
@@ -1506,16 +1504,21 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
           while (1) {
             switch (_context10.prev = _context10.next) {
               case 0:
-                _context10.next = 2;
-                return _this11.callApi('delete', "/api/v1/users/massDestroy/".concat(checked));
+                _this11.isDeleting = true;
+                _context10.next = 3;
+                return _this11.callApi('delete', "/api/v1/users/".concat(user_id));
 
-              case 2:
+              case 3:
                 res = _context10.sent;
 
                 if (res.status == 204) {
-                  _this11.s('User deleted successfully');
+                  _this11.w('User deleted');
 
-                  _this11.massDeleteModal = false;
+                  _this11.checked = _this11.checked.filter(function (id) {
+                    return id != user_id;
+                  });
+                  _this11.isDeleting = false;
+                  _this11.deleteModal = false;
 
                   _this11.getUsers();
                 } else {
@@ -1528,12 +1531,51 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
                   }
                 }
 
-              case 4:
+              case 5:
               case "end":
                 return _context10.stop();
             }
           }
         }, _callee10);
+      }))();
+    },
+    deleteRecords: function deleteRecords(checked) {
+      var _this12 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee11() {
+        var res, i;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee11$(_context11) {
+          while (1) {
+            switch (_context11.prev = _context11.next) {
+              case 0:
+                _context11.next = 2;
+                return _this12.callApi('delete', "/api/v1/users/massDestroy/".concat(checked));
+
+              case 2:
+                res = _context11.sent;
+
+                if (res.status == 204) {
+                  _this12.s('User deleted successfully');
+
+                  _this12.massDeleteModal = false;
+
+                  _this12.getUsers();
+                } else {
+                  if (res.status !== 422) {
+                    for (i in res.data.errors) {
+                      _this12.e(res.data.errors[i][0]);
+                    }
+                  } else {
+                    _this12.swr();
+                  }
+                }
+
+              case 4:
+              case "end":
+                return _context11.stop();
+            }
+          }
+        }, _callee11);
       }))();
     }
   }
@@ -1879,7 +1921,7 @@ var render = function () {
                                       [
                                         _vm._v(
                                           "\n                      " +
-                                            _vm._s(_vm.users.data.length) +
+                                            _vm._s(_vm.banned_users.length) +
                                             "\n                    "
                                         ),
                                       ]
@@ -2511,7 +2553,8 @@ var render = function () {
                                 ),
                                 _vm._v(" "),
                                 _c("td", [
-                                  _vm.$auth.can("update users")
+                                  _vm.$auth.can("update users") ||
+                                  _vm.$auth.isAdmin()
                                     ? _c(
                                         "div",
                                         { staticClass: "ms-auto text-end" },
