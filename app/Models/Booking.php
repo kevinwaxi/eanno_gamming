@@ -30,8 +30,6 @@ class Booking extends Model
         'check_out' => 'datetime',
     ];
 
-    protected $dates = ['total'];
-
     /**
      * Get the user that owns the Booking
      *
