@@ -3,22 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Rinvex\Bookings\Models\BookableAvailability;
 
-class Available extends Model
+class Available extends BookableAvailability
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $table = 'bookable_availabilities';
 
-    /**
-     * Get the station that owns the Available
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function station(): BelongsTo
-    {
-        return $this->belongsTo(Station::class);
-    }
 }

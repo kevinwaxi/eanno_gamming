@@ -16,15 +16,6 @@ class Station extends Model
 
     protected $guarded = [];
 
-    /**
-     * Get the available that owns the Station
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function available(): BelongsTo
-    {
-        return $this->belongsTo(Available::class);
-    }
 
     /**
      * Get the screen that owns the Station
@@ -56,16 +47,6 @@ class Station extends Model
         });
     }
 
-    /**
-     * Get the status associated with the Station
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function status(): BelongsToMany
-    {
-        return $this->belongsToMany(Status::class,'station_status');
-    }
-
     public function getBookingModel()
     {
         # code...
@@ -75,7 +56,7 @@ class Station extends Model
     public function getRateModel()
     {
         # code...
-        return Price::class;
+        return Rates::class;
     }
 
     public function getAvailabilityModel()
