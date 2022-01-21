@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Casts\TitleCast;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -11,15 +12,16 @@ class Game extends Model
     use HasFactory;
 
     protected $fillable = [
+        'name',
         'slug',
         'cover_image',
         'about_game',
         'players',
         'release_date',
-        'name',
     ];
 
     protected $casts = [
+        'name' => TitleCast::class,
         'release_date' => 'datetime',
     ];
 

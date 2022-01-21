@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Casts\TitleCast;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Category extends Model
 {
@@ -11,10 +13,14 @@ class Category extends Model
 
     protected $fillable = [
         'name',
-        'description',
         'slug',
+        'description',
         'cover_photo',
         'color',
+    ];
+
+    protected $casts = [
+        'name' => TitleCast::class
     ];
 
     public function scopeSearch($query, $term)
@@ -27,5 +33,15 @@ class Category extends Model
                 ->orWhere('description', 'like', $term)
                 ->orWhere('slug', 'like', $term);
         });
+    }
+
+    /**
+     * The game that belong to the Category
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function games(): BelongsToMany
+    {
+        return $this->belongsToMany(Game::class, 'category_games', 'category_id', 'game_id');
     }
 }
