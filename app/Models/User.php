@@ -25,8 +25,6 @@ class User extends Authenticatable
         'username',
         'phone',
         'banned_until',
-        'profile_pic',
-        'initial_pic',
         'email',
         'password',
         'is_active',
@@ -73,5 +71,4 @@ class User extends Authenticatable
     {
         return Station::class;
     }
-
 }

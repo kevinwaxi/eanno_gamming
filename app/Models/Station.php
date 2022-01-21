@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Casts\TitleCast;
 use Rinvex\Bookings\Traits\Bookable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -14,7 +15,17 @@ class Station extends Model
 {
     use HasFactory, Bookable;
 
-    protected $guarded = [];
+    protected $fillable = [
+        'name',
+        'console_id',
+        'screen_id'
+    ];
+
+    protected $casts = [
+        'name' => TitleCast::class,
+        'screen_id' => 'integer',
+        'console_id' => 'integer',
+    ];
 
 
     /**

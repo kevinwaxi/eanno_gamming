@@ -26,7 +26,6 @@ class Category extends Model
             $query->where('name', 'like', $term)
                 ->orWhere('description', 'like', $term)
                 ->orWhere('slug', 'like', $term);
-
         });
     }
 }

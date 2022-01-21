@@ -5,212 +5,128 @@ Vue.use(Router);
 
 const routes = [
     {
-        path:'/error',
-        component : ()=> import("@pages/Errors/index.vue"),
+        path: '/admin',
+        component: () => import("@pages/Admins/index.vue"),
         children: [
             {
-                path: 'unavailable',
-                name:'NotFound',
-                component: ()=> import('@pages/Errors/notfound.vue')
+                path: 'dashboards',
+                component: () => import('@pages/Admins/dashboards/index.vue'),
+                children: [
+                    {
+                        path: 'bookings',
+                        name: 'Bookings',
+                        component: () => import("@pages/Admins/dashboards/Bookings.vue")
+                    },
+                    {
+                        path: 'gamers',
+                        name: 'Gamers',
+                        component: () => import("@pages/Admins/dashboards/Gamers.vue")
+                    },
+                    {
+                        path: 'sales',
+                        name: 'Sales',
+                        component: () => import("@pages/Admins/dashboards/Sales.vue")
+                    },
+                    {
+                        path: 'invitations',
+                        name: 'Invitations',
+                        component: () => import("@pages/Admins/dashboards/Invitations.vue")
+                    }
+                ]
+            },
+            {
+                path: 'settings',
+                component: () => import("@pages/Admins/settings/index.vue"),
+                children: [
+                    {
+                        path: 'inventory',
+                        component: () => import("@pages/Admins/settings/inventory/index.vue"),
+                        children: [
+                            {
+                                path: 'consoles',
+                                name: 'Consoles',
+                                component: () => import("@pages/Admins/settings/inventory/Consoles.vue")
+                            },
+                            {
+                                path: 'categories',
+                                name: 'Categories',
+                                component: () => import("@pages/Admins/settings/inventory/Categories.vue")
+                            },
+                            {
+                                path: 'games',
+                                name: 'Games',
+                                component: () => import("@pages/Admins/settings/inventory/Games.vue")
+                            },
+                            {
+                                path: 'screens',
+                                name: 'Screens',
+                                component: () => import("@pages/Admins/settings/inventory/Screens.vue")
+                            },
+                            {
+                                path: 'stations',
+                                name: 'Stations',
+                                component: () => import("@pages/Admins/settings/inventory/Stations.vue")
+                            },
+                        ]
+                    },
+                    {
+                        path: 'security',
+                        component: () => import("@pages/Admins/settings/security/index.vue"),
+                        children: [
+                            {
+                                path: 'roles',
+                                name: 'Roles',
+                                component: () => import("@pages/Admins/settings/security/Roles.vue")
+                            },
+                            {
+                                path: 'permissions',
+                                name: 'Permissions',
+                                component: () => import("@pages/Admins/settings/security/Permissions.vue")
+                            },
+                        ]
+                    },
+                    {
+                        path: 'user_management',
+                        component: () => import("@pages/Admins/settings/users/index.vue"),
+                        children: [
+                            {
+                                path: 'administrators',
+                                name: 'Admins',
+                                component: () => import("@pages/Admins/settings/users/Admins.vue")
+                            },
+                            {
+                                path: 'cashiers',
+                                name: 'Cashiers',
+                                component: () => import("@pages/Admins/settings/users/Cashiers.vue")
+                            },
+                            {
+                                path: 'gamers',
+                                name: 'Gamers',
+                                component: () => import("@pages/Admins/settings/security/Gamers.vue")
+                            },
+                        ]
+                    }
+                ],
             }
         ]
     },
     {
-        path: "/dashboard",
-        component: () => import("@pages/dashboards/index.vue"),
+        path: '/account',
+        component: () => import("@pages/Profile/index.vue"),
         children: [
             {
-                path: "main",
-                name: "admin_dashboard",
-                component: () => import("@pages/dashboards/admin/index.vue"),
+                path: 'overview',
+                name: 'Overview',
+                component: () => import("@pages/Profile/Account.vue"),
             },
             {
-                path: "bookings",
-                name: "all_bookings",
-                component: () => import("@pages/dashboards/admin/bookings.vue"),
-            },
-            {
-                path: "statistics",
-                name: "stats",
-                component: () =>
-                    import("@pages/dashboards/admin/statistics.vue"),
-            },
-            {
-                path: "gaming",
-                component: () => import("@pages/dashboards/gamers/index.vue"),
-                children: [
-                    {
-                        name: 'pending',
-                        path: 'all',
-                        component: () => import('@pages/dashboards/admin/allbookings.vue')
-                    },
-                    {
-                        name: "my_bookings",
-                        path: "bookings",
-                        component: () =>
-                            import(
-                                "@pages/dashboards/gamers/bookings/mybookings.vue"
-                            ),
-                    },
-                ],
-            },
-        ],
-    },
-    {
-        path: "/settings",
-        component: () => import("@pages/settings/index.vue"),
-        children: [
-            {
-                path: "invitations",
-                component: () =>
-                    import("@pages/settings/invitations/index.vue"),
-                children: [
-                    {
-                        path: "all",
-                        name: "all_requests",
-                        component: () =>
-                            import("@pages/settings/invitations/requested.vue"),
-                    },
-                ],
-            },
-            {
-                path: "security",
-                component: () => import("@pages/settings/security/index.vue"),
-                children: [
-                    {
-                        path: "permissions",
-                        name: "permissions",
-                        component: () =>
-                            import(
-                                "@pages/settings/security/permissions/permissions.vue"
-                            ),
-                    },
-                    {
-                        path: "roles",
-                        name: "roles",
-                        component: () =>
-                            import("@pages/settings/security/roles/roles.vue"),
-                    },
-                ],
-            },
-            {
-                path: "profile",
-                component: () => import("@pages/settings/profile/index.vue"),
-                children: [
-                    {
-                        path: "account",
-                        name: "my_account",
-                        component: () =>
-                            import("@pages/settings/profile/account.vue"),
-                    },
-                    {
-                        path: "edit",
-                        name: "edit_my_account",
-                        component: () =>
-                            import("@pages/settings/profile/edit.vue"),
-                    },
-                ],
-            },
-            {
-                path: "users",
-                component: () => import("@pages/settings/users/index.vue"),
-                children: [
-                    {
-                        path: "all",
-                        name: "all_users",
-                        component: () =>
-                            import("@pages/settings/users/all.vue"),
-                    },
-                    {
-                        path: "admins",
-                        name: "all_admins",
-                        component: () =>
-                            import("@pages/settings/users/admin.vue"),
-                    },
-                    {
-                        path: "gamers",
-                        name: "all_gamers",
-                        component: () =>
-                            import("@pages/settings/users/gamers.vue"),
-                    },
-                    {
-                        path: "cashiers",
-                        name: "all_cashiers",
-                        component: () =>
-                            import("@pages/settings/users/cashiers.vue"),
-                    },
-                ],
-            },
-            {
-                path: "station",
-                component: () => import("@pages/settings/stations/index.vue"),
-                children: [
-                    {
-                        path: "games",
-                        component: () =>
-                            import("@pages/settings/stations/games/index.vue"),
-                        children: [
-                            {
-                                name: "all_games",
-                                path: "all",
-                                component: () =>
-                                    import(
-                                        "@pages/settings/stations/games/all.vue"
-                                    ),
-                            },
-                            {
-                                name: "game_categories",
-                                path: "categories",
-                                component: () =>
-                                    import(
-                                        "@pages/settings/stations/games/categories.vue"
-                                    ),
-                            },
-                        ],
-                    },
-                    {
-                        path: "stations",
-                        component: () =>
-                            import(
-                                "@pages/settings/stations/stations/index.vue"
-                            ),
-                        children: [
-                            {
-                                name: "all_stations",
-                                path: "all",
-                                component: () =>
-                                    import(
-                                        "@pages/settings/stations/stations/all.vue"
-                                    ),
-                            },
-                            {
-                                name: "all_screens",
-                                path: "screens",
-                                component: () =>
-                                    import(
-                                        "@pages/settings/stations/stations/screen.vue"
-                                    ),
-                            },
-                            {
-                                name: "all_consoles",
-                                path: "consoles",
-                                component: () =>
-                                    import(
-                                        "@pages/settings/stations/stations/console.vue"
-                                    ),
-                            },
-                        ],
-                    },
-                    {
-                        path: "pricing",
-                        name: "settings_pricing",
-                        component: () =>
-                            import("@pages/settings/stations/pricing.vue"),
-                    },
-                ],
-            },
-        ],
-    },
+                path: 'settings',
+                name: 'AccountSettings',
+                component: () => import("@pages/Profile/Settings.vue")
+            }
+
+        ]
+    }
 ];
 
 export default new Router({

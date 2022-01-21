@@ -2,15 +2,32 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Casts\TitleCast;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Screen extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $fillable = [
+        'serial_number',
+        'condition_id',
+        'make_id',
+        'model_number',
+        'size',
+        'feature',
+    ];
+
+    protected $casts = [
+        'serial_number' => 'integer',
+        'condition_id' => 'integer',
+        'make_id' => 'integer',
+        'model_number' => TitleCast::class,
+        'size' => 'integer',
+
+    ];
 
     /**
      * Get the condition that owns the Screen
@@ -19,7 +36,7 @@ class Screen extends Model
      */
     public function condition(): BelongsTo
     {
-        return $this->belongsTo(Condition::class, 'condition_id');
+        return $this->belongsTo(Condition::class);
     }
 
     /**
@@ -29,7 +46,7 @@ class Screen extends Model
      */
     public function make(): BelongsTo
     {
-        return $this->belongsTo(Make::class, 'make_id');
+        return $this->belongsTo(Make::class);
     }
 
     /**

@@ -35,7 +35,7 @@ Route::prefix('v1')->middleware(['auth:api'])->group(function () {
     // api/v1/users
     Route::get('users/profile', [UserController::class, 'profile']);
     Route::put('users/profile/update', [UserController::class, 'updateProfile']);
-    Route::get('users/banned_users',[UserController::class,'banned']);
+    Route::get('users/banned_users', [UserController::class, 'banned']);
     Route::put('users/ban/{id}', [UserController::class, 'ban']);
     Route::put('users/assignRole/{id}', [UserController::class, 'assign']);
     Route::put('users/restore/{id}', [UserController::class, 'restore']);
@@ -60,9 +60,9 @@ Route::prefix('v1')->middleware(['auth:api'])->group(function () {
     Route::post('games/deleteCover', [GameController::class, 'deleteImage']);
     Route::apiResource('games', GameController::class);
     // api/v1/bookings
-    Route::get('bookings/today',[BookingController::class, 'todaysBookings']);
+    Route::get('bookings/today', [BookingController::class, 'todaysBookings']);
     Route::get('bookings/mine', [BookingController::class, 'myBookings']);
-    Route::patch('bookings/approve/{booking}',[BookingController::class,'approveBooking']);
+    Route::patch('bookings/approve/{booking}', [BookingController::class, 'approveBooking']);
     Route::apiResource('bookings', BookingController::class);
     // api/v1/condition
     Route::apiResource('conditions', ConditionController::class);
@@ -78,4 +78,34 @@ Route::prefix('v1')->middleware(['auth:api'])->group(function () {
     Route::apiResource('stations', StationController::class);
     // api/v1/availability
     Route::apiResource('availability', AvailabilityController::class);
+
+
+    // admin routes
+    Route::prefix('admin')->group(function () {
+        Route::group(['prefix' => 'settings'], function () {
+            Route::prefix('security')->group(function () {
+                Route::apiResource('roles', RoleController::class);
+                Route::apiResource('permissions', PermissionController::class);
+            });
+            Route::group(['prefix' => 'inventories'], function () {
+                Route::apiResource('screens', ScreenController::class);
+                Route::apiResource('consoles', ConsoleController::class);
+                Route::apiResource('categories', CategoryController::class);
+                Route::apiResource('games', GameController::class);
+                Route::apiResource('stations', StationController::class);
+            });
+            Route::group(['prefix' => 'users'], function () {
+                Route::apiResource('administrators', AdminController::class);
+                Route::apiResource('gamers', GamerController::class);
+                Route::apiResource('cashiers', CashierController::class);
+                Route::apiResource('invitations', InvitationController::class);
+            });
+        });
+    });
+    // users routes
+    Route::prefix('gamers')->group(function () {
+        Route::apiResource('bookings', BookingController::class);
+        Route::apiResource('games', GameController::class);
+    });
+    Route::apiResource('accounts', AccountController::class);
 });
