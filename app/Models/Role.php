@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Casts\TitleCast;
 use Spatie\Permission\Models\Role as ModelsRole;
 
 class Role extends ModelsRole
@@ -20,4 +21,9 @@ class Role extends ModelsRole
                 });
         });
     }
+
+    protected $casts = [
+        'name' => TitleCast::class,
+        'created_at' => 'datetime'
+    ];
 }

@@ -2464,196 +2464,142 @@ __webpack_require__.r(__webpack_exports__);
 
 vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
 var routes = [{
-  path: '/error',
+  path: '/admin',
   component: function component() {
-    return __webpack_require__.e(/*! import() */ "resources_js_pages_Errors_index_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/Errors/index.vue */ "./resources/js/pages/Errors/index.vue"));
+    return __webpack_require__.e(/*! import() */ "resources_js_pages_Admins_index_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/Admins/index.vue */ "./resources/js/pages/Admins/index.vue"));
   },
   children: [{
-    path: 'unavailable',
-    name: 'NotFound',
+    path: 'dashboards',
     component: function component() {
-      return __webpack_require__.e(/*! import() */ "resources_js_pages_Errors_notfound_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/Errors/notfound.vue */ "./resources/js/pages/Errors/notfound.vue"));
-    }
-  }]
-}, {
-  path: "/dashboard",
-  component: function component() {
-    return __webpack_require__.e(/*! import() */ "resources_js_pages_dashboards_index_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/dashboards/index.vue */ "./resources/js/pages/dashboards/index.vue"));
-  },
-  children: [{
-    path: "main",
-    name: "admin_dashboard",
-    component: function component() {
-      return __webpack_require__.e(/*! import() */ "resources_js_pages_dashboards_admin_index_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/dashboards/admin/index.vue */ "./resources/js/pages/dashboards/admin/index.vue"));
-    }
-  }, {
-    path: "bookings",
-    name: "all_bookings",
-    component: function component() {
-      return __webpack_require__.e(/*! import() */ "resources_js_pages_dashboards_admin_bookings_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/dashboards/admin/bookings.vue */ "./resources/js/pages/dashboards/admin/bookings.vue"));
-    }
-  }, {
-    path: "statistics",
-    name: "stats",
-    component: function component() {
-      return __webpack_require__.e(/*! import() */ "resources_js_pages_dashboards_admin_statistics_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/dashboards/admin/statistics.vue */ "./resources/js/pages/dashboards/admin/statistics.vue"));
-    }
-  }, {
-    path: "gaming",
-    component: function component() {
-      return __webpack_require__.e(/*! import() */ "resources_js_pages_dashboards_gamers_index_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/dashboards/gamers/index.vue */ "./resources/js/pages/dashboards/gamers/index.vue"));
+      return __webpack_require__.e(/*! import() */ "resources_js_pages_Admins_dashboards_index_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/Admins/dashboards/index.vue */ "./resources/js/pages/Admins/dashboards/index.vue"));
     },
     children: [{
-      name: 'pending',
-      path: 'all',
+      path: 'bookings',
+      name: 'Bookings',
       component: function component() {
-        return __webpack_require__.e(/*! import() */ "resources_js_pages_dashboards_admin_allbookings_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/dashboards/admin/allbookings.vue */ "./resources/js/pages/dashboards/admin/allbookings.vue"));
+        return __webpack_require__.e(/*! import() */ "resources_js_pages_Admins_dashboards_Bookings_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/Admins/dashboards/Bookings.vue */ "./resources/js/pages/Admins/dashboards/Bookings.vue"));
       }
     }, {
-      name: "my_bookings",
-      path: "bookings",
+      path: 'gamers',
+      name: 'All Gamers',
       component: function component() {
-        return __webpack_require__.e(/*! import() */ "resources_js_pages_dashboards_gamers_bookings_mybookings_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/dashboards/gamers/bookings/mybookings.vue */ "./resources/js/pages/dashboards/gamers/bookings/mybookings.vue"));
+        return __webpack_require__.e(/*! import() */ "resources_js_pages_Admins_dashboards_Gamers_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/Admins/dashboards/Gamers.vue */ "./resources/js/pages/Admins/dashboards/Gamers.vue"));
       }
-    }]
-  }]
-}, {
-  path: "/settings",
-  component: function component() {
-    return __webpack_require__.e(/*! import() */ "resources_js_pages_settings_index_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/settings/index.vue */ "./resources/js/pages/settings/index.vue"));
-  },
-  children: [{
-    path: "invitations",
-    component: function component() {
-      return __webpack_require__.e(/*! import() */ "resources_js_pages_settings_invitations_index_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/settings/invitations/index.vue */ "./resources/js/pages/settings/invitations/index.vue"));
-    },
-    children: [{
-      path: "all",
-      name: "all_requests",
+    }, {
+      path: 'sales',
+      name: 'Sales',
       component: function component() {
-        return __webpack_require__.e(/*! import() */ "resources_js_pages_settings_invitations_requested_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/settings/invitations/requested.vue */ "./resources/js/pages/settings/invitations/requested.vue"));
+        return __webpack_require__.e(/*! import() */ "resources_js_pages_Admins_dashboards_Sales_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/Admins/dashboards/Sales.vue */ "./resources/js/pages/Admins/dashboards/Sales.vue"));
+      }
+    }, {
+      path: 'invitations',
+      name: 'Invitations',
+      component: function component() {
+        return __webpack_require__.e(/*! import() */ "resources_js_pages_Admins_dashboards_Invitations_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/Admins/dashboards/Invitations.vue */ "./resources/js/pages/Admins/dashboards/Invitations.vue"));
       }
     }]
   }, {
-    path: "security",
+    path: 'settings',
     component: function component() {
-      return __webpack_require__.e(/*! import() */ "resources_js_pages_settings_security_index_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/settings/security/index.vue */ "./resources/js/pages/settings/security/index.vue"));
+      return __webpack_require__.e(/*! import() */ "resources_js_pages_Admins_settings_index_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/Admins/settings/index.vue */ "./resources/js/pages/Admins/settings/index.vue"));
     },
     children: [{
-      path: "permissions",
-      name: "permissions",
+      path: 'inventory',
       component: function component() {
-        return __webpack_require__.e(/*! import() */ "resources_js_pages_settings_security_permissions_permissions_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/settings/security/permissions/permissions.vue */ "./resources/js/pages/settings/security/permissions/permissions.vue"));
-      }
-    }, {
-      path: "roles",
-      name: "roles",
-      component: function component() {
-        return __webpack_require__.e(/*! import() */ "resources_js_pages_settings_security_roles_roles_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/settings/security/roles/roles.vue */ "./resources/js/pages/settings/security/roles/roles.vue"));
-      }
-    }]
-  }, {
-    path: "profile",
-    component: function component() {
-      return __webpack_require__.e(/*! import() */ "resources_js_pages_settings_profile_index_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/settings/profile/index.vue */ "./resources/js/pages/settings/profile/index.vue"));
-    },
-    children: [{
-      path: "account",
-      name: "my_account",
-      component: function component() {
-        return __webpack_require__.e(/*! import() */ "resources_js_pages_settings_profile_account_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/settings/profile/account.vue */ "./resources/js/pages/settings/profile/account.vue"));
-      }
-    }, {
-      path: "edit",
-      name: "edit_my_account",
-      component: function component() {
-        return __webpack_require__.e(/*! import() */ "resources_js_pages_settings_profile_edit_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/settings/profile/edit.vue */ "./resources/js/pages/settings/profile/edit.vue"));
-      }
-    }]
-  }, {
-    path: "users",
-    component: function component() {
-      return __webpack_require__.e(/*! import() */ "resources_js_pages_settings_users_index_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/settings/users/index.vue */ "./resources/js/pages/settings/users/index.vue"));
-    },
-    children: [{
-      path: "all",
-      name: "all_users",
-      component: function component() {
-        return __webpack_require__.e(/*! import() */ "resources_js_pages_settings_users_all_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/settings/users/all.vue */ "./resources/js/pages/settings/users/all.vue"));
-      }
-    }, {
-      path: "admins",
-      name: "all_admins",
-      component: function component() {
-        return __webpack_require__.e(/*! import() */ "resources_js_pages_settings_users_admin_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/settings/users/admin.vue */ "./resources/js/pages/settings/users/admin.vue"));
-      }
-    }, {
-      path: "gamers",
-      name: "all_gamers",
-      component: function component() {
-        return __webpack_require__.e(/*! import() */ "resources_js_pages_settings_users_gamers_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/settings/users/gamers.vue */ "./resources/js/pages/settings/users/gamers.vue"));
-      }
-    }, {
-      path: "cashiers",
-      name: "all_cashiers",
-      component: function component() {
-        return __webpack_require__.e(/*! import() */ "resources_js_pages_settings_users_cashiers_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/settings/users/cashiers.vue */ "./resources/js/pages/settings/users/cashiers.vue"));
-      }
-    }]
-  }, {
-    path: "station",
-    component: function component() {
-      return __webpack_require__.e(/*! import() */ "resources_js_pages_settings_stations_index_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/settings/stations/index.vue */ "./resources/js/pages/settings/stations/index.vue"));
-    },
-    children: [{
-      path: "games",
-      component: function component() {
-        return __webpack_require__.e(/*! import() */ "resources_js_pages_settings_stations_games_index_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/settings/stations/games/index.vue */ "./resources/js/pages/settings/stations/games/index.vue"));
+        return __webpack_require__.e(/*! import() */ "resources_js_pages_Admins_settings_inventory_index_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/Admins/settings/inventory/index.vue */ "./resources/js/pages/Admins/settings/inventory/index.vue"));
       },
       children: [{
-        name: "all_games",
-        path: "all",
+        path: 'consoles',
+        name: 'Consoles',
         component: function component() {
-          return __webpack_require__.e(/*! import() */ "resources_js_pages_settings_stations_games_all_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/settings/stations/games/all.vue */ "./resources/js/pages/settings/stations/games/all.vue"));
+          return __webpack_require__.e(/*! import() */ "resources_js_pages_Admins_settings_inventory_Consoles_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/Admins/settings/inventory/Consoles.vue */ "./resources/js/pages/Admins/settings/inventory/Consoles.vue"));
         }
       }, {
-        name: "game_categories",
-        path: "categories",
+        path: 'categories',
+        name: 'Categories',
         component: function component() {
-          return __webpack_require__.e(/*! import() */ "resources_js_pages_settings_stations_games_categories_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/settings/stations/games/categories.vue */ "./resources/js/pages/settings/stations/games/categories.vue"));
+          return __webpack_require__.e(/*! import() */ "resources_js_pages_Admins_settings_inventory_Categories_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/Admins/settings/inventory/Categories.vue */ "./resources/js/pages/Admins/settings/inventory/Categories.vue"));
+        }
+      }, {
+        path: 'games',
+        name: 'Games',
+        component: function component() {
+          return __webpack_require__.e(/*! import() */ "resources_js_pages_Admins_settings_inventory_Games_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/Admins/settings/inventory/Games.vue */ "./resources/js/pages/Admins/settings/inventory/Games.vue"));
+        }
+      }, {
+        path: 'screens',
+        name: 'Screens',
+        component: function component() {
+          return __webpack_require__.e(/*! import() */ "resources_js_pages_Admins_settings_inventory_Screens_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/Admins/settings/inventory/Screens.vue */ "./resources/js/pages/Admins/settings/inventory/Screens.vue"));
+        }
+      }, {
+        path: 'stations',
+        name: 'Stations',
+        component: function component() {
+          return __webpack_require__.e(/*! import() */ "resources_js_pages_Admins_settings_inventory_Stations_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/Admins/settings/inventory/Stations.vue */ "./resources/js/pages/Admins/settings/inventory/Stations.vue"));
         }
       }]
     }, {
-      path: "stations",
+      path: 'security',
       component: function component() {
-        return __webpack_require__.e(/*! import() */ "resources_js_pages_settings_stations_stations_index_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/settings/stations/stations/index.vue */ "./resources/js/pages/settings/stations/stations/index.vue"));
+        return __webpack_require__.e(/*! import() */ "resources_js_pages_Admins_settings_security_index_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/Admins/settings/security/index.vue */ "./resources/js/pages/Admins/settings/security/index.vue"));
       },
       children: [{
-        name: "all_stations",
-        path: "all",
+        path: 'roles',
+        name: 'Roles',
         component: function component() {
-          return __webpack_require__.e(/*! import() */ "resources_js_pages_settings_stations_stations_all_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/settings/stations/stations/all.vue */ "./resources/js/pages/settings/stations/stations/all.vue"));
+          return __webpack_require__.e(/*! import() */ "resources_js_pages_Admins_settings_security_Roles_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/Admins/settings/security/Roles.vue */ "./resources/js/pages/Admins/settings/security/Roles.vue"));
         }
       }, {
-        name: "all_screens",
-        path: "screens",
+        path: 'permissions',
+        name: 'Permissions',
         component: function component() {
-          return __webpack_require__.e(/*! import() */ "resources_js_pages_settings_stations_stations_screen_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/settings/stations/stations/screen.vue */ "./resources/js/pages/settings/stations/stations/screen.vue"));
-        }
-      }, {
-        name: "all_consoles",
-        path: "consoles",
-        component: function component() {
-          return __webpack_require__.e(/*! import() */ "resources_js_pages_settings_stations_stations_console_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/settings/stations/stations/console.vue */ "./resources/js/pages/settings/stations/stations/console.vue"));
+          return __webpack_require__.e(/*! import() */ "resources_js_pages_Admins_settings_security_Permissions_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/Admins/settings/security/Permissions.vue */ "./resources/js/pages/Admins/settings/security/Permissions.vue"));
         }
       }]
     }, {
-      path: "pricing",
-      name: "settings_pricing",
+      path: 'user_management',
       component: function component() {
-        return __webpack_require__.e(/*! import() */ "resources_js_pages_settings_stations_pricing_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/settings/stations/pricing.vue */ "./resources/js/pages/settings/stations/pricing.vue"));
-      }
+        return __webpack_require__.e(/*! import() */ "resources_js_pages_Admins_settings_users_index_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/Admins/settings/users/index.vue */ "./resources/js/pages/Admins/settings/users/index.vue"));
+      },
+      children: [{
+        path: 'administrators',
+        name: 'Admins',
+        component: function component() {
+          return __webpack_require__.e(/*! import() */ "resources_js_pages_Admins_settings_users_Admins_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/Admins/settings/users/Admins.vue */ "./resources/js/pages/Admins/settings/users/Admins.vue"));
+        }
+      }, {
+        path: 'cashiers',
+        name: 'Cashiers',
+        component: function component() {
+          return __webpack_require__.e(/*! import() */ "resources_js_pages_Admins_settings_users_Cashiers_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/Admins/settings/users/Cashiers.vue */ "./resources/js/pages/Admins/settings/users/Cashiers.vue"));
+        }
+      }, {
+        path: 'gamers',
+        name: 'Gamers',
+        component: function component() {
+          return __webpack_require__.e(/*! import() */ "resources_js_pages_Admins_settings_users_Gamers_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/Admins/settings/users/Gamers.vue */ "./resources/js/pages/Admins/settings/users/Gamers.vue"));
+        }
+      }]
     }]
+  }]
+}, {
+  path: '/account',
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ "resources_js_pages_Profile_index_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/Profile/index.vue */ "./resources/js/pages/Profile/index.vue"));
+  },
+  children: [{
+    path: 'overview',
+    name: 'Overview',
+    component: function component() {
+      return __webpack_require__.e(/*! import() */ "resources_js_pages_Profile_Account_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/Profile/Account.vue */ "./resources/js/pages/Profile/Account.vue"));
+    }
+  }, {
+    path: 'settings',
+    name: 'AccountSettings',
+    component: function component() {
+      return __webpack_require__.e(/*! import() */ "resources_js_pages_Profile_Settings_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/Profile/Settings.vue */ "./resources/js/pages/Profile/Settings.vue"));
+    }
   }]
 }];
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
@@ -101811,7 +101757,7 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_pages_Errors_index_vue":1,"resources_js_pages_Errors_notfound_vue":1,"resources_js_pages_dashboards_index_vue":1,"resources_js_pages_dashboards_admin_index_vue":1,"resources_js_pages_dashboards_admin_bookings_vue":1,"resources_js_pages_dashboards_admin_statistics_vue":1,"resources_js_pages_dashboards_gamers_index_vue":1,"resources_js_pages_dashboards_admin_allbookings_vue":1,"resources_js_pages_dashboards_gamers_bookings_mybookings_vue":1,"resources_js_pages_settings_index_vue":1,"resources_js_pages_settings_invitations_index_vue":1,"resources_js_pages_settings_invitations_requested_vue":1,"resources_js_pages_settings_security_index_vue":1,"resources_js_pages_settings_security_permissions_permissions_vue":1,"resources_js_pages_settings_security_roles_roles_vue":1,"resources_js_pages_settings_profile_index_vue":1,"resources_js_pages_settings_profile_account_vue":1,"resources_js_pages_settings_profile_edit_vue":1,"resources_js_pages_settings_users_index_vue":1,"resources_js_pages_settings_users_all_vue":1,"resources_js_pages_settings_users_admin_vue":1,"resources_js_pages_settings_users_gamers_vue":1,"resources_js_pages_settings_users_cashiers_vue":1,"resources_js_pages_settings_stations_index_vue":1,"resources_js_pages_settings_stations_games_index_vue":1,"resources_js_pages_settings_stations_games_all_vue":1,"resources_js_pages_settings_stations_games_categories_vue":1,"resources_js_pages_settings_stations_stations_index_vue":1,"resources_js_pages_settings_stations_stations_all_vue":1,"resources_js_pages_settings_stations_stations_screen_vue":1,"resources_js_pages_settings_stations_stations_console_vue":1,"resources_js_pages_settings_stations_pricing_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_pages_Admins_index_vue":1,"resources_js_pages_Admins_dashboards_index_vue":1,"resources_js_pages_Admins_dashboards_Bookings_vue":1,"resources_js_pages_Admins_dashboards_Gamers_vue":1,"resources_js_pages_Admins_dashboards_Sales_vue":1,"resources_js_pages_Admins_dashboards_Invitations_vue":1,"resources_js_pages_Admins_settings_index_vue":1,"resources_js_pages_Admins_settings_inventory_index_vue":1,"resources_js_pages_Admins_settings_inventory_Consoles_vue":1,"resources_js_pages_Admins_settings_inventory_Categories_vue":1,"resources_js_pages_Admins_settings_inventory_Games_vue":1,"resources_js_pages_Admins_settings_inventory_Screens_vue":1,"resources_js_pages_Admins_settings_inventory_Stations_vue":1,"resources_js_pages_Admins_settings_security_index_vue":1,"resources_js_pages_Admins_settings_security_Roles_vue":1,"resources_js_pages_Admins_settings_security_Permissions_vue":1,"resources_js_pages_Admins_settings_users_index_vue":1,"resources_js_pages_Admins_settings_users_Admins_vue":1,"resources_js_pages_Admins_settings_users_Cashiers_vue":1,"resources_js_pages_Admins_settings_users_Gamers_vue":1,"resources_js_pages_Profile_index_vue":1,"resources_js_pages_Profile_Account_vue":1,"resources_js_pages_Profile_Settings_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

@@ -38,11 +38,4 @@ class StoreRoleRequest extends FormRequest
             'name.unique' => 'There is a role bearing this name'
         ];
     }
-
-    protected function prepareForValidation()
-    {
-        $this->merge([
-            'name' => Str::of($this->name)->title()->__toString()
-        ]);
-    }
 }

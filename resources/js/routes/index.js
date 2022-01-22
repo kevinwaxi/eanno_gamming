@@ -19,7 +19,7 @@ const routes = [
                     },
                     {
                         path: 'gamers',
-                        name: 'Gamers',
+                        name: 'All Gamers',
                         component: () => import("@pages/Admins/dashboards/Gamers.vue")
                     },
                     {
@@ -102,7 +102,7 @@ const routes = [
                             {
                                 path: 'gamers',
                                 name: 'Gamers',
-                                component: () => import("@pages/Admins/settings/security/Gamers.vue")
+                                component: () => import("@pages/Admins/settings/users/Gamers.vue")
                             },
                         ]
                     }

@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\API\V1;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Update\UpdateUserRequest;
+use App\Http\Resources\UserResource;
+use Illuminate\Support\Facades\Auth;
 
 class AccountController extends Controller
 {
@@ -38,6 +41,8 @@ class AccountController extends Controller
     public function show(User $user)
     {
         //
+        $user = Auth::user();
+        return new UserResource($user);
     }
 
     /**
@@ -47,7 +52,7 @@ class AccountController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(UpdateUserRequest $request, User $user)
     {
         //
     }

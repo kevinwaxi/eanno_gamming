@@ -10,6 +10,7 @@ use App\Http\Controllers\API\V1\Admin\GamerController;
 use App\Http\Controllers\API\V1\Admin\ScreenController;
 use App\Http\Controllers\API\V1\Admin\CashierController;
 use App\Http\Controllers\API\V1\Admin\ConsoleController;
+use App\Http\Controllers\API\V1\Admin\StationController;
 use App\Http\Controllers\API\V1\Admin\CategoryController;
 use App\Http\Controllers\API\V1\Admin\InvitationController;
 use App\Http\Controllers\API\V1\Admin\PermissionController;
@@ -26,6 +27,7 @@ use App\Http\Controllers\API\V1\Admin\PermissionController;
  */
 
 Route::prefix('v1')->middleware(['auth:api'])->group(function () {
+    Route::apiResource('accounts', AccountController::class);
     // admin routes
     Route::prefix('admin')->group(function () {
         Route::group(['prefix' => 'settings'], function () {
@@ -41,6 +43,8 @@ Route::prefix('v1')->middleware(['auth:api'])->group(function () {
                 Route::apiResource('stations', StationController::class);
             });
             Route::group(['prefix' => 'users'], function () {
+                Route::put('ban/{user}', [App\Http\Controllers\API\V1\Admin\UserController::class, 'banUser']);
+                Route::put('restore/{user}', [App\Http\Controllers\API\V1\Admin\UserController::class, 'restoreUser']);
                 Route::apiResource('administrators', AdminController::class);
                 Route::apiResource('gamers', GamerController::class);
                 Route::apiResource('cashiers', CashierController::class);
@@ -53,5 +57,4 @@ Route::prefix('v1')->middleware(['auth:api'])->group(function () {
         // Route::apiResource('bookings', BookingController::class);
         Route::apiResource('games', GameController::class);
     });
-    Route::apiResource('accounts', AccountController::class);
 });

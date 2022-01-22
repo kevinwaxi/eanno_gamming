@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API\V1\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\PermissionResource;
 use App\Models\Permission;
 use Illuminate\Http\Request;
 
@@ -13,9 +14,37 @@ class PermissionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
+        if ($request->total) {
+            $paginate = $request->total;
+            $search_term = request('q', '');
+            $selected = request('select');
+            $sort_direction = request('sort_direction', 'desc');
+            $sort_field = request('sort_field', 'created_at');
+
+            if (!in_array($sort_direction, ['asc', 'desc'])) {
+                $sort_direction = 'desc';
+            }
+            if (!in_array($sort_field, ['name', 'created_at'])) {
+                $sort_field = 'created_at';
+            }
+
+            $permissions = Permission::when($selected, function ($query) use ($selected) {
+                $query->WhereHas('roles', function ($query) use ($selected) {
+                    $query->where('id', $selected);
+                });
+            })
+                ->search(trim($search_term))
+                ->orderBy($sort_field, $sort_direction)
+                ->paginate($paginate);
+
+            return PermissionResource::collection($permissions);
+        } else {
+            $permissions = Permission::all();
+            return PermissionResource::collection($permissions);
+        }
     }
 
     /**

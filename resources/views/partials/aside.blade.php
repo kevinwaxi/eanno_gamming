@@ -48,7 +48,7 @@
                 </router-link>
               </li>
               <li class="nav-item">
-                <router-link :to="{name:'Gamers'}" class="nav-link">
+                <router-link :to="{name:'All Gamers'}" class="nav-link">
                   <span class="sidenav-mini-icon"> G </span>
                   <span class="sidenav-normal"> Gamers </span>
                 </router-link>
@@ -144,7 +144,7 @@
           </a>
           <div class="collapse " id="userPages">
             <ul class="nav ms-4 ps-3">
-              @hasrole('super-admin')
+              @hasrole('super-admin|cashier')
                 <li class="nav-item ">
                   <router-link :to="{name:'Admins'}" class="nav-link">
                     <span class="sidenav-mini-icon"> A </span>

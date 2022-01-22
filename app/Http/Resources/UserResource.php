@@ -2,7 +2,7 @@
 
 namespace App\Http\Resources;
 
-use Creativeorange\Gravatar\Facades\Gravatar;
+use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class UserResource extends JsonResource
@@ -16,17 +16,14 @@ class UserResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id'=> $this->id,
+            'id' => $this->id,
             'name' => $this->name,
-            'username' => $this->username,
-            'roles' => $this->roles,
             'email' => $this->email,
+            'username' => $this->username,
             'phone' => $this->phone,
-            'avatar' => Gravatar::get($this->email),
-            'initials' => $this->initial_pic,
-            'active' => $this->is_active,
-            'banned_until' => $this->banned_until,
-            'created_at' => $this->created_at,
+            'roles' => $this->roles,
+            'member' => Carbon::createFromDate($this->created_at),
+            'banned_until' => $this->banned_until
         ];
     }
 }

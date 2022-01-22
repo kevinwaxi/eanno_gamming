@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
+use App\Casts\TitleCast;
 use Spatie\Permission\Models\Permission as ModelsPermission;
 
 class Permission extends ModelsPermission
-
 {
     public function scopeSearch($query, $term)
     {
@@ -21,4 +21,8 @@ class Permission extends ModelsPermission
                 });
         });
     }
+
+    protected $casts = [
+        'name' => TitleCast::class
+    ];
 }
