@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\API\V1\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\Screen;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Resources\ScreenResource;
 
 class ScreenController extends Controller
 {
@@ -13,9 +14,38 @@ class ScreenController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
+        if ($request->total) {
+            $paginate = $request->total;
+            $search_term = request('q', '');
+            $selected = request('select');
+            $sort_direction = request('sort_direction', 'desc');
+            $sort_field = request('sort_field', 'created_at');
+
+            if (!in_array($sort_direction, ['asc', 'desc'])) {
+                $sort_direction = 'desc';
+            }
+            if (!in_array($sort_field, ['serial_number', 'type', 'created_at'])) {
+                $sort_field = 'created_at';
+            }
+
+            $screen = Screen::when($selected, function ($query) use ($selected) {
+                $query->WhereHas('condition', function ($query) use ($selected) {
+                    $query->where('id', $selected);
+                });
+            })
+                ->search(trim($search_term))
+                ->orderBy($sort_field, $sort_direction)
+                ->paginate($paginate);
+
+            return ScreenResource::collection($screen);
+        } else {
+            $screen = Screen::all();
+            # code...
+            return ScreenResource::collection($screen);
+        }
     }
 
     /**

@@ -6,7 +6,7 @@
           <div class="card-header pb-0 p-3">
             <div class="row">
               <div class="col-8 d-flex">
-                <h6 class="mb-0">Admins List</h6>
+                <h6 class="mb-0">Gamers List</h6>
               </div>
             </div>
             <div class="row">
@@ -416,7 +416,7 @@ export default {
     async getUsers(page = 1) {
       const res = await this.callApi(
         "get",
-        `/api/v1/admin/settings/users/administrators?page=${page}
+        `/api/v1/admin/settings/users/gamers?page=${page}
         &total=${this.total}
         &q=${this.search}
         &sort_direction=${this.sort_direction}

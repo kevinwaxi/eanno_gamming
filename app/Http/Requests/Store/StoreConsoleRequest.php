@@ -43,12 +43,4 @@ class StoreConsoleRequest extends FormRequest
             'serial_number.required' => 'Please define the serial number this console',
         ];
     }
-
-    public function prepareForValidation()
-    {
-        # code...
-        $this->merge([
-            'serial_number' => Str::of($this->serial_number)->upper()->__toString(),
-        ]);
-    }
 }

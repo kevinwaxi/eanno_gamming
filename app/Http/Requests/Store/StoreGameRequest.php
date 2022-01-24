@@ -25,20 +25,13 @@ class StoreGameRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required'],
+            'name' => ['required', 'unique:games,name'],
             'release_date' => ['required', 'date'],
             'cover_image' => ['required'],
-            'about_game' => ['required', 'min:50'],
+            'about_game' => ['required', 'min:20'],
             'players' => ['required', 'numeric', 'digits_between:1,6'],
             'category_id' => ['required'],
+            'type_id' => ['required']
         ];
-    }
-
-    public function prepareForValidation()
-    {
-        # code...
-        $this->merge([
-            'name' => Str::of($this->name)->title()->__toString(),
-        ]);
     }
 }

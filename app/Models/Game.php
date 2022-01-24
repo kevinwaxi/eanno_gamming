@@ -20,6 +20,12 @@ class Game extends Model
         'release_date',
     ];
 
+
+    protected $with = [
+        'categories',
+        'types'
+    ];
+
     protected $casts = [
         'name' => TitleCast::class,
         'release_date' => 'datetime',
@@ -43,5 +49,24 @@ class Game extends Model
     public function types(): BelongsToMany
     {
         return $this->belongsToMany(Type::class, 'game_types');
+    }
+
+    public function scopeSearch($query, $term)
+    {
+        # code...
+        $term = "%$term%";
+
+        $query->where(function ($query) use ($term) {
+            $query->where('name', 'like', $term)
+                ->orWhere('slug', 'like', $term)
+                ->orWhereHas('types', function ($query) use ($term) {
+                    $query->where('name', 'like', $term)
+                        ->orWhere('slug', 'like', $term);
+                })
+                ->orWhereHas('categories', function ($query) use ($term) {
+                    $query->where('name', 'like', $term)
+                        ->orWhere('slug', 'like', $term);
+                });
+        });
     }
 }

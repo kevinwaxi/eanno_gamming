@@ -19,7 +19,9 @@ class CategoryResource extends JsonResource
             'name' => $this->name,
             'slug' => $this->slug,
             'cover' => $this->cover_photo,
-            'description' => $this->description
+            'description' => $this->description,
+            'color' => $this->color,
+            'games' => GameResource::collection($this->whenLoaded('games'))
         ];
     }
 }

@@ -19,7 +19,6 @@ class ConditionResource extends JsonResource
             'name' => $this->name,
             'color' => $this->color,
             'slug' => $this->slug,
-            'console' => $this->console,
         ];
     }
 }

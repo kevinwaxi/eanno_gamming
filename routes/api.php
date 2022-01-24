@@ -5,6 +5,7 @@ use App\Http\Controllers\API\V1\AccountController;
 use App\Http\Controllers\API\V1\BookingController;
 use App\Http\Controllers\API\V1\Admin\GameController;
 use App\Http\Controllers\API\V1\Admin\RoleController;
+use App\Http\Controllers\API\V1\Admin\TypeController;
 use App\Http\Controllers\API\V1\Admin\AdminController;
 use App\Http\Controllers\API\V1\Admin\GamerController;
 use App\Http\Controllers\API\V1\Admin\ScreenController;
@@ -12,6 +13,7 @@ use App\Http\Controllers\API\V1\Admin\CashierController;
 use App\Http\Controllers\API\V1\Admin\ConsoleController;
 use App\Http\Controllers\API\V1\Admin\StationController;
 use App\Http\Controllers\API\V1\Admin\CategoryController;
+use App\Http\Controllers\API\V1\Admin\ConditionController;
 use App\Http\Controllers\API\V1\Admin\InvitationController;
 use App\Http\Controllers\API\V1\Admin\PermissionController;
 
@@ -36,10 +38,22 @@ Route::prefix('v1')->middleware(['auth:api'])->group(function () {
                 Route::apiResource('permissions', PermissionController::class);
             });
             Route::group(['prefix' => 'inventories'], function () {
-                Route::apiResource('screens', ScreenController::class);
-                Route::apiResource('consoles', ConsoleController::class);
+                Route::group(['prefix' => 'misc'], function () {
+                    Route::get('conditions', [ConditionController::class, 'index']);
+                    Route::get('types', [TypeController::class, 'index']);
+                });
+                Route::group(['prefix' => 'categories'], function () {
+                    Route::post('upload', [CategoryController::class, 'uploadCategoryImage']);
+                    Route::post('deleteFile', [CategoryController::class, 'deleteCategoryImage']);
+                });
                 Route::apiResource('categories', CategoryController::class);
+                Route::apiResource('consoles', ConsoleController::class);
+                Route::group(['prefix' => 'games'], function () {
+                    Route::post('upload', [GameController::class, 'uploadCategoryImage']);
+                    Route::post('deleteFile', [GameController::class, 'deleteCategoryImage']);
+                });
                 Route::apiResource('games', GameController::class);
+                Route::apiResource('screens', ScreenController::class);
                 Route::apiResource('stations', StationController::class);
             });
             Route::group(['prefix' => 'users'], function () {

@@ -18,6 +18,11 @@ class Console extends Model
         'condition_id',
     ];
 
+    protected $with = [
+        'type',
+        'condition'
+    ];
+
     /**
      * Get the type that owns the Console
      *
@@ -35,7 +40,7 @@ class Console extends Model
      */
     public function condition(): BelongsTo
     {
-        return $this->belongsTo(Condition::class, 'condition_id', );
+        return $this->belongsTo(Condition::class, 'condition_id',);
     }
 
     /**

@@ -57,9 +57,11 @@ class ConsoleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreConsoleRequest $request, StoreConsoleAction $storeConsoleAction)
+    public function store(StoreConsoleRequest $request, StoreConsoleAction $action)
     {
-        $storeConsoleAction->execute($request);
+        $action->execute($request);
+
+        return new ConsoleResource(Console::all());
     }
 
     /**

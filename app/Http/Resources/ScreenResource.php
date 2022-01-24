@@ -17,11 +17,11 @@ class ScreenResource extends JsonResource
         return [
             'id' => $this->id,
             'make' => $this->make,
-            'condition' => $this->condition,
             'serial_number' => $this->serial_number,
             'model' => $this->model_number,
             'size' => $this->size,
             'feature' => $this->feature,
+            'condition' => ConditionResource::collection($this->condition),
         ];
     }
 }

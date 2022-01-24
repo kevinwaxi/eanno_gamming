@@ -53,7 +53,7 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreGameCategoryRequest $request, StoreCategoriesAction $storeCategoriesAction)
+    public function store(Request $request, StoreCategoriesAction $storeCategoriesAction)
     {
         //
         $storeCategoriesAction->execute($request);
@@ -109,7 +109,6 @@ class CategoryController extends Controller
     public function update(UpdateGameCategoryRequest $request, $id, UpdateCategoryAction $updateCategoryAction)
     {
         $updateCategoryAction->execute($request);
-
     }
 
     /**

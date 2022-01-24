@@ -17,10 +17,10 @@ class ConsoleResource extends JsonResource
         return [
             'id' => $this->id,
             'serial_number' => $this->serial_number,
-            'type' => $this->type,
             'storage' => $this->storage,
             'storage_size' => $this->storage_size,
-            'condition' => $this->condition,
+            'type' => new TypeResource($this->type),
+            'condition' => new ConditionResource($this->condition)
         ];
     }
 }

@@ -203,7 +203,13 @@
                   </router-link>
                 </li>
                 <li class="nav-item ">
-                  <router-link :to="{name:'Category'}" class="nav-link">
+                  <router-link :to="{name:'Screens'}" class="nav-link">
+                    <span class="sidenav-mini-icon"> S </span>
+                    <span class="sidenav-normal"> Screens </span>
+                  </router-link>
+                </li>
+                <li class="nav-item ">
+                  <router-link :to="{name:'Categories'}" class="nav-link">
                     <span class="sidenav-mini-icon"> G </span>
                     <span class="sidenav-normal"> Game Genre </span>
                   </router-link>
@@ -212,12 +218,6 @@
                   <router-link :to="{name:'Games'}" class="nav-link">
                     <span class="sidenav-mini-icon"> G </span>
                     <span class="sidenav-normal"> Games </span>
-                  </router-link>
-                </li>
-                <li class="nav-item ">
-                  <router-link :to="{name:'Screens'}" class="nav-link">
-                    <span class="sidenav-mini-icon"> S </span>
-                    <span class="sidenav-normal"> Screens </span>
                   </router-link>
                 </li>
                 <li class="nav-item ">
