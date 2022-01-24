@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers\API\V1\Admin;
 
+use App\Http\Actions\Store\StoreScreenAction;
+use App\Http\Actions\Update\UpdateScreenAction;
 use App\Models\Screen;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Store\StoreScreenRequest;
+use App\Http\Requests\Update\UpdateScreenRequest;
 use App\Http\Resources\ScreenResource;
 
 class ScreenController extends Controller
@@ -54,9 +58,12 @@ class ScreenController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreScreenRequest $request, StoreScreenAction $action)
     {
         //
+        $action->execute($request);
+
+        return ScreenResource::collection(Screen::all());
     }
 
     /**
@@ -68,6 +75,7 @@ class ScreenController extends Controller
     public function show(Screen $screen)
     {
         //
+        return new ScreenResource($screen);
     }
 
     /**
@@ -77,9 +85,12 @@ class ScreenController extends Controller
      * @param  \App\Models\Screen  $screen
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Screen $screen)
+    public function update(UpdateScreenRequest $request, Screen $screen, UpdateScreenAction $action)
     {
         //
+        $action->execute($request, $screen);
+
+        return ScreenResource::collection(Screen::all());
     }
 
     /**
@@ -91,5 +102,8 @@ class ScreenController extends Controller
     public function destroy(Screen $screen)
     {
         //
+        $screen->delete();
+
+        return response()->noContent();
     }
 }

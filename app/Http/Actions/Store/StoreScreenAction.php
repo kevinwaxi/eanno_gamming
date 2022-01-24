@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Actions\Store;
 
 use App\Models\Screen;
@@ -10,7 +11,7 @@ class StoreScreenAction
     public function execute(Request $request)
     {
         # code...
-        $screen = Screen::create([
+        Screen::create([
             'serial_number' => Str::upper($request->serial_number),
             'condition_id' => $request->condition_id,
             'make_id' => $request->make_id,

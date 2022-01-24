@@ -97,39 +97,22 @@
                   <thead>
                     <tr>
                       <th
-                        class="
-                          text-uppercase text-secondary text-xxs
-                          font-weight-bolder
-                          opacity-7
-                        "
+                        class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
                       >
                         Serial Number
                       </th>
                       <th
-                        class="
-                          text-uppercase text-secondary text-xxs
-                          font-weight-bolder
-                          opacity-7
-                          ps-2
-                        "
+                        class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2"
                       >
                         Size
                       </th>
                       <th
-                        class="
-                          text-center text-uppercase text-secondary text-xxs
-                          font-weight-bolder
-                          opacity-7
-                        "
+                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
                       >
                         Status
                       </th>
                       <th
-                        class="
-                          text-center text-uppercase text-secondary text-xxs
-                          font-weight-bolder
-                          opacity-7
-                        "
+                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
                       >
                         Actions
                       </th>
@@ -146,20 +129,11 @@
                               class="avatar me-3"
                             />
                           </div>
-                          <div
-                            class="d-flex flex-column justify-content-center"
-                          >
+                          <div class="d-flex flex-column justify-content-center">
                             <h6 class="mb-0 text-sm">
                               {{ screen.serial_number }}
                             </h6>
-                            <p
-                              class="
-                                text-sm
-                                font-weight-bold
-                                text-secondary
-                                mb-0
-                              "
-                            >
+                            <p class="text-sm font-weight-bold text-secondary mb-0">
                               <span class="text-success">
                                 {{ screen.make.name }}
                               </span>
@@ -183,13 +157,7 @@
                       <td class="align-middle text-end">
                         <div class="btn-group">
                           <button
-                            class="
-                              btn btn-link
-                              text-dark
-                              dropdown-toggle dropdown-toggle-split
-                              m-0
-                              p-0
-                            "
+                            class="btn btn-link text-dark dropdown-toggle dropdown-toggle-split m-0 p-0"
                             data-bs-toggle="dropdown"
                             aria-haspopup="true"
                             aria-expanded="false"
@@ -206,10 +174,7 @@
                               href="#"
                               @click.prevent="changeStatusModal(screen)"
                             >
-                              <span
-                                class="fas fa-chart-line me-2"
-                                aria-hidden="true"
-                              >
+                              <span class="fas fa-chart-line me-2" aria-hidden="true">
                               </span>
                               Change Status
                             </a>
@@ -237,8 +202,7 @@
               <div class="w-60">
                 <p class="text-sm" v-if="screens.data">
                   Showing
-                  <b>{{ screens.meta.from }}</b> to
-                  <b>{{ screens.meta.to }}</b> out of
+                  <b>{{ screens.meta.from }}</b> to <b>{{ screens.meta.to }}</b> out of
                   <b>{{ screens.meta.total }}</b> entries
                 </p>
               </div>
@@ -386,7 +350,7 @@
                 @click="updateScreen(form.id)"
                 :disabled="processing"
               >
-                {{ processing ? 'Saving ...' : 'Save Changes' }}
+                {{ processing ? "Saving ..." : "Save Changes" }}
               </button>
               <button
                 v-else
@@ -395,7 +359,7 @@
                 @click="createScreen()"
                 :disabled="processing"
               >
-                {{ processing ? 'Creating ...' : 'Create' }}
+                {{ processing ? "Creating ..." : "Create" }}
               </button>
             </div>
             <div class="modal-footer" v-else>
@@ -413,7 +377,7 @@
                 @click="updateScreen(form.id)"
                 :disabled="processing"
               >
-                {{ processing ? 'Saving ...' : 'Save Changes' }}
+                {{ processing ? "Saving ..." : "Save Changes" }}
               </button>
             </div>
           </div>
@@ -426,7 +390,7 @@
   </div>
 </template>
 <script>
-import Notfound from '@/pages/Errors/notfound.vue'
+import Notfound from "@/pages/Errors/notfound.vue";
 export default {
   data() {
     return {
@@ -442,74 +406,74 @@ export default {
       screens: {},
       conditions: [],
       makes: [],
-      token: '',
+      token: "",
       total: 20,
-      search: '',
-      selected: '',
+      search: "",
+      selected: "",
       checked: [],
       selectPage: false,
       selectAll: false,
-      sort_direction: 'desc',
-      sort_field: 'created_at',
-      url: '',
+      sort_direction: "desc",
+      sort_field: "created_at",
+      url: "",
       feature: [
         {
-          name: 'Smart TV',
-          value: 'Smart',
+          name: "Smart TV",
+          value: "Smart",
         },
         {
-          name: 'Android TV',
-          value: 'Android',
+          name: "Android TV",
+          value: "Android",
         },
         {
-          name: 'Digital TV',
-          value: 'Digital',
+          name: "Digital TV",
+          value: "Digital",
         },
       ],
-    }
+    };
   },
   watch: {
     total: function (value) {
-      this.getScreens()
+      this.getScreens();
     },
     search: function (value) {
-      this.getScreens()
+      this.getScreens();
     },
     selected: function (value) {
-      this.getScreens()
+      this.getScreens();
     },
     selectPage: function (value) {
-      this.checked = []
+      this.checked = [];
       if (value) {
         this.screens.data.forEach((screen) => {
-          this.checked.push(screen.id)
-        })
+          this.checked.push(screen.id);
+        });
       } else {
-        this.checked = []
-        this.selectAll = false
+        this.checked = [];
+        this.selectAll = false;
       }
     },
     checked: function (value) {
-      this.url = '/api/v1/screens/export/' + this.checked
+      this.url = "/api/v1/screens/export/" + this.checked;
     },
   },
   mounted() {
-    this.getScreens()
-    this.getMakes()
-    this.getConditions()
+    this.getScreens();
+    this.getMakes();
+    this.getConditions();
   },
   methods: {
     closeModal() {
-      $('#modal-default').modal('hide')
-      this.restForm()
+      $("#modal-default").modal("hide");
+      this.restForm();
     },
     restForm() {
-      this.form.serial_number = ''
-      this.form.condition_id = ''
+      this.form.serial_number = "";
+      this.form.condition_id = "";
     },
     createModal() {
-      $('#modal-default').modal('show')
-      ;(this.editStatus = false), (this.editMode = false)
+      $("#modal-default").modal("show");
+      (this.editStatus = false), (this.editMode = false);
     },
     editModal(screen) {
       let obj = {
@@ -522,11 +486,11 @@ export default {
         storage: screen.storage,
         size: screen.size,
         condition_id: screen.condition.id,
-      }
-      $('#modal-default').modal('show')
-      this.editMode = true
-      this.editStatus = false
-      this.form = obj
+      };
+      $("#modal-default").modal("show");
+      this.editMode = true;
+      this.editStatus = false;
+      this.form = obj;
     },
     changeStatusModal(screen) {
       let obj = {
@@ -539,184 +503,175 @@ export default {
         storage: screen.storage,
         size: screen.size,
         condition_id: screen.condition.id,
-      }
-      $('#modal-default').modal('show')
-      ;(this.editMode = false), (this.editStatus = true), (this.form = obj)
+      };
+      $("#modal-default").modal("show");
+      (this.editMode = false), (this.editStatus = true), (this.form = obj);
     },
     showDeleteModal(screen) {
-      this.form = screen
-      this.deleteModal = true
+      this.form = screen;
+      this.deleteModal = true;
     },
     change_sort(field) {
       if (this.sort_field == field) {
-        this.sort_direction = this.sort_direction == 'asc' ? 'desc' : 'asc'
+        this.sort_direction = this.sort_direction == "asc" ? "desc" : "asc";
       } else {
-        this.sort_field = field
+        this.sort_field = field;
       }
-      this.getScreens()
+      this.getScreens();
     },
     isChecked(screen_id) {
-      return this.checked.includes(screen_id)
+      return this.checked.includes(screen_id);
     },
     async selectAllRecords() {
-      const res = await this.callApi('get', '/api/v1/screens/all/')
+      const res = await this.callApi("get", "/api/v1/screens/all/");
       if (res.status === 200) {
-        this.checked = res.data
-        this.selectAll = true
-        screen.log(this.selectAll)
+        this.checked = res.data;
+        this.selectAll = true;
+        screen.log(this.selectAll);
       }
     },
     async getConditions() {
-      const res = await this.callApi('get', '/api/v1/conditions')
+      const res = await this.callApi("get", "/api/v1/conditions");
       if (res.status === 200) {
-        this.conditions = res.data
+        this.conditions = res.data;
       }
     },
     async getMakes() {
-      const res = await this.callApi('get', '/api/v1/makes')
+      const res = await this.callApi("get", "/api/v1/makes");
       if (res.status === 200) {
-        this.makes = res.data
+        this.makes = res.data;
       }
     },
     async getScreens(page = 1) {
       const res = await this.callApi(
-        'get',
+        "get",
         `/api/v1/screens?page=${page}
         &total=${this.total}
         &q=${this.search}
         &select=${this.selected}
         &sort_direction=${this.sort_direction}
         &sort_field=${this.sort_field}`
-      )
+      );
       if (res.status === 200) {
-        this.screens = res.data
+        this.screens = res.data;
       } else {
         if (res.status === 401 || res.status === 422) {
           for (let i in res.data.errors) {
-            this.e(res.data.errors[i][0])
+            this.e(res.data.errors[i][0]);
           }
         } else {
-          this.swr()
+          this.swr();
         }
       }
     },
     async createScreen() {
-      this.processing = true
-      const res = await this.callApi('post', '/api/v1/screens', this.form)
+      this.processing = true;
+      const res = await this.callApi("post", "/api/v1/screens", this.form);
       if (res.status === 200) {
-        this.s('Screen created successfully')
-        this.closeModal()
-        this.getScreens()
-        this.processing = false
+        this.s("Screen created successfully");
+        this.closeModal();
+        this.getScreens();
+        this.processing = false;
       } else {
         if (res.status === 422) {
           for (let i in res.data.errors) {
-            this.e(res.data.errors[i][0])
+            this.e(res.data.errors[i][0]);
           }
-          this.processing = false
+          this.processing = false;
         } else {
-          this.swr()
-          this.processing = false
+          this.swr();
+          this.processing = false;
         }
       }
     },
     async updateScreen(screen_id) {
-      this.processing = true
-      const res = await this.callApi(
-        'put',
-        `/api/v1/screens/${screen_id}`,
-        this.form
-      )
+      this.processing = true;
+      const res = await this.callApi("put", `/api/v1/screens/${screen_id}`, this.form);
       if (res.status == 200) {
-        this.closeModal()
-        this.getScreens()
-        this.s('Successfully updated screen')
-        this.processing = false
+        this.closeModal();
+        this.getScreens();
+        this.s("Successfully updated screen");
+        this.processing = false;
       } else {
         if (res.status == 422) {
           for (let i in res.data.errors) {
-            this.e(res.data.errors[i][0])
+            this.e(res.data.errors[i][0]);
           }
-          this.processing = false
+          this.processing = false;
         } else {
-          this.swr()
-          this.processing = false
+          this.swr();
+          this.processing = false;
         }
       }
     },
     async deleteScreen(screen_id) {
-      this.isDeleting = true
-      const res = await this.callApi('delete', `/api/v1/screens/${screen_id}`)
+      this.isDeleting = true;
+      const res = await this.callApi("delete", `/api/v1/screens/${screen_id}`);
       if (res.status == 204) {
-        this.w('Screen deleted')
-        this.checked = this.checked.filter((id) => id != screen_id)
-        this.isDeleting = false
-        this.deleteModal = false
-        this.getScreens()
+        this.w("Screen deleted");
+        this.checked = this.checked.filter((id) => id != screen_id);
+        this.isDeleting = false;
+        this.deleteModal = false;
+        this.getScreens();
       } else {
         if (res.status !== 422) {
           for (let i in res.data.errors) {
-            this.e(res.data.errors[i][0])
+            this.e(res.data.errors[i][0]);
           }
         } else {
-          this.swr()
+          this.swr();
         }
       }
     },
     async deleteImage(editMode = false) {
-      let image
+      let image;
       if (editMode) {
         // for editing
-        this.newCover = true
-        image = this.form.cover_photo
-        this.form.cover_photo = ''
-        this.$refs.uploads.clearFiles()
+        this.newCover = true;
+        image = this.form.cover_photo;
+        this.form.cover_photo = "";
+        this.$refs.uploads.clearFiles();
       } else {
-        image = this.form.cover_photo
-        this.form.cover_photo = ''
-        this.$refs.uploads.clearFiles()
+        image = this.form.cover_photo;
+        this.form.cover_photo = "";
+        this.$refs.uploads.clearFiles();
       }
-      const res = await this.callApi('post', '/api/v1/screens/deleteCover', {
+      const res = await this.callApi("post", "/api/v1/screens/deleteCover", {
         image_name: image,
-      })
+      });
       if (res.status !== 200) {
-        this.form.cover_photo = image
-        this.swr()
+        this.form.cover_photo = image;
+        this.swr();
       }
     },
     handleSuccess(res, file) {
       if (this.isEditingItem) {
-        return (this.form.cover_photo = `/uploads/games/screen/${res}`)
+        return (this.form.cover_photo = `/uploads/games/screen/${res}`);
       }
-      res = `/uploads/games/screen/${res}`
-      this.form.cover_photo = res
+      res = `/uploads/games/screen/${res}`;
+      this.form.cover_photo = res;
     },
     handleError(res) {
       this.$Notice.warning({
-        title: 'The file format is incorrect',
-        desc: `${
-          file.errors.file.length ? file.errors.file[0] : 'Something went wrong'
-        }`,
-      })
+        title: "The file format is incorrect",
+        desc: `${file.errors.file.length ? file.errors.file[0] : "Something went wrong"}`,
+      });
     },
     handleFormatError(file) {
       this.$Notice.warning({
-        title: 'The file format is incorrect',
-        desc:
-          'File format of ' +
-          file.name +
-          ' is incorrect, please select jpg or png.',
-      })
+        title: "The file format is incorrect",
+        desc: "File format of " + file.name + " is incorrect, please select jpg or png.",
+      });
     },
     handleMaxSize(file) {
       this.$Notice.warning({
-        title: 'Exceeding file size limit',
-        desc: 'File  ' + file.name + ' is too large, no more than 2M.',
-      })
+        title: "Exceeding file size limit",
+        desc: "File  " + file.name + " is too large, no more than 2M.",
+      });
     },
   },
   components: { Notfound },
-}
+};
 </script>
 <style>
 .demo-upload-list {
@@ -756,4 +711,3 @@ export default {
   margin: 0 2px;
 }
 </style>
-

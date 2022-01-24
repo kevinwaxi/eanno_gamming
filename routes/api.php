@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\V1\AccountController;
 use App\Http\Controllers\API\V1\BookingController;
 use App\Http\Controllers\API\V1\Admin\GameController;
+use App\Http\Controllers\API\V1\Admin\MakeController;
 use App\Http\Controllers\API\V1\Admin\RoleController;
 use App\Http\Controllers\API\V1\Admin\TypeController;
 use App\Http\Controllers\API\V1\Admin\AdminController;
@@ -41,6 +42,7 @@ Route::prefix('v1')->middleware(['auth:api'])->group(function () {
                 Route::group(['prefix' => 'misc'], function () {
                     Route::get('conditions', [ConditionController::class, 'index']);
                     Route::get('types', [TypeController::class, 'index']);
+                    Route::get('makes', [MakeController::class, 'index']);
                 });
                 Route::group(['prefix' => 'categories'], function () {
                     Route::post('upload', [CategoryController::class, 'uploadCategoryImage']);
