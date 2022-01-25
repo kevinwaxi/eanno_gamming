@@ -49,12 +49,14 @@ Route::prefix('v1')->middleware(['auth:api'])->group(function () {
                     Route::post('deleteFile', [CategoryController::class, 'deleteCategoryImage']);
                 });
                 Route::apiResource('categories', CategoryController::class);
+                // Route::apiResource('consoles/available', [ConsoleController::class, 'available']);
                 Route::apiResource('consoles', ConsoleController::class);
                 Route::group(['prefix' => 'games'], function () {
                     Route::post('upload', [GameController::class, 'uploadCategoryImage']);
                     Route::post('deleteFile', [GameController::class, 'deleteCategoryImage']);
                 });
                 Route::apiResource('games', GameController::class);
+                // Route::apiResource('screens/available', [ScreenController::class, 'available']);
                 Route::apiResource('screens', ScreenController::class);
                 Route::apiResource('stations', StationController::class);
             });

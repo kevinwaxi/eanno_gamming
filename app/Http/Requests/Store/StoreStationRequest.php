@@ -28,14 +28,13 @@ class StoreStationRequest extends FormRequest
             'name' => ['required', 'unique:stations'],
             'console_id' => ['required', 'unique:stations,console_id'],
             'screen_id' => ['required', 'unique:stations,screen_id'],
-            'available_id' => ['required'],
         ];
     }
 
     public function messages()
     {
         # code...
-        return[
+        return [
             'console_id.unique' => 'This console is already in use',
             'console_id.required' => 'Please select console',
             'screen_id.unique' => 'This screen is already in use',
@@ -43,13 +42,5 @@ class StoreStationRequest extends FormRequest
             'name.unique' => 'This station name is available',
             'name.required' => 'Station name is required',
         ];
-    }
-
-    public function prepareForValidation()
-    {
-        # code...
-        $this->merge([
-            'name' => Str::of($this->name)->upper()->singular(),
-        ]);
     }
 }

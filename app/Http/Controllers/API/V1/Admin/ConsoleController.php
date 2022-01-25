@@ -59,7 +59,7 @@ class ConsoleController extends Controller
         //
         $action->execute($request);
 
-        return new ConsoleResource(Console::with(['condition', 'type'])->get());
+        return ConsoleResource::collection(Console::all());
     }
 
     /**
@@ -71,6 +71,7 @@ class ConsoleController extends Controller
     public function show(Console $console)
     {
         //
+        return new ConsoleResource($console);
     }
 
     /**
@@ -94,5 +95,8 @@ class ConsoleController extends Controller
     public function destroy(Console $console)
     {
         //
+        $console->delete();
+
+        return response()->noContent();
     }
 }

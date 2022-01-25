@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Actions\Store;
 
 use App\Models\Station;
@@ -13,7 +14,6 @@ class StoreStationAction
             'name' => $request->name,
             'console_id' => $request->console_id,
             'screen_id' => $request->screen_id,
-            'available_id' => $request->available_id,
         ]);
     }
 }
