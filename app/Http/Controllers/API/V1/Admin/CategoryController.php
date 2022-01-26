@@ -57,7 +57,7 @@ class CategoryController extends Controller
         //
         $action->execute($request);
 
-        return new CategoryResource(Category::all());
+        return CategoryResource::collection(Category::with('games')->get());
     }
 
     /**

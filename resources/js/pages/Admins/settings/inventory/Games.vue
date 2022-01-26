@@ -184,6 +184,12 @@
                   />
                 </div>
               </div>
+              <div class="row mt-3">
+                <div class="col-6">Is the game available</div>
+                <div class="col-6">
+                  <i-switch size="large" v-model="form.available" />
+                </div>
+              </div>
             </div>
             <div class="modal-body" v-show="detailMode">
               <div class="card">
@@ -291,6 +297,7 @@ export default {
         release_date: "",
         cover_image: "",
         players: "",
+        available: "",
         category_id: [],
         type_id: [],
         category: [],
@@ -364,6 +371,7 @@ export default {
       this.form.cover_image = "";
       this.form.release_date = "";
       this.form.players = "";
+      this.form.available = "";
       this.category = [];
       this.type = [];
     },
@@ -388,6 +396,7 @@ export default {
         cover_image: form.cover_image,
         release_date: form.release_date,
         players: form.players,
+        available: form.available,
         category_id: this.category,
         type_id: this.type,
       };

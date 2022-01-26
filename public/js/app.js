@@ -2584,6 +2584,24 @@ var routes = [{
     }]
   }]
 }, {
+  path: '/user',
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ "resources_js_pages_Users_index_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/Users/index.vue */ "./resources/js/pages/Users/index.vue"));
+  },
+  children: [{
+    path: 'games',
+    name: 'Available Games',
+    component: function component() {
+      return __webpack_require__.e(/*! import() */ "resources_js_pages_Users_Games_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/Users/Games.vue */ "./resources/js/pages/Users/Games.vue"));
+    }
+  }, {
+    path: 'bookings',
+    name: 'My Bookings',
+    component: function component() {
+      return __webpack_require__.e(/*! import() */ "resources_js_pages_Users_Bookings_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/Users/Bookings.vue */ "./resources/js/pages/Users/Bookings.vue"));
+    }
+  }]
+}, {
   path: '/account',
   component: function component() {
     return __webpack_require__.e(/*! import() */ "resources_js_pages_Profile_index_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/Profile/index.vue */ "./resources/js/pages/Profile/index.vue"));
@@ -101757,7 +101775,7 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_pages_Admins_index_vue":1,"resources_js_pages_Admins_dashboards_index_vue":1,"resources_js_pages_Admins_dashboards_Bookings_vue":1,"resources_js_pages_Admins_dashboards_Gamers_vue":1,"resources_js_pages_Admins_dashboards_Sales_vue":1,"resources_js_pages_Admins_dashboards_Invitations_vue":1,"resources_js_pages_Admins_settings_index_vue":1,"resources_js_pages_Admins_settings_inventory_index_vue":1,"resources_js_pages_Admins_settings_inventory_Consoles_vue":1,"resources_js_pages_Admins_settings_inventory_Categories_vue":1,"resources_js_pages_Admins_settings_inventory_Games_vue":1,"resources_js_pages_Admins_settings_inventory_Screens_vue":1,"resources_js_pages_Admins_settings_inventory_Stations_vue":1,"resources_js_pages_Admins_settings_security_index_vue":1,"resources_js_pages_Admins_settings_security_Roles_vue":1,"resources_js_pages_Admins_settings_security_Permissions_vue":1,"resources_js_pages_Admins_settings_users_index_vue":1,"resources_js_pages_Admins_settings_users_Admins_vue":1,"resources_js_pages_Admins_settings_users_Cashiers_vue":1,"resources_js_pages_Admins_settings_users_Gamers_vue":1,"resources_js_pages_Profile_index_vue":1,"resources_js_pages_Profile_Account_vue":1,"resources_js_pages_Profile_Settings_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_pages_Admins_index_vue":1,"resources_js_pages_Admins_dashboards_index_vue":1,"resources_js_pages_Admins_dashboards_Bookings_vue":1,"resources_js_pages_Admins_dashboards_Gamers_vue":1,"resources_js_pages_Admins_dashboards_Sales_vue":1,"resources_js_pages_Admins_dashboards_Invitations_vue":1,"resources_js_pages_Admins_settings_index_vue":1,"resources_js_pages_Admins_settings_inventory_index_vue":1,"resources_js_pages_Admins_settings_inventory_Consoles_vue":1,"resources_js_pages_Admins_settings_inventory_Categories_vue":1,"resources_js_pages_Admins_settings_inventory_Games_vue":1,"resources_js_pages_Admins_settings_inventory_Screens_vue":1,"resources_js_pages_Admins_settings_inventory_Stations_vue":1,"resources_js_pages_Admins_settings_security_index_vue":1,"resources_js_pages_Admins_settings_security_Roles_vue":1,"resources_js_pages_Admins_settings_security_Permissions_vue":1,"resources_js_pages_Admins_settings_users_index_vue":1,"resources_js_pages_Admins_settings_users_Admins_vue":1,"resources_js_pages_Admins_settings_users_Cashiers_vue":1,"resources_js_pages_Admins_settings_users_Gamers_vue":1,"resources_js_pages_Users_index_vue":1,"resources_js_pages_Users_Games_vue":1,"resources_js_pages_Users_Bookings_vue":1,"resources_js_pages_Profile_index_vue":1,"resources_js_pages_Profile_Account_vue":1,"resources_js_pages_Profile_Settings_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

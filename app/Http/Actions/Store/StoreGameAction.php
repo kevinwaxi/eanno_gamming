@@ -20,6 +20,7 @@ class StoreGameAction
             'cover_image' => $request->cover_image,
             'release_date' => $request->release_date,
             'players' => $request->players,
+            'available' => $request->available
         ]);
         // insert game category
         $categories = $request->category_id;

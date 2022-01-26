@@ -21,7 +21,7 @@ class Screen extends Model
     ];
 
     protected $casts = [
-        'serial_number' => 'integer',
+        'serial_number' => TitleCast::class,
         'condition_id' => 'integer',
         'make_id' => 'integer',
         'model_number' => TitleCast::class,

@@ -30,7 +30,10 @@ use App\Http\Controllers\API\V1\Admin\PermissionController;
  */
 
 Route::prefix('v1')->middleware(['auth:api'])->group(function () {
-    Route::apiResource('accounts', AccountController::class);
+    Route::group(['prefix' => 'accounts'], function () {
+        Route::get('/', [AccountController::class, 'index']);
+        Route::put('/{account}', [AccountController::class, 'update']);
+    });
     // admin routes
     Route::prefix('admin')->group(function () {
         Route::group(['prefix' => 'settings'], function () {
@@ -73,6 +76,8 @@ Route::prefix('v1')->middleware(['auth:api'])->group(function () {
     // users routes
     Route::prefix('gamers')->group(function () {
         // Route::apiResource('bookings', BookingController::class);
-        Route::apiResource('games', GameController::class);
+        // ANCHOR:: Aware is an overkill to have many controllers but this was here just for api design wanted also to showcase different games depending if you are 
+        // ANCHOR ::an admin or a gamer. could have used roles instead but chose to use different Controller
+        Route::get('available/games', [App\Http\Controllers\API\V1\Gamer\GameController::class, 'index']);
     });
 });

@@ -621,7 +621,7 @@ export default {
         this.form
       );
       if (res.status === 200) {
-        this.s("Screen created successfully");
+        this.s("Station created successfully");
         this.closeModal();
         this.getStations();
         this.processing = false;

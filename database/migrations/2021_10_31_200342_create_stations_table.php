@@ -18,6 +18,10 @@ class CreateStationsTable extends Migration
             $table->string('name')->unique();
             $table->foreignId('console_id')->constrained()->onDelete('cascade');
             $table->foreignId('screen_id')->constrained()->onDelete('cascade');
+            $table->decimal('unit_cost', 5, 2);
+            $table->decimal('base_cost', 5, 2);
+            $table->decimal('price', 5, 2);
+            $table->string('unit')->default(30);
             $table->timestamps();
         });
     }

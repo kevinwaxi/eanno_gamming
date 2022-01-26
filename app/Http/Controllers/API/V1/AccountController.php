@@ -19,6 +19,10 @@ class AccountController extends Controller
     public function index()
     {
         //
+        $user = Auth::user()->id;
+        $profile = User::where('id', $user)->first();
+
+        return $profile;
     }
 
     /**

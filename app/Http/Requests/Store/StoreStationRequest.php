@@ -28,6 +28,9 @@ class StoreStationRequest extends FormRequest
             'name' => ['required', 'unique:stations'],
             'console_id' => ['required', 'unique:stations,console_id'],
             'screen_id' => ['required', 'unique:stations,screen_id'],
+            'price' => ['required'],
+            'base_cost' => ['required'],
+            'unit_cost' => ['required'],
         ];
     }
 

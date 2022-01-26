@@ -21,6 +21,7 @@ class CreateGamesTable extends Migration
             $table->string('about_game');
             $table->string('players');
             $table->datetime('release_date');
+            $table->boolean('available')->default(false);
             $table->softDeletes();
             $table->timestamps();
         });

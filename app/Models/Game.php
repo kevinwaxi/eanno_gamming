@@ -18,6 +18,7 @@ class Game extends Model
         'about_game',
         'players',
         'release_date',
+        'available'
     ];
 
 
@@ -29,6 +30,7 @@ class Game extends Model
     protected $casts = [
         'name' => TitleCast::class,
         'release_date' => 'datetime',
+        'available' => 'boolean'
     ];
 
     /**

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\API\V1\Admin;
 
 use App\Http\Actions\Store\StoreGameAction;
+use App\Http\Actions\Update\UpdateGameAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Store\StoreGameRequest;
+use App\Http\Requests\Update\UpdateGameRequest;
 use App\Http\Resources\GameResource;
 use App\Models\Game;
 use Illuminate\Http\Request;
@@ -67,7 +69,6 @@ class GameController extends Controller
     public function show(Game $game)
     {
         //
-
         return new GameResource($game);
     }
 
@@ -78,9 +79,12 @@ class GameController extends Controller
      * @param  \App\Models\Game  $game
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Game $game)
+    public function update(UpdateGameRequest $request, Game $game, UpdateGameAction $action)
     {
         //
+        $action->execute($request, $game);
+
+        return GameResource::collection(Game::all())->response();
     }
 
     /**
@@ -92,6 +96,9 @@ class GameController extends Controller
     public function destroy(Game $game)
     {
         //
+        $game->delete();
+
+        return response()->noContent();
     }
 
     public function uploadCategoryImage(Request $request)

@@ -5,7 +5,6 @@ namespace App\Http\Controllers\API\V1;
 use App\Http\Actions\Store\StoreCategoriesAction;
 use App\Http\Actions\Update\UpdateCategoryAction;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Store\StoreGameCategoryRequest;
 use App\Http\Requests\Update\UpdateGameCategoryRequest;
 use App\Http\Resources\CategoryResource;
 use App\Models\Category;
@@ -53,10 +52,10 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, StoreCategoriesAction $storeCategoriesAction)
+    public function store(Request $request, StoreCategoriesAction $action)
     {
         //
-        $storeCategoriesAction->execute($request);
+        $action->execute($request);
     }
 
     // upload Cover image first

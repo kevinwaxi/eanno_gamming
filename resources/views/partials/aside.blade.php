@@ -66,6 +66,18 @@
                 </router-link>
               </li>
             @endrole
+             <li class="nav-item">
+                <router-link :to="{name:'Available Games'}" class="nav-link">
+                  <span class="sidenav-mini-icon"> A </span>
+                  <span class="sidenav-normal"> Available Games </span>
+                </router-link>
+              </li>
+               <li class="nav-item">
+                <router-link :to="{name:'My Bookings'}" class="nav-link">
+                  <span class="sidenav-mini-icon"> B </span>
+                  <span class="sidenav-normal"> Bookings </span>
+                </router-link>
+              </li>
           </ul>
         </div>
       </li>

@@ -111,6 +111,22 @@ const routes = [
         ]
     },
     {
+        path: '/user',
+        component: () => import("@pages/Users/index.vue"),
+        children: [
+            {
+                path: 'games',
+                name: 'Available Games',
+                component: () => import('@pages/Users/Games.vue'),
+            },
+            {
+                path: 'bookings',
+                name: 'My Bookings',
+                component: () => import("@pages/Users/Bookings.vue"),
+            }
+        ]
+    },
+    {
         path: '/account',
         component: () => import("@pages/Profile/index.vue"),
         children: [

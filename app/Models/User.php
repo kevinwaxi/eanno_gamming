@@ -69,6 +69,6 @@ class User extends Authenticatable
 
     public static function getBookingModel(): string
     {
-        return Station::class;
+        return Booking::class;
     }
 }

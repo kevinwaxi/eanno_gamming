@@ -17,8 +17,8 @@ class StationResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'screen' => new ScreenResource($this->whenLoaded('screen')),
-            'console' => new ConsoleResource($this->whenLoaded('console')),
+            'screen' => ScreenResource::make($this->screen),
+            'console' => ConsoleResource::make($this->console),
         ];
     }
 }

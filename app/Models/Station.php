@@ -15,13 +15,17 @@ class Station extends Model
     protected $fillable = [
         'name',
         'console_id',
-        'screen_id'
+        'screen_id',
+        'unit_cost',
+        'base_cost',
     ];
 
     protected $casts = [
         'name' => TitleCast::class,
         'screen_id' => 'integer',
         'console_id' => 'integer',
+        'unit_cost' => 'decimal',
+        'base_cost' => 'decimal'
     ];
 
 
@@ -55,19 +59,18 @@ class Station extends Model
         });
     }
 
-    public function getBookingModel()
+    public static function getBookingModel(): string
     {
-        # code...
-        return User::class;
+        return App\Booking::class;
     }
 
-    public function getRateModel()
+    public static function getRateModel(): string
     {
         # code...
         return Rates::class;
     }
 
-    public function getAvailabilityModel()
+    public static function getAvailabilityModel(): string
     {
         # code...
         return Available::class;

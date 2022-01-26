@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Actions\Update;
 
 use App\Models\CategoryGame;
@@ -19,6 +20,7 @@ class UpdateGameAction
                 'cover_image' => $request->cover_image,
                 'release_date' => now(),
                 'players' => $request->players,
+                'available' => $request->available
             ]);
 
         $categories = $request->category_id;
