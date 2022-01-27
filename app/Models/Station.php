@@ -4,13 +4,13 @@ namespace App\Models;
 
 use App\Casts\TitleCast;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Rinvex\Bookings\Traits\Bookable;
 
 class Station extends Model
 {
-    use HasFactory, Bookable;
+    use HasFactory;
 
     protected $fillable = [
         'name',
@@ -18,6 +18,7 @@ class Station extends Model
         'screen_id',
         'unit_cost',
         'base_cost',
+        'price'
     ];
 
     protected $casts = [
@@ -25,7 +26,8 @@ class Station extends Model
         'screen_id' => 'integer',
         'console_id' => 'integer',
         'unit_cost' => 'decimal',
-        'base_cost' => 'decimal'
+        'base_cost' => 'decimal',
+        'price' => 'string'
     ];
 
 
@@ -49,6 +51,16 @@ class Station extends Model
         return $this->belongsTo(Console::class, 'console_id');
     }
 
+    /**
+     * Get all of the bookings for the Station
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function bookings(): HasMany
+    {
+        return $this->hasMany(Booking::class);
+    }
+
     public function scopeSearch($query, $term)
     {
         # code...
@@ -57,22 +69,5 @@ class Station extends Model
         $query->where(function ($query) use ($term) {
             $query->where('name', 'like', $term);
         });
-    }
-
-    public static function getBookingModel(): string
-    {
-        return App\Booking::class;
-    }
-
-    public static function getRateModel(): string
-    {
-        # code...
-        return Rates::class;
-    }
-
-    public static function getAvailabilityModel(): string
-    {
-        # code...
-        return Available::class;
     }
 }

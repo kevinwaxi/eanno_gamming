@@ -2,16 +2,17 @@
 
 namespace App\Models;
 
+use App\Casts\TitleCast;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
-use Rinvex\Bookings\Traits\HasBookings;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, HasRoles, HasBookings;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles;
 
     protected $guard = 'api';
 
@@ -49,6 +50,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'banned_until' => 'datetime',
         'is_active' => 'boolean',
+        'name' => TitleCast::class
     ];
 
     public function scopeSearch($query, $term)
@@ -67,8 +69,13 @@ class User extends Authenticatable
         });
     }
 
-    public static function getBookingModel(): string
+    /**
+     * Get all of the bookings for the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function bookings(): HasMany
     {
-        return Booking::class;
+        return $this->hasMany(Booking::class);
     }
 }

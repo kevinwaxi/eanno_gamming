@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\V1\AccountController;
-use App\Http\Controllers\API\V1\BookingController;
 use App\Http\Controllers\API\V1\Admin\GameController;
 use App\Http\Controllers\API\V1\Admin\MakeController;
 use App\Http\Controllers\API\V1\Admin\RoleController;
@@ -78,6 +77,8 @@ Route::prefix('v1')->middleware(['auth:api'])->group(function () {
         // Route::apiResource('bookings', BookingController::class);
         // ANCHOR:: Aware is an overkill to have many controllers but this was here just for api design wanted also to showcase different games depending if you are 
         // ANCHOR ::an admin or a gamer. could have used roles instead but chose to use different Controller
-        Route::get('available/games', [App\Http\Controllers\API\V1\Gamer\GameController::class, 'index']);
+        Route::get('/available/games', [App\Http\Controllers\API\V1\Gamer\GameController::class, 'index']);
+        Route::get('/station/booking', [\App\Http\Controllers\API\V1\Gamer\StationController::class, 'index']);
+        Route::post('/station/booking', [\App\Http\Controllers\API\V1\Gamer\StationController::class, 'store']);
     });
 });

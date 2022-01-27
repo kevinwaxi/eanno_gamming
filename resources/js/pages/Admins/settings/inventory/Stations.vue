@@ -369,6 +369,18 @@
                   </Select>
                 </div>
               </div>
+              <div class="row mt-3">
+                <div class="col-12">
+                  <label> Price </label>
+                  <FormulateInput
+                    type="number"
+                    required
+                    label="Price"
+                    validation="required"
+                    v-model="form.price"
+                  />
+                </div>
+              </div>
             </div>
             <div class="modal-body" v-if="editStatus">
               <div class="row mt-3">
@@ -507,45 +519,47 @@ export default {
       this.form.name = "";
       this.form.console_id = "";
       this.form.screen_id = "";
+      this.form.price = "";
     },
     createModal() {
       $("#modal-default").modal("show");
       (this.editStatus = false), (this.editMode = false);
     },
-    editModal(screen) {
+    editModal(station) {
       let obj = {
-        id: screen.id,
-        serial_number: screen.serial_number,
-        model_number: screen.model,
-        make_id: screen.make.id,
-        type: screen.type,
-        feature: screen.feature,
-        storage: screen.storage,
-        size: screen.size,
-        condition_id: screen.condition.id,
+        id: station.id,
+        serial_number: station.serial_number,
+        model_number: station.model,
+        make_id: station.make.id,
+        type: station.type,
+        feature: station.feature,
+        storage: station.storage,
+        size: station.size,
+        condition_id: station.condition.id,
       };
       $("#modal-default").modal("show");
       this.editMode = true;
       this.editStatus = false;
       this.form = obj;
     },
-    changeStatusModal(screen) {
+    changeStatusModal(station) {
       let obj = {
-        id: screen.id,
-        serial_number: screen.serial_number,
-        model_number: screen.model,
-        make_id: screen.make.id,
-        type: screen.type,
-        feature: screen.feature,
-        storage: screen.storage,
-        size: screen.size,
-        condition_id: screen.condition.id,
+        id: station.id,
+        serial_number: station.serial_number,
+        model_number: station.model,
+        make_id: station.make.id,
+        type: station.type,
+        feature: station.feature,
+        storage: station.storage,
+        price: station.price,
+        size: station.size,
+        condition_id: station.condition.id,
       };
       $("#modal-default").modal("show");
       (this.editMode = false), (this.editStatus = true), (this.form = obj);
     },
-    showDeleteModal(screen) {
-      this.form = screen;
+    showDeleteModal(station) {
+      this.form = station;
       this.deleteModal = true;
     },
     change_sort(field) {
@@ -564,7 +578,7 @@ export default {
       if (res.status === 200) {
         this.checked = res.data;
         this.selectAll = true;
-        screen.log(this.selectAll);
+        station.log(this.selectAll);
       }
     },
     async getScreens() {
@@ -637,13 +651,17 @@ export default {
         }
       }
     },
-    async updateScreen(screen) {
+    async updateStation(station) {
       this.processing = true;
-      const res = await this.callApi("put", `/api/v1/screens/${screen}`, this.form);
+      const res = await this.callApi(
+        "put",
+        `/api/v1/admin/settings/inventories/stations/${station}`,
+        this.form
+      );
       if (res.status == 200) {
         this.closeModal();
         this.getScreens();
-        this.s("Successfully updated screen");
+        this.s("Successfully updated station");
         this.processing = false;
       } else {
         if (res.status == 422) {
@@ -657,12 +675,12 @@ export default {
         }
       }
     },
-    async deleteScreen(screen_id) {
+    async deleteStation(station) {
       this.isDeleting = true;
-      const res = await this.callApi("delete", `/api/v1/screens/${screen_id}`);
+      const res = await this.callApi("delete", `/api/v1/screens/${station}`);
       if (res.status == 204) {
         this.w("Screen deleted");
-        this.checked = this.checked.filter((id) => id != screen_id);
+        this.checked = this.checked.filter((id) => id != station);
         this.isDeleting = false;
         this.deleteModal = false;
         this.getScreens();

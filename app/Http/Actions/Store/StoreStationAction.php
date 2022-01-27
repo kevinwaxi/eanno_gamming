@@ -14,6 +14,9 @@ class StoreStationAction
             'name' => $request->name,
             'console_id' => $request->console_id,
             'screen_id' => $request->screen_id,
+            'price' => $request->price,
+            'unit_cost' => $request->price,
+            'base_cost' => $request->price
         ]);
     }
 }
